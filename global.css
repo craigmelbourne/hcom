@@ -1,0 +1,42 @@
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin:0; padding:0; border:0; outline:0; font-weight:inherit; font-style:inherit; font-size:100%; font-family:inherit; vertical-align:baseline; }
+:focus { outline:0; }
+a {text-decoration:none;}
+a:active { outline:none; }
+body { line-height:1; color:black; background:white; }
+ul { list-style:none; }
+table { border-collapse:separate; border-spacing:0; }
+caption,th,td { text-align:left; font-weight:normal; }
+blockquote:before,blockquote:after,q:before,q:after { content:""; }
+blockquote,q { quotes:"" ""; }
+
+
+body {margin:0; padding:0; font-family:arial; font-size:62.5%;}
+
+strong {font-weight:bold;}	
+#header {background-color:#C71110; height:46px;}	
+#header .logo {width: 150px; height:40px; background: url(i/sprite_logos.png) 0 5px; outline:0;}
+
+
+#filters-modal {position:fixed; top:0px; bottom:0px; left:0px; width:100%; background-color:#eee; display:none; color:#000; z-index:1000; overflow:hidden; border-right:solid 6px #000; font-size:1.0rem;}
+#filters-modal .filter-tools h2{font-size:1.4rem; margin-bottom:24px;}
+#filters-modal .filter-tools h3{font-size:1.2rem; margin-bottom:12px;}
+#filters-modal .filter-tools {padding:20px;}
+#filters-modal .filter-tools div {min-height:40px; border-bottom: solid 1px #bbb; margin-bottom:20px; padding-bottom:10px;}
+
+.multi-select li {display:inline-block; width:20%;}
+.multi-select li a {display:block; border-top:solid 1px #999; border-bottom:solid 1px #999; border-left:solid 1px #999; text-align:center; padding:10px 0; color:#666; font-weight:bold;}
+.multi-select li a.highlight {background-color:#00f; color:#fff;}
+.multi-select li a.last {border-right:solid 1px #999;}
+
+ul.checklist li {margin-top:5px;}
+ul.checklist li label {display:inline-block; margin-top:-5px; vertical-align:top; margin-top:8px; max-width:70%;}
+ul.checklist li.more {margin-left:34px; margin-top:10px}
+
+input[type=checkbox] {
+ width: 22px; height: 22px;
+ -webkit-border-radius: 22px; -moz-border-radius: 22px; border-radius: 22px;
+ border: 1px solid #bbb;
+}
+
+button.book {background-color: #30aff7; background-image: -moz-linear-gradient(top,#63ccff 0,#22aeff 40%,#0495ee 100%); background-image: -ms-linear-gradient(top,#63ccff 0,#22aeff 40%,#0495ee 100%);background-image: -webkit-linear-gradient(top,#63ccff 0,#22aeff 40%,#0495ee 100%); background-image: linear-gradient(top,#63ccff 0,#22aeff 40%,#0495ee 100%); background-position: 50%; border: 1px solid #bbe9ff; border-left-color: #54c0ff; border-bottom-color: #3aabf0; border-right-color: #58bbf7; border-radius: 3px; box-shadow: 0 0 0 1px #0087db,1px 1px .5px 1px rgba(60,163,227,.3); color: #fff; cursor: pointer;display: inline-block; font-size: 16px; font-weight: bold; line-height: 1.5; margin: 0 2px 4px; overflow: visible; padding: 4px 10px; vertical-align: middle; width: auto;}
