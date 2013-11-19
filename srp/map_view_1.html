@@ -125,10 +125,12 @@
 
 	<style type="text/css">
 
-	#header {background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
-	#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
-	#location h1 {font-size:1.4rem; padding-top:12px;}
-	#map {position:absolute; top:110px; bottom:0; left:0; right:0}
+	#header {background-color: #900; position:absolute; top:0px; left:0; right:0; height:30px;}
+	#location {background-color: #F5F4F0; position:absolute; top:30px; left:0; right:0; height:30px; padding:10px 20px;}
+	#location h1 {font-size:1.2rem; padding-top:12px;}
+	#map {position:absolute; top:60px; bottom:0; left:0; right:0}
+
+	#map .map_key{display:none;}
 	#map_canvas { width:100%; }
 	.filters {z-index:2000; position:absolute; top:120px; left:30px;}
 		.filters .filter-link {display:block; height:28px; font-size:1.4em; padding:12px 12px 0; background-color:#999; color:#fff;}
@@ -137,7 +139,11 @@
 		#filters-modal {z-index:3000; }
 
 	@media only screen and (min-width:600px) { 
-
+		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
+		#map .map_key{display:block;}
+		#header {background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
+		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
+		#location h1 {font-size:1.4rem; padding-top:12px;}
 		#filters-modal {width:300px; }
 		
 	}
