@@ -71,7 +71,7 @@
 		  panControl: false,
 		mapTypeControl: false,
 		streetViewControl:false,
-		  zoomControl: true,
+		  zoomControl: false,
 		  zoomControlOptions: {
 		        style: google.maps.ZoomControlStyle.SMALL,
 		        position: google.maps.ControlPosition.LEFT_TOP
@@ -129,8 +129,8 @@
 	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:30px; overflow:hidden;}
 	#location h1 {font-size:1.0rem; padding:8px 0;}
 	#location .listview {display:inline-block; margin-right:10px; height:16px; color:#009; font-size:1.0rem; padding:8px;vertical-align:top;}
-	#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
-	#map {position:absolute; top:70px; bottom:0; left:0; right:0}
+	#tools {position:absolute; top:30px; height:40px; background-color:transparent; z-index:3000;}
+	#map {position:absolute; top:30px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
 	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
@@ -194,15 +194,15 @@
 			</div>
 		</div>
 
-		<div id="tools">
-			
-				<div style="display:inline-block; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
+		<div id="tools" style="width:100%">
+			<div style="position:relative;">
+				<div style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
 					Filters
 				</div>
-				<div style="width:180px; display:inline-block; vertical-align:top; padding:6px; border:solid 1px #ccc; font-size:0.9rem; margin: 5px;">
+				<div style="position:absolute; right:5px; top:5px; width:180px; padding:6px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff;">
 					Show legend
 				</div>
-
+			</div>
 
 		</div>
 		<div class="filters" style="">
