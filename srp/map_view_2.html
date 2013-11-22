@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="../global.css"></link>
+
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+    </script>
+<script src="../jquery.js"></script>
+    <script type="text/javascript">	
+
+	var pinColor = "1BD308";
+	    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+	        new google.maps.Size(25, 39),
+	        new google.maps.Point(0,0),
+	        new google.maps.Point(10, 34));
+	    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+	        new google.maps.Size(40, 37),
+	        new google.maps.Point(0, 0),
+	        new google.maps.Point(12, 35));
+
+
+	var newYork = new google.maps.LatLng(40.730098, -73.997861);
+	var image = 'images/gren-pin-5sec.gif';
+	var icon ="map-pin-red.png";
+	var LatLng1 = new google.maps.LatLng(40.72756, -74.00548);
+	var LatLng2 = new google.maps.LatLng(40.72718, -74.00601);
+	var LatLng3 = new google.maps.LatLng(40.72564, -74.00533);
+	var LatLng4 = new google.maps.LatLng(40.72369, -74.00542);
+	var LatLng5 = new google.maps.LatLng(40.722835, -74.004712);
+	var i;
+	var hotels = [
+			[40.721021, -74.004179],
+			[40.72108, -74.00534],
+			[40.71905, -74.00519],
+			[40.72808, -73.99097],
+			[40.72334, -73.99028],
+			[40.72304, -73.98941],
+			[40.72194, -73.9934],
+			[40.72137, -73.99266],
+			[40.72, -73.98807],
+			[40.71873, -73.99269],
+			[40.71856, -73.99508],
+			[40.717291, -73.995431],
+			[40.713724, -73.993646],
+			[40.715425, -73.999515],
+			[40.71994, -73.99873],
+			[40.719762, -74.000411],
+			[40.71919, -73.9999],
+			[40.71847, -74.00052],
+			[40.715425, -73.999515],
+			[40.71617, -74.00726],
+			[40.71534, -74.00874],
+			[40.73476, -73.98467],
+			[40.73653, -73.98899],
+			[40.73813, -74.00845],
+			[40.73827, -73.98566],
+			[40.73954, -73.98274],
+			[40.742032, -74.00373],
+			[40.716685, -73.994646]
+		]
+
+        function initializeMap() {
+	
+		map = new google.maps.Map(document.getElementById('map_canvas'), {
+	      center: newYork,
+	      zoom: 14,
+	      mapTypeId: 'roadmap',
+		  mapTypeId: google.maps.MapTypeId.ROADMAP, 
+		  panControl: false,
+		mapTypeControl: false,
+		streetViewControl:false,
+		  zoomControl: false,
+		  zoomControlOptions: {
+		        style: google.maps.ZoomControlStyle.SMALL,
+		        position: google.maps.ControlPosition.LEFT_TOP
+		  }
+	    }); 
+	
+		for (i = 0; i < hotels.length; i++) {  
+			      var marker = new google.maps.Marker({
+			        position: new google.maps.LatLng(hotels[i][0], hotels[i][1]),
+			        map: map,
+					icon: icon
+			      });
+		}
+
+
+        //var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		//layer.setMap(map);
+		
+		
+		
+		
+        }
+
+	  
+
+
+	
+	 $(document).ready(function () {
+		initializeMap();
+
+		$(".filter-link").on("click", function(e){
+					e.preventDefault();
+					console.log("filters selected");
+					$("#overlay").show();
+					$("#filters-modal").show();
+					//$("#filters-modal").show("slide", { direction: "left" }, 400); 
+					$("body").addClass("modal-open");
+				}); 
+
+		$("#filters-modal button").on("click", function(e){
+					e.preventDefault();
+					$("#overlay").hide();
+					$("#filters-modal").hide();
+					$("body").removeClass("modal-open");
+				}); 
+
+	
+	 });
+    
+</script>
+
+	<style type="text/css">
+
+	#header {display:none;}
+	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:30px; overflow:hidden;}
+	#location h1 {font-size:1.0rem; padding:8px 0;}
+	#location .listview {display:inline-block; margin-right:10px; height:16px; color:#009; font-size:1.0rem; padding:8px;vertical-align:top;}
+	#tools {position:absolute; top:30px; height:40px; background-color:transparent; z-index:3000;}
+	#map {position:absolute; top:30px; bottom:0; left:0; right:0}
+
+	#map .map_key{display:none;}
+	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
+	#map_canvas { width:100%; }
+	.filters {z-index:2000; position:absolute; top:120px; left:30px; display:none;}
+	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
+	.filters .filter-tools {display: none;}
+
+	#filters-modal {z-index:3000; }
+
+	@media only screen and (min-width:600px) { 
+		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
+		
+		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
+		#location h1 {font-size:1.4rem; padding-top:12px;}
+
+		#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
+		#filters-modal {width:300px; }
+		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
+		#map .map_key{display:block;}
+		
+	}
+
+	@media only screen and (min-width:800px) { 
+
+		#map {position:absolute; top:110px; bottom:0; left:320px; right:0}
+
+		.filters {padding:20px;position:absolute; width:280px; left:0; top:110px; bottom:0; overflow: scroll;}
+		.filters .filter-link {display:none;}
+  		.filters .filter-tools {display:block; font-size:1.4em;}
+  		.filters .filter-tools h2 {margin-bottom:5px; font-size:18px;}
+  		.filters .filter-tools .num_hotels {font-size:12px; display:block; margin-bottom:20px}
+  		.filters .filter-tools h3 {margin-bottom:10px;}
+  		.filters .filter-tools div {min-height:40px; border-bottom: solid 1px #bbb; margin-bottom:20px; padding-bottom:10px;}
+
+	}
+
+	
+	
+	
+
+	
+	
+	</style>
+
+  </head>
+  
+
+
+<body onload="">
+		<div id="header">
+
+		</div>
+
+		<div id="location">
+			<div style="text-align:center;">
+				<h1>London, United Kingdom</h1>
+			</div>
+		</div>
+
+		<div id="tools" style="width:100%">
+			<div style="position:relative;">
+				<div style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
+					Filters
+				</div>
+				<div style="position:absolute; right:5px; top:5px; width:180px; padding:6px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff;">
+					Show legend
+				</div>
+			</div>
+
+		</div>
+		<div class="filters" style="">
+					<div class="filter-link">
+						Filters
+					</div>
+					<div class="filter-tools" style="">
+						<h2>Narrow Results</h2>
+						<span class="num_hotels">1,223 hotels</span>
+						<div>
+							<h3>Hotel name contains</h3>
+							<input type="text" style="width:96%; padding:2%; font-size:1.2em;">
+						</div>
+						<div>
+							<h3>Price</h3>
+							<input type="range" />
+						</div>
+						<div>
+							<h3>Star rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1*</a></li><li><a href="#">2*</a></li><li><a href="#">3*</a></li><li><a href="#">4*</a></li><li><a href="#" class="last">5*</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Guest rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#" class="last">5</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Neighbourhood</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Paddington</label></li>
+								<li><input type="checkbox" /> <label>Kensington - Earl's Court</label></li>
+								<li><input type="checkbox" /> <label>Victoria - Westminster</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+							
+						</div>
+						<div>
+							<h3>Landmarks</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>City Centre</label></li>
+								<li><input type="checkbox" /> <label>Heathrow Airport</label></li>
+								<li><input type="checkbox" /> <label>Oxford Street</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accommodation type</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Hotel</label></li>
+								<li><input type="checkbox" /> <label>Bed &amp; Breakfast</label></li>
+								<li><input type="checkbox" /> <label>Hostel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Facilities</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Free Wi-Fi</label></li>
+								<li><input type="checkbox" /> <label>Restaurant</label></li>
+								<li><input type="checkbox" /> <label>Free Breakfast</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Themes / types</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Boutique</label></li>
+								<li><input type="checkbox" /> <label>Family-Friendly</label></li>
+								<li><input type="checkbox" /> <label>Spa Hotel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accessibility Features </h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Handicapped Parking</label></li>
+								<li><input type="checkbox" /> <label>Wheelchair accessible rooms</label></li>
+								<li><input type="checkbox" /> <label>Roll in shower</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		
+
+		<div id="map" style="">
+			<div id="map_canvas" style="position:absolute; top: 0; bottom:0;"></div>
+			<div class="map_key" style="position:absolute; top:10px; right:0; padding:5px; background-color:#fff; z-index:1000; border-top-left-radius:4px; border-bottom-left-radius:4px;">
+				<img src="i/key.png" />
+			</div>
+			<div class="hotel_details"></div>
+		</div>
+			
+	
+		<div id="filters-modal">
+				<div class="filter-tools" style="position:absolute; top:0; bottom:80px; left:0; right:0px; overflow-x:scroll;">
+						<h2>Narrow Results</h2>
+						<div>
+							<h3>Hotel name contains</h3>
+							<input type="text" style="width:96%; padding:2%; font-size:1.2em;">
+						</div>
+						<div>
+							<h3>Price</h3>
+							<input type="range" />
+						</div>
+						<div>
+							<h3>Star rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1*</a></li><li><a href="#">2*</a></li><li><a href="#">3*</a></li><li><a href="#">4*</a></li><li><a href="#" class="last">5*</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Guest rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#" class="last">5</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Neighbourhood</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Paddington</label></li>
+								<li><input type="checkbox" /> <label>Kensington - Earl's Court</label></li>
+								<li><input type="checkbox" /> <label>Victoria - Westminster</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+							
+						</div>
+						<div>
+							<h3>Landmarks</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>City Centre</label></li>
+								<li><input type="checkbox" /> <label>Heathrow Airport</label></li>
+								<li><input type="checkbox" /> <label>Oxford Street</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accomodation type</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Hotel</label></li>
+								<li><input type="checkbox" /> <label>Bed &amp; Breakfast</label></li>
+								<li><input type="checkbox" /> <label>Hostel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Facilities</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Free Wi-Fi</label></li>
+								<li><input type="checkbox" /> <label>Restaurant</label></li>
+								<li><input type="checkbox" /> <label>Free Breakfast</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Themes / types</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Boutique</label></li>
+								<li><input type="checkbox" /> <label>Family-Friendly</label></li>
+								<li><input type="checkbox" /> <label>Spa Hotel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accessibility Features </h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Handicapped Parking</label></li>
+								<li><input type="checkbox" /> <label>Wheelchair accessible rooms</label></li>
+								<li><input type="checkbox" /> <label>Roll in shower</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+				</div>
+				<div style="height:70px; position:absolute; bottom:0; text-align:left; overflow:hidden; width:100%; background-color:#666; color:#fff; ">
+					<button style="font-size:1.2rem; padding:5px; width:120px; margin-top:20px; margin-left:20px; background-color:#00f; color:#fff;">
+						Apply
+					</button>
+					<button style="font-size:1.2rem; padding:5px; width:120px; margin-top:20px; margin-left:10px;">
+						Clear
+					</button>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		
+    
+</div>
+	
+	<div id="overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.7;"></div>
+
+
+  </body>
+</html>
