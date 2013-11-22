@@ -128,12 +128,12 @@
 	#header {display:none;}
 	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:30px; overflow:hidden;}
 	#location h1 {font-size:1.0rem; padding:8px 0;}
-	#location .listview {display:inline-block; margin-right:10px; height:16px; background-color:#999; color:#fff; font-size:1.0rem; padding:8px;vertical-align:top;}
-	#tools {position:absolute; top:30px; height:40px; background-color:#fff;}
+	#location .listview {display:inline-block; margin-right:10px; height:16px; color:#009; font-size:1.0rem; padding:8px;vertical-align:top;}
+	#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
 	#map {position:absolute; top:70px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
-	#map .hotel_details {position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
+	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
 	#map_canvas { width:100%; }
 	.filters {z-index:2000; position:absolute; top:120px; left:30px; display:none;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
@@ -143,12 +143,14 @@
 
 	@media only screen and (min-width:600px) { 
 		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
-		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
-		#map .map_key{display:block;}
-		#header {background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
+		
 		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
 		#location h1 {font-size:1.4rem; padding-top:12px;}
+
+		#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
 		#filters-modal {width:300px; }
+		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
+		#map .map_key{display:block;}
 		
 	}
 
@@ -185,7 +187,7 @@
 
 		<div id="location">
 			<div class="listview">
-				List view
+				&laquo; List view
 			</div>
 			<div style="display:inline-block; vertical-align:top">
 				<h1>London, United Kingdom</h1>
@@ -193,6 +195,15 @@
 		</div>
 
 		<div id="tools">
+			
+				<div style="display:inline-block; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
+					Filters
+				</div>
+				<div style="width:180px; display:inline-block; vertical-align:top; padding:6px; border:solid 1px #ccc; font-size:0.9rem; margin: 5px;">
+					Show legend
+				</div>
+
+
 		</div>
 		<div class="filters" style="">
 					<div class="filter-link">
