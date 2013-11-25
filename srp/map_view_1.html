@@ -149,7 +149,7 @@
 	#map .map_key{display:none;}
 	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
 	#map_canvas { width:100%; }
-	.filters {z-index:2000; position:absolute; top:145px; left:30px;}
+	.filters {z-index:2000; position:absolute; top:155px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
 	.filters .filter-tools {display: none;}
 
@@ -158,20 +158,21 @@
 	@media only screen and (min-width:600px) { 
 		#header {display:block; background:url ('header-red-bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
 		#nav {display:block; background-color: #000; position:absolute; top:55px; left:0; right:0; height:30px;}
-		#location {background-color: #F5F4F0; position:absolute; top:85px; left:0; right:0; height:60px;}
-		#location .listview {margin-top:6px; height:40px;}
-		#location h1 {font-size:1.3rem; padding-top:8px;}
+		#location {background-color: #F5F4F0; position:absolute; top:85px; left:0; right:0; height:70px;}
+		#location .listview {margin:11px 20px; height:40px;}
+		#location h1 {font-size:1.3rem; padding-top:13px; margin-bottom: 10px;}
+		#location span.details {font-size:0.9rem;}
 
-		#tools {position:absolute; top:145px; height:40px; z-index:3000;}
+		#tools {position:absolute; top:155px; height:40px; z-index:3000;}
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:145px; bottom:0; left:0; right:0}
+		#map {position:absolute; top:155px; bottom:0; left:0; right:0}
 		#map .map_key{display:none;}
 		
 	}
 
 	@media only screen and (min-width:800px) { 
 
-		#location .listview {margin:5px 20px; }
+		#location .listview {}
 		#map {left:320px; right:0; top:155px;}
 		#tools {top:155px;}
 		#tools .filter-link {display:none;}
