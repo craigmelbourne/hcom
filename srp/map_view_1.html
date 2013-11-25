@@ -137,40 +137,43 @@
 
 	<style type="text/css">
 
-	#header, #nav {display:none;}
-	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:35px; overflow:hidden;}
-	#location h1 {font-size:1.0rem; padding:10px 0 0; }
-	#location .listview {display:inline-block; margin-right:10px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:5px 5px 0 5px;}
-	#tools {position:absolute; top:35px; height:40px; background-color:transparent; z-index:3000;}
-	#map {position:absolute; top:35px; bottom:0; left:0; right:0}
+	#header {display:none} 
+	#nav {display:none;}
+	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:55px; overflow:hidden;}
+	#location h1 {font-size:1.0rem; padding:12px 0 0; margin-bottom:5px;}
+	#location span.details {font-size:0.7rem;}
+	#location .listview {display:inline-block; margin-right:15px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:7px 5px 0 5px; height:30px; background-color: #fff;}
+	#tools {position:absolute; top:60px; height:40px; background-color:transparent; z-index:3000;}
+	#map {position:absolute; top:55px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
 	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
 	#map_canvas { width:100%; }
-	.filters {z-index:2000; position:absolute; top:120px; left:30px;}
+	.filters {z-index:2000; position:absolute; top:145px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
 	.filters .filter-tools {display: none;}
 
 	#filters-modal {z-index:3000; }
 
 	@media only screen and (min-width:600px) { 
-		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:55px;}
+		#header {display:block; background:url ('header-red-bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
 		#nav {display:block; background-color: #000; position:absolute; top:55px; left:0; right:0; height:30px;}
-		#location {background-color: #F5F4F0; position:absolute; top:85px; left:0; right:0; height:40px;}
-		#location .listview {margin-top:6px;}
+		#location {background-color: #F5F4F0; position:absolute; top:85px; left:0; right:0; height:60px;}
+		#location .listview {margin-top:6px; height:40px;}
 		#location h1 {font-size:1.3rem; padding-top:8px;}
 
-		#tools {position:absolute; top:125px; height:40px; z-index:3000;}
+		#tools {position:absolute; top:145px; height:40px; z-index:3000;}
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:125px; bottom:0; left:0; right:0}
+		#map {position:absolute; top:145px; bottom:0; left:0; right:0}
 		#map .map_key{display:none;}
 		
 	}
 
 	@media only screen and (min-width:800px) { 
 
-		#location .listview {margin:5px 20px;}
-		#map {left:320px; right:0}
+		#location .listview {margin:5px 20px; }
+		#map {left:320px; right:0; top:155px;}
+		#tools {top:155px;}
 		#tools .filter-link {display:none;}
 		.filters {padding:20px;position:absolute; width:280px; left:0; bottom:0; overflow: scroll;}
 		
@@ -208,13 +211,14 @@
 				&laquo; List view
 			</div>
 			<div style="display:inline-block; vertical-align:top">
-				<h1>London, United Kingdom</h1>
+				<h1>New York, USA</h1>
+				<span class="details">13/12/13 - 14/12/13, 2 adults</span>
 			</div>
 		</div>
 
 		<div id="tools" style="width:100%">
 			<div style="position:relative;">
-				<div class="filter-link" style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
+				<div class="filter-link" style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px 0; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
 					Filters
 				</div>
 				<div style="position:absolute; right:5px; top:5px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center;">
