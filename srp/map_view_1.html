@@ -78,12 +78,24 @@
 		  }
 	    }); 
 	
+
+		var infowindow = new google.maps.InfoWindow();
 		for (i = 0; i < hotels.length; i++) {  
-			      var marker = new google.maps.Marker({
-			        position: new google.maps.LatLng(hotels[i][0], hotels[i][1]),
-			        map: map,
-					icon: icon
-			      });
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(hotels[i][0], hotels[i][1]),
+				map: map,
+				icon: icon
+			});
+
+			var content = '<div>Some hotel details</div>'
+
+			google.maps.event.addListener(marker, 'click', (function(marker, content) {
+            	return function() {
+               	 	infowindow.setContent(content);
+                	infowindow.open(map, marker);
+            	}
+        	})(marker, content));
+
 		}
 
 
@@ -157,6 +169,7 @@
 
 	@media only screen and (min-width:800px) { 
 
+		#location .listview {margin:5px 20px;}
 		#map {position:absolute; top:90px; bottom:0; left:320px; right:0}
 		#tools .filter-link {display:none;}
 		.filters {padding:20px;position:absolute; width:280px; left:0; top:90px; bottom:0; overflow: scroll;}
