@@ -126,16 +126,16 @@
 	<style type="text/css">
 
 	#header {display:none;}
-	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:30px; overflow:hidden;}
-	#location h1 {font-size:1.0rem; padding:8px 0;}
-	#location .listview {display:inline-block; margin-right:10px; height:16px; color:#009; font-size:1.0rem; padding:8px;vertical-align:top;}
-	#tools {position:absolute; top:30px; height:40px; background-color:transparent; z-index:3000;}
-	#map {position:absolute; top:30px; bottom:0; left:0; right:0}
+	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:35px; overflow:hidden;}
+	#location h1 {font-size:1.0rem; padding:10px 0 0; }
+	#location .listview {display:inline-block; margin-right:10px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:5px 5px 0 5px;}
+	#tools {position:absolute; top:35px; height:40px; background-color:transparent; z-index:3000;}
+	#map {position:absolute; top:35px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
 	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
 	#map_canvas { width:100%; }
-	.filters {z-index:2000; position:absolute; top:120px; left:30px; display:none;}
+	.filters {z-index:2000; position:absolute; top:120px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
 	.filters .filter-tools {display: none;}
 
@@ -144,22 +144,23 @@
 	@media only screen and (min-width:600px) { 
 		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
 		
-		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
-		#location h1 {font-size:1.4rem; padding-top:12px;}
+		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px;}
+		#location .listview {margin-top:6px;}
+		#location h1 {font-size:1.3rem; padding-top:8px;}
 
-		#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
+		#tools {position:absolute; top:90px; height:40px; z-index:3000;}
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
-		#map .map_key{display:block;}
+		#map {position:absolute; top:90px; bottom:0; left:0; right:0}
+		#map .map_key{display:none;}
 		
 	}
 
 	@media only screen and (min-width:800px) { 
 
-		#map {position:absolute; top:110px; bottom:0; left:320px; right:0}
-
-		.filters {padding:20px;position:absolute; width:280px; left:0; top:110px; bottom:0; overflow: scroll;}
-		.filters .filter-link {display:none;}
+		#map {position:absolute; top:90px; bottom:0; left:320px; right:0}
+		#tools .filter-link {display:none;}
+		.filters {padding:20px;position:absolute; width:280px; left:0; top:90px; bottom:0; overflow: scroll;}
+		
   		.filters .filter-tools {display:block; font-size:1.4em;}
   		.filters .filter-tools h2 {margin-bottom:5px; font-size:18px;}
   		.filters .filter-tools .num_hotels {font-size:12px; display:block; margin-bottom:20px}
@@ -196,7 +197,7 @@
 
 		<div id="tools" style="width:100%">
 			<div style="position:relative;">
-				<div style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
+				<div class="filter-link" style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
 					Filters
 				</div>
 				<div style="position:absolute; right:5px; top:5px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center;">
@@ -206,9 +207,6 @@
 
 		</div>
 		<div class="filters" style="">
-					<div class="filter-link">
-						Filters
-					</div>
 					<div class="filter-tools" style="">
 						<h2>Narrow Results</h2>
 						<span class="num_hotels">1,223 hotels</span>
