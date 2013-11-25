@@ -137,7 +137,7 @@
 
 	<style type="text/css">
 
-	#header {display:none;}
+	#header, #nav {display:none;}
 	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:35px; overflow:hidden;}
 	#location h1 {font-size:1.0rem; padding:10px 0 0; }
 	#location .listview {display:inline-block; margin-right:10px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:5px 5px 0 5px;}
@@ -154,15 +154,15 @@
 	#filters-modal {z-index:3000; }
 
 	@media only screen and (min-width:600px) { 
-		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
-		
-		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px;}
+		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:55px;}
+		#nav {display:block; background-color: #000; position:absolute; top:55px; left:0; right:0; height:30px;}
+		#location {background-color: #F5F4F0; position:absolute; top:85px; left:0; right:0; height:40px;}
 		#location .listview {margin-top:6px;}
 		#location h1 {font-size:1.3rem; padding-top:8px;}
 
-		#tools {position:absolute; top:90px; height:40px; z-index:3000;}
+		#tools {position:absolute; top:125px; height:40px; z-index:3000;}
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:90px; bottom:0; left:0; right:0}
+		#map {position:absolute; top:125px; bottom:0; left:0; right:0}
 		#map .map_key{display:none;}
 		
 	}
@@ -170,9 +170,9 @@
 	@media only screen and (min-width:800px) { 
 
 		#location .listview {margin:5px 20px;}
-		#map {position:absolute; top:90px; bottom:0; left:320px; right:0}
+		#map {left:320px; right:0}
 		#tools .filter-link {display:none;}
-		.filters {padding:20px;position:absolute; width:280px; left:0; top:90px; bottom:0; overflow: scroll;}
+		.filters {padding:20px;position:absolute; width:280px; left:0; bottom:0; overflow: scroll;}
 		
   		.filters .filter-tools {display:block; font-size:1.4em;}
   		.filters .filter-tools h2 {margin-bottom:5px; font-size:18px;}
@@ -196,6 +196,10 @@
 
 <body onload="">
 		<div id="header">
+
+		</div>
+
+		<div id="nav">
 
 		</div>
 
