@@ -144,6 +144,9 @@
 	#location span.details {font-size:0.7rem;}
 	#location .listview {display:inline-block; margin-right:15px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:7px 5px 0 5px; height:30px; background-color: #fff;}
 	#tools {position:absolute; top:60px; height:40px; background-color:transparent; z-index:3000;}
+	#tools .filter-link {float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px 0; font-size:0.9rem; margin:10px 5px; text-align:center; width:70px; border:solid 1px #009; border-radius:6px;}
+	#tools .legend {position:absolute; right:5px; top:10px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center; border-radius:6px;}
+
 	#map {position:absolute; top:55px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
@@ -173,6 +176,9 @@
 		#location span.details {font-size:0.9rem;}
 
 		#tools {position:absolute; top:165px; height:40px; z-index:3000;}
+		#tools .filter-link {margin:10px 20px; }
+		#tools .legend {right:20px; top:10px; }
+
 		#filters-modal {width:300px; }
 		#map {position:absolute; top:165px; bottom:0; left:0; right:0}
 		#map .map_key{display:none;}
@@ -266,10 +272,10 @@
 
 		<div id="tools" style="width:100%">
 			<div style="position:relative;">
-				<div class="filter-link" style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px 0; font-size:0.9rem; margin:10px 20px; text-align:center; width:70px; border:solid 1px #009; border-radius:6px;">
+				<div class="filter-link">
 					Filters
 				</div>
-				<div style="position:absolute; right:20px; top:10px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center; border-radius:6px;">
+				<div class="legend">
 					Show legend
 				</div>
 			</div>
