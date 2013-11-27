@@ -71,19 +71,32 @@
 		  panControl: false,
 		mapTypeControl: false,
 		streetViewControl:false,
-		  zoomControl: false,
+		  zoomControl: true,
 		  zoomControlOptions: {
 		        style: google.maps.ZoomControlStyle.SMALL,
-		        position: google.maps.ControlPosition.LEFT_TOP
+		        position: google.maps.ControlPosition.RIGHT_BOTTOM
 		  }
 	    }); 
 	
+
+		var infowindow = new google.maps.InfoWindow();
 		for (i = 0; i < hotels.length; i++) {  
-			      var marker = new google.maps.Marker({
-			        position: new google.maps.LatLng(hotels[i][0], hotels[i][1]),
-			        map: map,
-					icon: icon
-			      });
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(hotels[i][0], hotels[i][1]),
+				map: map,
+				icon: icon
+			});
+
+			var content = '<div>Some hotel details</div>'
+
+			google.maps.event.addListener(marker, 'click', (function(marker, content) {
+            	return function() {
+               	 	//infowindow.setContent(content);
+                	//infowindow.open(map, marker);
+                	$("#map .hotel-details").show();
+            	}
+        	})(marker, content));
+
 		}
 
 
@@ -125,48 +138,97 @@
 
 	<style type="text/css">
 
-	#header {display:none;}
-	#location {background-color: #F5F4F0; position:absolute; top:0; left:0; right:0; height:30px; overflow:hidden;}
-	#location h1 {font-size:1.0rem; padding:8px 0;}
-	#location .listview {display:inline-block; margin-right:10px; height:16px; color:#009; font-size:1.0rem; padding:8px;vertical-align:top;}
-	#tools {position:absolute; top:30px; height:40px; background-color:transparent; z-index:3000;}
-	#map {position:absolute; top:30px; bottom:0; left:0; right:0}
+	#header {display:none} 
+	#nav {display:none;}
+	#location {background-color: #E5E3DB; position:absolute; top:0; left:0; right:0; height:55px; overflow:hidden;}
+	#location h1 {font-size:1.0rem; padding:12px 0 0; margin-bottom:5px;}
+	#location span.details {font-size:0.7rem;}
+	#location .listview {display:inline-block; margin-right:15px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:7px 5px 0 5px; height:30px; background-color: #fff;}
+	#tools {position:absolute; top:0; height:40px; background-color:transparent; z-index:3000;}
+	#tools .filter-link {float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px 0; font-size:0.9rem; margin:10px 5px; text-align:center; width:70px; border:solid 1px #009; border-radius:6px;}
+	#tools .legend {position:absolute; right:5px; top:10px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center; border-radius:6px;}
+
+	#map {position:absolute; top:55px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
-	#map .hotel_details {display:none;position:absolute; left:0; right:0; bottom:0; height:50px; background-color:#fff;}
+	#map .hotel-details {position:absolute; bottom:20px; left:30px; right:30px; height:120px; background-color:#fff;}
+		#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; color:#009; border:solid 1px #009; background-color: #fff; font-weight: bold;}
+ 		#map .hotel-details .close:hover {cursor: pointer; background-color:#009; color:#fff;}
 	#map_canvas { width:100%; }
-	.filters {z-index:2000; position:absolute; top:120px; left:30px; display:none;}
+	.filters {z-index:2000; position:absolute; top:155px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
 	.filters .filter-tools {display: none;}
 
 	#filters-modal {z-index:3000; }
 
 	@media only screen and (min-width:600px) { 
-		#header {display:block; background-color: #900; position:absolute; top:0px; left:0; right:0; height:50px;}
+		#header {display:block; background:url('i/header_desktop_bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
+		#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px;}
+	#header .content  {margin:0 20px;  padding:5px 0;}
+	#header .content img {display:inline;}
 		
-		#location {background-color: #F5F4F0; position:absolute; top:50px; left:0; right:0; height:40px; padding:10px 20px;}
-		#location h1 {font-size:1.4rem; padding-top:12px;}
+		#nav {display:block; background-color: #000; position:absolute; top:55px; left:0; right:0; height:30px;}
+		#nav .content {margin:0 20px; overflow:hidden; padding:8px 0; max-width: 1160px;}
+		#nav .content ul li {float:left; margin:0 10px 0 0;}
+		#nav .content ul li.right {float:right; margin:0 0 0 10px;}
+		#nav .content ul li a {color:#fff; font-size:0.8rem;}
 
-		#tools {position:absolute; top:30px; height:40px; background-color:#fff; z-index:3000;}
+		#location {background-color: #E5E3DB; position:absolute; top:85px; left:0; right:0; height:80px;}
+		#location .listview {margin:7px 20px; height:50px;}
+		#location h1 {font-size:1.3rem; margin: 5px 0 10px; font-weight: bold}
+		#location span.details {font-size:0.9rem;}
+
+		#tools {position:absolute; top:0; height:40px; z-index:3000;}
+		#tools .filter-link {margin:10px 20px; }
+		#tools .legend {right:20px; top:10px; }
+
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:110px; bottom:0; left:0; right:0}
-		#map .map_key{display:block;}
+		#map {position:absolute; top:165px; bottom:0; left:0; right:0}
+		#map .key{display:none;}
+		
 		
 	}
 
 	@media only screen and (min-width:800px) { 
 
-		#map {position:absolute; top:110px; bottom:0; left:320px; right:0}
+		#location .listview {width:214px; border:solid 3px #fff; background-color:#eee;}
+		.mapfilter {position:absolute; top:165px; bottom:0; overflow:scroll; left:0; right:0;}
+		#map {}
+		#tools {}
+		#tools {display:none;}
+		#map .key {display:block; position:absolute; top:10px; right:0; padding:5px; background-color:#fff; padding-right:0; border-top-left-radius: 6px; border-bottom-left-radius: 6px;}
 
-		.filters {padding:20px;position:absolute; width:280px; left:0; top:110px; bottom:0; overflow: scroll;}
-		.filters .filter-link {display:none;}
+		.filters {padding:10px 20px;
+			position:absolute; 
+			width:210px; 
+			top: 10px;
+			left:0; 
+
+			background-color:#fff; 
+			}
+		
   		.filters .filter-tools {display:block; font-size:1.4em;}
   		.filters .filter-tools h2 {margin-bottom:5px; font-size:18px;}
-  		.filters .filter-tools .num_hotels {font-size:12px; display:block; margin-bottom:20px}
+  		.filters .filter-tools .num_hotels {font-size:12px; display:block;}
   		.filters .filter-tools h3 {margin-bottom:10px;}
   		.filters .filter-tools div {min-height:40px; border-bottom: solid 1px #bbb; margin-bottom:20px; padding-bottom:10px;}
-
+  		
+ 		#map {position:absolute;top:185px; left: 260px; right:30px; bottom:20px; background-color:#eee; z-index:5000;}
+ 		#map .hotel-details {position:absolute; bottom:20px; left:50%; margin-left:-300px; width:600px; height:120px; background-color:#fff;}
+ 		#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; color:#009; border:solid 1px #009; background-color: #fff; font-weight: bold;}
+ 		#map .hotel-details .close:hover {cursor: pointer; background-color:#009; color:#fff;}
 	}
+
+	@media only screen and (min-width:1160px) {
+ 		#header .content, #nav .content, #location .content {max-width:1120px; margin:0 auto;}
+ 		#location .content .listview {margin-left:0;}
+ 		.mapfilter {}
+ 		.mapfilter .content {position:relative;max-width:1140px; margin:0 auto;}
+ 		
+		.map-wrapper {position:absolute; left: 50%; margin-left: -570px; width:1140px; top:165px; bottom:0;}
+		#map {position:absolute;top:20px; left: 260px; right:0; bottom:20px; background-color:#eee; z-index:5000;}
+ 
+ 	}
 
 	
 	
@@ -182,33 +244,54 @@
 
 <body onload="">
 		<div id="header">
+			<div class="content" style="">
+				<div>
+					<img src="i/logo_desktop.png" />
+					<img src="i/header_tel.png" style="float:right" />
+				</div>
+			</div>
+			<div class="currency_selector">
+				<a href="#" class=""><img src="i/header_counrty.png" /></a>
+			</div>
+		</div>
 
+		<div id="nav">
+			<div class="content" style="">
+				<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">Hotel Deals</a></li>
+					<li><a href="">Travel Guide</a></li>
+					<li><a href="">Welcome Rewards</a></li>
+					
+					<li class="right"><a href="">Sign in & Account</a></li>
+					<li class="right"><a href="">Customer Service</a></li>
+				</ul>
+			</div>
 		</div>
 
 		<div id="location">
-			<div style="text-align:center;">
-				<h1>London, United Kingdom</h1>
-			</div>
+			<div class="content">
+				<div class="listview" style="position:relative;">
+					<div style="width:60px;"></div>
+					<span style="position:absolute; bottom:3px; width:60px; text-align:center;">List view</span>
+				</div>
+				<div style="display:inline-block; vertical-align:top">
+					<h1>New York, USA</h1>
+					<span class="details">13/12/13 - 14/12/13, 2 adults</span>
+				</div>
+		</div>
 		</div>
 
-		<div id="tools" style="width:100%">
-			<div style="position:relative;">
-				<div style="float:left; vertical-align:top; background-color:#009; color:#fff; padding:6px; font-size:0.9rem; margin:5px; text-align:center; width:70px; border:solid 1px #009;">
-					Filters
-				</div>
-				<div style="position:absolute; right:5px; top:5px; width:180px; padding:6px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff;">
-					Show legend
-				</div>
-			</div>
-
-		</div>
-		<div class="filters" style="">
-					<div class="filter-link">
-						Filters
-					</div>
+		
+	<div class="mapfilter">
+		<div class="content">
+			<div class="filters">
 					<div class="filter-tools" style="">
-						<h2>Narrow Results</h2>
-						<span class="num_hotels">1,223 hotels</span>
+						<div style="background-color:#fff; margin:0 0 20px 0; color:#000; padding:10px 0 5px; border-top-right-radius:6px;">
+							<h2>Narrow Results</h2>
+							<span class="num_hotels">1,223 hotels</span>
+						</div>
+
 						<div>
 							<h3>Hotel name contains</h3>
 							<input type="text" style="width:96%; padding:2%; font-size:1.2em;">
@@ -287,15 +370,41 @@
 					</div>
 				</div>
 		
-
-		<div id="map" style="">
-			<div id="map_canvas" style="position:absolute; top: 0; bottom:0;"></div>
-			<div class="map_key" style="position:absolute; top:10px; right:0; padding:5px; background-color:#fff; z-index:1000; border-top-left-radius:4px; border-bottom-left-radius:4px;">
-				<img src="i/key.png" />
+				</div>	
 			</div>
-			<div class="hotel_details"></div>
-		</div>
-			
+
+		
+			<div class="map-wrapper" style="">
+				<div id="map" style="">
+
+					
+					<div id="map_canvas" style="position:absolute; top: 0; bottom:0;"></div>
+						
+					<div id="tools" style="width:100%">
+						<div style="position:relative;">
+							<div class="filter-link">
+								Filters
+							</div>
+							<div class="legend">
+								<span class="link">Show legend</span>
+
+							</div>
+						</div>
+					</div>
+					<div class="key">
+						<img  src="i/key.png" />
+					</div>
+					
+					<div class="hotel-details" style="display:none;">
+
+						<div class="close" style="">X</div>
+					</div>
+
+				</div>
+			</div>
+		
+		
+		
 	
 		<div id="filters-modal">
 				<div class="filter-tools" style="position:absolute; top:0; bottom:80px; left:0; right:0px; overflow-x:scroll;">
