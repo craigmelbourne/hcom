@@ -156,9 +156,14 @@
 	#map {position:absolute; top:55px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
-	#map .hotel-details {position:absolute; bottom:20px; left:30px; right:30px; background-color:#fff;}
+	#map .hotel-details {position:absolute; bottom:10px; left:10px; right:10px; background-color:#fff;}
 	#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; background-color:#009; color:#fff; font-weight: bold;}
 	#map .hotel-details .close:hover {cursor: pointer;}
+
+
+
+
+
 	#map_canvas { width:100%; }
 	.filters {z-index:2000; position:absolute; top:155px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
@@ -190,6 +195,20 @@
 		#filters-modal {width:300px; }
 		#map {position:absolute; top:165px; bottom:0; left:0; right:0}
 		#map .key {display:block; position:absolute; top:10px; right:0; padding:5px; background-color:#fff; padding-right:0; border-top-left-radius: 6px; border-bottom-left-radius: 6px;}
+		#map .hotel-details {position:absolute; bottom:20px; left:20px; right:20px; background-color:#fff;}
+ 		#map .hotel-details .name {font-size:1.1rem; margin-bottom:5px;}
+ 		#map .hotel-details .image {display:inline-block; vertical-align:top; width:24%; overflow:hidden;}
+ 		#map .hotel-details .star-location {display:inline-block; vertical-align:top; width:28%;}
+ 		
+ 		#map .hotel-details .user {display:inline-block; vertical-align:top; width:22%; text-align:center;}
+ 		#map .hotel-details .user .score {border:solid 1px #000; border-radius:4px; padding:4px 16px; display:inline-block; font-size:0.9rem; line-height:130%;}
+ 		#map .hotel-details .user .reviews {display:block; margin-top:5px; font-size:0.8rem;}
+ 		
+ 		#map .hotel-details .book {display:inline-block; vertical-align:top; width:22%; text-align:right;}
+ 		#map .hotel-details .book .special {background-color:#900; display:inline-block; padding:5px; color:#fff; font-size:0.8rem; margin-bottom:5px;}
+ 		#map .hotel-details .book .price {font-size:1.3rem}
+ 		#map .hotel-details .book .info {color:#555; margin:5px 0;line-height:140%; font-size:0.7rem;}
+ 		#map .hotel-details .book button {background-color:#009; color:#fff; padding: 5px 10px;}
 
 		
 	}
@@ -401,11 +420,11 @@
 					
 					<div class="hotel-details">
 						<div style="padding:10px;">
-						<div class="hotel-name" style="font-size:1.1rem; margin-bottom:5px;">Kensington Court Hotel Notting Hill</div>
-						<div style="display:inline-block; vertical-align:top; width:24%; overflow:hidden;">
+						<div class="name" style="">Kensington Court Hotel Notting Hill</div>
+						<div class="image" style="">
 							<img src="http://exp.cdn-hotels.com/hotels/3000000/2540000/2531100/2531003/2531003_57_e.jpg" style="min-width:100%;">
 						</div>
-						<div class="star-location" style="display:inline-block; vertical-align:top; width:28%;">
+						<div class="star-location" style="">
 							<div style="padding:5px 10px;">
 								<img src="i/stars.png" />
 								<span class="neighbourhood" style="display:block; font-size:0.8rem; margin-top:5px;">Paddington</span>
@@ -414,17 +433,17 @@
 							</div>
 							
 						</div>
-						<div style="display:inline-block; vertical-align:top; width:22%; text-align:center;">
-							<div style="border:solid 1px #000; border-radius:4px; padding:4px 16px; display:inline-block; font-size:0.9rem; line-height:130%;">
+						<div class="user" style="">
+							<div class="score">
 								Outstanding<br />4.5/5
 							</div><br />
-							<a href="" style="display:block; margin-top:5px; font-size:0.8rem;">128 reviews</a>
+							<a class="reviews" href="#">128 reviews</a>
 						</div>
-						<div class="book" style="display:inline-block; vertical-align:top; width:22%; text-align:right;">
-							<div style="background-color:#900; display:inline-block; padding:5px; color:#fff; font-size:0.8rem; margin-bottom:5px;">Special Deal</div>
-							<div class="price" style="font-size:1.3rem">$127</div>
-							<div style="color:#555; margin:5px 0;line-height:140%; font-size:0.7rem;">price for 1 night<br /> including taxes and fees</div>
-							<button style="background-color:#009; color:#fff; padding: 5px 10px;">Select</button>
+						<div class="book">
+							<div class="special">Special Deal</div>
+							<div class="price">$127</div>
+							<div class="info">price for 1 night<br /> including taxes and fees</div>
+							<button style="">Select</button>
 
 						</div>
 						<div class="close" style="">X</div>
