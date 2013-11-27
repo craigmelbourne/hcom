@@ -160,6 +160,23 @@
 	#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; background-color:#009; color:#fff; font-weight: bold;}
 	#map .hotel-details .close:hover {cursor: pointer;}
 
+	#map .hotel-details .name {font-size:0.9rem; margin-bottom:5px;}
+ 		#map .hotel-details .image {vertical-align:top; width:35%; overflow:hidden; float:left; margin:0 0 5px 0; }
+ 		#map .hotel-details .star-location {float:left; vertical-align:top; width:64%;}
+ 		#map .hotel-details .star-location .neighbourhood {display:none;}
+ 		#map .hotel-details .star-location .proximity {display:none;}
+ 		#map .hotel-details .star-location .wr {display:none;}
+ 		
+ 		#map .hotel-details .user {float:left; vertical-align:top; width:64%;}
+ 		#map .hotel-details .user .score {font-size:0.9rem; margin-left: 10px;}
+ 		#map .hotel-details .user .reviews {display:none; margin-top:5px; font-size:0.8rem;}
+ 		
+ 		#map .hotel-details .book {float:left; vertical-align:top; width:64%;}
+ 		#map .hotel-details .book .special {display:none;}
+ 		#map .hotel-details .book .price {font-size:1.3rem; margin-left:10px;}
+ 		#map .hotel-details .book .info {color:#555; margin:5px 0;line-height:140%; font-size:0.7rem; margin-left:10px;}
+ 		#map .hotel-details .book button {display:none;}
+
 
 
 
@@ -199,10 +216,14 @@
  		#map .hotel-details .name {font-size:1.1rem; margin-bottom:5px;}
  		#map .hotel-details .image {display:inline-block; vertical-align:top; width:24%; overflow:hidden;}
  		#map .hotel-details .star-location {display:inline-block; vertical-align:top; width:28%;}
- 		
+ 		#map .hotel-details .star-location .neighbourhood {display:block; font-size:0.8rem; margin-top:5px;}
+ 		#map .hotel-details .star-location .proximity {display:block; font-size:0.7rem; margin:5px 0;}
+
  		#map .hotel-details .user {display:inline-block; vertical-align:top; width:22%; text-align:center;}
  		#map .hotel-details .user .score {border:solid 1px #000; border-radius:4px; padding:4px 16px; display:inline-block; font-size:0.9rem; line-height:130%;}
+ 		#map .hotel-details .user .score span {display:block;}
  		#map .hotel-details .user .reviews {display:block; margin-top:5px; font-size:0.8rem;}
+
  		
  		#map .hotel-details .book {display:inline-block; vertical-align:top; width:22%; text-align:right;}
  		#map .hotel-details .book .special {background-color:#900; display:inline-block; padding:5px; color:#fff; font-size:0.8rem; margin-bottom:5px;}
@@ -427,22 +448,22 @@
 						<div class="star-location" style="">
 							<div style="padding:5px 10px;">
 								<img src="i/stars.png" />
-								<span class="neighbourhood" style="display:block; font-size:0.8rem; margin-top:5px;">Paddington</span>
-								<span class="proximity" style="display:block; font-size:0.7rem; margin:5px 0;">1.2 miles to city center</span>
-								<img src="i/wr_map.png" />
+								<span class="neighbourhood">Paddington</span>
+								<span class="proximity">1.2 miles to city center</span>
+								<img class="wr" src="i/wr_map.png" />
 							</div>
 							
 						</div>
 						<div class="user" style="">
 							<div class="score">
-								Outstanding<br />4.5/5
+								Outstanding <span>4.5/5</span>
 							</div><br />
 							<a class="reviews" href="#">128 reviews</a>
 						</div>
 						<div class="book">
 							<div class="special">Special Deal</div>
 							<div class="price">$127</div>
-							<div class="info">price for 1 night<br /> including taxes and fees</div>
+							<div class="info">price for 1 night including taxes and fees</div>
 							<button style="">Select</button>
 
 						</div>
