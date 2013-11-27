@@ -131,6 +131,11 @@
 					$("body").removeClass("modal-open");
 				}); 
 
+		$(".close").on("click", function(e){
+			e.preventDefault();
+			$(".hotel-details").hide();
+		})
+
 	
 	 });
     
@@ -151,9 +156,9 @@
 	#map {position:absolute; top:55px; bottom:0; left:0; right:0}
 
 	#map .map_key{display:none;}
-	#map .hotel-details {position:absolute; bottom:20px; left:30px; right:30px; height:120px; background-color:#fff;}
-		#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; color:#009; border:solid 1px #009; background-color: #fff; font-weight: bold;}
- 		#map .hotel-details .close:hover {cursor: pointer; background-color:#009; color:#fff;}
+	#map .hotel-details {position:absolute; bottom:20px; left:30px; right:30px; background-color:#fff;}
+	#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; background-color:#009; color:#fff; font-weight: bold;}
+	#map .hotel-details .close:hover {cursor: pointer;}
 	#map_canvas { width:100%; }
 	.filters {z-index:2000; position:absolute; top:155px; left:30px;}
 	.filters .filter-link {display:block; height:28px; font-size:1.0rem; padding:8px; background-color:#999; color:#fff;}
@@ -214,9 +219,8 @@
   		.filters .filter-tools div {min-height:40px; border-bottom: solid 1px #bbb; margin-bottom:20px; padding-bottom:10px;}
   		
  		#map {position:absolute;top:185px; left: 260px; right:30px; bottom:20px; background-color:#eee; z-index:5000;}
- 		#map .hotel-details {position:absolute; bottom:20px; left:50px; right:50px; height:120px; background-color:#fff;}
- 		#map .hotel-details .close {position:absolute; top:-5px; right:-5px; padding:5px; color:#009; border:solid 1px #009; background-color: #fff; font-weight: bold;}
- 		#map .hotel-details .close:hover {cursor: pointer; background-color:#009; color:#fff;}
+ 		#map .hotel-details {position:absolute; bottom:20px; left:50px; right:50px; background-color:#fff;}
+
 	}
 
 	@media only screen and (min-width:1160px) {
@@ -395,9 +399,36 @@
 						<img  src="i/key.png" />
 					</div>
 					
-					<div class="hotel-details" style="display:none;">
+					<div class="hotel-details">
+						<div style="padding:10px;">
+						<div class="hotel-name" style="font-size:1.1rem; margin-bottom:5px;">Kensington Court Hotel Notting Hill</div>
+						<div style="display:inline-block; vertical-align:top; width:24%; overflow:hidden;">
+							<img src="http://exp.cdn-hotels.com/hotels/3000000/2540000/2531100/2531003/2531003_57_e.jpg" style="min-width:100%;">
+						</div>
+						<div class="star-location" style="display:inline-block; vertical-align:top; width:28%;">
+							<div style="padding:5px 10px;">
+								<img src="i/stars.png" />
+								<span class="neighbourhood" style="display:block; font-size:0.8rem; margin-top:5px;">Paddington</span>
+								<span class="proximity" style="display:block; font-size:0.7rem; margin:5px 0;">1.2 miles to city center</span>
+								<img src="i/wr_map.png" />
+							</div>
+							
+						</div>
+						<div style="display:inline-block; vertical-align:top; width:22%; text-align:center;">
+							<div style="border:solid 1px #000; border-radius:4px; padding:4px 16px; display:inline-block; font-size:0.9rem; line-height:130%;">
+								Outstanding<br />4.5/5
+							</div><br />
+							<a href="" style="display:block; margin-top:5px; font-size:0.8rem;">128 reviews</a>
+						</div>
+						<div class="book" style="display:inline-block; vertical-align:top; width:22%; text-align:right;">
+							<div style="background-color:#900; display:inline-block; padding:5px; color:#fff; font-size:0.8rem; margin-bottom:5px;">Special Deal</div>
+							<div class="price" style="font-size:1.3rem">$127</div>
+							<div style="color:#555; margin:5px 0;line-height:140%; font-size:0.7rem;">price for 1 night<br /> including taxes and fees</div>
+							<button style="background-color:#009; color:#fff; padding: 5px 10px;">Select</button>
 
+						</div>
 						<div class="close" style="">X</div>
+						</div>
 					</div>
 
 				</div>
