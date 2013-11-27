@@ -137,8 +137,7 @@
 
 	<style type="text/css">
 
-	#header {display:none} 
-	#nav {display:none;}
+
 	#location {background-color: #E5E3DB; position:absolute; top:0; left:0; right:0; height:55px; overflow:hidden;}
 	#location h1 {font-size:1.0rem; padding:12px 0 0; margin-bottom:5px;}
 	#location span.details {font-size:0.7rem;}
@@ -159,28 +158,19 @@
 	#filters-modal {z-index:3000; }
 
 	@media only screen and (min-width:600px) { 
-		#header {display:block; background:url('i/header_desktop_bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
-		#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px;}
-	#header .content  {margin:0 20px;  padding:5px 0;}
-	#header .content img {display:inline;}
-		
-		#nav {display:block; background-color: #000; position:absolute; top:55px; left:0; right:0; height:30px;}
-		#nav .content {margin:0 20px; overflow:hidden; padding:8px 0; max-width: 1160px;}
-		#nav .content ul li {float:left; margin:0 10px 0 0;}
-		#nav .content ul li.right {float:right; margin:0 0 0 10px;}
-		#nav .content ul li a {color:#fff; font-size:0.8rem;}
 
-		#location {background-color: #E5E3DB; position:absolute; top:85px; left:0; right:0; height:80px;}
+
+		#location {background-color: #E5E3DB; position:absolute; top:0px; left:0; right:0; height:80px;}
 		#location .listview {margin:7px 20px; height:50px;}
 		#location h1 {font-size:1.3rem; margin: 5px 0 10px; font-weight: bold}
 		#location span.details {font-size:0.9rem;}
 
-		#tools {position:absolute; top:165px; height:40px; z-index:3000;}
+		#tools {position:absolute; top:80px; height:40px; z-index:3000;}
 		#tools .filter-link {margin:10px 20px; }
 		#tools .legend {right:20px; top:10px; }
 
 		#filters-modal {width:300px; }
-		#map {position:absolute; top:165px; bottom:0; left:0; right:0}
+		#map {position:absolute; top:80px; bottom:0; left:0; right:0}
 		#map .map_key{display:none;}
 		
 	}
@@ -194,7 +184,7 @@
 		.filters {padding:10px 20px;
 			position:absolute; 
 			width:210px; 
-			top: 175px;
+			top: 90px;
 			left:0; 
 			bottom:10px; 
 			overflow: scroll; 
@@ -212,8 +202,7 @@
 	}
 
 	@media only screen and (min-width:1160px) {
- 		#header .content, #nav .content, #location .content {max-width:1120px; margin:0 auto;}
- 		#location .content .listview {margin-left:0;}
+ 
  	
  
  	}
@@ -231,31 +220,7 @@
 
 
 <body onload="">
-		<div id="header">
-			<div class="content" style="">
-				<div>
-					<img src="i/logo_desktop.png" />
-					<img src="i/header_tel.png" style="float:right" />
-				</div>
-			</div>
-			<div class="currency_selector">
-				<a href="#" class=""><img src="i/header_counrty.png" /></a>
-			</div>
-		</div>
-
-		<div id="nav">
-			<div class="content" style="">
-				<ul>
-					<li><a href="">Home</a></li>
-					<li><a href="">Hotel Deals</a></li>
-					<li><a href="">Travel Guide</a></li>
-					<li><a href="">Welcome Rewards</a></li>
-					
-					<li class="right"><a href="">Sign in & Account</a></li>
-					<li class="right"><a href="">Customer Service</a></li>
-				</ul>
-			</div>
-		</div>
+		
 
 		<div id="location">
 			<div class="content">
