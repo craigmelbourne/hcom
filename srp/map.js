@@ -111,6 +111,12 @@
 		$(".close").on("click", function(e){
 			e.preventDefault();
 			$(".hotel-details").hide();
+		});
+
+		$("#overlay").on("click", function(e){
+			$("#overlay").hide();
+			$("#filters-modal").hide();
+			$("body").removeClass("modal-open");
 		})
 
 	

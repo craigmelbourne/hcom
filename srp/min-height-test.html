@@ -7,14 +7,31 @@
 	
 	#header, #nav, #filters {display:none;}
 	#location {position:absolute; top:0px; left:0; right:0; height:60px; background-color:#E5E3DB; display:block;}
+	#location h1 {font-size:1.0rem; padding:12px 0 0; margin-bottom:5px;}
+	#location span.details {font-size:0.7rem;}
+	#location .listview {display:inline-block; margin-right:15px; color:#009; font-size:0.8rem; padding:5px;vertical-align:top; border:solid 1px #ccc; border-radius:6px; margin:7px 10px 0 10px; height:30px; background-color: #fff;}
+
 	#map {position:absolute; top:60px; bottom:0; right:0; left:0; background-color:#eee; display:block;}
+	#map .legend {position:absolute; right:10px; top:10px; padding:6px 12px; border:solid 1px #ccc; font-size:0.9rem; background-color:#fff; text-align:center; border-radius:6px;}
+	#map .filter-link {position:absolute; left:10px; top:10px; background-color:#009; color:#fff; padding:6px 0; font-size:0.9rem; text-align:center; width:70px; border:solid 1px #009; border-radius:6px;}
+
 	
+	/********* Filters come in here ******/
 	@media screen and (min-width:800px) and (min-height: 640px){
-		#filters {position:absolute; top:70px; left:10px; bottom:0; width:260px; background-color:#eee; display:block;}
-		#map {top:60px; left:280px; bottom:10px; right:10px; }
+		#location .listview {width:210px; margin-left: 20px}
+		#map {top:60px; left:260px; bottom:10px; right:20px; }
+		#filters {position:absolute; top:155px; left:20px; bottom:0; width:220px; display:block; overflow:scroll;}
+		#filters .filter-tools {display:block; font-size:1.4em;}
+  		#filters .filter-tools h2 {margin-bottom:5px; font-size:18px;}
+  		#filters .filter-tools .num_hotels {font-size:12px; display:block;}
+  		#filters .filter-tools h3 {margin-bottom:10px;}
+  		#filters .filter-tools div {min-height:40px; border-bottom: solid 1px #bbb; margin-bottom:20px; padding-bottom:10px;}
+  		#map .filter-link {display:none;}
+ 		
+		
 	}
 
-
+	/********* ******/
 	@media screen and (min-height:640px) and (min-width:600px) {
 		#header {position:absolute; top:0; left:0; right:0; height:55px; background-color:#900; display:block;}
 		#header {display:block; background:url('i/header_desktop_bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
@@ -29,8 +46,13 @@
 		#nav .content ul li a {color:#fff; font-size:0.8rem;}
 		
 		#location {top:85px;}
-		#filters {top:155px;}
+		#location .listview {margin-left: 20px}
+
+			
 		#map {top:155px;}
+
+		#filters-modal {width:300px; }
+		
 	}
 
 	</style>
@@ -42,6 +64,7 @@
 
 </head>
 <body>
+
 	<div id="header">
 		<div class="content" style="">
 				<div>
@@ -54,6 +77,7 @@
 			</div>
 
 	</div>
+
 	<div id="nav">
 		<div class="content" style="">
 				<ul>
@@ -67,10 +91,210 @@
 				</ul>
 			</div>
 	</div>
-	<div id="location"></div>
-	<div id="filters"></div>
+
+	<div id="location">
+		<div class="content">
+				<div class="listview" style="position:relative;">
+					<div style="width:60px;"></div>
+					<span style="position:absolute; bottom:3px; width:60px; text-align:center;">List view</span>
+				</div>
+				<div style="display:inline-block; vertical-align:top">
+					<h1>New York, USA</h1>
+					<span class="details">13/12/13 - 14/12/13, 2 adults</span>
+				</div>
+			</div>
+	</div>
+
+	
+
 	<div id="map">
 		<div id="map_canvas" style="position:absolute; top: 0; bottom:0; width:100%"></div>
+		<div class="legend">
+			<span class="link">Show legend</span>
+		</div>
+
+		<div class="filter-link">
+			<span class="link">Filters</span>
+		</div>
 	</div>
+
+	<div id="filters">
+		<div class="filter-tools" style="">
+						<div style="background-color:#fff; margin:0 0 20px 0; color:#000; padding:10px 0 5px; border-top-right-radius:6px;">
+							<h2>Narrow Results</h2>
+							<span class="num_hotels">1,223 hotels</span>
+						</div>
+
+						<div>
+							<h3>Hotel name contains</h3>
+							<input type="text" style="width:96%; padding:2%; font-size:1.2em;">
+						</div>
+						<div>
+							<h3>Price</h3>
+							<input type="range" />
+						</div>
+						<div>
+							<h3>Star rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1*</a></li><li><a href="#">2*</a></li><li><a href="#">3*</a></li><li><a href="#">4*</a></li><li><a href="#" class="last">5*</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Guest rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#" class="last">5</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Neighbourhood</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Paddington</label></li>
+								<li><input type="checkbox" /> <label>Kensington - Earl's Court</label></li>
+								<li><input type="checkbox" /> <label>Victoria - Westminster</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+							
+						</div>
+						<div>
+							<h3>Landmarks</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>City Centre</label></li>
+								<li><input type="checkbox" /> <label>Heathrow Airport</label></li>
+								<li><input type="checkbox" /> <label>Oxford Street</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accommodation type</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Hotel</label></li>
+								<li><input type="checkbox" /> <label>Bed &amp; Breakfast</label></li>
+								<li><input type="checkbox" /> <label>Hostel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Facilities</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Free Wi-Fi</label></li>
+								<li><input type="checkbox" /> <label>Restaurant</label></li>
+								<li><input type="checkbox" /> <label>Free Breakfast</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Themes / types</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Boutique</label></li>
+								<li><input type="checkbox" /> <label>Family-Friendly</label></li>
+								<li><input type="checkbox" /> <label>Spa Hotel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accessibility Features </h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Handicapped Parking</label></li>
+								<li><input type="checkbox" /> <label>Wheelchair accessible rooms</label></li>
+								<li><input type="checkbox" /> <label>Roll in shower</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+					</div>
+	</div>
+
+
+		<div id="overlay" style="display:none; position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.7;"></div>
+
+		<div id="filters-modal">
+				<div class="filter-tools" style="position:absolute; top:0; bottom:80px; left:0; right:0px; overflow-x:scroll;">
+						<h2>Narrow Results</h2>
+						<div>
+							<h3>Hotel name contains</h3>
+							<input type="text" style="width:96%; padding:2%; font-size:1.2em;">
+						</div>
+						<div>
+							<h3>Price</h3>
+							<input type="range" />
+						</div>
+						<div>
+							<h3>Star rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1*</a></li><li><a href="#">2*</a></li><li><a href="#">3*</a></li><li><a href="#">4*</a></li><li><a href="#" class="last">5*</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Guest rating</h3>
+							<ul class="multi-select">
+								<li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#" class="last">5</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Neighbourhood</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Paddington</label></li>
+								<li><input type="checkbox" /> <label>Kensington - Earl's Court</label></li>
+								<li><input type="checkbox" /> <label>Victoria - Westminster</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+							
+						</div>
+						<div>
+							<h3>Landmarks</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>City Centre</label></li>
+								<li><input type="checkbox" /> <label>Heathrow Airport</label></li>
+								<li><input type="checkbox" /> <label>Oxford Street</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accomodation type</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Hotel</label></li>
+								<li><input type="checkbox" /> <label>Bed &amp; Breakfast</label></li>
+								<li><input type="checkbox" /> <label>Hostel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Facilities</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Free Wi-Fi</label></li>
+								<li><input type="checkbox" /> <label>Restaurant</label></li>
+								<li><input type="checkbox" /> <label>Free Breakfast</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Themes / types</h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Boutique</label></li>
+								<li><input type="checkbox" /> <label>Family-Friendly</label></li>
+								<li><input type="checkbox" /> <label>Spa Hotel</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+						<div>
+							<h3>Accessibility Features </h3>
+							<ul class="checklist">
+								<li><input type="checkbox" /> <label>Handicapped Parking</label></li>
+								<li><input type="checkbox" /> <label>Wheelchair accessible rooms</label></li>
+								<li><input type="checkbox" /> <label>Roll in shower</label></li>
+								<li class="more"> <a href="">See more</a></li>
+							</ul>
+						</div>
+				</div>
+				<div style="height:70px; position:absolute; bottom:0; text-align:left; overflow:hidden; width:100%; background-color:#666; color:#fff; ">
+					<button style="font-size:1.2rem; padding:5px; width:120px; margin-top:20px; margin-left:20px; background-color:#00f; color:#fff;">
+						Apply
+					</button>
+					<button style="font-size:1.2rem; padding:5px; width:120px; margin-top:20px; margin-left:10px;">
+						Clear
+					</button>
+					
+				</div>
+			</div>
+
 </body>
 </html>
