@@ -2,10 +2,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
 	<title>min-height media query test</title>
+	<link rel="stylesheet" href="../global.css"></link>
 	<style type="text/css">
 	
 	#header, #nav, #filters {display:none;}
-	#location {position:absolute; top:0px; left:0; right:0; height:60px; background-color:#ddd; display:block;}
+	#location {position:absolute; top:0px; left:0; right:0; height:60px; background-color:#E5E3DB; display:block;}
 	#map {position:absolute; top:60px; bottom:0; right:0; left:0; background-color:#eee; display:block;}
 	
 	@media screen and (min-width:800px) and (min-height: 640px){
@@ -16,7 +17,17 @@
 
 	@media screen and (min-height:640px) and (min-width:600px) {
 		#header {position:absolute; top:0; left:0; right:0; height:55px; background-color:#900; display:block;}
+		#header {display:block; background:url('i/header_desktop_bg.png'); position:absolute; top:0px; left:0; right:0; height:55px;}
+		#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px;}
+		#header .content  {margin:0 20px;  padding:5px 0;}
+		#header .content img {display:inline;}
+
 		#nav {position:absolute; top:55px; left:0; right:0; height:30px; background-color:#333; display:block;}
+		#nav .content {margin:0 20px; overflow:hidden; padding:8px 0; max-width: 1160px;}
+		#nav .content ul li {float:left; margin:0 10px 0 0;}
+		#nav .content ul li.right {float:right; margin:0 0 0 10px;}
+		#nav .content ul li a {color:#fff; font-size:0.8rem;}
+		
 		#location {top:85px;}
 		#filters {top:155px;}
 		#map {top:155px;}
@@ -31,8 +42,31 @@
 
 </head>
 <body>
-	<div id="header"></div>
-	<div id="nav"></div>
+	<div id="header">
+		<div class="content" style="">
+				<div>
+					<img src="i/logo_desktop.png" />
+					<img src="i/header_tel.png" style="float:right" />
+				</div>
+			</div>
+			<div class="currency_selector">
+				<a href="#" class=""><img src="i/header_counrty.png" /></a>
+			</div>
+
+	</div>
+	<div id="nav">
+		<div class="content" style="">
+				<ul>
+					<li><a href="">Home</a></li>
+					<li><a href="">Hotel Deals</a></li>
+					<li><a href="">Travel Guide</a></li>
+					<li><a href="">Welcome Rewards</a></li>
+					
+					<li class="right"><a href="">Sign in & Account</a></li>
+					<li class="right"><a href="">Customer Service</a></li>
+				</ul>
+			</div>
+	</div>
 	<div id="location"></div>
 	<div id="filters"></div>
 	<div id="map">
