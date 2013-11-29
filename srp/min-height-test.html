@@ -22,14 +22,12 @@
 		#map {top:155px;}
 	}
 
-	
-
-	
-
-
-
-	
 	</style>
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+    </script>
+	<script src="../jquery.js"></script>
+	<script src="map.js"></script>
 
 </head>
 <body>
@@ -37,6 +35,8 @@
 	<div id="nav"></div>
 	<div id="location"></div>
 	<div id="filters"></div>
-	<div id="map"></div>
+	<div id="map">
+		<div id="map_canvas" style="position:absolute; top: 0; bottom:0; width:100%"></div>
+	</div>
 </body>
 </html>
