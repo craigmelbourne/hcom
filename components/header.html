@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../global.css"></link>
+		<script src="../jquery.js"></script>
+
+		<style type="text/css">
+
+			#header {background: url("i/header_desktop_bg.png"); position:relative; overflow:hidden;}
+			#header .content  {margin:0 20px;  padding:5px 0;}
+			#header .content .tel-full {display:none;}
+
+			#nav, #header .currency_selector {display:none;}
+
+			@media only screen and (min-width:600px) {
+				#header {height:auto; padding:0 0 0;}
+				#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px; text-align:center;}
+				#header .content .tel-full {display:inline;}
+				
+				
+				#nav {display:block; background-color:#333;}
+				#nav .content  {margin:0 20px;  padding:5px 0; overflow:hidden;} 
+				#nav .content ul li {float:left; margin:0 10px 0 0; padding:4px 0;}
+				#nav .content ul li.right {float:right; margin:0 0 0 10px;}
+				#nav .content ul li a {color:#fff; font-size:0.8rem;}
+
+			}
+
+			@media only screen and (min-width:800px) {
+
+			}
+
+			@media only screen and (min-width:1160px) {
+				#header .content, #nav .content {max-width:1120px; margin:0 auto;}
+			}
+
+
+
+		</style>
+
+		<script type="text/javascript">
+			// functions *****************
+			// page load *****************
+
+			$(function() {
+				$(".width").text($(window).width() + "px");
+				
+				$(window).resize(function() {
+					$(".width").text($(window).width() + "px");
+				});
+			});
+		</script>
+
+	</head>
+	<body>
+
+
+		<div class="pagewidth">
+			<span class="width"></span>
+		</div>
+
+		<div id="header">
+			<div class="content">
+				<div>
+					<img src="i/logo_desktop.png" />
+					<img class="tel-full" src="i/header_tel.png" style="float:right" />
+				</div>
+			</div>
+			<div class="currency_selector">
+				<a href="#" class=""><img src="i/header_counrty.png" /></a>
+			</div>
+		</div>
+
+		<div id="nav">
+			<div class="content">
+				<ul>
+					<li><a href="">Pagina principal</a></li>
+					<li><a href="">Ofertas de hotel</a></li>
+					<li><a href="">Paquetes</a></li>
+					<li><a href="">Grupos</a></li>
+					
+					<li><a href="">Welcome Rewards</a></li>
+					
+					<li class="right"><a href="">Reservaciones y cuenta</a>
+						<ul class="ddmenu" style="display:none;">
+							<li>Iniciar sesión</li>
+							<li>Busca tu reservacion</li>
+							<li>Crea una cuenta</li>
+							<li>Ver los hoteles guardados</li>
+						</ul>
+					</li>
+					
+					<li class="right"><a href="">Servicio al cliente</a>
+						<ul class="ddmenu" style="display:none;">
+							<li>Administra tus reservaciones</li>
+							<li>Preguntas frecuentes</li>
+							<li>Contactanos</li>
+							<li>Haz un comentario sobre un hotel</li>
+							<li>Haz un comentario sobre un hotel</li>
+						</ul>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+
+
+	</body>
+</html>

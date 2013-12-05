@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../global.css"></link>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+		<style type="text/css">
+
+			#header {background: url("bg-mobile.png"); position:relative; overflow:hidden; height:40px;}
+			#header .content  {margin:0 12px;  padding:0; position:relative; text-align:center;}
+
+			#header .burger {position:absolute; top:10px; left:0px; width:30px; height:20px; background-color:#fff;}
+			#header .logo {}
+
+			.menu {background-color:#000;}
+			.menu ul li {display:block; color:#fff; font-size:14px; padding:12px; border-bottom:solid #999 1px;}
+			.menu ul li:last-child {border:0;}
+
+			.block { background-color:#eee; margin:12px 12px 0; height:100px;}
+
+			@media only screen and (min-width:600px) {
+
+			}
+
+			@media only screen and (min-width:800px) {
+
+			}
+
+			@media only screen and (min-width:1160px) {
+			}
+
+
+
+		</style>
+
+		<script type="text/javascript">
+			// functions *****************
+			// page load *****************
+
+			$(function() {
+
+				$(".burger").on("click", function(){
+					$(".menu").slideToggle('slow');
+				})
+
+			});
+		</script>
+
+	</head>
+	<body>
+
+		<div id="header">
+			<div class="content">
+				<div class="burger"></div>
+				<img src="logo-mobile.png" />
+			</div>
+		</div>
+
+		<div class="menu" style="display:none">
+			<ul>
+				<li>Sign in</li>
+				<li>Create an account</li>
+				<li>Your bookings</li>
+				<li>Welcome rewards</li>
+				<li>FAQ</li>
+				<li>Contact us</li>
+				<li>Website feedback</li>
+				<li>United Kingdom</li>
+				<li>GBP</li>
+				
+				
+			</ul>
+
+		</div>
+
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+		<div class="block"></div>
+
+
+
+
+
+	</body>
+</html>
