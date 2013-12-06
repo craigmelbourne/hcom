@@ -13,9 +13,12 @@
 			#header .burger {position:absolute; top:10px; left:0px; width:30px; height:20px; background-color:#fff;}
 			#header .logo {}
 
-			.menu {position:absolute; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.8; overflow:scroll;}
-			.menu ul li {display:block; color:#fff; font-size:14px; padding:12px; border-bottom:solid #999 1px;}
-			.menu ul li:last-child {border:0;}
+			.modal {position:absolute; top:0; bottom:0; left:0; right:0;  overflow:scroll;}
+			.modal .modal-header {height:40px; background-color:#000; position:absolute; top:0; width:100%; text-align:center; color:#fff;}
+			.modal .modal-header h1 {font-size:18px; padding-top:10px;}
+			.modal .menu  {position:absolute; top:40px; bottom:0; overflow: scroll; background-color:#000; opacity:0.8; width:100%;}
+			.modal .menu ul li {display:block; color:#fff; font-size:14px; padding:12px; border-bottom:solid #999 1px;}
+			.modal .menu ul li:last-child {border:0;}
 
 			.block { background-color:#eee; margin:12px 12px 0; height:100px;}
 
@@ -41,7 +44,7 @@
 			$(function() {
 
 				$(".burger").on("click", function(){
-					$(".menu").slideToggle('fast');
+					$(".modal").slideDown('fast');
 				})
 
 			});
@@ -67,25 +70,28 @@
 		<div class="block"></div>
 
 
-	<div class="menu" style="display:none">
-			<ul>
-				<li>Home</li>
-				<li>Nearby deals for tonight</li>
-				<li>BOOKINGS AND ACCOUNT</li>
-				<li>Sign in</li>
-				<li>Create an account</li>
-				<li>Your bookings</li>
-				<li>Welcome rewards</li>
-				<li>CUSTOMER SERVICE</li>
-				<li>Contact us</li>
-				<li>Website feedback</li>
-				<li>Review a hotel</li>
-				<li>United Kingdom</li>
-				<li>GBP</li>
+	<div class="modal" style="display:none">
+			<div class="modal-header">
+				<h1>Menu</h1>
+			</div>
+			<div class="menu">
+				<ul>
+					<li>Home</li>
+					<li>Nearby deals for tonight</li>
+					<li>BOOKINGS AND ACCOUNT</li>
+					<li>Sign in</li>
+					<li>Create an account</li>
+					<li>Your bookings</li>
+					<li>Welcome rewards</li>
+					<li>CUSTOMER SERVICE</li>
+					<li>Contact us</li>
+					<li>Website feedback</li>
+					<li>Review a hotel</li>
+					<li>United Kingdom</li>
+					<li>GBP</li>
+				</ul>
 
-				
-				
-			</ul>
+			</div>
 
 		</div>
 
