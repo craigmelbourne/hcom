@@ -24,7 +24,7 @@
 				#header {height:auto; padding:3px 0 0; background: url("i/header_desktop_bg.png");}
 				#header .content  {margin:0 20px;  padding:0;}
 				#header .burger {display:none;}
-				#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px; text-align:center;}
+				
 				#header .content .tel-full {display:inline;}
 
 				#header .logo {background:url('i/logo_desktop.png') no-repeat; height:50px; width:200px; float:left;}
@@ -38,9 +38,8 @@
 				#nav .content ul li a.selected {background-color:#700515;}
 				#nav .content ul li.right:ho/ver {background-color:#700515;}
 
-				#nav .content ul li.home {display:none;}
-				#nav .content ul li.guides {display:none;}
-				#nav .content ul li.groups {display:none;}
+				#nav .content ul li.main-menu {display:block;}
+				#nav .content ul li.lg {display:none;}
 
 				li.right {position:relative;}
 				#nav .content ul li ul.ddmenu {background-color:#fff; position:absolute;  z-index:2000; box-shadow: 4px 0 10px -2px rgba(51,51,51,0.8),-4px 0 10px -2px rgba(51,51,51,0.8);
@@ -50,17 +49,17 @@ border-radius: 0 0 5px 5px;}
 				#nav .content ul li.cs ul.ddmenu {top:32px; left:0; width:180px;}
 
 				#nav .content ul li ul.ddmenu li {display:block; float:none; color:#000; padding:10px; font-size:12px; margin:0; border-bottom:solid 1px #ccc;}
-				#nav .content ul li.right ul.ddmenu li:last-child {border-bottom:0;}
-				#nav .content ul li.right ul.ddmenu li:hover {background-color:#026dc5; color:#fff;}
+				#nav .content ul li ul.ddmenu li:last-child {border-bottom:0;}
+				#nav .content ul li ul.ddmenu li:hover {background-color:#026dc5; color:#fff;}
 
 				.menu {display:none;}
 
 			}
 
 			@media only screen and (min-width:768px) {
-				#nav .content ul li.home {display:block;}
-				#nav .content ul li.guides {display:block;}
-				#nav .content ul li.groups {display:block;}
+				#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px; text-align:center;}
+				#nav .content ul li.main-menu {display:none;}
+				#nav .content ul li.lg {display:block;}
 			}
 
 			@media only screen and (min-width:1160px) {
@@ -89,19 +88,25 @@ border-radius: 0 0 5px 5px;}
 				$("li.account a").on('click', function(e){
 					e.preventDefault();
 
-					//$(this).toggleClass( "selected" );
-					$(this).parent("li").find(".ddmenu").toggle(function(){
-
-					});
+					$(this).parent("li").find(".ddmenu").toggle();
 					$("li.cs .ddmenu").hide();
-					//$("li.cs a").removeClass('selected');
+					$("li.main-menu .ddmenu").hide();
+					
 				});
 
 				$("li.cs a").on('click', function(e){
 					e.preventDefault();
 					$("li.account .ddmenu").hide();
-					//$("li.account a").removeClass('selected');
-					//$(this).toggleClass( "selected" );
+					$("li.main-menu .ddmenu").hide();
+					
+					$(this).parent("li").find(".ddmenu").toggle();
+				});
+
+				$("li.main-menu a").on('click', function(e){
+					e.preventDefault();
+					$("li.account .ddmenu").hide();
+					$("li.cs .ddmenu").hide();
+					
 					$(this).parent("li").find(".ddmenu").toggle();
 				});
 
@@ -157,11 +162,20 @@ border-radius: 0 0 5px 5px;}
 		<div id="nav">
 			<div class="content clear">
 				<ul>
-					<li class="home"><a href="#" >Pagina principal</a></li>
-					<li class="deals"><a href="#" >Ofertas de hotel</a></li>
-					<li class="guides"><a href="#" >Paquetes</a></li>
-					<li class="groups"><a href="#" >Grupos</a></li>
-					<li class="wr"><a href="#" >Welcome Rewards</a></li>
+					<li class="main-menu"><a href="#">Menu</a>
+						<ul class="ddmenu" style="display:none;">
+							<li>Pagina principal</li>
+							<li>Ofertas de hotel</li>
+							<li>Paquetes</li>
+							<li>Grupos</li>
+							<li>Welcome Rewards</li>
+						</ul>
+					</li>
+					<li class="lg home"><a href="#" >Pagina principal</a></li>
+					<li class="lg deals"><a href="#" >Ofertas de hotel</a></li>
+					<li class="lg guides"><a href="#" >Paquetes</a></li>
+					<li class="lg groups"><a href="#" >Grupos</a></li>
+					<li class="lg wr"><a href="#" >Welcome Rewards</a></li>
 					
 					<li class="right account"><a href="#">Reservaciones y cuenta</a>
 						<ul class="ddmenu" style="display:none;">
