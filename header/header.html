@@ -89,17 +89,19 @@ border-radius: 0 0 5px 5px;}
 				$("li.account a").on('click', function(e){
 					e.preventDefault();
 
-					$(this).toggleClass( "selected" );
-					$(this).parent("li").find(".ddmenu").toggle();
+					//$(this).toggleClass( "selected" );
+					$(this).parent("li").find(".ddmenu").toggle(function(){
+
+					});
 					$("li.cs .ddmenu").hide();
-					$("li.cs a").removeClass('selected');
+					//$("li.cs a").removeClass('selected');
 				});
 
 				$("li.cs a").on('click', function(e){
 					e.preventDefault();
 					$("li.account .ddmenu").hide();
-					$("li.account a").removeClass('selected');
-					$(this).toggleClass( "selected" );
+					//$("li.account a").removeClass('selected');
+					//$(this).toggleClass( "selected" );
 					$(this).parent("li").find(".ddmenu").toggle();
 				});
 
