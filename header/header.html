@@ -27,6 +27,9 @@
 				
 				#header .content .tel-full {display:inline;}
 
+				#header .content .tel-full .number{display:block; font-size:13px;}
+				#header .content .tel-full .message{display:block; font-size:12px; margin:5px 0 8px;}
+
 				#header .logo {background:url('i/logo_desktop.png') no-repeat; height:50px; width:200px; float:left;}
 				#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px; text-align:center;}
 				
@@ -64,7 +67,7 @@ border-radius: 0 0 5px 5px;}
 			}
 
 			@media only screen and (min-width:768px) {
-				
+				#header .content .tel-full .number{display:block; font-size:16px;}
 				#nav .content ul li.main-menu {display:none;}
 				#nav .content ul li.lg {display:block;}
 			}
@@ -131,9 +134,9 @@ border-radius: 0 0 5px 5px;}
 	<body>
 
 
-		<!--<div class="pagewidth">
+		<div class="pagewidth">
 			<span class="width"></span>
-		</div>-->
+		</div>
 
 		<div id="header">
 			<div class="content">
@@ -141,8 +144,10 @@ border-radius: 0 0 5px 5px;}
 					<div class="burger"></div>
 					<div class="logo"></div>
 					<div class="tel-full" style="float:right; text-align:right; color:#fff;">
-						<span style="display:block; font-size:12px; margin:5px 0 8px;">Welcome Rewards Priority Customer Service</span>
-<span style="display:block; font-size:16px;">800-997-9148 Toll Free and 1-817-983-0665 (charges may apply)</span>
+						<span class="message">Book online or call</span>
+						<span class="number">1-866-678-6350</span>
+						<!--<span class="message">Welcome Rewards Priority Customer Service</span>
+						<span class="number">800-997-9148 Toll Free and 1-817-983-0665 (charges may apply)</span>-->
 					</div>
 				</div>
 			</div>
