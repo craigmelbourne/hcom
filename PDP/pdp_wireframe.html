@@ -25,7 +25,7 @@
 
 			body {color:#555;}
 			#nav {height:20px; background-color:#333;}
-			#grid { margin:0 1.7241%;}
+			.grid { margin:0 2%;}
  			.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
 
  			#header {background-color:#C71110; height:auto;}
@@ -56,14 +56,23 @@
  				.photo-description .description {margin-top:20px;}
  				
 
- 				.top-right {float: none;}
+ 				.top-right {float: none; margin:0;}
  				.book {text-align:right;  width:50%;  float:right; }
- 				.book .price {font-size:1.6rem; font-weight:bold;}
- 				.book .price-cut {font-size:1.1rem; text-decoration: line-through; color:#999;}
- 				.book .price-message {font-size:0.8rem; display:block;}
- 				.book button {}
  				
- 				.summary {position:relative; margin-top:20px;}
+
+ 				
+ 				.summary { margin: 20px 0;}
+ 				.summary .map {float:left; margin-right:2%; margin-bottom:2%; width:32%; height:200px;}
+ 				
+ 				.summary .user-rating {float:left; margin-right:2%;  width:32%;}
+ 				.summary .user-rating .content { height:200px;}
+ 				
+ 				.summary .tools {float:left; margin-right:0; margin-bottom:20px; width:32%; border-top:solid 0px #ddd;}
+ 				.summary .tools .content {height:90px;}
+ 				
+ 				.summary .wr {float:left; margin-right:0; width:32%; margin-top:0px;}
+ 				.summary .wr .content {height:90px;}
+
 
 
  				
@@ -72,32 +81,32 @@
  			} 
 
  			@media only screen and (min-width:728px) {
- 				.top-left { margin: 0 -260px 0px auto; width:100%; float:left;}
+ 				.top-left { margin: 0 -250px 0px auto; width:100%; float:left; overflow:hidden;}
  				
- 				.hotel-name .content {margin-right:260px; background-color:#eee; height:50px;}
+ 				.hotel-name .content {margin-right:250px; background-color:#eee; height:50px;}
  				.book .content {height:160px;}
  				.photo-description {clear:none;}
- 				.photo-description .gallery {margin-right:260px; height:530px;}
- 				.photo-description .thumbnails {margin-right:260px; height:130px;}
- 				.photo-description .description {margin-right:260px; height:160px;}
+ 				.photo-description .gallery {margin-right:250px; height:530px;}
+ 				.photo-description .thumbnails {margin-right:250px; height:130px;}
+ 				.photo-description .description {margin-right:250px; height:176px;}
 
- 				.top-right {width: 230px;float:right;}
- 				.map {float:none; width:100%; margin-top:20px; height:160px;}
- 				.user-rating {float:none; width:100%; margin-top:20px;}
- 				.user-rating .content {height:330px;}
- 				.tools {border-top:solid 1px #ddd;}
- 				.tools .content {height:110px;}
- 				.wr {margin-top:20px;}
- 				.wr .content {height:110px;}
+ 				.top-right {width: 230px;float:right; overflow:hidden;}
+ 				.summary .map {float:none; width:100%; height:160px;}
+ 				.summary .user-rating {float:none; width:100%; margin:20px 0 0;}
+ 				.summary .user-rating .content {height:330px;}
+ 				.summary .tools {float:none; width:100%; border-top:solid 1px #ddd;}
+ 				.summary .tools .content {height:110px;}
+ 				.summary .wr {float:none; width:100%; margin-top:20px;}
+ 				.summary .wr .content {height:110px;}
  				
  			}
 
  			@media only screen and (min-width:960px) {
- 				.top-left { margin: 0 -320px 0px auto; width:100%; float:left;}
- 				.hotel-name .content {margin-right:320px;}
- 				.photo-description .gallery {margin-right:320px;}
- 				.photo-description .thumbnails {margin-right:320px;}
- 				.photo-description .description {margin-right:320px;}
+ 				.top-left { margin: 0 -310px 0px auto; width:100%; float:left;}
+ 				.hotel-name .content {margin-right:310px;}
+ 				.photo-description .gallery {margin-right:310px;}
+ 				.photo-description .thumbnails {margin-right:310px;}
+ 				.photo-description .description {margin-right:310px;}
 
  				.top-right {width: 290px;float: right;}
 
@@ -119,7 +128,7 @@
 		<div id="nav"></div>
 		<div id="page">
 			
-			<div id="grid">
+			<div class="grid clear">
 				<div class="search-criteria content">
 					<p>Search criteria</p>
 				</div>
@@ -152,7 +161,7 @@
 						<p>Description</p>
 					</div>
 				</div>
-				<div class="summary top-right">
+				<div class="summary top-right clear">
 					<div class="content map">
 						<p>Map</p>
 					</div>
@@ -173,8 +182,35 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="grid">
+				<div class="search-details" style="">
+					<div class="content">
+							<p>Choose room (or edit search)</p>
+						</div>
+				</div>
+
+				<div class="room-rates" style="margin-top:20px;">
+					<div class="content" style="height:600px;">
+							<p>Room rates</p>
+						</div>
+				</div>
+				<div class="amenities" style="margin-top:20px;">
+					<div class="content" style="height:600px;">
+							<p>Amenities</p>
+						</div>
+				</div>
+
+				<div class="footer" style="margin-top:20px;">
+					<div class="content" style="background-color:#ccc; height:400px;">
+							<p>Footer</p>
+						</div>
+				</div>
+				
 
 			</div>
+
+
 		</div>
 		<div class-"footer" style="height:100px; clear:both;"></div>
 	</body>
