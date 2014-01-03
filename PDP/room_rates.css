@@ -1,0 +1,111 @@
+/* */
+
+body {color:#555; margin-top:40px;}
+#grid { margin:0 1.7241%;}
+.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
+
+
+/* TAble styles */
+
+table#rates { width:100%;}
+ 				table th:first-child {border-top-left-radius: 4px;border-bottom-left-radius: 4px;border-left-style: solid;}
+ 				table th:last-child {border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+ 				table th {background-color:#e6e3dc;  font-size:0.8rem;}
+ 				table th {padding:16px; border: 1px solid #ccc; border-style: solid solid solid none;}
+
+				table tbody td.type {background: #f5f4f0; border-left-style: solid; border-top-left-radius: 4px; border-bottom-left-radius: 4px; border-bottom-style: solid; 
+ 						-moz-box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;
+						-webkit-box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;
+						box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;}
+				table tbody td.book {background: #f5f4f0;}
+				table tr td {padding:16px; border: 1px solid #ccc;border-style: solid solid none none;}
+				table tr:last-child td {border-bottom-style: solid;}
+
+				table tr:first-child td.book {
+					border-top-right-radius: 4px;
+					-moz-box-shadow: inset -3px 0 0 0 #fff;
+					-webkit-box-shadow: inset -3px 0 0 0 #fff;
+					box-shadow: inset -3px 3px 0 0 #fff;
+				}
+ 
+ 				table tr:last-child td.book {
+ 					border-top-right-radius: 0; border-bottom-right-radius: 4px;
+ 					-moz-box-shadow: inset -3px 0 0 0 #fff;
+					-webkit-box-shadow: inset -3px 0 0 0 #fff;
+					box-shadow: inset -3px -3px 0 0 #fff;
+				}
+
+
+				
+
+				 span.cancellation { display:inline; margin-bottom: 10px; font-weight:bold; font-size:12px; border-bottom: 1px #666 dotted; color:#555; line-height: 1.5em;}
+				 span.free {color:#458f00;}
+				table tr td.loyalty ul {margin-left:3px;}
+				table tr td.loyalty ul li {background:url('../i/pdp_wr_tick.png') no-repeat; font-size:12px; margin-top:5px; padding-left:16px;}
+
+				.offers-message {padding-left:28px; color:#900; font-size:13px; font-weight:bold; line-height:140%; background:url('../i/pdp_offers_icon.png') no-repeat;}
+
+				table tr td.price {text-align:right;}
+				table tr td.price .strikethrough {display:block; font-size:18px; text-decoration: line-through; margin-bottom:5px;}
+				table tr td.price .actual {display:block; color:#900; font-size:24px; margin-bottom:8px; font-weight:bold;}
+				table tr td.price .nightly {display:block; font-size:12px; margin-bottom:5px;}
+				table tr td.price .taxes {display:block; font-size:12px; margin-bottom:8px;}
+				table tr td.price .rooms-left {background-color: #ff9;line-height: 21px;font-size: 11px;font-weight: bold;margin-top: 6px;padding: 4px;border: 1px solid #ffd542;border-radius: 4px; white-space: nowrap;}
+
+
+.room-name {font-size:14px; font-weight:bold; margin-bottom:10px;}
+.room-images{float:left;display:inline-block; border-radius:4px; width: 154px;
+height: 84px;
+padding: 3px;
+margin:0 10px 10px 0;
+border: 1px solid #ccc;
+background-color: #fff;
+border-radius: 8px;
+-moz-box-shadow: 0 2px 2px 0 #888;
+-webkit-box-shadow: 0 2px 2px 0 #888;
+box-shadow: 0 2px 2px 0 #888;
+overflow: hidden;
+position: relative;}
+
+.room-images img {border-radius:4px;}
+.room-info {float:left; margin-bottom:10px;}
+.room-info .bed-label {font-size:14px;}
+.room-info .bed-list {margin:10px 0;}
+.room-info .bed-list li {margin-left:20px; list-style-type:square; font-size:12px;}
+.more-info {clear:both; font-size:12px}
+
+
+td.book button {
+	background-color: rgb(48, 175, 247);
+	background-image: -webkit-linear-gradient(top, rgb(99, 204, 255) 0px, rgb(34, 174, 255) 40%, rgb(4, 149, 238) 100%);
+	background-position: 50% 50%;
+	border: 1px solid;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-radius: 3px;
+	box-shadow: rgb(0, 135, 219) 0px 0px 0px 1px, rgba(60, 163, 227, 0.298039) 1px 1px 0.5px 1px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1.5;
+	margin: 0px 2px 4px;
+	overflow: visible;
+	padding: 2px 10px;
+	vertical-align: middle;
+	width: auto;
+	white-space: nowrap;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	box-sizing: border-box;
+	align-items: flex-start;
+	text-align: center;
+	font: 12px/135% arial, helvetica, clean, sans-serif;
+}

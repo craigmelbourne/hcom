@@ -7,6 +7,7 @@
 
 		<style type="text/css">
 
+			@media only screen and (min-width:0px){
 			#header {background: url("bg-mobile.png"); position:relative; overflow:hidden; height:40px;}
 			#header .content  {margin:0 12px;  padding:0;}
 			#header .burger {display:inline-block; width:30px; height:20px; background-color:#fff; vertical-align:top; margin-top:10px; margin-right:10px;}
@@ -18,9 +19,9 @@
 			.menu {background-color:#000;}
 			.menu ul li {display:block; color:#fff; font-size:14px; padding:12px; border-bottom:solid #999 1px;}
 			.menu ul li:last-child {border:0;}
-				
+			}
 
-			@media only screen and (min-width:600px) and (min-height:400px) {
+			@media only screen and (min-width:600px) and (orientation:portrait) {
 				#header {height:auto; padding:5px 0 0; background: url("i/header_desktop_bg.png");}
 				#header .content  {margin:0 20px;  padding:0;}
 				#header .burger {display:none;}
@@ -67,6 +68,48 @@ border-radius: 0 0 5px 5px;}
 			}
 
 			@media only screen and (min-width:768px) {
+				#header {height:auto; padding:5px 0 0; background: url("i/header_desktop_bg.png");}
+				#header .content  {margin:0 20px;  padding:0;}
+				#header .burger {display:none;}
+				
+				#header .content .tel-full {display:inline;}
+
+				#header .content .tel-full .number{display:block; font-size:13px;}
+				#header .content .tel-full .message{display:block; font-size:12px; margin:5px 0 8px;}
+
+				#header .logo {background:url('i/logo_desktop.png') no-repeat; height:50px; width:200px; float:left;}
+				#header .currency_selector {display:block; width:100px; position: absolute; top:0; left:50%; margin-left:-50px; text-align:center;}
+				
+				#nav {display:block; background-color:#333;}
+				#nav .content  {margin:0 10px;} 
+				#nav .content ul li {float:left; margin:0 0 0 0;}
+				#nav .content ul li.right {float:right;}
+				#nav .content ul li.right, #nav .content ul li.main-menu {
+					margin:0; 
+					background-image: url('http://www.hotels.com/da/assets/s/1.15/images/module/header/sprite-header.png');
+					background-repeat: no-repeat;
+					background-position: 95% -91px;
+					padding-right: 14px;
+				}
+				#nav .content ul li a {color:#fff; font-size:13px; display:block; padding:10px 10px;}
+				#nav .content ul li a.selected {background-color:#700515;}
+				#nav .content ul li.right:ho/ver {background-color:#700515;}
+
+				#nav .content ul li.main-menu {display:block;}
+				#nav .content ul li.lg {display:none;}
+
+				li.right {position:relative;}
+				#nav .content ul li ul.ddmenu {background-color:#fff; position:absolute;  z-index:2000; box-shadow: 4px 0 10px -2px rgba(51,51,51,0.8),-4px 0 10px -2px rgba(51,51,51,0.8);
+border-radius: 0 0 5px 5px;}
+
+				#nav .content ul li.account ul.ddmenu {top:32px; right:0; width:180px;}
+				#nav .content ul li.cs ul.ddmenu {top:32px; left:0; width:180px;}
+
+				#nav .content ul li ul.ddmenu li {display:block; float:none; color:#000; padding:10px; font-size:12px; margin:0; border-bottom:solid 1px #ccc;}
+				#nav .content ul li ul.ddmenu li:last-child {border-bottom:0;}
+				#nav .content ul li ul.ddmenu li:hover {background-color:#026dc5; color:#fff;}
+
+				.menu {display:none;}
 				#header .content .tel-full .number{display:block; font-size:16px;}
 				#nav .content ul li.main-menu {display:none;}
 				#nav .content ul li.lg {display:block;}

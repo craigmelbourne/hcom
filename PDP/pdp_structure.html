@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>PDP Structure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../global.css"></link>
+
+
+		<style type="text/css">
+			/*********
+			1: width:6.4655% 
+			2: width:14.6551%;
+			3: width:22.8448%;
+			4: width:31.0344%;
+			5: width:39.2241%;
+			6: width:47.4137%;
+			7: width:56.3793%;
+			8: width:63.7931%;
+			9: width:71.9827%;
+			10: width:80.1724;
+			11: width:88.3620;
+			12: width:96.5517%; margin-right:0;
+			gutter: width:1.7241%;
+			***********/
+
+			body {color:#555;}
+			#nav {height:20px; background-color:#333;}
+			#grid { margin:0 -1.7241% 0 1.7241%;}
+ 			.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
+
+ 			#header {background-color:#C71110; height:auto;}
+
+ 			@media only screen and (min-width:600px) {
+ 				#page {max-width:1160px; margin:0 auto;}
+
+ 				.search-criteria {background-color:#eee;width:96.5517%; height:40px; margin-bottom:12px;}
+
+ 				.hotel-name {width:63.7931%;}
+ 				.hotel-name h1 {font-size:1.4rem; font-weight: bold;}
+ 				.hotel-name .address {display:block; margin-top:6px;font-size:0.8rem;}
+
+
+ 				.price {width:31.0344%; height:50px; background-color:#eee;}
+ 				.photo-gallery {width:63.7931%; height:500px; background-color:#eee;}
+
+ 				.map {width:31.0344%; height:50px; background-color:#eee;}
+ 				.user-rating {width:31.0344%; height:50px; background-color:#eee;}
+ 				.tools {width:31.0344%; height:50px; background-color:#eee;}
+
+ 			}
+
+
+
+
+		</style>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div style="max-width:1160px; margin:0 auto;">
+				<img class="" src="../i/logo-big.png" style="margin-left:1.7241%">
+			</div>
+		</div>
+		<div id="nav"></div>
+		<div id="page">
+			
+			<div id="grid">
+				<div class="search-criteria col">Search criteria</div>
+
+				<div class="hotel-name col">
+					<h1>The Savoy, A Fairmont Managed Hotel</h1>
+					<span class="address">Strand, London, England, WC2R 0EU, United Kingdom, 1-866-539-0036</span>
+				</div>
+
+				<div class="price col">
+					price
+				</div>
+
+				<div class="photo-gallery col">
+					Photo Gallery
+				</div>
+
+				<div class="map col">
+					map
+				</div>
+
+				<div class="user-rating col">
+					Guest ratings
+				</div>
+
+				<div class="tools col">
+					tools
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+</html>

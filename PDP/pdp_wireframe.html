@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>PDP Structure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="../global.css"></link>
+
+
+		<style type="text/css">
+			/*********
+			1: width:6.4655% 
+			2: width:14.6551%;
+			3: width:22.8448%;
+			4: width:31.0344%;
+			5: width:39.2241%;
+			6: width:47.4137%;
+			7: width:56.3793%;
+			8: width:63.7931%;
+			9: width:71.9827%;
+			10: width:80.1724;
+			11: width:88.3620;
+			12: width:96.5517%; margin-right:0;
+			gutter: width:1.7241%;
+			***********/
+
+			body {color:#555;}
+			#nav {height:20px; background-color:#333;}
+			#grid { margin:0 1.7241%;}
+ 			.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
+
+ 			#header {background-color:#C71110; height:auto;}
+ 			.holder {background-color:#eee;}
+ 			.holder p {padding:10px; font-size:14px;}
+
+ 			.content {background-color:#eee;}
+ 			.content p {padding:10px; font-size:14px;}
+
+
+
+
+ 			 @media only screen and (min-width:600px) {
+ 			 	#header {height:55px;}
+ 				#page {max-width:1160px; margin:0 auto;}
+ 				
+ 				.search-criteria {background-color:#eee; height:40px; margin-bottom:12px;}
+
+ 				
+ 				.top-left { margin: 0; float:none;}
+ 				
+ 				.hotel-name {float:left; width:45%;}
+ 				.hotel-name h1 {font-size:1.4rem; font-weight: bold;}
+ 				.hotel-name .address {display:block; margin-top:6px;font-size:0.8rem;}
+ 				.photo-description {clear:both; padding-top:20px;}
+ 				.photo-description .gallery {height:400px;}
+ 				.photo-description .thumbnails {margin-top:5px;}
+ 				.photo-description .description {margin-top:20px;}
+ 				
+
+ 				.top-right {float: none;}
+ 				.book {text-align:right;  width:50%;  float:right; }
+ 				.book .price {font-size:1.6rem; font-weight:bold;}
+ 				.book .price-cut {font-size:1.1rem; text-decoration: line-through; color:#999;}
+ 				.book .price-message {font-size:0.8rem; display:block;}
+ 				.book button {}
+ 				
+ 				.summary {position:relative; margin-top:20px;}
+
+
+ 				
+ 				
+
+ 			} 
+
+ 			@media only screen and (min-width:728px) {
+ 				.top-left { margin: 0 -260px 0px auto; width:100%; float:left;}
+ 				
+ 				.hotel-name .content {margin-right:260px; background-color:#eee; height:50px;}
+ 				.book .content {height:160px;}
+ 				.photo-description {clear:none;}
+ 				.photo-description .gallery {margin-right:260px; height:530px;}
+ 				.photo-description .thumbnails {margin-right:260px; height:130px;}
+ 				.photo-description .description {margin-right:260px; height:160px;}
+
+ 				.top-right {width: 230px;float:right;}
+ 				.map {float:none; width:100%; margin-top:20px; height:160px;}
+ 				.user-rating {float:none; width:100%; margin-top:20px;}
+ 				.user-rating .content {height:330px;}
+ 				.tools {border-top:solid 1px #ddd;}
+ 				.tools .content {height:110px;}
+ 				.wr {margin-top:20px;}
+ 				.wr .content {height:110px;}
+ 				
+ 			}
+
+ 			@media only screen and (min-width:960px) {
+ 				.top-left { margin: 0 -320px 0px auto; width:100%; float:left;}
+ 				.hotel-name .content {margin-right:320px;}
+ 				.photo-description .gallery {margin-right:320px;}
+ 				.photo-description .thumbnails {margin-right:320px;}
+ 				.photo-description .description {margin-right:320px;}
+
+ 				.top-right {width: 290px;float: right;}
+
+ 			}
+
+
+
+
+		</style>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div style="max-width:1160px; margin:0 auto;">
+				
+			</div>
+		</div>
+		<div id="nav"></div>
+		<div id="page">
+			
+			<div id="grid">
+				<div class="search-criteria content">
+					<p>Search criteria</p>
+				</div>
+
+					<div class="hotel-name top-left">
+						<div class="content">
+							<p>Hotel name</p>
+						</div>
+					</div>
+				
+				
+
+				<div class="book top-right">
+						<div class="content">
+							<p>Price and book</p>
+						</div>
+
+				</div>
+				
+				<div class="top-left photo-description">
+					<div class="gallery content">
+						<p>Photo Gallery</p>
+					</div>
+
+					<div class="thumbnails content">
+						<p>Thumbnails</p>
+					</div>
+
+					<div class="description content">
+						<p>Description</p>
+					</div>
+				</div>
+				<div class="summary top-right">
+					<div class="content map">
+						<p>Map</p>
+					</div>
+					<div class="user-rating">
+						<div class="content">
+							<p>User rating</p>
+						</div>
+					</div>
+					<div class="tools">
+						<div class="content">
+							<p>Tools</p>
+						</div>
+					</div>
+
+					<div class="wr">
+						<div class="content">
+							<p>Welcome rewards</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class-"footer" style="height:100px; clear:both;"></div>
+	</body>
+</html>

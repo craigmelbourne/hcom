@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+	<title>Adaptive wireframes</title>
+	<style type="text/css">
+		body {font-family:arial; margin-top:5%; color:#666; font-size:62.5%;}
+
+		h1 {margin:0 0 20px; font-weight:normal;}
+		h2 {margin:0; font-weight:normal;}
+
+		a {text-decoration:none; color:#900;}
+		ul {margin:10px 0 20px; padding:0; list-style-type:none;}
+		ul li {margin-bottom:8px; font-size:1.4em;}
+		ul li p {margin:0;}
+		ul li p a {color:#999;}
+		ul li.small {font-size:0.8rem; color:#999;}
+
+		 ul li ul.nested {margin-left:20px; font-size:0.7em;}
+
+		@media only screen and (min-width: 0px) {
+  /* 0 - 480 =================================================== */
+
+  body {margin-top:;}
+  h1 {font-size:2.0em;}
+   h2 {font-size:1.8em;}
+  /** Grid css **/
+  
+  #grid { margin:0 -2.1739% 0 2.1739%;}
+
+
+/* upto 768 =================================================== */
+
+@media only screen and (min-width: 480px) {
+  /* 768 =================================================== */
+
+  #title h1 {font-size:2.0eem;}
+}
+
+
+@media only screen and (min-width: 768px) {
+  /* 768 =================================================== */
+
+}
+			
+@media only screen and (min-width: 728px) {
+/* 992 =================================================== */
+	
+
+	#grid {padding:0 2.1739%; max-width: 800px; margin:0 auto;}
+	h1 {font-size:2.0rem;}
+   h2 {font-size:1.8rem;}
+   h3 {font-size:1.4rem;}
+
+   ul li {margin-bottom:8px; font-size:1.2rem;}
+  
+}
+
+	</style>
+</head>
+<body>
+	<div id="grid">
+
+		<h1>PDP adaptive prototypes</h1>
+		
+
+		<h3>Prototype variation</h2>
+
+		<ul class="horizontal">
+			<li><a href="pdp_scaled.html">Top of page structure</a></li>
+			<li><a href="pdp_room_rates_merged.html">Room rates table (merge pattern)</a></li>
+			<li><a href="pdp_room_rates_stacked.html">Room rates table (stacked room type pattern)</a></li>
+	
+		</ul>
+	
+
+		
+	</div>
+</body>
+</html>
