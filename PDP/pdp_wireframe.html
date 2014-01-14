@@ -25,7 +25,7 @@
 
 			body {color:#555;}
 			#nav {height:20px; background-color:#333;}
-			.grid { margin:0 2%;}
+			.grid { margin:0 12px;}
  			.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
 
  			#header {background-color:#C71110; height:auto;}
@@ -43,7 +43,7 @@
  			 	#header {height:55px;}
  				#page {max-width:1160px; margin:0 auto;}
  				
- 				.search {display:block; background-color:#E5E3DB; margin-bottom:12px; font-size:12px; margin:0 2%;}
+ 				.search {display:block; background-color:#E5E3DB; margin-bottom:12px; font-size:12px; margin:0 12px;}
  				.search #backtosrp  {display:inline-block; vertical-align:top; padding:15px; border-right:solid 1px #fff;}
  				.search #query {display:inline-block; vertical-align:top;}
  				.search #query .dates, .search #query .people {display:inline-block; padding:15px;} 
@@ -64,7 +64,12 @@
  				
 
  				.top-right {float: none; margin:0;}
- 				.book {text-align:right;  width:40%;  float:right; }
+ 				.book {text-align:right;  width:30%;  float:right; padding-bottom:12px;}
+ 				.book .content {}
+ 				.book .price {font-size:24px; font-weight:bold; line-height:1.2em;}
+ 				.book .terms {font-size:14px;line-height:1.2em;}
+ 				.book button {background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin:10px 0;}
+ 				.book .price-match {color:#063789; font-size:14px; font-weight:bold;}
  				
 
  				
@@ -92,7 +97,11 @@
  				.top-left { margin: 0 -250px 0px auto; width:100%; float:left; overflow:hidden;}
  				
  				.hotel-name .content {margin-right:250px;}
- 				.book .content {height:160px;}
+ 				.book .content {}
+ 				.book .price {font-size:24px; font-weight:bold; line-height:1.2em;}
+ 				.book .terms {font-size:14px;line-height:1.2em;}
+ 				.book button {background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin-top:10px;}
+
  				.photo-description {clear:none;}
  				.photo-description .gallery {margin-right:250px; height:530px; }
  				.photo-description .thumbnails {margin-right:250px; height:130px;}
@@ -118,6 +127,12 @@
 
  				.top-right {width: 290px;float: right;}
 
+ 			}
+
+ 			@media only screen and (min-width:1180px) {
+
+ 				.grid {margin:0;}
+ 				.search {margin:0;}
  			}
 
 
@@ -151,7 +166,7 @@
 				
 			
 					<div class="hotel-name top-left">
-						<div class="content" style="padding:25px 20px 25px 60px; background:url('i/wr_moon.png') no-repeat 18px 25px;">
+						<div class="content" style="padding:25px 0 25px 60px; background:url('i/wr_moon.png') no-repeat 18px 25px;">
 							<h1>St. Pancras Renaissance London Hotel <img src="i/stars_5.png" /></h1>
 							<span class="address">Euston Road, London, England, NW1 2AR, United Kingdom, 0203 027 9779</span>
 
@@ -161,8 +176,11 @@
 				
 
 				<div class="book top-right">
-						<div class="content">
-							<p>Price and book</p>
+						<div class="content" style="padding:23px 20px 0 0">
+							<h2 class="price">&pound;255</h2>
+							<div class="terms" >price for 1 night including taxes and fees</div>
+							<button>Book now</button>
+							<div class="price-match" >Price Match Guarantee</div>
 						</div>
 
 				</div>
