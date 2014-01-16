@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<style type="text/css">
+
+			html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin:0; padding:0; border:0; outline:0; font-weight:inherit; font-style:inherit; font-size:100%; font-family:inherit; vertical-align:baseline; }
+			:focus { outline:0; }
+			a {text-decoration:none;}
+			a:active { outline:none; }
+			body { line-height:1; color:black; background:white; }
+			ul { list-style:none; }
+			table { border-collapse:separate; border-spacing:0; }
+			caption,th,td { text-align:left; font-weight:normal; }
+			blockquote:before,blockquote:after,q:before,q:after { content:""; }
+			blockquote,q { quotes:"" ""; }
+
+			body {font-family: Arial; width:760px; margin:40px auto; color:#555; background-color: #eee;}
+
+			h1.page {font-size:36px; margin-bottom:30px;}
+			h2.page {font-size:28px; margin:30px 0;}
+			h3.page {font-size:20px; margin-bottom:12px;}
+
+			h1.hcom {font-size:24px; line-height:36px; font-weight: bold}
+			h2.hcom {font-size:20px; line-height:30px; font-weight: bold}
+			h3.hcom {font-size:16px; line-height:24px; font-weight: bold}
+			h4.hcom {font-size:14px; line-height:24px; font-weight: bold}
+
+			.standard {font-size:14px; line-height:18px;}
+			.small {font-size:12px; line-height:18px;}
+
+			.margin-bottom-base {margin-bottom:6px;}
+
+			ul li {font-size:12px; line-height:18px; margin-bottom:6px;}
+			ul li:last-child {margin-bottom:0px;}
+
+			ul.tight li {font-size:12px; line-height:18px; margin-bottom:0px;}
+
+			
+			div.example {padding:12px; background-color:#fff; margin-bottom:24px; margin-left:-12px; width:400px;}
+			p {margin-bottom:12px;}
+			p:last-child {margin-bottom:0px;}
+
+			table {border:solid 1px #555; width:424px; margin-left:-12px;}
+			table td, table th{padding:12px;}
+
+			table tr.colhead {background-color: #ccc; color:#333; font-weight:}
+			table td {border-bottom: solid 1px #555; vertical-align: middle; background-color: #fff;}
+			table tr:last-child td {border-bottom:0;}
+
+			tr.header td {background-color:#555; color:#fff; padding:12px;}
+
+			.colorblock {width:100px; height:30px;}
+			
+
+		</style>
+
+	</head>
+	<body>
+
+		<h1 class="page">Typography</h1>
+		<p>Based on a 6 pixel base line (i.e. line-heights and margins are divisible by 6)</p><br />
+		<h2 class="page">Headers</h2>
+
+		<h1 class="hcom">H1: font-size:24px; line-height:36px;</h1>
+		
+
+		<h2 class="hcom">H2: font-size:20px; line-height:30px;</h2>
+		<h3 class="hcom">H3: font-size:16px; line-height:24px;</h3>
+		<h4 class="hcom">H4: font-size:14px; line-height:24px;</h4>
+		<br /><br />
+		 
+		<h2 class="page">Base copy</h2>
+
+		<div class="standard margin-bottom-base">Standard: font-size:14px; line-height:18px;</div>
+		<div class="small margin-bottom-base">Small: font-size:12px; line-height:18px;</div>
+<br />
+		<h3 class="page">Paragraph</h3>
+
+		<p class="standard">font-size:14px; line-height:18px; margin-bottom:12px;<br/>
+			last-child: margin-bottom:0px;</p>
+		<div class="example">
+			<p class="standard">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
+			<p class="standard">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
+		</div>
+
+		<h3 class="page">Lists</h3>
+		<h4 class="hcom">Loose spacing</h4>
+		<p class="small">
+			small font-size:12px; line-height:18px; margin-bottom:6px; <br/>
+			last-child: margin-bottom:0px;
+		</p>
+		
+		<div class="example">
+			<ul>
+				<li>FREE Cancellation</li>
+				<li>Great rate</li>
+				<li>price for 1 night<br />
+including taxes & fees</li>
+			</ul>
+		</div>
+
+		<h4 class="hcom">Tight spacing</h4>
+		<p class="small">
+			small font-size:12px; line-height:18px; margin-bottom:0px; <br/>
+		</p>
+		
+		<div class="example">
+			<h4 class="hcom">Welcome rewards</h4>
+			<ul class="tight">
+				<li>Collect</li>
+				<li>Redeem</li>
+
+			</ul>
+		</div>
+		
+		
+
+
+		<h2 class="page" style="margin-top:40px;">Colour variation</h2>
+
+		<table>
+			<tr class="header">
+				<td colspan="4">Greys</td>
+			</tr>
+				 <tr class="colhead">
+				 	<th>Name</th>
+      				<th>Color</th>
+      				<th>Example</th>
+      				
+      				<th>Hex</th>
+      				
+    			</tr>
+
+			<tbody>
+				<tr>
+					<td>Dark</td>
+					<td><div class="colorblock" style="background-color:#333;"></div></td>
+					<td style="color:#333;">Lorem ipsum</td>
+					
+					<td>#333</td>
+					
+				</tr>
+				<tr>
+					<td>Medium</td>
+					<td><div class="colorblock" style="background-color:#555;"></div></td>
+					<td style="color:#555;">Lorem ipsum</td>
+					
+					<td>#555</td>
+					
+				</tr>
+				<tr>
+					<td>Light</td>
+					<td><div class="colorblock" style="background-color:#777;"></div></td>
+					<td style="color:#777;">Lorem ipsum</td>
+					
+					<td>#777</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
