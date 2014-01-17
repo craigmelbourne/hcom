@@ -1,0 +1,44 @@
+/** reset css **/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin:0; padding:0; border:0; outline:0; font-weight:inherit; font-style:inherit; font-size:100%; font-family:inherit; vertical-align:baseline; }
+:focus { outline:0; }
+a {text-decoration:none;}
+a:active { outline:none; }
+body { line-height:1; color:black; background:white; }
+ul { list-style:none; }
+table { border-collapse:separate; border-spacing:0; }
+caption,th,td { text-align:left; font-weight:normal; }
+blockquote:before,blockquote:after,q:before,q:after { content:""; }
+blockquote,q { quotes:"" ""; }
+strong {font-weight:bold;}
+
+.clear:before, .clear:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+	
+.clear:after {
+	clear: both;
+}
+
+/** base css for HCOM Prototypes **/
+
+body {font-size:14px; line-height:18px; font-family:arial; color:#4e4e4e;}
+
+h1 {font-size:24px; line-height:30px; font-weight: bold}
+h2 {font-size:20px; line-height:30px; font-weight: bold}
+h3 {font-size:16px; line-height:24px; font-weight: bold}
+h4 {font-size:14px; line-height:24px; font-weight: bold}
+
+.standard {font-size:14px; line-height:18px;}
+.small {font-size:12px; line-height:18px;}
+.price {font-size:24px; line-height:30px; font-weight:bold;}
+.margin-bottom-base {margin-bottom:6px;}
+
+ul li {font-size:12px; line-height:18px; margin-bottom:6px;}
+ul li:last-child {margin-bottom:0px;}
+
+p {margin-bottom:12px;}
+p:last-child {margin-bottom:0px;}

@@ -3,7 +3,9 @@
 	<head>
 		<title>PDP Structure</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="../global.css"></link>
+
+		<link rel="stylesheet" href="../base.css"></link>
+
 
 
 		<style type="text/css">
@@ -23,7 +25,6 @@
 			gutter: width:1.7241%;
 			***********/
 
-			body {color:#555;}
 			#nav {height:20px; background-color:#333;}
 			.grid { margin:0 12px;}
  			.col {float:left; margin-right:1.7241%; margin-bottom:1.7241%; }
@@ -31,10 +32,10 @@
  			#header {background-color:#C71110; height:auto;}
  			.search {display:none;}
  			.holder {background-color:#eee;}
- 			.holder p {padding:10px; font-size:14px;}
+ 			
 
  			.content {background-color:#eee;}
- 			.content p {padding:10px; font-size:14px;}
+ 			
 
  			a {color:#026dc5}
 
@@ -55,21 +56,20 @@
  				.top-left { margin: 0; float:none;}
  				
  				.hotel-name {float:left; width:60%;}
- 				.hotel-name h1 {font-size:20px; font-weight: bold;}
- 				.hotel-name .address {display:block; margin-top:6px;font-size:0.8rem;}
+ 				.hotel-name .address {display:block;}
  				.photo-description {clear:both;}
  				.photo-description .gallery {height:400px; background-color:#111; color:#fff;}
- 				.photo-description .thumbnails {margin-top:5px; height:130px;}
- 				.photo-description .description {margin-top:20px;}
+ 				.photo-description .thumbnails {margin-top:5px; height:130px; margin-bottom:18px;}
+ 				.photo-description .description {padding:0 0 18px 18px;}
  				
 
  				.top-right {float: none; margin:0;}
  				.book {text-align:right;  width:30%;  float:right; padding-bottom:12px;}
  				.book .content {}
- 				.book .price {font-size:24px; font-weight:bold; line-height:1.2em;}
- 				.book .terms {font-size:14px;line-height:1.2em;}
- 				.book button {background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin:10px 0;}
- 				.book .price-match {color:#063789; font-size:14px; font-weight:bold;}
+ 				.book .price {}
+ 				.book .terms {margin-bottom:6px;}
+ 				.book button {background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin:0 0 9px 0;}
+ 				.book .price-match {color:#063789; font-weight:bold;}
  				
 
  				
@@ -93,13 +93,14 @@
 
  			} 
 
- 			@media only screen and (min-width:728px) {
+ 			@media only screen and (min-width:800px) {
  				.top-left { margin: 0 -250px 0px auto; width:100%; float:left; overflow:hidden;}
  				
  				.hotel-name .content {margin-right:250px;}
+ 				.book {padding-bottom:0;}
  				.book .content {}
- 				.book .price {font-size:24px; font-weight:bold; line-height:1.2em;}
- 				.book .terms {font-size:14px;line-height:1.2em;}
+ 				.book .price {}
+ 				.book .terms {margin-bottom:0;}
  				.book button {background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin-top:10px;}
 
  				.photo-description {clear:none;}
@@ -108,8 +109,9 @@
  				.photo-description .description {margin-right:250px; min-height:176px;}
 
  				.top-right {width: 230px;float:right; overflow:hidden;}
- 				.summary .map {float:none; width:100%; height:160px;}
- 				.summary .map .content {margin:0 20px 0 0;}
+ 				.summary .map {float:none; width:100%;}
+ 				.summary .map .content {margin:0 18px 0 0; height:160px;}
+ 				
  				.summary .user-rating {float:none; width:100%; margin:20px 0 0;}
  				.summary .user-rating .content {height:330px; margin-right:20px;}
  				.summary .tools {float:none; width:100%; }
@@ -125,6 +127,8 @@
  				.photo-description .gallery {margin-right:310px;}
  				.photo-description .thumbnails {margin-right:310px;}
  				.photo-description .description {margin-right:310px;}
+
+ 				
 
  				.top-right {width: 290px;float: right;}
 
@@ -167,9 +171,9 @@
 				
 			
 					<div class="hotel-name top-left">
-						<div class="content" style="padding:25px 0 25px 60px; background:url('i/wr_moon.png') no-repeat 18px 25px;">
+						<div class="content" style="padding:18px 0 18px 60px; background:url('i/wr_moon.png') no-repeat 18px 24px;">
 							<h1>St. Pancras Renaissance London Hotel <img src="i/stars_5.png" /></h1>
-							<span class="address">Euston Road, London, England, NW1 2AR, United Kingdom, 0203 027 9779</span>
+							<span class="address small">Euston Road, London, England, NW1 2AR, United Kingdom, 0203 027 9779</span>
 
 						</div>
 					</div>
@@ -177,8 +181,8 @@
 				
 
 				<div class="book top-right">
-						<div class="content" style="padding:23px 20px 0 0">
-							<h2 class="price">&pound;255</h2>
+						<div class="content" style="padding:24px 18px 0 0">
+							<div class="price">&pound;255</div>
 							<div class="terms" >price for 1 night including taxes and fees</div>
 							<button>Book now</button>
 							<div class="price-match" >Price Match Guarantee</div>
@@ -210,8 +214,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 				<div class="summary top-right clear">
 					<div class="map">
 						<div class="content" style="overflow:hidden;">
-							
-							<img style="position:absolute; " src="http://maps.googleapis.com/maps/api/staticmap?center=51.52980,-0.12624&zoom=14&size=600x600&sensor=false" />
+							<img style="" src="http://maps.googleapis.com/maps/api/staticmap?center=51.52980,-0.12624&zoom=14&size=600x600&sensor=false" />
 						</div>
 					</div>
 					<div class="user-rating">
