@@ -50,7 +50,7 @@
  				.search #query .dates, .search #query .people {display:inline-block; padding:15px;} 
  				.search #query .change {display:inline-block; padding:8px; margin:7px; color:#fff; background-color:#000; border-radius: 4px;}
 
- 				.pagetop{background-color:#F5F4F0; margin-bottom:12px;}
+ 				.pagetop{background-color:#F5F4F0; padding-bottom:18px;}
  				.pagetop .content {background-color: transparent;}
  				
  				.top-left { margin: 0; float:none;}
@@ -59,8 +59,10 @@
  				.hotel-name .address {display:block;}
  				.photo-description {clear:both;}
  				.photo-description .gallery {height:400px; background-color:#111; color:#fff;}
- 				.photo-description .thumbnails {margin-top:5px; height:130px; margin-bottom:18px;}
- 				.photo-description .description {padding:0 0 18px 18px;}
+ 				.photo-description .thumbnails {margin-top:5px; min-height:60px; margin-bottom:18px;}
+ 				.photo-description .thumbnails ul li {float:left; width:10%;}
+ 				.photo-description .thumbnails ul li div {height:60px; background-color:#000; border-right:solid 2px #fff;}
+ 				.photo-description .description {padding:0 18px 18px 18px; height:176px; overflow:hidden;}
  				
 
  				.top-right {float: none; margin:0;}
@@ -105,8 +107,11 @@
 
  				.photo-description {clear:none;}
  				.photo-description .gallery {margin-right:250px; height:530px; }
- 				.photo-description .thumbnails {margin-right:250px; height:130px;}
- 				.photo-description .description {margin-right:250px; min-height:176px;}
+ 				.photo-description .thumbnails {margin-right:250px;}
+ 				
+
+
+ 				.photo-description .description {margin-right:250px;}
 
  				.top-right {width: 230px;float:right; overflow:hidden;}
  				.summary .map {float:none; width:100%;}
@@ -196,7 +201,18 @@
 					</div>
 
 					<div class="thumbnails content">
-						<p>Thumbnails</p>
+						<ul>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+							<li><div></div></li>
+						</ul>
 					</div>
 
 					<div class="description content">
@@ -239,18 +255,18 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 			</div>
 
 			<div class="grid">
-				<div class="search-details" style="">
+				<div class="search-details" style="margin-top:18px;">
 					<div class="content">
 							<p>Choose room (or edit search)</p>
 						</div>
 				</div>
 
-				<div class="room-rates" style="margin-top:20px;">
+				<div class="room-rates" style="margin-top:18px;">
 					<div class="content" style="height:600px;">
 							<p>Room rates</p>
 						</div>
 				</div>
-				<div class="amenities" style="margin-top:20px;">
+				<div class="amenities" style="margin-top:18px;">
 					<div class="content" style="height:600px;">
 							<p>Amenities</p>
 						</div>
