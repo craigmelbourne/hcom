@@ -32,6 +32,13 @@ h2 {font-size:20px; line-height:30px; font-weight: bold}
 h3 {font-size:16px; line-height:24px; font-weight: bold}
 h4 {font-size:14px; line-height:24px; font-weight: bold}
 
+.f24 {font-size:24px; line-height:30px;}
+.f20 {font-size:20px; line-height:24px;}
+.f16 {font-size:16px; line-height:24px;}
+.f14 {font-size:14px; line-height:18px;}
+.f12 {font-size:12px; line-height:18px;}
+.f11 {font-size:11px; line-height:12px;}
+
 .standard {font-size:14px; line-height:18px;}
 .small {font-size:12px; line-height:18px;}
 .price {font-size:24px; line-height:30px; font-weight:bold;}
