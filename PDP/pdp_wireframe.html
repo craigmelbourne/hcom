@@ -54,7 +54,11 @@
  				.book button {display:none;}
  				.book .price-match {color:#063789; font-weight:bold; font-size:12px; line-height: 18px}
 
- 				.summary .map .content {background-color:#fff; height:100px;  overflow:hidden; margin:12px 0; border:solid 1px #ccc; position:relative;}
+ 				.summary .map .content {background-color:#fff; height:100px;  overflow:hidden; margin:12px 0; border:solid 1px #ccc; position:relative; border-radius:3px;}
+ 				.summary .user-rating {}
+ 				.summary .user-rating .content { background-color:#fff; padding:0; border:solid 1px #ccc; border-radius:3px;}
+ 				.summary .tools {border-top:solid 0px #ddd;}
+ 				.summary .tools .content {height:90px;   background-color:#fff;}
 
  				.photo-description {clear:both;}
  				.photo-description .gallery {height:200px; background-color:#111; color:#fff; margin:12px 0;}
@@ -80,7 +84,7 @@
  				
  				.hotel-name {float:left; width:60%;}
  				.hotel-name .content {padding:18px 0 18px 60px; background:url('i/wr_moon.png') no-repeat 18px 24px;}
- 				.hotel-name h1 {font-size:20px; line-height: 24px}
+ 				.hotel-name h1 {font-size:20px; line-height:24px}
  				
  				.hotel-name .address {display:block;}
  				.photo-description {clear:both;}
@@ -106,7 +110,7 @@
  				.summary .map .content {background-color:#fff; height:198px; margin:0 6px 0 12px; overflow:hidden; border-radius:6px; border:solid 1px #ccc; position:relative;}
  				
  				.summary .user-rating {float:left; width:50%; }
- 				.summary .user-rating .content { height:200px; background-color:#fff; margin:0 12px 0 6px;}
+ 				.summary .user-rating .content { height:198px; background-color:#fff; margin:0 12px 0 6px; padding:0;}
  				
  				.summary .tools {float:left; margin:18px 0; width:50%; border-top:solid 0px #ddd;}
  				.summary .tools .content {height:90px;   background-color:#fff; margin:0 6px 0 12px; }
@@ -118,9 +122,9 @@
 
  			@media only screen and (min-width:800px) {
  				.pagetop {padding-bottom:18px;}
- 				.top-left { margin: 0 -250px 0px auto; width:100%; float:left; overflow:hidden;}
+ 				.top-left { margin: 0 -310px 0px auto; width:100%; float:left; overflow:hidden;}
  				
- 				.hotel-name .content {margin-right:250px;}
+ 				.hotel-name .content {margin-right:310px;}
  				.book {padding-bottom:0;}
  				.book .content {}
  				.book .price {font-size:24px; line-height:30px;}
@@ -128,14 +132,14 @@
  				.book button {display:inline; background-color:#00f; color:#fff; padding:6px; font-size:16px; border:0; margin-top:10px;}
 
  				.photo-description {clear:none;}
- 				.photo-description .gallery {margin-right:250px; height:530px; }
- 				.photo-description .thumbnails {margin-right:250px;}
+ 				.photo-description .gallery {margin-right:310px; height:530px; }
+ 				.photo-description .thumbnails {margin-right:310px;}
  				
 
 
- 				.photo-description .description {margin-right:250px;}
+ 				.photo-description .description {margin-right:310px;}
 
- 				.top-right {width: 230px;float:right; overflow:hidden;}
+ 				.top-right {width: 290px;float:right; overflow:hidden;}
  				.summary .map {float:none; width:100%;}
  				.summary .map .content {margin:0 18px 0 0; height:160px;}
  				
@@ -149,15 +153,14 @@
  			}
 
  			@media only screen and (min-width:960px) {
- 				.top-left { margin: 0 -310px 0px auto; width:100%; float:left;}
+ 				/* we may need to use these to get a bigger photo gallery for smaller desktop screen widths */
+
+ 				/* .top-left { margin: 0 -310px 0px auto; width:100%; float:left;}
  				.hotel-name .content {margin-right:310px;}
  				.photo-description .gallery {margin-right:310px;}
  				.photo-description .thumbnails {margin-right:310px;}
- 				.photo-description .description {margin-right:310px;}
-
- 				
-
- 				.top-right {width: 290px;float: right;}
+ 				.photo-description .description {margin-right:310px;} 
+ 				.top-right {width: 290px;float: right;}*/
 
  			}
 
@@ -257,8 +260,16 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 						</div>
 					</div>
 					<div class="user-rating">
-						<div class="content" style="background-color:#eee;">
-							<p>User rating</p>
+						<div class="content" style="">
+							<div class="score" style="padding:12px; border-bottom:solid 1px #ccc;">
+								<span style="font-size:20px; font-weight:bold;">Excellent</span><div style="float:right"><span style="font-size:20px; font-weight:bold;">4.5</span><span>/5</span></div>
+							</div>
+							<div class="reviews">
+
+							</div>
+							<div class="trip" style=" border:solid 1px #ccc; border-radius:6px; text-align:center; padding:6px 0; margin:6px;">
+								<img src="i/rating_trip.png" />
+							</div>
 						</div>
 					</div>
 					<div class="tools">

@@ -15,26 +15,31 @@
 			blockquote:before,blockquote:after,q:before,q:after { content:""; }
 			blockquote,q { quotes:"" ""; }
 
-			body {font-family: Arial; width:760px; margin:40px auto; color:#555; background-color: #f5f6f7;}
+			body {font-family: Arial; width:760px; margin:40px auto; color:#555; background-color:#ecf0f3;}
+			strong {font-weight: bold;}
 
 			h1.page {font-size:36px; margin-bottom:30px;}
 			h2.page {font-size:28px; margin:30px 0;}
 			h3.page {font-size:20px; margin-bottom:12px;}
 
-			h1.hcom {font-size:24px; line-height:36px; font-weight: bold}
-			h2.hcom {font-size:20px; line-height:30px; font-weight: bold}
-			h3.hcom {font-size:16px; line-height:24px; font-weight: bold}
-			h4.hcom {font-size:14px; line-height:24px; font-weight: bold}
+			h4 {font-size:20px; font-weight:bold; line-height:28px;}
 
-			.standard {font-size:14px; line-height:18px;}
-			.small {font-size:12px; line-height:18px;}
+			.xxl {font-size:24px; line-height:30px;}
+			.xl {font-size:20px; line-height:24px;}
+			.l {font-size:16px; line-height:18px;}
+			.m {font-size:14px; line-height:18px;}
+			.base {font-size:12px; line-height:18px;}
+			.s {font-size:11px; line-height:12px;}
+
+			.bold {font-weight:bold;}
 
 			.margin-bottom-base {margin-bottom:6px;}
 
-			ul li {font-size:12px; line-height:18px; margin-bottom:6px;}
+			ul li {font-size:12px; line-height:18px;}
 			ul li:last-child {margin-bottom:0px;}
 
 			ul.tight li {font-size:12px; line-height:18px; margin-bottom:0px;}
+			ul.loose li {font-size:12px; line-height:18px; margin-bottom:6px;}
 
 			
 			div.example {padding:12px; background-color:#fff; margin-bottom:24px; margin-left:-12px; width:400px; border:solid 1px #ccc;}
@@ -51,6 +56,12 @@
 			tr.header td {background-color:#555; color:#fff; padding:12px;}
 
 			.colorblock {width:100px; height:30px;}
+
+			.item {margin-bottom: 18px;}
+			.item .name {display:inline-block; width:300px; font-size:16px; line-height:24px; vertical-align:top;}
+			.item .example {display:inline-block; width:400px; vertical-align: top;}
+
+
 			
 
 		</style>
@@ -60,68 +71,121 @@
 
 		<h1 class="page">Typography</h1>
 		<p>Based on a 6 pixel base line (i.e. line-heights and margins are divisible by 6)</p><br />
-		<h2 class="page">Headers</h2>
-
-		<h1 class="hcom">H1: font-size:24px; line-height:36px;</h1>
 		
-
-		<h2 class="hcom">H2: font-size:20px; line-height:30px;</h2>
-		<h3 class="hcom">H3: font-size:16px; line-height:24px;</h3>
-		<h4 class="hcom">H4: font-size:14px; line-height:24px;</h4>
-		<br /><br />
-		 
-		<h2 class="page">Base copy</h2>
-
-		<div class="standard margin-bottom-base">Standard: font-size:14px; line-height:18px;</div>
-		<div class="small margin-bottom-base">Small: font-size:12px; line-height:18px;</div>
-<br />
-		<h3 class="page">Paragraph</h3>
-
-		<p class="standard">font-size:14px; line-height:18px; margin-bottom:12px;<br/>
-			last-child: margin-bottom:0px;</p>
-		<div class="example">
-			<p class="standard">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
-			<p class="standard">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
+		<h2 class="page">Font</h2>
+		<p>We use Arial</p>
+		<div class="item">
+			<div class="name"><strong>weight: normal</strong></div>
+			<div class="example">
+				<p class="xl">
+					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+					abcdefghijklmnopqrstuvwxyz<br />
+					1234567890
+				</p>
+			</div>
+		</div>
+		<div class="item">
+			<div class="name"><strong>weight: bold</strong><br /></div>
+			<div class="example">
+				<p class="xl bold">
+					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+					abcdefghijklmnopqrstuvwxyz<br />
+					1234567890
+				</p>
+			</div>
 		</div>
 
-		<h3 class="page">Lists</h3>
-		<h4 class="hcom">Loose spacing</h4>
-		<p class="small">
-			small font-size:12px; line-height:18px; margin-bottom:6px; <br/>
-			last-child: margin-bottom:0px;
-		</p>
-		
-		<div class="example">
-			<ul>
-				<li>FREE Cancellation</li>
-				<li>Great rate</li>
-				<li>price for 1 night<br />
-including taxes & fees</li>
-			</ul>
+		<h2 class="page">Font size / line-height</h2>
+
+		<div class="item">
+			<div class="name">
+				<h4>12 (base font size)</h4>
+				<ul>
+					<li>font-size:12px;</li>
+					<li>line-height:18px;</li>
+					
+				</ul>
+			</div>
+			<div class="example">
+				<p class="base">The quick brown fox jumped over the lazy fox</p>
+			</div>
 		</div>
 
-		<h4 class="hcom">Tight spacing</h4>
-		<p class="small">
-			small font-size:12px; line-height:18px; margin-bottom:0px; <br/>
-		</p>
-		
-		<div class="example">
-			<h4 class="hcom">Welcome rewards</h4>
-			<ul class="tight">
-				<li>Collect</li>
-				<li>Redeem</li>
-
-			</ul>
+		<div class="item">
+			<div class="name">
+				<h4>14</h4>
+				<ul>
+					<li>font-size:14px;</li>
+					<li>line-height:18px;</li>
+					
+				</ul>
+			</div>
+			<div class="example">
+				<p class="m">The quick brown fox jumped over the lazy fox</p>
+			</div>
 		</div>
+
+		<div class="item">
+			<div class="name">
+				<h4>16</h4>
+				<ul>
+					<li>font-size:16px;</li>
+					<li>line-height:18px;</li>
+					
+				</ul>
+			</div>
+
+			<div class="example">
+				<p class="l">The quick brown fox jumped over the lazy fox</p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name">
+				<h4>20</h4>
+				<ul>
+					<li>font-size:20px;</li>
+					<li>line-height:24px;</li>
+					
+				</ul>
+			</div>
+			<div class="example">
+				<p class="xl">The quick brown fox jumped over the lazy fox</p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name">
+				<h4>24</h4>
+				<ul>
+					<li>font-size:24px;</li>
+					<li>line-height:30px;</li>
+					
+				</ul>
+			</div>
+			<div class="example">
+				<p class="xxl">The quick brown fox jumped over the lazy fox</p>
+			</div>
+		</div>
+
+		
+
+		
+
+		
+		
+		
+		<p class="m">Margins (top or bottom and divisible by base value) can be added to block level elements to provide these where additional space is needed</p>
+
 		
 		
 
 
-		<h2 class="page" style="margin-top:40px;">Colour variation</h2>
+		<h2 class="page" style="margin-top:40px;">Colours</h2>
 
 		<table>
 			<tr class="header">
-				<td colspan="4">Greys</td>
+				<td colspan="4">Grays</td>
 			</tr>
 				 <tr class="colhead">
 				 	<th>Name</th>
@@ -159,5 +223,91 @@ including taxes & fees</li>
 				</tr>
 			</tbody>
 		</table>
+		 
+		<h2 class="page" style="margin-top:40px;">Examples</h2>
+
+		<div class="item">
+			<div class="name">
+				<strong>H1</strong>
+				<ul>
+					<li>Size: 24</li>
+					<li>Color: Dark Gray</li>
+					<li>Weight: Bold</li>
+				</ul>
+			</div>
+			<div class="example">
+				<p class="xxl bold">The quick brown fox jumped over the lazy fox</p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name">
+				<strong>H2</strong>
+				<ul>
+					<li>Size: 20</li>
+					<li>Color: Dark Gray</li>
+					<li>Weight: Bold</li>
+				</ul>
+			</div>
+			<div class="example">
+				<p class="xl bold">The quick brown fox jumped over the lazy fox</p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name">
+				<strong>Paragraph</strong>
+				<ul>
+					<li>Size: 14</li>
+					<li>Color: Medium Gray</li>
+					<li>Weight: Normal</li>
+					<li>Margin: Bottom 12px</li>
+				</ul>
+			</div>
+			<div class="example">
+				<p class="m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
+				<p class="m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris malesuada leo sed pharetra dapibus. Integer convallis cursus justo nec dapibus. Cras aliquam arcu eu metus suscipit tincidunt. Duis consectetur ut felis non laoreet. </p>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name"><strong>List: Tight spacing</strong>
+				<ul>
+				<li>Size: 12</li>
+				<li>Color: Medium Gray</li>
+				<li>Weight: Normal</li>
+			</div>
+			<div class="example">
+				<h4 class="base" style="font-weight:bold;">Welcome rewards</h4>
+			<ul class="tight">
+				<li>Collect</li>
+				<li>Redeem</li>
+
+			</ul>
+			</div>
+		</div>
+
+		<div class="item">
+			<div class="name"><strong>List: Loose spacing</strong>
+				<ul>
+				<li>Size: 12</li>
+				<li>Color: Medium</li>
+				<li>Weight: Normal</li>
+				<li>Margin: Bottom 6px</li></ul>
+			</div>
+			<div class="example">
+				<ul class="loose">
+					<li>FREE Cancellation</li>
+					<li>Great rate</li>
+					<li>price for 1 night<br />
+including taxes & fees</li>
+			</ul>
+			</div>
+		</div>
+		
+		
+
+
+		
 	</body>
 </html>
