@@ -2,7 +2,8 @@
 <html>
   	<head>
     	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="../global.css"></link>
+    	<link rel="stylesheet" href="../global.css"></link>
+		<link rel="stylesheet" href="../base.css"></link>
 		<script src="../jquery.js"></script>
 
 		<style type="text/css">
@@ -32,10 +33,10 @@
 				#header .burger {display:none;}
 				
 				#header .content .tel-full {display:inline; padding:0 0 10px 0;}
-				#header .content .tel-full .message{display:block; font-size:12px; margin:5px 0 8px;}
+				#header .content .tel-full .message{display:block; font-size:12px; margin:5px 0 4px;}
 
-				#header .content .tel-full .number{font-size:16px;}
-				#header .content .tel-full .number li {float:right; margin-left:10px; }
+				#header .content .tel-full .number{}
+				#header .content .tel-full .number li {float:right; margin-left:10px; font-size:16px; line-height:16px; margin-bottom:0;}
 
 				
 
@@ -44,7 +45,7 @@
 				
 				#nav {display:block; background-color:#333;}
 				#nav .content  {margin:0 10px;} 
-				#nav .content ul li {float:left; margin:0 0 0 0;}
+				#nav .content ul li {float:left; margin:0 0 0 0; line-height:12px; margin-bottom:0;}
 				#nav .content ul li.right {float:right;}
 				#nav .content ul li.right, #nav .content ul li.main-menu {
 					margin:0; 
@@ -159,8 +160,6 @@ border-radius: 0 0 5px 5px;}
 					<div class="burger"></div>
 					<div class="logo"></div>
 					<div class="tel-full" style="float:right; text-align:right; color:#fff;">
-						<!--<span class="message">Book online or call</span>
-						<span class="number">1-866-678-6350</span>-->
 						<span class="message">Book online or call</span>
 						<ul class="number">
 								<li class="primary">0800 028 3906</li>
