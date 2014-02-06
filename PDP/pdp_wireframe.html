@@ -56,9 +56,22 @@
 
  				.summary .map .content {background-color:#fff; height:100px;  overflow:hidden; margin:12px 0; border:solid 1px #ccc; position:relative; border-radius:3px;}
  				.summary .user-rating {}
- 				.summary .user-rating .content { background-color:#fff; padding:0; border:solid 1px #ccc; border-radius:3px;}
- 				.summary .tools {border-top:solid 0px #ddd;}
- 				.summary .tools .content {height:90px;   background-color:#fff;}
+ 				.summary .user-rating .content { background-color:#fff; padding:0; border:solid 1px #ccc; border-radius:6px;}
+ 				.trip { border:solid 1px #ccc; border-radius:6px; text-align:center; padding:6px 0; margin:6px;}
+
+
+ 				.summary .tools {margin-top:12px;}
+ 				.summary .tools .content {height:90px;   background-color:#fff; border:solid 1px #ccc; border-radius:6px;}
+
+ 				.summary .wr {margin-top:12px;}
+ 				.summary .wr .content { box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 40px rgba(0,0,0,0.06) inset; border-radius: 6px}
+
+ 				.summary .wr .content h2 {padding:6px 12px; color:#fff; background-color:#906; border-top-left-radius:6px;border-top-right-radius:6px; font-size:18px;}
+ 				.summary .wr .content .message {background-color: #EDE5EE; border-color:#ead0e2; border-width: 0 1px 1px 1px; border-style: solid; border-radius: 6px; padding:12px;}
+				.summary .wr .content .message p {font-size:12px; margin:0; font-weight: bold;}
+
+				.summary .wr .content .message p:first-child {color:#906; margin-bottom:6px;}
+
 
  				.photo-description {clear:both;}
  				.photo-description .gallery {height:200px; background-color:#111; color:#fff; margin:12px 0;}
@@ -109,18 +122,20 @@
  				.summary .map {float:left; width:50%;  }
  				.summary .map .content {background-color:#fff; height:320px; margin:0 6px 0 12px; overflow:hidden; border-radius:6px; border:solid 1px #ccc; position:relative;}
 
+
  				.summary .map .content {min-height: 100%;}
  				
  				.summary .user-rating {float:left; width:50%; }
- 				.summary .user-rating .content { height:320px; background-color:#fff; margin:0 12px 0 6px; padding:0;}
+ 				.summary .user-rating .content { height:320px; background-color:#fff; margin:0 12px 0 6px; padding:0; position:relative;}
  				.summary .user-rating .content .reviews ul li {padding-left:24px; margin-bottom:12px; background: url('i/icon_quote.png') no-repeat; font-style: italic;}
  				.summary .user-rating .content .reviews ul li .date {font-size:11px; line-height: 12px; font-style: normal;}
+ 				.trip {position:absolute; bottom:6px; left:6px; right:6px;}
  				
  				.summary .tools {float:left; margin:18px 0; width:50%; border-top:solid 0px #ddd;}
- 				.summary .tools .content {height:90px;   background-color:#fff; margin:0 6px 0 12px; }
+ 				.summary .tools .content {height:110px;   background-color:#fff; margin:0 6px 0 12px; }
  				
  				.summary .wr {float:left; margin-right:0; width:50%; margin:18px 0;}
- 				.summary .wr .content {height:90px; background-color:#EFE7F0; margin:0 12px 0 6px;}
+ 				.summary .wr .content {background-color:#EFE7F0; margin:0 12px 0 6px;}
 
  			} 
 
@@ -148,11 +163,12 @@
  				.summary .map .content {margin:0 18px 0 0; height:160px;}
  				
  				.summary .user-rating {float:none; width:100%; margin:20px 0 0;}
- 				.summary .user-rating .content {height:auto; margin:0; margin-right:18px;}
+ 				.summary .user-rating .content {height:auto; margin:0; margin-right:18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0}
+ 				.trip {position:static;}
  				.summary .tools {float:none; width:100%; margin:0;}
- 				.summary .tools .content {height:110px; border-top:solid 1px #ddd;  margin:0; padding:0;margin-right:18px;}
+ 				.summary .tools .content {height:110px;  margin:0; padding:0;margin-right:18px; border-top:0; border-top-right-radius: 0; border-top-left-radius: 0}
  				.summary .wr {float:none; width:100%; margin-top:18px;}
- 				.summary .wr .content {height:110px; margin:0; margin-right:18px;}
+ 				.summary .wr .content {margin:0; margin-right:18px;}
  				
  			}
 
@@ -279,20 +295,25 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 								</ul>
 								<p style="margin:6px 0 0"><a href="#">See all 321 Hotels.com reviews</a></p>
 							</div>
-							<div class="trip" style=" border:solid 1px #ccc; border-radius:6px; text-align:center; padding:6px 0; margin:6px;">
+							<div class="trip">
 								<img src="i/rating_trip.png" />
 							</div>
 						</div>
 					</div>
 					<div class="tools">
-						<div class="content" style="background-color:#eee;">
+						<div class="content">
 							<p>Tools</p>
 						</div>
 					</div>
 
 					<div class="wr">
-						<div class="content" style="background-color:#eee;">
-							<p>Welcome rewards</p>
+						<div class="content">
+							<h2>Welcome Rewards</h2>
+							<div class="message">
+								<p>You'll collect 1 night with this stay</p>
+								<p>Remember collect 10 nights, get 1 free*</p>
+							</div>
+							
 						</div>
 					</div>
 				</div>
