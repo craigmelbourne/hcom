@@ -17,18 +17,18 @@ table#rates { width:100%;}
  						-moz-box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;
 						-webkit-box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;
 						box-shadow: inset 0 3px 0 #fff,inset 0 -3px 0 #fff,inset 3px 3px 0 #fff;}
-				table tbody td.book {background: #f5f4f0;}
+				table tbody td.book_cell {background: #f5f4f0;}
 				table tr td {padding:16px; border: 1px solid #ccc;border-style: solid solid none none;}
 				table tr:last-child td {border-bottom-style: solid;}
 
-				table tr:first-child td.book {
+				table tr:first-child td.book_cell {
 					border-top-right-radius: 4px;
 					-moz-box-shadow: inset -3px 0 0 0 #fff;
 					-webkit-box-shadow: inset -3px 0 0 0 #fff;
 					box-shadow: inset -3px 3px 0 0 #fff;
 				}
  
- 				table tr:last-child td.book {
+ 				table tr:last-child td.book_cell {
  					border-top-right-radius: 0; border-bottom-right-radius: 4px;
  					-moz-box-shadow: inset -3px 0 0 0 #fff;
 					-webkit-box-shadow: inset -3px 0 0 0 #fff;
@@ -67,6 +67,8 @@ box-shadow: 0 2px 2px 0 #888;
 overflow: hidden;
 position: relative;}
 
+.room_image_small {width:120px; height:60px;}
+
 .room-images img {border-radius:4px;}
 .room-info {float:left; margin-bottom:10px;}
 .room-info .bed-label {font-size:14px;}
@@ -75,7 +77,7 @@ position: relative;}
 .more-info {clear:both; font-size:12px}
 
 
-td.book button {
+ button.bookbut {
 	background-color: rgb(48, 175, 247);
 	background-image: -webkit-linear-gradient(top, rgb(99, 204, 255) 0px, rgb(34, 174, 255) 40%, rgb(4, 149, 238) 100%);
 	background-position: 50% 50%;
@@ -109,6 +111,122 @@ td.book button {
 	text-align: center;
 	font: 12px/135% arial, helvetica, clean, sans-serif;
 }
+
+@media only screen and (min-width:0px) {
+ 				#page {margin-bottom:100px;}
+
+
+ 				table#merge {margin-top:-8px; width:100%;}
+ 				table#merge thead {display:none;}
+
+ 				
+
+
+ 				table#merge td.type, table#rates th.type {display:none;}
+ 				table#merge td.occupancy {display:none;}
+ 				table#merge td.options {display:none;}
+ 				table#merge td.loyalty {width:50%; border-left:solid 1px #ccc;}
+ 				table#merge td.price_cell {width:50%;}
+ 				table#merge td.book_cell {display:none;}
+ 				
+
+ 				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
+ 				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
+ 				table#merge tbody td {vertical-align:top;}
+
+ 				table#merge th.loyalty span.merge {display:inline;}
+ 				table#merge td.loyalty .occupancy {font-size:12px; overflow:hidden; margin-bottom:12px; }
+ 				table#merge td.loyalty .occupancy img {float:left; margin-right:6px;}
+
+ 				table#merge th.offers, table#merge td.offers {display:none;}
+ 				table#merge td.loyalty span.cancellation {display:inline-block;}
+ 				table#merge td.loyalty img.wr {display:block;}
+
+ 				table#merge td.price_cell .offers-message {line-height:12px; margin-bottom:12px; background-image: none;}
+
+ 				table#merge .room-images {margin-right:0;}
+ 			
+
+ 			}
+
+ 			@media only screen and (min-width:600px) {
+
+ 				.room-type {display:none;}
+ 				table#merge td.type, table#rates th.type {display:table-cell; width:28%;}
+ 				table#merge td.occupancy {display:none;}
+ 				table#merge td.options {display:none;}
+ 				table#merge td.loyalty {width:28%;}
+ 				table#merge td.price_cell {width:39%;}
+ 				table#merge td.book_cell {display:table-cell; width:5%;}
+
+ 				table#merge td.price_cell button.bookbut {display:none;}
+
+ 			}
+
+
+ 			@media only screen and (min-width:800px) {
+
+
+
+
+
+ 			
+
+ 			}
+
+ 			@media only screen and (min-width:850px) {
+
+ 				table#merge thead {display:table-header-group;}
+ 				#page {max-width:1160px; margin:0 auto 100px;}
+
+ 				table#merge td.type, table#merge th.type {width:186px;}
+ 				table#merge td.occupancy, table#merge th.occupancy {display:table-cell; width:6%;}
+ 				table#merge td.options, table#merge th.options {display:table-cell; width:15%;}
+ 				table#merge td.loyalty, table#merge th.loyalty {width:23%;}
+ 			
+ 				table#merge th.price_cell {width:29%;}
+ 				table#merge td.price_cell {width:22%;}
+ 				table#merge td.book_cell {width:5%;}
+ 				
+
+ 				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
+ 				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
+ 				table#merge tbody td {vertical-align:top;}
+
+ 				table#merge th.loyalty span.merge {display:inline;}
+ 				table#merge td.loyalty .offers-message {display:block; margin-top:10px;}
+ 				table#merge td.loyalty span.cancellation {display:none;}
+ 				table#merge th.offers, table#merge td.offers {display:none;}
+
+ 				table#merge .room-images {margin-right:0;}
+ 				table#merge td.type img.occupancy {display:none;}
+
+ 				
+
+ 				table#merge td.type, table#merge th.type {width:33%;}
+ 				table#merge td.occupancy, table#merge th.occupancy {width:6%; }
+ 				table#merge td.options, table#merge th.options {width:14%;}
+ 				table#merge td.loyalty, table#merge th.loyalty{width:14%;}
+ 				table#merge td.offers, table#merge th.offers {width:14%;}
+ 				table#merge th.price_cell {width:21%;}
+ 				table#merge td.price_cell {width:16%;}
+ 				table#merge td.book_cell {width:5%;}
+ 				
+
+ 				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
+ 				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
+ 				table#merge tbody td {vertical-align:top;}
+
+ 				table#merge th.offers, table#merge td.offers {display:table-cell;}
+
+ 				table#merge td.price_cell .offers-message {display:none;}
+ 				table#merge th.loyalty span.merge {display:none;}
+ 				table#merge td.loyalty .occupancy {display:none;}
+
+ 				table#merge .room-images {margin-right:10px;}
+
+
+ 			}
 
 
 
