@@ -3,7 +3,7 @@
 	<head>
 		<title>PDP - Room rates</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="../global.css"></link>
+		<link rel="stylesheet" href="../base.css"></link>
 		<link rel="stylesheet" href="room_rates.css"></link>
 
 		<script src="../jquery.js"></script>
@@ -28,12 +28,12 @@
  				#page {min-width:600px; margin-bottom:100px;}
 
  				table#stacked td.type, table#stacked th.type {display:none;}
- 				table#stacked td.occupancy, table#stacked th.occupancy { display:none; }
- 				table#stacked td.options, table#stacked th.options {display:table-cell; width:20%; border-left:solid 1px #ccc;}
- 				table#stacked td.loyalty, table#rates th.loyalty{display:table-cell; width:25%;}
- 				table#stacked td.offers, table#rates th.offers {display:table-cell; width:25%;}
- 				table#stacked th.price {display:table-cell; width:30%;}
- 				table#stacked td.price {display:table-cell; width:25%;}
+ 				table#stacked td.occupancy, table#stacked th.occupancy { display:table-cell; width:6%; border-left:solid 1px #ccc;}
+ 				table#stacked td.options, table#stacked th.options {display:table-cell; width:20%; }
+ 				table#stacked td.loyalty, table#rates th.loyalty{display:table-cell; width:23%;}
+ 				table#stacked td.offers, table#rates th.offers {display:table-cell; width:23%;}
+ 				table#stacked th.price_cell {display:table-cell; width:28%;}
+ 				table#stacked td.price_cell {display:table-cell; width:23%;}
  				table#stacked td.book {display:table-cell; width:5%;}
 
 
@@ -55,8 +55,8 @@
  				table#stacked td.options, table#rates th.options {display:table-cell; width:14%;}
  				table#stacked td.loyalty, table#rates th.loyalty{display:table-cell; width:14%;}
  				table#stacked td.offers, table#rates th.offers {display:table-cell; width:14%;}
- 				table#stacked th.price {display:table-cell; width:21%;}
- 				table#stacked td.price {display:table-cell; width:16%;}
+ 				table#stacked th.price_cell {display:table-cell; width:21%;}
+ 				table#stacked td.price_cell {display:table-cell; width:16%;}
  				table#stacked td.book {display:table-cell; width:5%;}
  				table#stacked tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#stacked tbody:before {content: " ";display: block;clear: both;height: 8px;}
@@ -89,9 +89,6 @@
 							<img src="http://exp.cdn-hotels.com/hotels/5000000/4890000/4884000/4883915/4883915_60_e.jpg" width="154px" height="84px"/>
 						</div>
 					</div>
-					<div style="display:inline-block; vertical-align:top;">
-						<img src="../i/occupancy_3.png" style=""/>
-					</div>
 					
 					<div style="display:inline-block; vertical-align:top;">
 						<div class="room-info" >
@@ -113,7 +110,7 @@
 							<th class="options">Options</th>
 							<th class="loyalty">Hotels.com loyalty</th>
 							<th class="offers">Offers</th>
-							<th class="price" colspan="2">Average nightly price</th>
+							<th class="price_cell" colspan="2">Average nightly price</th>
 						</tr>
 					</thead>
 
@@ -134,36 +131,12 @@
 								<div class="more-info"><a href="#">&raquo; Show room information</a></div>
 								
 							</td>
-							<td class="occupancy"><img src="../i/occupancy_3.png" /></td>
+							<td class="occupancy"><img src="i/occupancy_3.png" /></td>
 							<td class="options">
 								<span class="cancellation free">Free cancellation</span>
 							</td>
 							<td class="loyalty">
-								<img src="../i/pdp_room_wr.png" />
-								<ul>
-									<li>Collect</li>
-									<li>Redeem</li>
-								</ul>
-							</td>
-							<td class="offers">
-								<div>
-									Save 20% on this stay!
-								</div>
-							</td>
-							<td class="price">
-								<span class="strikethrough">$234</span>
-								<span class="actual">$123</span>
-								<span class="nightly">nightly price</span>
-								<span class="taxes">including taxes and fees</span>
-								<span class="rooms-left">4 rooms left</span>
-							</td>
-							<td class="book"><button>Book</button></td>
-						</tr>
-						<tr>
-							<td class="occupancy"><img src="../i/occupancy_3.png" /></td>
-							<td class="options"><span class="cancellation">Non-refundable</span></td>
-							<td class="loyalty">
-								<img src="../i/pdp_room_wr.png" />
+								<img src="i/pdp_room_wr.png" />
 								<ul>
 									<li>Collect</li>
 									<li>Redeem</li>
@@ -174,7 +147,31 @@
 									Save 20% on this stay!
 								</div>
 							</td>
-							<td class="price">
+							<td class="price_cell">
+								<span class="strikethrough">$234</span>
+								<span class="actual">$123</span>
+								<span class="nightly">nightly price</span>
+								<span class="taxes">including taxes and fees</span>
+								<span class="rooms-left">4 rooms left</span>
+							</td>
+							<td class="book"><button>Book</button></td>
+						</tr>
+						<tr>
+							<td class="occupancy"><img src="i/occupancy_3.png" /></td>
+							<td class="options"><span class="cancellation">Non-refundable</span></td>
+							<td class="loyalty">
+								<img src="i/pdp_room_wr.png" />
+								<ul>
+									<li>Collect</li>
+									<li>Redeem</li>
+								</ul>
+							</td>
+							<td class="offers">
+								<div class="offers-message">
+									Save 20% on this stay!
+								</div>
+							</td>
+							<td class="price_cell">
 								<span class="strikethrough">$254</span>
 								<span class="actual">$143</span>
 								<span class="nightly">nightly price</span>

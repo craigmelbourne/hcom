@@ -41,16 +41,16 @@ table#rates { width:100%;}
 				 span.cancellation { display:inline; margin-bottom: 10px; font-weight:bold; font-size:12px; border-bottom: 1px #666 dotted; color:#555; line-height: 1.5em;}
 				 span.free {color:#458f00;}
 				table tr td.loyalty ul {margin-left:3px;}
-				table tr td.loyalty ul li {background:url('../i/pdp_wr_tick.png') no-repeat; font-size:12px; margin-top:5px; padding-left:16px;}
+				table tr td.loyalty ul li {background:url('i/pdp_wr_tick.png') no-repeat; font-size:12px; margin-top:5px; padding-left:16px; line-height:12px;}
 
-				.offers-message {padding-left:28px; color:#900; font-size:13px; font-weight:bold; line-height:140%; background:url('../i/pdp_offers_icon.png') no-repeat;}
+				.offers-message {padding-left:28px; color:#900; font-size:13px; font-weight:bold; line-height:140%; background:url('i/pdp_offers_icon.png') no-repeat;}
 
-				table tr td.price {text-align:right;}
-				table tr td.price .strikethrough {display:block; font-size:18px; text-decoration: line-through; margin-bottom:5px;}
-				table tr td.price .actual {display:block; color:#900; font-size:24px; margin-bottom:8px; font-weight:bold;}
-				table tr td.price .nightly {display:block; font-size:12px; margin-bottom:5px;}
-				table tr td.price .taxes {display:block; font-size:12px; margin-bottom:8px;}
-				table tr td.price .rooms-left {background-color: #ff9;line-height: 21px;font-size: 11px;font-weight: bold;margin-top: 6px;padding: 4px;border: 1px solid #ffd542;border-radius: 4px; white-space: nowrap;}
+				table tr td.price_cell {text-align:right;}
+				table tr td.price_cell .strikethrough {display:block; font-size:18px; text-decoration: line-through; margin-bottom:5px;}
+				table tr td.price_cell .actual {display:block; color:#900; font-size:24px; margin-bottom:8px; font-weight:bold;}
+				table tr td.price_cell .nightly {display:block; font-size:12px; margin-bottom:5px;}
+				table tr td.price_cell .taxes {display:block; font-size:12px; margin-bottom:8px;}
+				table tr td.price_cell .rooms-left {background-color: #ff9;line-height: 21px;font-size: 11px;font-weight: bold;margin-top: 6px;padding: 4px;border: 1px solid #ffd542;border-radius: 4px; white-space: nowrap;}
 
 
 .room-name {font-size:14px; font-weight:bold; margin-bottom:10px;}
@@ -109,3 +109,7 @@ td.book button {
 	text-align: center;
 	font: 12px/135% arial, helvetica, clean, sans-serif;
 }
+
+
+
+

@@ -3,7 +3,7 @@
 	<head>
 		<title>PDP - Room rates</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="../global.css"></link>
+		<link rel="stylesheet" href="../base.css"></link>
 		<link rel="stylesheet" href="room_rates.css"></link>
 
 		<script src="../jquery.js"></script>
@@ -26,35 +26,32 @@
 
 			@media only screen and (min-width:0px) {
  				#page {min-width:600px; margin-bottom:100px;}
- 				table#rates td.type, table#rates th.type {width:33%;}
- 				table#rates td.occupancy, table#rates th.occupancy {width:6%; }
- 				table#rates td.options, table#rates th.options {width:14%;}
- 				table#rates td.loyalty, table#rates th.loyalty{width:14%;}
- 				table#rates td.offers, table#rates th.offers {width:14%;}
- 				table#rates th.price {width:21%;}
- 				table#rates td.price {width:16%;}
- 				table#rates td.book {width:5%;}
- 				table#rates tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
- 				table#rates tbody:before {content: " ";display: block;clear: both;height: 8px;}
- 				table#rates tbody td {vertical-align:top;}
+
+ 				table#merge thead {display:none;}
+
+ 				
 
 
- 				table#merge td.type, table#rates th.type {width:5%;}
- 				table#merge td.occupancy, table#merge th.occupancy {display:none; }
- 				table#merge td.options, table#merge th.options {display:none;}
- 				table#merge td.loyalty, table#rates th.loyalty {width:23%;}
- 			
- 				table#merge th.price {width:29%;}
- 				table#merge td.price {width:22%;}
+ 				table#merge td.type, table#rates th.type {width:28%;}
+ 				table#merge td.occupancy {display:none;}
+ 				table#merge td.options {display:none;}
+ 				table#merge td.loyalty {width:28%;}
+ 				table#merge td.price {width:39%;}
  				table#merge td.book {width:5%;}
+ 				
+
  				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
  				table#merge tbody td {vertical-align:top;}
 
  				table#merge th.loyalty span.merge {display:inline;}
- 				table#merge td.loyalty .offers-message {display:block; margin-top:10px;}
+ 				table#merge td.loyalty .occupancy {font-size:12px; overflow:hidden; margin-bottom:12px; }
+ 				table#merge td.loyalty .occupancy img {float:left; margin-right:6px;}
+
  				table#merge th.offers, table#merge td.offers {display:none;}
  				table#merge td.loyalty span.cancellation {display:inline-block;}
+
+ 				table#merge td.price_cell .offers-message {line-height:12px; margin-bottom:12px; background-image: none;}
 
  				table#merge .room-images {margin-right:0;}
  			
@@ -62,29 +59,31 @@
  			}
 
 
- 			@media only screen and (min-width:768px) {
- 				
- 				table#rates td.type, table#rates th.type {width:33%;}
- 				table#rates td.occupancy, table#rates th.occupancy {width:6%; }
- 				table#rates td.options, table#rates th.options {width:14%;}
- 				table#rates td.loyalty, table#rates th.loyalty{width:14%;}
- 				table#rates td.offers, table#rates th.offers {width:14%;}
- 				table#rates th.price {width:21%;}
- 				table#rates td.price {width:16%;}
- 				table#rates td.book {width:5%;}
- 				table#rates tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
- 				table#rates tbody:before {content: " ";display: block;clear: both;height: 8px;}
- 				table#rates tbody td {vertical-align:top;}
+ 			@media only screen and (min-width:800px) {
 
+
+
+
+
+ 			
+
+ 			}
+
+ 			@media only screen and (min-width:850px) {
+
+ 				table#merge thead {display:table-header-group;}
+ 				#page {max-width:1160px; margin:0 auto 100px;}
 
  				table#merge td.type, table#merge th.type {width:186px;}
  				table#merge td.occupancy, table#merge th.occupancy {display:table-cell; width:6%;}
  				table#merge td.options, table#merge th.options {display:table-cell; width:15%;}
  				table#merge td.loyalty, table#merge th.loyalty {width:23%;}
  			
- 				table#merge th.price {width:29%;}
- 				table#merge td.price {width:22%;}
+ 				table#merge th.price_cell {width:29%;}
+ 				table#merge td.price_cell {width:22%;}
  				table#merge td.book {width:5%;}
+ 				
+
  				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
  				table#merge tbody td {vertical-align:top;}
@@ -96,30 +95,28 @@
 
  				table#merge .room-images {margin-right:0;}
  				table#merge td.type img.occupancy {display:none;}
- 			
 
- 			}
-
- 			@media only screen and (min-width:960px) {
- 				#page {max-width:1160px; margin:0 auto 100px;}
-
+ 				
 
  				table#merge td.type, table#merge th.type {width:33%;}
  				table#merge td.occupancy, table#merge th.occupancy {width:6%; }
  				table#merge td.options, table#merge th.options {width:14%;}
  				table#merge td.loyalty, table#merge th.loyalty{width:14%;}
  				table#merge td.offers, table#merge th.offers {width:14%;}
- 				table#merge th.price {width:21%;}
- 				table#merge td.price {width:16%;}
+ 				table#merge th.price_cell {width:21%;}
+ 				table#merge td.price_cell {width:16%;}
  				table#merge td.book {width:5%;}
+ 				
+
  				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
  				table#merge tbody td {vertical-align:top;}
 
  				table#merge th.offers, table#merge td.offers {display:table-cell;}
 
- 				table#merge td.loyalty .offers-message {display:none;}
+ 				table#merge td.price_cell .offers-message {display:none;}
  				table#merge th.loyalty span.merge {display:none;}
+ 				table#merge td.loyalty .occupancy {display:none;}
 
  				table#merge .room-images {margin-right:10px;}
 
@@ -143,7 +140,7 @@
 							<th class="options">Options</th>
 							<th class="loyalty">Hotels.com loyalty <span class="merge">& offers</span></th>
 							<th class="offers">Offers</th>
-							<th class="price" colspan="2">Average nightly price</th>
+							<th class="price_cell" colspan="2">Average nightly price</th>
 						</tr>
 					</thead>
 
@@ -151,7 +148,7 @@
 						<tr>
 							<td class="type" rowspan="2">
 								<div class="room-name" >Chic suite</div>
-								<img class="occupancy" src="../i/occupancy_3.png" />
+								
 								<div class="room-images">
 									<img src="http://exp.cdn-hotels.com/hotels/5000000/4890000/4884000/4883915/4883915_60_e.jpg" width="154px" height="84px"/>
 								</div>
@@ -165,60 +162,62 @@
 								<div class="more-info"><a href="#">&raquo; Show room information</a></div>
 								
 							</td>
-							<td class="occupancy"><img src="../i/occupancy_3.png" /></td>
+							<td class="occupancy"><img src="i/occupancy_3.png" /></td>
 							<td class="options">
 								<span class="cancellation free">Free cancellation</span>
 							</td>
 							<td class="loyalty">
-								<span class="cancellation free">Free cancellation</span>
-								<img src="../i/pdp_room_wr.png" />
-								<ul>
+								<div class="occupancy"><img src="i/occupancy_3.png" /> <span style="float:left; display:block; padding-top:10px;">Upto 2 people</span> </div>
+								<span class="cancellation free">Free cancellation</span><br />
+								<img src="i/pdp_room_wr.png" />
+								<ul class="wr">
 									<li>Collect</li>
 									<li>Redeem</li>
 								</ul>
-								<div class="offers-message">
-									Save 20% on this stay!
-								</div>
+								
 							</td>
 							<td class="offers">
 								<div class="offers-message">
 									Save 20% on this stay!
 								</div>
 							</td>
-							<td class="price">
+							<td class="price_cell">
+								<div class="offers-message">
+									Save 20% on this stay!
+								</div>
 								<span class="strikethrough">$234</span>
 								<span class="actual">$123</span>
-								<span class="nightly">nightly price</span>
-								<span class="taxes">including taxes and fees</span>
+								<span class="nightly">price for 1 night</span>
+								
 								<span class="rooms-left">4 rooms left</span>
 							</td>
 							<td class="book"><button>Book</button></td>
 						</tr>
 						<tr>
-							<td class="occupancy"><img src="../i/occupancy_3.png" /></td>
+							<td class="occupancy"><img src="i/occupancy_3.png" /></td>
 							<td class="options"><span class="cancellation">Non-refundable</span></td>
 							<td class="loyalty">
-								<span class="cancellation">Non-refundable</span>
-								<img src="../i/pdp_room_wr.png" />
-								<ul>
+								<div class="occupancy"><img src="i/occupancy_3.png" /> <span style="float:left; display:block; padding-top:10px;">Upto 2 people</span> </div>
+								<span class="cancellation">Non-refundable</span><br />
+								<img src="i/pdp_room_wr.png" />
+								<ul class="wr">
 									<li>Collect</li>
 									<li>Redeem</li>
 								</ul>
-								<div class="offers-message">
-									Save 20% on this stay!
-								</div>
+								
 							</td>
 							<td class="offers">
 								<div class="offers-message">
 									Save 20% on this stay!
 								</div>
 							</td>
-							<td class="price">
+							<td class="price_cell">
+								<div class="offers-message">
+									Save 20% on this stay!
+								</div>
 								<span class="strikethrough">$254</span>
 								<span class="actual">$143</span>
-								<span class="nightly">nightly price</span>
-								<span class="taxes">including taxes and fees</span>
-								
+								<span class="nightly">price for 1 night</span>	
 							</td>
 							<td class="book"><button>Book</button></td>
 						</tr>
