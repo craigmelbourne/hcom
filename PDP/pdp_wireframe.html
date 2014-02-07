@@ -80,7 +80,9 @@
 
  				.photo-description {clear:both;}
  				.photo-description .gallery {height:200px; background-color:#111; color:#fff; margin:12px 0;}
- 				.photo-description .description {padding:0 0 18px 0; height:176px; overflow:hidden;}
+ 				.photo-description .description {padding:0 0 18px 0; }
+ 				.photo-description .description .content {height:176px; overflow:hidden;}
+ 				.photo-description .description .read_more {padding:6px 0; text-align:center; border-bottom:solid 1px #ccc;}
 
  				.search-details {}
 				.search-details .content {overflow:hidden; background-color: #f6f6f6; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; padding:12px}
@@ -117,7 +119,8 @@
  				.photo-description .thumbnails {margin-top:5px; min-height:60px; margin-bottom:18px;}
  				.photo-description .thumbnails ul li {float:left; width:10%;}
  				.photo-description .thumbnails ul li div {height:60px; background-color:#000; border-right:solid 2px #fff;}
- 				.photo-description .description {padding:0 18px 18px 18px; height:176px; overflow:hidden;}
+ 				.photo-description .description {padding:0 18px 18px 18px;}
+ 				.photo-description .description .content {height:176px; overflow:hidden;}
  				
 
  				.top-right {float: none; margin:0;}
@@ -179,6 +182,8 @@
 
 
  				.photo-description .description {margin-right:310px;}
+ 				.photo-description .description .content {height:200px;}
+ 				.photo-description .description .read_more {}
 
  				.top-right {width: 290px;float:right; overflow:hidden;}
  				.summary .map {float:none; width:100%;}
@@ -283,16 +288,26 @@
 					</div>
 
 					<div class="description content">
-						<p><strong>Luxury London hotel at St. Pancras International</strong></p>
-<p><strong>Steps from St. Pancras</strong><br />
+						<div class="content">
+							<p><strong>Luxury London hotel at St. Pancras International</strong></p>
+							
+							<p><strong>Steps from St. Pancras</strong><br />
 The luxe St. Pancras Renaissance London Hotel blends Old World opulence and modern hospitality. You'll be in an extravagantly designed 19th-century Victorian building attached to St. Pancras International, London's Eurostar terminal.</p>
-<p><strong>A transportation hub</strong> <br />
+							
+							<p><strong>A transportation hub</strong> <br />
 Steps from your guestroom, you can hop a train, bus, taxi, or Tube to almost anywhere in London – not to mention Paris and Brussels. Covent Garden with its array of pubs, restaurants, and covered markets is just a couple miles away.</p>
-<p><strong>Old building, new perks</strong><br />
+							
+							<p><strong>Old building, new perks</strong><br />
 Beyond the hotel's thrilling neo-gothic facade, a range of modern amenities await. The 3 bars and restaurants include The Gilbert Scott, operated by Marcus Wareing. Feeling indulgent? Personal butler service is available, or you can get your nails polished in the onsite spa.</p>
-<p><strong>Contemporary comforts</strong><br />
+							<p><strong>Contemporary comforts</strong><br />
 Lavish guestrooms mix original touches like high ceilings and expansive windows with contemporary comfort: think Egyptian-cotton linens, pillowtop mattresses, and flat-screen TVs. WiFi is available, and room service never sleeps.</p>
+
+						</div>
+						<div class="read_more">
+							<a href="">Read more</a>
+						</div>
 					</div>
+					
 				</div>
 				<div class="summary top-right clear">
 					<div class="map">
