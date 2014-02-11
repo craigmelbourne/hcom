@@ -518,29 +518,36 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 				<style type="text/css">
 
 				@media only screen and (min-width:0px) {
-					
 					.amenities {margin-top:18px;}
-					.container {border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; }
-					.container .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px 20px 20px 20px; overflow:hidden;}
+					
 					.amenities .ad {display:none;}
 					.amenities .lists {}
 					.amenities .lists .inner {}
-					.amenities .inner h2 {padding:6px 12px; color:#d41200;}
-					.amenities dl {width:100%; background-color: #fff; overflow:hidden;}
+					.amenities .inner h2 {color:#d41200; font-size: 16px;}
+					.amenities dl dt {font-weight: bold; margin-top: 12px; }
+					.amenities dl dd {}
+					.amenities dl dd ul li {padding:0; margin:0;}
 					
-					.amenities dl dt, .amenities dl dd {border:0; padding:0;vertical-align: top; border-top: solid 1px #eee; background-color:#fff;}
-					
-					.amenities dl dt {float:left; width:25%;}
-					.amenities dl dt span {display: inline-block; padding:6px 12px; font-size:12px; font-weight:bold;}
-					.amenities dl dd {padding:6px 0;}
-					.amenities dl dd {float:left; width:75%;}
-					.amenities dl dd ul li {float:left; padding:0 12px 6px; line-height: 0; margin-top: 9px}
 
 				}
 
 				@media only screen and (min-width:600px) {
+					.container {border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; }
+					.container .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px 20px 20px 20px; overflow:hidden;}
+					.amenities .inner h2 {color:#d41200; font-size: 16px; background-color:#e5e3db;}
 
-
+					.amenities dl {width:100%; background-color: #fff; overflow:hidden;}
+					
+					.amenities dl dt, .amenities dl dd {border:0; padding:0;vertical-align: top; border-top: solid 1px #eee; background-color:#fff;}
+					
+					.amenities dl dt {display:block; margin-top: 0}
+					.amenities dl dt span {display: inline-block; padding:6px 12px; font-size:12px; font-weight:bold;}
+					.amenities dl dd {padding:6px 0;}
+					.amenities dl dd {display:block; overflow:hidden;}
+					.amenities dl dd ul {margin:0 12px;}
+					.amenities dl dd ul li {float:left; width:50%; padding:3px 0px 0px; line-height: 12px; margin-top: 0px}
+					.amenities dl dt {float:left; width:25%;}
+					.amenities dl dd {float:left; width:75%;}
 				}
 
 				@media only screen and (min-width:800px) {
@@ -562,7 +569,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 							<div class="lists">
 
 								<div class="inner">
-									<h2 style="background-color:#e5e3db;">In the hotel</h2>
+									<h2 style="">In the hotel</h2>
 									<dl>
   										<dt><span>Food &amp; Drink</span></dt>
     										<dd class="items">
@@ -639,7 +646,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 
 									</dl>
 
-									<h2 style="background-color:#e5e3db; margin-top:30px;">In the room</h2>
+									<h2 style="margin-top:30px;">In the room</h2>
 									<dl>
   										<dt><span>Home comforts</span></dt>
     									<dd class="items">
@@ -674,7 +681,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 											
 										</dd>
 
-										<dt><span>Be entertained</span></dt>
+										<!--<dt><span>Be entertained</span></dt>
     									<dd class="items">
     										<ul>
 												<li>32-inch LCD TV</li>
@@ -700,7 +707,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 												<li>Daily housekeeping</li>
 												<li>In-room safe</li>
 											</ul>
-										</dd>
+										</dd>-->
 									</dl>
 									
 								</div>
