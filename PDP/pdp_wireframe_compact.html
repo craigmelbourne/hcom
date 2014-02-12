@@ -106,6 +106,8 @@
 				.search-details .content p:last-child {font-size:12px;}
 				.search-details .content p:last-child a {display:block;}
 
+				.extras {display:none;}
+
  			}
 
  			 @media only screen and (min-width:600px) {
@@ -211,6 +213,8 @@
  				.summary .tools .content {height:110px;  margin:0; padding:0;margin-right:18px; border-top:0; border-top-right-radius: 0; border-top-left-radius: 0}
  				.summary .wr {float:none; width:100%; margin-top:18px; display:none;}
  				.summary .wr .content {margin:0; margin-right:18px;}
+
+ 				.extras {display:block;}
  			}
 
  			@media only screen and (min-width:900px) {
@@ -241,10 +245,12 @@
  				.summary .user-rating {float:none; width:100%; margin:20px 0 0;}
  				.summary .user-rating .content {height:auto; margin:0; margin-right:18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0}
  				.trip {position:static;}
- 				.summary .tools {float:none; width:100%; margin:0;}
+ 				.summary .tools {float:none; width:100%; margin:0; display:block;}
  				.summary .tools .content {height:110px;  margin:0; padding:0;margin-right:18px; border-top:0; border-top-right-radius: 0; border-top-left-radius: 0}
- 				.summary .wr {float:none; width:100%; margin-top:18px;}
+ 				.summary .wr {float:none; width:100%; margin-top:18px; display:block;}
  				.summary .wr .content {margin:0; margin-right:18px;}
+
+ 				.extras {display:none;}
  				
  			}
 
@@ -420,9 +426,67 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 			
 			</div>
 
+
+			<style type="text/css">
+				.extras {overflow: hidden;}
+				.extras .tools {float:left; width:50%;}
+				.extras .tools .content {margin-right:10px;}
+				.extras .wr {float:left; width:50%;}
+				.extras .wr .content {margin-left:10px;}
+
+				.extras .tools {margin-top:12px;}
+ 				.extras .tools .content {height:auto;   background-color:#fff; border:solid 1px #ccc; border-radius:6px;}
+ 				.extras .tools a {color:#006dc5;}
+				.extras .tools ul {overflow:hidden;}
+				.extras .tools ul li {float:left; width:33%;}
+				.extras .tools ul li a {font-weight:bold; font-size:12px; line-height: 12px}
+
+ 				.extras .wr {margin-top:12px;}
+ 				.extras .wr .content { box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 40px rgba(0,0,0,0.06) inset; border-radius: 6px}
+
+ 				.extras .wr .content h2 {padding:6px 12px; color:#fff; background-color:#906; border-top-left-radius:6px;border-top-right-radius:6px; font-size:18px; line-height: 18px;}
+ 				.extras .wr .content .message {background-color: #EDE5EE; border-color:#ead0e2; border-width: 0 1px 1px 1px; border-style: solid; border-radius: 6px; padding:9px 12px;}
+				.extras .wr .content .message p {font-size:12px; margin:0; font-weight: bold; line-height: 12px}
+
+				.extras .wr .content .message p:first-child {color:#906; margin-bottom:6px;}
+			</style>
+
+			
+
 	
 
 			<div class="grid">
+
+				<div class="extras" style="">
+				<div class="tools">
+						<div class="content">
+							<div style="position:relative; padding:12px; border-bottom:solid 1px #ccc;">
+								<img src="i/fb_like.png" style="position:absolute; top:10px; right:6px;"/>
+								<a href="#" style=" font-size:16px; font-weight:bold;">Price Watch</a>
+							</div>
+							<div style="padding:6px 12px 0;">
+								<ul>
+									<li><a href="#">Email</a></li>
+									<li><a href="#">Save</a></li>
+									<li><a href="#">Share</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="wr">
+						<div class="content">
+							<h2>Welcome Rewards</h2>
+							<div class="message">
+								<p>You'll collect 1 night with this stay</p>
+								<p>Remember collect 10 nights, get 1 free*</p>
+							</div>
+							
+						</div>
+					</div>
+				
+			</div>
+
 				<div class="search-details" style="margin-top:18px;">
 					<div class="content" style="overflow:hidden;">
 						<p>No booking or credit card fees</p>
