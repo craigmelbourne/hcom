@@ -211,9 +211,9 @@
  				.summary .wr .content {background-color:#EFE7F0; margin:0 12px 0 6px;}
 
 
- 				.search-details .content {overflow:hidden; background-color: #f6f6f6; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; padding-bottom:0;}
-				.search-details .content p:first-child {float:left; width:40%;}
-				.search-details .content p:last-child {float:left; width:60%; text-align:right;}
+ 				.search-details .content {overflow:hidden; background-color: #f6f6f6; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; padding:12px 12px 0;}
+				.search-details .content p:first-child {float:left; width:40%; display:block;}
+				.search-details .content p:last-child {float:left; width:60%; text-align:right; font-size:12px;}
 				.search-details .content p:last-child a {display:inline; padding-left:12px;}
 
  			} 
@@ -673,23 +673,37 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 				<style type="text/css">
 
 				@media only screen and (min-width:0px) {
-					.container {margin-top:18px;}
+					.container {margin-top:0}
+
+					.glance {margin:12px 0;}
+					.glance .block {}
+					.glance .block .inner h3 {font-size:14px;}
+					.glance .block .inner h4 {font-size:12px; font-weight: bold; margin-top:0px;}
 					
 					.amenities .ad {display:none;}
 					.amenities .lists {}
 					.amenities .lists .inner {}
-					.amenities .inner h2 {color:#d41200; font-size: 16px; border-top:solid 1px #ccc; margin-top:12px;}
+
+					.glance .content {padding:6px 12px 6px; background-color:#fff; border-radius: 6px; border:solid 1px #ccc; height:120px; overflow:hidden;}
+					.glance h2 {color:#d41200; font-size: 16px;}
+
+					.amenities .inner div {padding:6px 12px; background-color:#fff; border-radius: 6px; border:solid 1px #ccc; height:120px; overflow:hidden; margin-bottom:12px;}
+					.amenities .inner h2  {color:#d41200; font-size: 16px; }
 					.amenities .inner h2:first-child {border:0; margin-top:0;}
-					.amenities dl dt {font-weight: bold; margin-top: 12px; }
+					.amenities .inner h2:last-child {border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border:solid 1px #ccc}
+					.amenities dl dt {font-weight: bold; margin-top: 6px; }
 					.amenities dl dd {display:block; overflow:hidden;}
 					.amenities dl dd ul li {float:left; padding:0 12px 0 0; margin:0 0 0;}
 					
+					.glance .block {}
+					
+					.amenities dl {}
 
 				}
 
 				@media only screen and (min-width:600px) {
 					.container {border-radius: 6px; border: 1px solid #ccc; margin-bottom: 12px; }
-					.glance .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px 0 20px 20px; overflow:hidden;}
+					.glance .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px 0 20px 20px; overflow:hidden; border:0; height:auto;}
 					
 					.container .glance {padding:20px 0 20px 20px;}
 					.glance .first-block {}
@@ -706,6 +720,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 
 					.amenities .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px; overflow:hidden;}
 
+					.amenities .inner div {padding:0; background-color:#fff; border-radius: 0px; border:0; height:auto; overflow:hidden; margin-bottom:0px;}
 					.amenities .inner h2 {color:#d41200; font-size: 16px; background-color:#e5e3db; border:0; margin-top:30px; padding-left:12px;}
 					
 					.amenities .inner h2:first-child {border:0; margin:0;}
@@ -830,6 +845,7 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 							<div class="lists">
 
 								<div class="inner">
+									<div class="inhotel">
 									<h2 style="">In the hotel</h2>
 									<dl>
   										<dt><span>Food &amp; Drink</span></dt>
@@ -906,7 +922,8 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 
 
 									</dl>
-
+								</div>
+								<div class="inroom">
 									<h2>In the room</h2>
 									<dl>
   										<dt><span>Home comforts</span></dt>
@@ -970,7 +987,7 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 											</ul>
 										</dd>-->
 									</dl>
-									
+									</div>
 								</div>
 
 							</div>

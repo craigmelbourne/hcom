@@ -131,7 +131,7 @@ position: relative;}
 
  				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
- 				table#merge tbody td {vertical-align:top;}
+ 				table#merge tbody td {vertical-align:top; background-color:#fff;}
 
  				table#merge th.loyalty span.merge {display:inline;}
  				table#merge td.loyalty .occupancy {font-size:12px; overflow:hidden; margin-bottom:12px; }
