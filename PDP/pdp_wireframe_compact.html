@@ -70,10 +70,23 @@
  				.book button {display:none;}
  				.book .price-match {color:#063789; font-weight:bold; font-size:12px; line-height: 18px}
 
- 				.summary .map .content {background-color:#fff; height:100px;  overflow:hidden; margin:12px 0; border:solid 1px #ccc; position:relative; border-radius:3px;}
+ 				.summary .map .content {background-color:#fff; height:80px;  overflow:hidden; margin:12px 0; border:solid 1px #ccc; position:relative; border-radius:3px;}
+ 				.map .content a {display:inline-block; color:#900; padding:5px; width:60px; position:absolute; top:0; left:0; background-color:#fff; border-bottom-right-radius:6px}
+
  				.summary .user-rating {}
  				.summary .user-rating .content { background-color:#fff; padding:0; border:solid 1px #ccc; border-radius:6px;}
- 				.trip { border:solid 1px #ccc; border-radius:6px; text-align:center; padding:6px 0; margin:6px;}
+ 				.trip { border:solid 1px #ccc; border-radius:6px; padding:6px 0; margin:6px;}
+ 				.summary .user-rating .score {padding:12px 12px 0; border-bottom:solid 0px #ccc;}
+				.summary .user-rating .score .qual {font-size:20px; font-weight:bold;}
+				.summary .user-rating .score .num {display:inline-block; margin-left:12px;}
+				.summary .user-rating .score .num .big {font-size:20px; font-weight:bold;}
+				.summary .user-rating .reviews {padding:0 12px;}
+				.summary .user-rating .reviews ul {display:none;}
+
+						.trip { border:0; border-radius:0; padding:6px 12px; margin:12px 0px 0;}
+						.trip {font-size:12px;}
+						.trip img.desktop {display:none;}
+						.trip .mobile div {display:inline-block;vertical-align:top;}
 
 
  				.summary .tools {margin-top:12px;}
@@ -151,17 +164,33 @@
 
  				
  				.summary { margin: 18px 0 0 0}
- 				.summary .map {float:left; width:50%;  }
+ 				
+					
+ 				.summary .map {float:left; width:50%; overflow:hidden; }
  				.summary .map .content {background-color:#fff; height:320px; margin:0 6px 0 12px; overflow:hidden; border-radius:6px; border:solid 1px #ccc; position:relative;}
+
+ 				
 
 
  				.summary .map .content {min-height: 100%;}
  				
  				.summary .user-rating {float:left; width:50%; }
  				.summary .user-rating .content { height:320px; background-color:#fff; margin:0 12px 0 6px; padding:0; position:relative;}
+ 				.summary .user-rating .content .reviews ul {display:block;}
  				.summary .user-rating .content .reviews ul li {padding-left:24px; margin-bottom:12px; background: url('i/icon_quote.png') no-repeat; font-style: italic;}
  				.summary .user-rating .content .reviews ul li .date {font-size:11px; line-height: 12px; font-style: normal;}
  				.trip {position:absolute; bottom:6px; left:6px; right:6px;}
+ 				.trip { border:solid 1px #ccc; border-radius:6px; text-align:center; padding:6px 0; margin:6px;}
+ 				.trip img.desktop {display:inline;}
+				.trip .mobile {display:none;}
+
+ 				.user-rating .score {padding:12px; border-bottom:solid 1px #ccc;}
+
+ 				.summary .user-rating .score {padding:12px; border-bottom:solid 1px #ccc;}
+				.summary .user-rating .score .qual {font-size:20px; font-weight:bold;}
+				.summary .user-rating .score .num {float:right}
+				.summary .user-rating .score .num .big {font-size:20px; font-weight:bold;}
+				.summary .user-rating .reviews {padding:12px;}
  				
  				.summary .tools {float:left; margin:18px 0; width:50%; border-top:solid 0px #ddd;}
  				.summary .tools .content {height:110px;   background-color:#fff; margin:0 6px 0 12px; }
@@ -364,19 +393,30 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 					</div>
 					
 				</div>
+
+				<style type="text/css">
+					@media only screen and (min-width:0px) {
+						
+						
+					}
+
+
+					
+				</style>
+
 				<div class="summary top-right clear">
 					<div class="map">
-						<div class="content" style="overflow:hidden;">
-							<a href="#" class="" style="display:inline-block; color:#900; padding:5px; width:60px; position:absolute; top:0; left:0; background-color:#fff; border-bottom-right-radius:6px">See map</a>
+						<div class="content">
+							<a href="#">See map</a>
 							<img style="" src="i/map_bg.png" />
 						</div>
 					</div>
 					<div class="user-rating">
-						<div class="content" style="">
-							<div class="score" style="padding:12px; border-bottom:solid 1px #ccc;">
-								<span style="font-size:20px; font-weight:bold;">Excellent</span><div style="float:right"><span style="font-size:20px; font-weight:bold;">4.5</span><span>/5</span></div>
+						<div class="content">
+							<div class="score">
+								<span class="qual">Excellent</span><div class="num"><span class="big" style="">4.5</span><span>/5</span></div>
 							</div>
-							<div class="reviews" style="padding:12px;">
+							<div class="reviews">
 								<ul>
 									<li class="f14">"Super hotel - highly recommended."<br />
 										<span class="date">Dec 31, 2013</span>
@@ -385,10 +425,20 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 									<span class="date">Dec 31, 2013</span>
 									</li>
 								</ul>
-								<p style="margin:6px 0 0"><a href="#">See all 321 Hotels.com reviews</a></p>
+								<p style="margin:6px 0 0"><a href="#">See all 321 verified Hotels.com reviews</a></p>
 							</div>
 							<div class="trip">
-								<img src="i/rating_trip.png" />
+								<img class="desktop" src="i/rating_trip.png" />
+								<div class="mobile">
+									<div>
+										<img src="i/trip_logo.png" />
+									</div>
+									<div class="copy" style="padding:0px 0 0 6px; line-height:18px">
+										
+										TripAdvisor Traveler Rating<br />
+										Based on 234 reviews
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
