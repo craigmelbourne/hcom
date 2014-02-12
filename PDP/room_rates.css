@@ -124,14 +124,14 @@ position: relative;}
  				table#merge td.type, table#rates th.type {display:none;}
  				table#merge td.occupancy {display:none;}
  				table#merge td.options {display:none;}
- 				table#merge td.loyalty {width:50%; border-left:solid 1px #ccc;}
- 				table#merge td.price_cell {width:50%;}
+ 				table#merge td.loyalty {width:50%; border-left:solid 1px #ccc; border-right:0; background-color:#fff;}
+ 				table#merge td.price_cell {width:50%; background-color:#fff;}
  				table#merge td.book_cell {display:none;}
  				
 
  				table#merge tbody {display: table-row-group; vertical-align: middle; border-color: inherit;}
  				table#merge tbody:before {content: " ";display: block;clear: both;height: 8px;}
- 				table#merge tbody td {vertical-align:top; background-color:#fff;}
+ 				table#merge tbody td {vertical-align:top; }
 
  				table#merge th.loyalty span.merge {display:inline;}
  				table#merge td.loyalty .occupancy {font-size:12px; overflow:hidden; margin-bottom:12px; }
@@ -154,7 +154,7 @@ position: relative;}
  				table#merge td.type, table#rates th.type {display:table-cell; width:28%;}
  				table#merge td.occupancy {display:none;}
  				table#merge td.options {display:none;}
- 				table#merge td.loyalty {width:28%;}
+ 				table#merge td.loyalty {width:28%; border-left:0; border-right:solid 1px #ccc;}
  				table#merge td.price_cell {width:39%;}
  				table#merge td.book_cell {display:table-cell; width:5%;}
 
