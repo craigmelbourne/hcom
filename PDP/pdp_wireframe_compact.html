@@ -10,6 +10,8 @@
 
 
 		<script src="../jquery.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+    	</script>
 		<script>
 			// functions *****************
 			// page load *****************
@@ -307,6 +309,7 @@
 
  				.grid {margin:0;}
  				.search {margin:0;}
+ 				.pagetop {margin:0 0;}
  			}
 
 
@@ -1108,5 +1111,106 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 
 		</div>
 		<div class-"footer" style="height:100px; clear:both;"></div>
+
+		
+
+		
+
+		<script>
+
+			
+			var latlong = new google.maps.LatLng(51.533548, -0.122368);
+
+			var icon ="i/map-pin-red.png";
+
+			function initializeMap() { 
+				var map = new google.maps.Map(document.getElementById('map_canvas'), {
+	      			center: latlong,
+	      			zoom: 14,
+	      			mapTypeId: 'roadmap',
+		  			mapTypeId: google.maps.MapTypeId.ROADMAP, 
+		  			panControl: false,
+					mapTypeControl: false,
+					streetViewControl:false,
+		  			zoomControl: false,
+		  			zoomControlOptions: {
+		        	style: google.maps.ZoomControlStyle.SMALL,
+		        	position: google.maps.ControlPosition.RIGHT_BOTTOM }
+		  		});
+
+		  		var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(latlong),
+					map: map,
+					icon: icon
+				});
+
+			}
+
+			
+			// functions *****************
+			// page load *****************
+
+			$(function() {
+			
+				
+
+				$(".map").on("click", function(e){
+					e.preventDefault();
+					$("#overlay").show();
+					$("#map").show();
+					initializeMap();
+				})
+
+				$("#overlay").on("click", function(){
+					$(this).hide();
+					$(".modal").hide();
+				});
+
+				$(".modal_header a.close").on("click", function(){
+					$("#overlay").hide();
+					$(".modal").hide();
+				})
+
+			});
+		</script>
+
+		<style type="text/css">
+			#overlay {position:absolute; top:0; bottom:0; left:0; right:0; opacity:0.7; background-color:#000; display:none;}
+
+			#map {position:absolute; background-color:#fff; top:0px; left:0px; right:0px; bottom:0px; display:none;}
+			#map_canvas {position:absolute; top:30px; bottom:0; width:100%;}
+
+			.map:hover {pointer:cursor;}
+
+			@media only screen and (min-width:0px) { 
+				#map {}
+				#map_canvas {position:absolute; top:30px; bottom:0; width:100%;}
+				.modal_header {position:absolute; top:0; width:100%; background-color:#555;}
+				.modal_header h2 {color:#fff; padding:12px; font-size:16px; line-height: 18px}
+				.modal_header a.close {position:absolute; display:inline-block; right:12px; top:12px; color:#fff;}
+			}
+
+			@media only screen and (min-width:600px) { 
+				.modal_header { border-top-left-radius: 12px; border-top-right-radius: 12px}
+				.modal_header h2 {color:#fff; padding:12px;}
+				
+				#map {top:30px; left:30px; right:30px; bottom:30px; border:solid 20px #fff; border-radius:12px;}
+			}
+
+
+		</style>
+
+		<div id="overlay"></div>
+
+		<div id="map" class="modal">
+			<div id="map_canvas"></div>
+			<div class="modal_header">
+				<h2>St. Pancras Renaissance London Hotel</h2>
+				<a href="#" class="close">Close X</a>
+			</div>
+
+			
+		</div>
+
 	</body>
 </html>
