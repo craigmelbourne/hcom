@@ -675,7 +675,7 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 				@media only screen and (min-width:0px) {
 					.container {margin-top:0}
 
-					.glance {margin:12px 0;}
+					.glance {margin:12px 0 0;}
 					.glance .block {}
 					.glance .block .inner h3 {font-size:14px;}
 					.glance .block .inner h4 {font-size:12px; font-weight: bold; margin-top:0px;}
@@ -684,10 +684,12 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 					.amenities .lists {}
 					.amenities .lists .inner {}
 
-					.glance .content { border-bottom:solid 1px #ccc; height:120px; overflow:hidden; padding:0 12px;}
+					.glance .content {  height:120px; overflow:hidden; padding:0 12px;}
+					
 					.glance h2 {color:#d41200; font-size: 16px;}
+					.glance a.more, .amenities a.more {display:block; padding:0 12px 6px; border-bottom:solid 1px #ccc; font-size:12px;}
 
-					.amenities .inner div { border-bottom:solid 1px #ccc; height:120px; overflow:hidden; margin-bottom:12px; padding:0 12px;}
+					.amenities .inner div {height:120px; overflow:hidden; margin-bottom:12px; padding:0 12px;}
 					.amenities .inner h2  {color:#d41200; font-size: 16px; }
 					.amenities .inner h2:first-child {border:0; margin-top:0;}
 					.amenities .inner h2:last-child {border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; border:solid 1px #ccc}
@@ -716,6 +718,8 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 					.glance .block .inner h3 {font-size:14px;}
 					.glance .block .inner h4 {font-size:12px; font-weight: bold; margin-top:12px;}
 					.glance .block .inner ul li {list-style-type: square; margin-left:17px;}
+
+					
 					
 
 					.amenities .content {background-color: #f5f4f0; border-radius: 3px; margin: 3px; padding: 20px; overflow:hidden;}
@@ -736,6 +740,8 @@ Lavish guestrooms mix original touches like high ceilings and expansive windows 
 					.amenities dl dd ul li {float:left; width:50%; padding:3px 0px 0px; line-height: 12px; margin-top: 0px; margin-bottom:6px;}
 					.amenities dl dt {float:left; width:25%;}
 					.amenities dl dd {float:left; width:75%;}
+
+					.glance a.more, .amenities a.more {display:none;}
 				}
 
 				@media only screen and (min-width:800px) {
@@ -837,8 +843,12 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 							</div>
 						</div>
 
+						
+
 					</div>
+					<a href="#" class="more">Read more</a>
 				</div>
+				
 
 				<div class="amenities container">
 					<div class="content">
@@ -922,7 +932,10 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 
 
 									</dl>
+
+									
 								</div>
+								<a href="#" class="more">Read more</a>
 								<div class="inroom">
 									<h2>In the room</h2>
 									<dl>
@@ -988,6 +1001,7 @@ box-shadow: 0 0 4px 0 #888; min-height:324px;}
 										</dd>-->
 									</dl>
 									</div>
+									<a href="#" class="more">Read more</a>
 								</div>
 
 							</div>
