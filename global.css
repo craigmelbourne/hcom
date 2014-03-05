@@ -52,7 +52,7 @@ padding: 3px 0;
 border: 1px solid #d1d1d1;
 box-sizing: border-box;
 box-shadow: 0 1px #f5f4f0;}
-button {box-sizing: border-box;align-items: flex-start;
+button.book {box-sizing: border-box;align-items: flex-start;
 text-align: center;vertical-align: middle;
 width: auto;font-weight: bold;
 line-height: 1.5;

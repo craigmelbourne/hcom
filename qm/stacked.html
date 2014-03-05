@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Query module - stacked / inline / contained width</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link rel="stylesheet" href="../global.css"></link>
+
+		<style type="text/css">
+
+			input[type=text]{box-sizing:border-box;font-size:12px;padding: 4px 10px 4px 7px; color:#555; width:100%;}
+			label {font-size:14px; line-height:18px;font-weight:bold;}
+
+			h1 {font-size:24px; line-height: 24px; padding:12px; margin:0;} 
+			
+			fieldset {border:0; margin:0; padding:0 12px;}
+			
+			fieldset#destination {padding:0 12px 12px; position:relative;}
+			
+			
+
+
+			@media only screen and (min-width: 0px) {
+				body {}
+				#page {margin:0;}
+				#wrapper {background-color:#fff; background-color:#555;}
+
+				h1 {font-size:24px; line-height: 24px;}
+
+				#qm-container {width:100%; background-color:#eae8e0; padding-bottom:12px;}
+				fieldset#destination input {width:100%; font-size:14px;}
+				fieldset#dates input {border:0; font-family:arial; padding:6px 0; font-size:16px;}
+
+ 			}
+
+
+			@media only screen and (min-width: 600px) {
+				#page {margin:0 12px;}
+				#wrapper {padding:24px;}
+				#qm-container {height:320px; width:340px;}
+			}
+
+			@media only screen and (min-width:800px) {
+	
+			}
+			
+			@media only screen and (min-width:1160px) {
+				#page {max-width:1136px; margin:0 auto; }
+
+			}
+
+			
+
+
+		</style>
+
+		
+
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<div id="wrapper" style="">
+				<div id="qm-container">
+
+					<h1>Hotel search</h1>
+
+					<fieldset id="destination">
+						<div style="margin-right:30px">
+							<input type="text" placeholder="Destination, hotel, landmark or address"/>
+							<img src="current_location.png" style="position:absolute; right:12px; top:2px;"/>
+						</div>
+						
+					</fieldset>
+
+					<fieldset id="dates">
+						<div style="float:left; width:50%">
+							<div style="margin-right:6px; background-color:#fff; padding:12px; border-radius:6px;">
+								<label>Check in</label>
+								<input type="text" readonly="true" style="" value="12/03/2014"/>
+							</div>
+						</div>
+						<div style="float:left; width:50%">
+							<div style="margin-left:6px; background-color:#fff;padding:12px; border-radius:6px;">
+								<label>Check out</label>
+								<input type="text" value="14/03/2014"/>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset id="rooms" style="padding:12px">
+						<div >
+							<select style="background: #fff;
+   width: 100%;
+   padding: 6px 12px;
+   font-size: 14px;
+   font-family:arial;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none; border-radius:6px;">
+								<option>1 room, 2 Adults</option>
+							</select>
+						</div>
+						
+					</fieldset>
+
+					<fieldset>
+						<button style="width:100%; border:0; background-color:#026DC5; color:#fff; font-size:18px; padding:6px 0; font-family:arial; font-weight:bold; border-radius:6px;">Search</button>
+					</fieldset>
+
+					
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</body>
+</html>
