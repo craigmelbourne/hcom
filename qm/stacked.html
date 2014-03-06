@@ -84,22 +84,34 @@
 					</fieldset>
 
 					<fieldset id="dates">
-						<div style="float:left; width:50%">
-							<div id="checkin" class="date" style="">
-								<label>Check in</label>
-								<input type="text" readonly="true" style="" value="12/03/2014"/>
-								<span class="day">Tonight</span>
+						<div style="overflow:hidden;">
+							<div style="float:left; width:50%">
+								<div id="checkin" class="date" style="">
+									<label>Check in</label>
+									<input type="text" readonly="true" style="" value="12/03/2014"/>
+									<span class="day">Tonight</span>
+								</div>
+							</div>
+							<div style="float:left; width:50%">
+								<div id="checkout">
+									<label>Check out</label>
+									<input type="text" value="14/03/2014" readonly="true"/>
+									<span class="day">Tuesday</span><br />
+									<span class="nights">2 nights</span>
+								</div>
 							</div>
 						</div>
-						<div style="float:left; width:50%">
-							<div id="checkout">
-								<label>Check out</label>
-								<input type="text" value="14/03/2014" readonly="true"/>
-								<span class="day">Tuesday</span><br />
-								<span class="nights">2 nights</span>
-							</div>
+
+						<div style="margin-top:6px;">
+							
+								<input id="dontknowdates" type="checkbox">
+							
+							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
 						</div>
+						
 					</fieldset>
+
+
 
 					<fieldset id="rooms" style="padding:12px">
 						<div >
