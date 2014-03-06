@@ -30,13 +30,22 @@
 				fieldset#destination input {width:100%; font-size:14px;}
 				fieldset#dates input {border:0; font-family:arial; padding:6px 0; font-size:16px;}
 
+				fieldset#dates #checkin {margin-right:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px} 
+				fieldset#dates #checkout {margin-left:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px}
+				fieldset#dates .day {font-size:12px; line-height:18px}
+				fieldset#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
+
+				#rooms select {background: #fff; width: 100%; padding: 6px 12px; font-size: 14px; font-family:arial; line-height: 1; border: 0; border-radius: 0; height: 34px; -webkit-appearance: none; border-radius:6px;}
+
+				#rooms select:hover {cursor: pointer;}
+
  			}
 
 
 			@media only screen and (min-width: 600px) {
 				#page {margin:0 12px;}
 				#wrapper {padding:24px;}
-				#qm-container {height:320px; width:340px;}
+				#qm-container {width:340px;}
 			}
 
 			@media only screen and (min-width:800px) {
@@ -76,31 +85,25 @@
 
 					<fieldset id="dates">
 						<div style="float:left; width:50%">
-							<div style="margin-right:6px; background-color:#fff; padding:12px; border-radius:6px;">
+							<div id="checkin" class="date" style="">
 								<label>Check in</label>
 								<input type="text" readonly="true" style="" value="12/03/2014"/>
+								<span class="day">Tonight</span>
 							</div>
 						</div>
 						<div style="float:left; width:50%">
-							<div style="margin-left:6px; background-color:#fff;padding:12px; border-radius:6px;">
+							<div id="checkout">
 								<label>Check out</label>
-								<input type="text" value="14/03/2014"/>
+								<input type="text" value="14/03/2014" readonly="true"/>
+								<span class="day">Tuesday</span><br />
+								<span class="nights">2 nights</span>
 							</div>
 						</div>
 					</fieldset>
 
 					<fieldset id="rooms" style="padding:12px">
 						<div >
-							<select style="background: #fff;
-   width: 100%;
-   padding: 6px 12px;
-   font-size: 14px;
-   font-family:arial;
-   line-height: 1;
-   border: 0;
-   border-radius: 0;
-   height: 34px;
-   -webkit-appearance: none; border-radius:6px;">
+							<select>
 								<option>1 room, 2 Adults</option>
 							</select>
 						</div>
