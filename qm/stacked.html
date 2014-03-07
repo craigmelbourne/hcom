@@ -12,6 +12,9 @@
 		$(function() {
 
 			var calselected;
+			var checkindate = 0;
+			var checkoutdate = 0;
+			var numnights = 0;
 			$('#destination input').keyup(function(){
     			console.log("pressed");
     			if ($(this).val().length >= 3){
@@ -36,10 +39,26 @@
 
 			$(".numbers a").on("click", function(e){
 				var num = $(this).text();
-				console.log(calselected + " - " + num)
+				if (calselected == "checkin"){
+					checkindate = $(this).text();
+				} else {
+					checkoutdate = $(this).text();
+				}
+				
 				$("#dates div#" + calselected + " input").val(num + "/08/2014");
-
+				$("#dates div#" + calselected + " .day").text($(this).attr("rel"));
 				$(".calendar").hide();
+
+				
+				if (checkindate != 0 && checkoutdate != 0) {
+					var numnights = checkoutdate - checkindate;
+					console.log("nights - " + numnights);
+					$("#dates div#checkout .nights").text(numnights + " nights");
+
+				}
+
+				$(this).addClass("selected");
+
 			})
 
    		});
@@ -94,6 +113,8 @@
 				#dates ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc;}
 
 				#dates ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
+
+				#dates ul.numbers li a.selected {background-color:#026DC5; color:#fff;}
 
 
 				
@@ -205,37 +226,37 @@
 									<li>Sun</li>
 								</ul>
 								<ul class="numbers" rel="08">
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">6</a></li>
-									<li><a href="#">7</a></li>
-									<li><a href="#">8</a></li>
-									<li><a href="#">9</a></li>
-									<li><a href="#">10</a></li>
-									<li><a href="#">11</a></li>
-									<li><a href="#">12</a></li>
-									<li><a href="#">13</a></li>
-									<li><a href="#">14</a></li>
-									<li><a href="#">15</a></li>
-									<li><a href="#">16</a></li>
-									<li><a href="#">17</a></li>
-									<li><a href="#">18</a></li>
-									<li><a href="#">19</a></li>
-									<li><a href="#">20</a></li>
-									<li><a href="#">21</a></li>
-									<li><a href="#">22</a></li>
-									<li><a href="#">23</a></li>
-									<li><a href="#">24</a></li>
-									<li><a href="#">25</a></li>
-									<li><a href="#">26</a></li>
-									<li><a href="#">27</a></li>
-									<li><a href="#">28</a></li>
-									<li><a href="#">29</a></li>
-									<li><a href="#">30</a></li>
-									<li><a href="#">31</a></li>
+									<li><a href="#" rel="Monday">1</a></li>
+									<li><a href="#" rel="Tuesday">2</a></li>
+									<li><a href="#" rel="Wednesday">3</a></li>
+									<li><a href="#" rel="Thursday">4</a></li>
+									<li><a href="#" rel="Friday">5</a></li>
+									<li><a href="#" rel="Saturday">6</a></li>
+									<li><a href="#" rel="Sunday">7</a></li>
+									<li><a href="#" rel="Monday">8</a></li>
+									<li><a href="#" rel="Tuesday">9</a></li>
+									<li><a href="#" rel="Wednesday">10</a></li>
+									<li><a href="#" rel="Thursday">11</a></li>
+									<li><a href="#" rel="Friday">12</a></li>
+									<li><a href="#" rel="Saturday">13</a></li>
+									<li><a href="#" rel="Sunday">14</a></li>
+									<li><a href="#" rel="Monday">15</a></li>
+									<li><a href="#" rel="Tuesday">16</a></li>
+									<li><a href="#" rel="Wednesday">17</a></li>
+									<li><a href="#" rel="Thursday">18</a></li>
+									<li><a href="#" rel="Friday">19</a></li>
+									<li><a href="#" rel="Saturday">20</a></li>
+									<li><a href="#" rel="Sunday">21</a></li>
+									<li><a href="#" rel="Monday">22</a></li>
+									<li><a href="#" rel="Tuesday">23</a></li>
+									<li><a href="#" rel="Wednesday">24</a></li>
+									<li><a href="#" rel="Thursday">25</a></li>
+									<li><a href="#" rel="Friday">26</a></li>
+									<li><a href="#" rel="Saturday">27</a></li>
+									<li><a href="#" rel="Sunday">28</a></li>
+									<li><a href="#" rel="Monday">29</a></li>
+									<li><a href="#" rel="Tuesday">30</a></li>
+									<li><a href="#" rel="Wednesday">31</a></li>
 									<li><a href="#">&nbsp;</a></li>
 									<li><a href="#">&nbsp;</a></li>
 									<li><a href="#">&nbsp;</a></li>
