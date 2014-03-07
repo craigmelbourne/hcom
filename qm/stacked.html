@@ -132,7 +132,7 @@
 
 				
 
-				#rooms select {background: #fff; width: 100%; padding: 6px 12px; font-size: 14px; font-family:arial; line-height: 1; border: 0; border-radius: 0; height: 34px; -webkit-appearance: none; border-radius:6px;}
+				#dropdown select {background: #fff; width: 100%; padding: 6px 12px; font-size: 14px; font-family:arial; line-height: 1; border: 0; border-radius: 0; height: 34px; -webkit-appearance: none; border-radius:6px;}
 
 				#rooms select:hover {cursor: pointer;}
 
@@ -288,12 +288,95 @@
 
 
 					<fieldset id="rooms" style="padding:12px">
-						<div >
+						<div id="dropdown" style="display:none">
 							<select>
 								<option>1 room, 2 adults</option>
 								<option>1 room, 1 adult</option>
 								<option>more options</option>
 							</select>
+						</div>
+
+						<div id="detailed" style="padding:12px; background-color:#fff; border-radius:6px;">
+							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px;">
+								<label>Rooms</label>
+								<select>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+								</select>
+							</div>
+							<div class="guests" style="overflow:hidden; margin-top:12px; ">
+								<div style="float:left; width:40%; height:50px">
+									<label>Room 1</label>
+								</div>
+								<div style="float:right; width:60%; text-align:right; height:50px">
+									<div style="display:inline-block; margin-right:12px; vertical-align:top; padding:">
+										<label style="display:block; font-size:12px;">Adults</label>
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+										</select>									
+									</div>
+									<div style="display:inline-block; vertical-align:top;">
+										<label style="display:block; font-size:12px">Children</label>
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>									
+									</div>
+								</div>
+
+								<div style="float:left; width:40%">
+									<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
+								</div>
+								<div style="float:right; width:60%; text-align:right; font-size:12px;">
+									<div>Child 1 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div>Child 2 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div>Child 3 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
 						</div>
 						
 					</fieldset>
