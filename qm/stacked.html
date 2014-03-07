@@ -11,6 +11,7 @@
 
 		$(function() {
 
+			var calselected;
 			$('#destination input').keyup(function(){
     			console.log("pressed");
     			if ($(this).val().length >= 3){
@@ -28,8 +29,17 @@
 
 			$(".date").on("click", function(e){
 				e.preventDefault();
-				console.log("date selected");
+				calselected = $(this).attr("id");
+
 				$(".calendar").show();
+			}); 
+
+			$(".numbers a").on("click", function(e){
+				var num = $(this).text();
+				console.log(calselected + " - " + num)
+				$("#dates div#" + calselected + " input").val(num + "/08/2014");
+
+				$(".calendar").hide();
 			})
 
    		});
@@ -152,16 +162,16 @@
 							<div style="float:left; width:50%">
 								<div id="checkin" class="date" style="">
 									<label>Check in</label>
-									<input type="text" readonly="true" style="" value="12/03/2014"/>
-									<span class="day">Tonight</span>
+									<input type="text" readonly="true" style="" placeholder="dd/mm/yyyy"/>
+									<span class="day">--</span>
 								</div>
 							</div>
 							<div style="float:left; width:50%">
 								<div id="checkout" class="date">
 									<label>Check out</label>
-									<input type="text" value="14/03/2014" readonly="true"/>
-									<span class="day">Tuesday</span><br />
-									<span class="nights">2 nights</span>
+									<input type="text" placeholder="dd/mm/yyyy" readonly="true"/>
+									<span class="day">--</span><br />
+									<span class="nights">0 nights</span>
 								</div>
 							</div>
 						</div>
@@ -173,7 +183,7 @@
 							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
 						</div>
 
-						<div class="calendar" style="">
+						<div class="calendar" style="display:none;">
 							<div id="month" style="text-align:center; border-bottom:solid 1px #ccc; position:relative; border-right:solid 1px #ccc;">
 								<h3 style="font-size:16px; padding:9px 0; margin:0;">August</h3>
 								<div style="position:absolute; left:6px; top:6px; font-size:18px; background-color:#555; color:#fff; bottom:6px; padding:3px 6px;">
@@ -194,7 +204,7 @@
 									<li>Sat</li>
 									<li>Sun</li>
 								</ul>
-								<ul class="numbers" rel="01">
+								<ul class="numbers" rel="08">
 									<li><a href="#">1</a></li>
 									<li><a href="#">2</a></li>
 									<li><a href="#">3</a></li>
