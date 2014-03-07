@@ -34,6 +34,12 @@
 				e.preventDefault();
 				calselected = $(this).attr("id");
 
+				if (calselected == "checkin") {
+					$("#checkout").addClass("selectedcal");
+				} else {
+					$("#checkin").addClass("selectedcal");
+				}
+
 				$(".calendar").show();
 			}); 
 
@@ -58,6 +64,7 @@
 				}
 
 				$(this).addClass("selected");
+				$(".date").removeClass("selectedcal");
 
 			})
 
@@ -103,8 +110,14 @@
 
 				#dates #checkin {margin-right:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px} 
 				#dates #checkout {margin-left:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px}
+
+				#dates .selectedcal {background-color:#eee!important;}
+				#dates .selectedcal label, .selectedcal .nights, .selectedcal .day {color:#ccc;}
+				#dates .selectedcal input {background-color:#eee; color:#ccc;}
 				
-				#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0;}
+				/*#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0;}*/
+
+				#dates .calendar {background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0; width:100%; margin:12px 0; overflow:hidden;}
 
 				#dates .day {font-size:12px; line-height:18px}
 				#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
@@ -197,12 +210,7 @@
 							</div>
 						</div>
 
-						<div style="margin-top:6px;">
-							
-								<input id="dontknowdates" type="checkbox">
-							
-							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
-						</div>
+						
 
 						<div class="calendar" style="display:none;">
 							<div id="month" style="text-align:center; border-bottom:solid 1px #ccc; position:relative; border-right:solid 1px #ccc;">
@@ -264,6 +272,13 @@
 								</ul>
 							</div>
 
+						</div>
+
+						<div style="margin-top:6px;">
+							
+								<input id="dontknowdates" type="checkbox">
+							
+							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
 						</div>
 						
 					</fieldset>
