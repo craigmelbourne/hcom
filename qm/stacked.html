@@ -26,6 +26,12 @@
 				$("#autosuggest").hide();
 			});
 
+			$(".date").on("click", function(e){
+				e.preventDefault();
+				console.log("date selected");
+				$(".calendar").show();
+			})
+
    		});
 
 		</script>
@@ -63,13 +69,24 @@
 				#autosuggest li:last-child {border:0;}
 				#autosuggest li:hover{cursor:pointer; background-color:#026DC5; color:#fff;}
 
+				#dates {position:relative;}
+				#dates input {border:0; font-family:arial; padding:3px 0; font-size:18px;}
 
-				fieldset#dates input {border:0; font-family:arial; padding:3px 0; font-size:18px;}
+				#dates #checkin {margin-right:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px} 
+				#dates #checkout {margin-left:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px}
+				
+				#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0;}
 
-				fieldset#dates #checkin {margin-right:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px} 
-				fieldset#dates #checkout {margin-left:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px}
-				fieldset#dates .day {font-size:12px; line-height:18px}
-				fieldset#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
+				#dates .day {font-size:12px; line-height:18px}
+				#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
+
+				#dates ul.letters li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; display:block; text-align:center; padding:6px 0; font-size:12px; font-weight:bold;}
+				#dates ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc;}
+
+				#dates ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
+
+
+				
 
 				#rooms select {background: #fff; width: 100%; padding: 6px 12px; font-size: 14px; font-family:arial; line-height: 1; border: 0; border-radius: 0; height: 34px; -webkit-appearance: none; border-radius:6px;}
 
@@ -140,7 +157,7 @@
 								</div>
 							</div>
 							<div style="float:left; width:50%">
-								<div id="checkout">
+								<div id="checkout" class="date">
 									<label>Check out</label>
 									<input type="text" value="14/03/2014" readonly="true"/>
 									<span class="day">Tuesday</span><br />
@@ -154,6 +171,68 @@
 								<input id="dontknowdates" type="checkbox">
 							
 							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
+						</div>
+
+						<div class="calendar" style="">
+							<div id="month" style="text-align:center; border-bottom:solid 1px #ccc; position:relative; border-right:solid 1px #ccc;">
+								<h3 style="font-size:16px; padding:9px 0; margin:0;">August</h3>
+								<div style="position:absolute; left:6px; top:6px; font-size:18px; background-color:#555; color:#fff; bottom:6px; padding:3px 6px;">
+									<
+								</div>
+
+								<div style="position:absolute; right:6px; top:6px; font-size:18px; background-color:#555; color:#fff; bottom:6px; padding:3px 6px;">
+									>
+								</div>
+							</div>
+							<div id="days">
+								<ul class="letters">
+									<li>Mon</li>
+									<li>Tue</li>
+									<li>Wed</li>
+									<li>Thur</li>
+									<li>Fri</li>
+									<li>Sat</li>
+									<li>Sun</li>
+								</ul>
+								<ul class="numbers" rel="01">
+									<li><a href="#">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#">6</a></li>
+									<li><a href="#">7</a></li>
+									<li><a href="#">8</a></li>
+									<li><a href="#">9</a></li>
+									<li><a href="#">10</a></li>
+									<li><a href="#">11</a></li>
+									<li><a href="#">12</a></li>
+									<li><a href="#">13</a></li>
+									<li><a href="#">14</a></li>
+									<li><a href="#">15</a></li>
+									<li><a href="#">16</a></li>
+									<li><a href="#">17</a></li>
+									<li><a href="#">18</a></li>
+									<li><a href="#">19</a></li>
+									<li><a href="#">20</a></li>
+									<li><a href="#">21</a></li>
+									<li><a href="#">22</a></li>
+									<li><a href="#">23</a></li>
+									<li><a href="#">24</a></li>
+									<li><a href="#">25</a></li>
+									<li><a href="#">26</a></li>
+									<li><a href="#">27</a></li>
+									<li><a href="#">28</a></li>
+									<li><a href="#">29</a></li>
+									<li><a href="#">30</a></li>
+									<li><a href="#">31</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+								</ul>
+							</div>
+
 						</div>
 						
 					</fieldset>
