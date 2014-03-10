@@ -68,6 +68,43 @@
 
 			})
 
+			$(".numchildren").change(function(){
+				var kids = $( ".numchildren option:selected" ).val();
+				var roomnum = $(this).attr("rel");
+				
+				//$("#room1 .children").show();
+				switch(kids) {
+					case "1":
+  						$("#" + roomnum + " .children").show();
+  						//console.log(roomnum + " + " + kids);
+  						//$("#room1 .children").show();
+
+  						$("#" + roomnum + " .children").find("div[rel=1]").show();
+  						$("#" + roomnum + " .children").find("div[rel=2]").hide();
+  						$("#" + roomnum + " .children").find("div[rel=3]").hide();
+  						break;
+					case "2":
+  						$("#"+roomnum + " .children").show();
+  						$("#" + roomnum + " .children").find("div[rel=1]").show();
+  						$("#" + roomnum + " .children").find("div[rel=2]").show();
+  						$("#" + roomnum + " .children").find("div[rel=3]").hide();
+  						break;
+  					case "3":
+  						$("#"+roomnum + " .children").show();
+  						$("#" + roomnum + " .children").find("div[rel=1]").show();
+  						$("#" + roomnum + " .children").find("div[rel=2]").show();
+  						$("#" + roomnum + " .children").find("div[rel=3]").show();
+  						break;
+				}
+			})
+
+			$("#basic select").change(function(){
+				if ($( "#basic select option:selected" ).val() == "more options"){
+					$("#basic").hide();
+					$("#detailed").show();
+				}
+			})
+
    		});
 
 		</script>
@@ -286,12 +323,12 @@
 					</fieldset>
 
 					<style type="text/css">
-						/*#detailed select{line-height: 1; border: 0; border-radius: 0; -webkit-appearance: none;}*/
-						#detailed select {font-size:14px; font-family:arial;}
+						#basic select{line-height: 1; border: 0; border-radius: 6px; -webkit-appearance: none; width:100%; font-size:14px; padding:12px; font-family:arial;}
+						
 					</style>
 
 					<fieldset id="rooms" style="padding:12px">
-						<div id="dropdown" style="display:none">
+						<div id="basic">
 							<select>
 								<option>1 room, 2 adults</option>
 								<option>1 room, 1 adult</option>
@@ -299,7 +336,7 @@
 							</select>
 						</div>
 
-						<div id="detailed" style="padding:12px; background-color:#fff; border-radius:6px;">
+						<div id="detailed" style="padding:12px; background-color:#fff; border-radius:6px;display:none;">
 							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px;">
 								<label>Rooms</label>
 								<select>
@@ -314,7 +351,7 @@
 									<option>9</option>
 								</select>
 							</div>
-							<div class="guests" style="overflow:hidden; margin-top:12px; ">
+							<div id="room1" class="guests" style="overflow:hidden; margin-top:12px; ">
 								<div style="float:left; width:40%; height:50px">
 									<label>Room 1</label>
 								</div>
@@ -335,7 +372,7 @@
 									</div>
 									<div style="display:inline-block; vertical-align:top;">
 										<label style="display:block; font-size:12px">Children</label>
-										<select>
+										<select class="numchildren" rel="room1">
 											<option>0</option>
 											<option>1</option>
 											<option>2</option>
@@ -343,12 +380,13 @@
 										</select>									
 									</div>
 								</div>
+								<div class="children" style="display:none;">
+									<div style="float:left; width:40%">
+										<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
+									</div>
 
-								<div style="float:left; width:40%">
-									<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
-								</div>
-								<div style="float:right; width:60%; text-align:right; font-size:12px;">
-									<div>Child 1 &nbsp;&nbsp;
+									<div style="float:right; width:60%; text-align:right; font-size:12px;">
+									<div class="child" rel="1">Child 1 &nbsp;&nbsp;
 										<select>
 											<option>1</option>
 											<option>2</option>
@@ -358,7 +396,7 @@
 											<option>6</option>
 										</select>
 									</div>
-									<div>Child 2 &nbsp;&nbsp;
+									<div  class="child" rel="2">Child 2 &nbsp;&nbsp;
 										<select>
 											<option>1</option>
 											<option>2</option>
@@ -368,7 +406,7 @@
 											<option>6</option>
 										</select>
 									</div>
-									<div>Child 3 &nbsp;&nbsp;
+									<div class="child" rel="3">Child 3 &nbsp;&nbsp;
 										<select>
 											<option>1</option>
 											<option>2</option>
@@ -379,6 +417,10 @@
 										</select>
 									</div>
 								</div>
+
+								</div>
+								
+								
 							</div>
 							
 						</div>
