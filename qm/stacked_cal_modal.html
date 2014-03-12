@@ -105,9 +105,58 @@
 						#detailed {padding:12px; background-color:#fff; border-radius:6px;display:none;}
 						#detailed div.numrooms {border-bottom:solid 1px #ccc; padding-bottom:6px;}
 						
+						.add a {display:inline-block; vertical-align:top; text-decoration:none; font-size:18px; font-weigth:bold; color:#fff; background-color:#555; padding:0 6px; border-radius:12px;}
 					</style>
 
-					<fieldset id="rooms" style="padding:12px">
+					<fieldset id="new-rooms">
+
+						<div class="room" style=" background-color:#fff; border-radius:6px; margin:12px 0; padding:12px;">
+
+							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px; font-size:14px;">Room 1</div>
+
+							<div class="adults guests" style="overflow:hidden; padding:6px 0;">
+								<div style="float:left;">
+									<span style="font-size:14px; font-weight:bold;">Adults</span><br />
+									<span style="font-size:12px; color:#777;">Aged 18+</span>
+								</div>
+								<div style="float:right;" class="add"><a href="#">-</a> <span style="font-size:20px;">1</span> <a href="#" class="add" style="">+</a></div>
+							</div>
+
+							<div class="children guests" style="overflow:hidden; padding:6px 0;">
+								<div style="float:left;">
+									<span style="font-size:14px; font-weight:bold;">Children</span><br />
+									<span style="font-size:12px; color:#777;">Aged 0-17</span>
+								</div>
+								<div style="float:right;" class="add">
+									<a href="#">-</a> 
+									<span style="font-size:20px;">0</span> 
+									<a href="#" class="add" style="">+</a></div>
+							</div>
+
+							<div class="numchildren" style="overflow:hidden;">
+									<div style="float:left; width:40%">
+										<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
+									</div>
+
+									<div style="float:right; width:60%; text-align:right; font-size:12px;">
+									<div class="child" rel="1">Child 1 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</fieldset>
+
+					<fieldset id="rooms" style="padding:12px; display:none;">
 						<div id="basic">
 							<select>
 								<option>1 room, 2 adults</option>
