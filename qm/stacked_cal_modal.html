@@ -105,35 +105,67 @@
 						#detailed {padding:12px; background-color:#fff; border-radius:6px;display:none;}
 						#detailed div.numrooms {border-bottom:solid 1px #ccc; padding-bottom:6px;}
 						
+						.room { background-color:#fff; border-top-left-radius:6px; border-top-right-radius:6px; margin:12px 0 0; padding:12px;}
+
 						.add a {display:inline-block; vertical-align:top; text-decoration:none; font-size:18px; font-weigth:bold; color:#fff; background-color:#555; padding:0 6px; border-radius:12px;}
+
+						.guests {overflow:hidden; padding:6px 0;}
+						.guests label {display:block; font-size:14px;}
+						.guests span {font-size:12px; color:#777;}
+						.guests .add {}
+						.guests .total {font-size:20px;}
+						
 					</style>
+
+					<script>
+
+						$(function() {
+							$(".plus").on("click", function(e){
+								e.preventDefault();
+								
+								var total = parseInt($(this).siblings(".total").text()) + 1;
+								$(this).siblings(".total").text(total);
+							});
+
+							$(".minus").on("click", function(e){
+								e.preventDefault();
+								
+								var total = parseInt($(this).siblings(".total").text()) - 1;
+								$(this).siblings(".total").text(total);
+							});
+						});
+					</script>
 
 					<fieldset id="new-rooms">
 
-						<div class="room" style=" background-color:#fff; border-radius:6px; margin:12px 0; padding:12px;">
+						<div class="room">
 
 							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px; font-size:14px;">Room 1</div>
 
-							<div class="adults guests" style="overflow:hidden; padding:6px 0;">
+							<div class="adults guests">
 								<div style="float:left;">
-									<span style="font-size:14px; font-weight:bold;">Adults</span><br />
-									<span style="font-size:12px; color:#777;">Aged 18+</span>
+									<label>Adults</label>
+									<span>Aged 18+</span>
 								</div>
-								<div style="float:right;" class="add"><a href="#">-</a> <span style="font-size:20px;">1</span> <a href="#" class="add" style="">+</a></div>
+								<div style="float:right;" class="add">
+									<a class="minus" href="#">-</a> 
+									<span class="total">1</span> 
+									<a href="#" class="plus">+</a>
+								</div>
 							</div>
 
-							<div class="children guests" style="overflow:hidden; padding:6px 0;">
+							<div class="children guests">
 								<div style="float:left;">
-									<span style="font-size:14px; font-weight:bold;">Children</span><br />
-									<span style="font-size:12px; color:#777;">Aged 0-17</span>
+									<label>Children</label>
+									<span>Aged 0-17</span>
 								</div>
 								<div style="float:right;" class="add">
 									<a href="#">-</a> 
-									<span style="font-size:20px;">0</span> 
-									<a href="#" class="add" style="">+</a></div>
+									<span class="total">0</span> 
+									<a href="#" class="plus">+</a></div>
 							</div>
 
-							<div class="numchildren" style="overflow:hidden;">
+							<div class="numchildren" style="overflow:hidden; display:none;">
 									<div style="float:left; width:40%">
 										<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
 									</div>
@@ -155,6 +187,9 @@
 						</div>
 
 					</fieldset>
+					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 12px;">
+						Add room
+					</div>
 
 					<fieldset id="rooms" style="padding:12px; display:none;">
 						<div id="basic">
