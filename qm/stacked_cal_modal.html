@@ -122,16 +122,38 @@
 						$(function() {
 							$(".plus").on("click", function(e){
 								e.preventDefault();
-								
-								var total = parseInt($(this).siblings(".total").text()) + 1;
+								var total = parseInt($(this).siblings(".total").text())
+								var type = $(this).closest(".guests").attr("rel");
+								if (type == "adults" && total < 8){
+									total++
+								} else if (type == "children" && total < 3) {
+									total++
+									$(this).closest(".room").find(".numchildren").show().find("div[rel=" + total + "]").show();
+								}
+
+								 
 								$(this).siblings(".total").text(total);
 							});
 
 							$(".minus").on("click", function(e){
 								e.preventDefault();
+								var total = parseInt($(this).siblings(".total").text());
+								var type = $(this).closest(".guests").attr("rel"); 
+								if (total > 0) {
+									total = total - 1; 
+									$(this).siblings(".total").text(total);
+									if (type == "children") {
+										$(this).closest(".room").find(".numchildren").show().find("div[rel=" + (total + 1) + "]").hide();
+
+										if (total == 0) {
+											$(this).closest(".room").find(".numchildren").hide()
+										}
+									}
+
+									
+								}
 								
-								var total = parseInt($(this).siblings(".total").text()) - 1;
-								$(this).siblings(".total").text(total);
+								
 							});
 						});
 					</script>
@@ -142,7 +164,7 @@
 
 							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px; font-size:14px;">Room 1</div>
 
-							<div class="adults guests">
+							<div class="guests" rel="adults">
 								<div style="float:left;">
 									<label>Adults</label>
 									<span>Aged 18+</span>
@@ -154,13 +176,13 @@
 								</div>
 							</div>
 
-							<div class="children guests">
+							<div class="guests" rel="children">
 								<div style="float:left;">
 									<label>Children</label>
 									<span>Aged 0-17</span>
 								</div>
 								<div style="float:right;" class="add">
-									<a href="#">-</a> 
+									<a href="#" class="minus">-</a> 
 									<span class="total">0</span> 
 									<a href="#" class="plus">+</a></div>
 							</div>
@@ -171,7 +193,27 @@
 									</div>
 
 									<div style="float:right; width:60%; text-align:right; font-size:12px;">
-									<div class="child" rel="1">Child 1 &nbsp;&nbsp;
+									<div class="child" rel="1" style="display:none;">Child 1 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div class="child" rel="2" style="display:none;">Child 2 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div class="child" rel="3" style="display:none;">Child 3 &nbsp;&nbsp;
 										<select>
 											<option>1</option>
 											<option>2</option>
