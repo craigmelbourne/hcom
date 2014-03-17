@@ -103,12 +103,12 @@
 
 						
 
-						<div style="margin-top:6px;">
+						<!--<div style="margin-top:6px;">
 							
 								<input id="dontknowdates" type="checkbox">
 							
 							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
-						</div>
+						</div>-->
 						
 					</fieldset>
 
@@ -175,9 +175,18 @@
 						});
 					</script>
 
-					<fieldset id="new-rooms">
+					<fieldset id="new-rooms" style="margin:0 0 12px">
 
-						<div class="room">
+						<div id="basic">
+							<select>
+								<option>1 room, 2 adults</option>
+								<option>1 room, 1 adult</option>
+								<option>more options</option>
+							</select>
+						</div>
+
+
+						<div class="room" style="display:none;">
 
 							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px; font-size:14px;">Room 1</div>
 
@@ -246,7 +255,7 @@
 						</div>
 
 					</fieldset>
-					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 12px;">
+					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 12px; display:none;">
 						Add room
 					</div>
 
