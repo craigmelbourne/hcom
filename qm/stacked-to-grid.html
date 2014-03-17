@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Query module - stacked / inline / contained width</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link rel="stylesheet" href="../global.css"></link>
+		<link rel="stylesheet" href="qm.css"></link>
+
+		<script src="../jquery.js"></script>
+		<script>
+		 $(function() {
+
+		 	$("#calendar .title a").on("click", function(e){
+		 		e.preventDefault();
+		 		$("#calendar").hide();
+		 	});
+
+		 	$(".date").on("click", function(e){
+				e.preventDefault();
+				calselected = $(this).attr("id");
+
+				if (calselected == "checkin") {
+					//$("#checkout").addClass("selectedcal");
+				} else {
+					//$("#checkin").addClass("selectedcal");
+				}
+
+				//$("#calendar").show();
+			}); 
+
+		 });
+		</script>
+
+		<style type="text/css">
+
+		@media only screen and (min-width: 0px) {
+			
+		}
+				
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="page">
+
+			<div id="wrapper" style="">
+				<div id="qm-container">
+
+					<h1>Hotel search</h1>
+
+					<fieldset id="destination">
+						<div style="margin-right:30px">
+							<input type="text" placeholder="Destination, hotel, landmark or address"/>
+							<img src="current_location.png" style="position:absolute; right:12px; top:2px;"/>
+							<div id="autosuggest" style="display:none;">
+								<ul>
+									<li>London, United Kingdom</li>
+									<li>London, Canada</li>
+									<li>Londonderry, United Kingdom</li>
+									<li>New London, Connecticut, United States</li>
+									<li>Londrina, Brazil</li>
+									<li>London, Kentucky, United States</li>
+									<li>Covent Garden, London, United Kingdom</li>
+								</ul>
+							</div>
+						</div>
+						
+					</fieldset>
+
+
+					<style type="text/css">
+						@media only screen and (min-width:0px) {
+							#dates-stacked .date {background-color:#fff; padding:12px; margin-bottom:12px; overflow:hidden;}
+							#dates-stacked .date label {display:block;}
+							#dates-stacked .date input {float:left; width:75%; border:0; padding:6px 0 0; font-size:16px;}
+							#dates-stacked .date .nights {float:right; text-align:right; display:block; padding:6px;}
+						}
+					</style>
+
+					<fieldset id="dates-stacked">
+						<div style="overflow:hidden;">
+							<div>
+								<div id="checkin" class="date">
+									<label>Check in</label>
+									
+										<input type="text" readonly="true"  placeholder="dd/mm/yyyy"/>
+									
+									
+									<span class="nights">--</span>
+								</div>
+							</div>
+							<div>
+								<div id="checkout" class="date">
+									<label>Check out</label>
+									<input type="text" placeholder="dd/mm/yyyy" readonly="true"/>
+									
+									<span class="nights">0 nights</span>
+								</div>
+							</div>
+						</div>
+
+						
+
+						<div style="margin-top:6px;">
+							
+								<input id="dontknowdates" type="checkbox">
+							
+							 <label style="font-size:12px; line-height:12px; font-weight:normal" for="dontknowdates">I don't know my dates yet</label>
+						</div>
+						
+					</fieldset>
+
+					<style type="text/css">
+						#basic select{line-height: 1; border: 0; border-radius: 6px; -webkit-appearance: none; width:100%; font-size:14px; padding:12px; font-family:arial; background-color:#fff;}
+
+						#detailed {padding:12px; background-color:#fff; border-radius:6px;display:none;}
+						#detailed div.numrooms {border-bottom:solid 1px #ccc; padding-bottom:6px;}
+						
+						.room { background-color:#fff; border-top-left-radius:6px; border-top-right-radius:6px; margin:12px 0 0; padding:12px;}
+
+						.add a {display:inline-block; vertical-align:top; text-decoration:none; font-size:18px; font-weigth:bold; color:#fff; background-color:#555; padding:0 6px; border-radius:12px;}
+
+						.guests {overflow:hidden; padding:6px 0;}
+						.guests label {display:block; font-size:14px;}
+						.guests span {font-size:12px; color:#777;}
+						.guests .add {}
+						.guests .total {font-size:20px; margin:0 6px;}
+
+						.numchildren .child {margin-bottom:6px;}
+
+						.numchildren .child select {font-size:16px;}
+						
+					</style>
+
+					<script>
+
+						$(function() {
+							$(".plus").on("click", function(e){
+								e.preventDefault();
+								var total = parseInt($(this).siblings(".total").text())
+								var type = $(this).closest(".guests").attr("rel");
+								if (type == "adults" && total < 8){
+									total++
+								} else if (type == "children" && total < 3) {
+									total++
+									$(this).closest(".room").find(".numchildren").show().find("div[rel=" + total + "]").show();
+								}
+
+								 
+								$(this).siblings(".total").text(total);
+							});
+
+							$(".minus").on("click", function(e){
+								e.preventDefault();
+								var total = parseInt($(this).siblings(".total").text());
+								var type = $(this).closest(".guests").attr("rel"); 
+								if (total > 0) {
+									total = total - 1; 
+									$(this).siblings(".total").text(total);
+									if (type == "children") {
+										$(this).closest(".room").find(".numchildren").show().find("div[rel=" + (total + 1) + "]").hide();
+
+										if (total == 0) {
+											$(this).closest(".room").find(".numchildren").hide()
+										}
+									}
+
+									
+								}
+								
+								
+							});
+						});
+					</script>
+
+					<fieldset id="new-rooms">
+
+						<div class="room">
+
+							<div style="border-bottom:solid 1px #ccc; padding-bottom:6px; font-size:14px;">Room 1</div>
+
+							<div class="guests" rel="adults">
+								<div style="float:left;">
+									<label>Adults</label>
+									<span>Aged 18+</span>
+								</div>
+								<div style="float:right;" class="add">
+									<a class="minus" href="#">-</a> 
+									<span class="total">1</span> 
+									<a href="#" class="plus">+</a>
+								</div>
+							</div>
+
+							<div class="guests" rel="children">
+								<div style="float:left;">
+									<label>Children</label>
+									<span>Aged 0-17</span>
+								</div>
+								<div style="float:right;" class="add">
+									<a href="#" class="minus">-</a> 
+									<span class="total">0</span> 
+									<a href="#" class="plus">+</a></div>
+							</div>
+
+							<div class="numchildren" style="overflow:hidden; display:none;">
+									<div style="float:left; width:40%">
+										<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
+									</div>
+
+									<div style="float:right; width:60%; text-align:right; font-size:12px;">
+									<div class="child" rel="1" style="display:none;">Child 1 &nbsp;&nbsp;
+										<select style="font-size:16px;">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div class="child" rel="2" style="display:none;">Child 2 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div class="child" rel="3" style="display:none;">Child 3 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</fieldset>
+					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 12px;">
+						Add room
+					</div>
+
+					<fieldset id="rooms" style="padding:12px; display:none;">
+						<div id="basic">
+							<select>
+								<option>1 room, 2 adults</option>
+								<option>1 room, 1 adult</option>
+								<option>more options</option>
+							</select>
+						</div>
+
+						<div id="detailed">
+							<div class="numrooms">
+								<label>Rooms</label>
+								<select>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+								</select>
+							</div>
+							<div id="room1" class="guests" style="overflow:hidden; margin-top:12px; ">
+								<div style="float:left; width:40%; height:50px">
+									<label>Room 1</label>
+								</div>
+								<div style="float:right; width:60%; text-align:right; height:50px">
+									<div style="display:inline-block; margin-right:12px; vertical-align:top; padding:">
+										<label style="display:block; font-size:12px;">Adults</label>
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+										</select>									
+									</div>
+									<div style="display:inline-block; vertical-align:top;">
+										<label style="display:block; font-size:12px">Children</label>
+										<select class="numchildren" rel="room1">
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+										</select>									
+									</div>
+								</div>
+								<div class="children" style="display:none;">
+									<div style="float:left; width:40%">
+										<label style="font-size:12px; font-weight:normal;">Age at checkin</label>
+									</div>
+
+									<div style="float:right; width:60%; text-align:right; font-size:12px;">
+									<div class="child" rel="1">Child 1 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div  class="child" rel="2">Child 2 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+									<div class="child" rel="3">Child 3 &nbsp;&nbsp;
+										<select>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+											<option>6</option>
+										</select>
+									</div>
+								</div>
+
+								</div>
+								
+								
+							</div>
+							
+						</div>
+						
+					</fieldset>
+
+					<fieldset>
+						<button style="">Search</button>
+					</fieldset>
+
+					
+
+				</div>
+			</div>
+
+
+		</div>
+
+						<style type="text/css">
+							 .calendar { top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0;  overflow:hidden; margin:12px 12px;}
+
+				 .day {font-size:12px; line-height:18px}
+				 .nights {font-size:12px; line-height:18px; font-weight:bold;}
+
+				 ul.letters, ul.numbers {}
+				 ul.letters li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; display:block; text-align:center; padding:6px 0; font-size:12px; font-weight:bold; background-color:#fff;}
+				 ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; background-color:#fff;}
+
+				 ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
+
+				ul.numbers li a.selected {background-color:#026DC5; color:#fff;}
+
+				.title {background-color:#555; color:#555; padding:12px; position:relative;}
+			.title h1 {font-size:18px; color:#fff; line-height:18px; margin:0; padding:0;}
+			.title a {position:absolute; top:6px; right: 6px; display:inline-block; padding:6px; font-weight:bold; color:#fff; font-size:14px; text-decoration: none;}
+						</style>
+
+						<div id="calendar" class="modal" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:#fff; background-color:#eae8e0; display:none;">
+
+							<div class="title">
+								<a href="#" rel="calendar">close</a>
+								<h1 >Check in</h1>
+							</div>
+
+							<div class="selecteddate" style="padding:12px; font-size:20px;">
+								12 March 2014
+							</div>	
+							<div id="month" style="text-align:center; border-bottom:solid 1px #ccc; border-top:solid 1px #ccc;position:relative; margin:0 12px;">
+								<h3 style="font-size:16px; padding:12px 0; margin:0;">August</h3>
+								<div style="position:absolute; left:0px; top:6px; font-size:18px; background-color:#555; color:#fff; bottom:6px; padding:6px 6px;">
+									<
+								</div>
+
+								<div style="position:absolute; right:0px; top:6px; font-size:18px; background-color:#555; color:#fff; bottom:6px; padding:6px 6px;">
+									>
+								</div>
+							</div>
+						<div class="calendar">
+							
+							<div id="days" style="border-left:solid 1px #ccc; overflow:hidden;">
+								<ul class="letters">
+									<li>Mon</li>
+									<li>Tue</li>
+									<li>Wed</li>
+									<li>Thur</li>
+									<li>Fri</li>
+									<li>Sat</li>
+									<li>Sun</li>
+								</ul>
+								<ul class="numbers" rel="08">
+									<li><a href="#" rel="Monday">1</a></li>
+									<li><a href="#" rel="Tuesday">2</a></li>
+									<li><a href="#" rel="Wednesday">3</a></li>
+									<li><a href="#" rel="Thursday">4</a></li>
+									<li><a href="#" rel="Friday">5</a></li>
+									<li><a href="#" rel="Saturday">6</a></li>
+									<li><a href="#" rel="Sunday">7</a></li>
+									<li><a href="#" rel="Monday">8</a></li>
+									<li><a href="#" rel="Tuesday">9</a></li>
+									<li><a href="#" rel="Wednesday">10</a></li>
+									<li><a href="#" rel="Thursday">11</a></li>
+									<li><a href="#" rel="Friday">12</a></li>
+									<li><a href="#" rel="Saturday">13</a></li>
+									<li><a href="#" rel="Sunday">14</a></li>
+									<li><a href="#" rel="Monday">15</a></li>
+									<li><a href="#" rel="Tuesday">16</a></li>
+									<li><a href="#" rel="Wednesday">17</a></li>
+									<li><a href="#" rel="Thursday">18</a></li>
+									<li><a href="#" rel="Friday">19</a></li>
+									<li><a href="#" rel="Saturday">20</a></li>
+									<li><a href="#" rel="Sunday">21</a></li>
+									<li><a href="#" rel="Monday">22</a></li>
+									<li><a href="#" rel="Tuesday">23</a></li>
+									<li><a href="#" rel="Wednesday">24</a></li>
+									<li><a href="#" rel="Thursday">25</a></li>
+									<li><a href="#" rel="Friday">26</a></li>
+									<li><a href="#" rel="Saturday">27</a></li>
+									<li><a href="#" rel="Sunday">28</a></li>
+									<li><a href="#" rel="Monday">29</a></li>
+									<li><a href="#" rel="Tuesday">30</a></li>
+									<li><a href="#" rel="Wednesday">31</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+									<li><a href="#">&nbsp;</a></li>
+								</ul>
+							</div>
+
+						</div>
+
+						<div style="margin:0 auto; width:200px; text-align:center; font-size:14px;">
+							<a href="#">Clear dates</a>
+						</div>
+
+	</body>
+</html>
