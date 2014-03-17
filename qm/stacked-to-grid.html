@@ -82,9 +82,12 @@
 							#page {margin:0;}
 				#wrapper {padding:18px;}
 							#wrapper {}
-							#qm-container {width:564px; margin:auto;}
-							#dates-stacked .date {float:left; width:228px;}
+							#qm-container {width:564px; margin:auto; overflow:hidden;}
+							#dates-stacked .date {float:left; width:240px;}
 							#dates-stacked #checkout {margin-left:12px;}
+
+							#new-rooms, #submit {float:left; width:264px; padding:0 0 0 12px;}
+							#submit button {padding:9px 0;}
 						}
 					</style>
 
@@ -368,7 +371,7 @@
 						
 					</fieldset>
 
-					<fieldset>
+					<fieldset id="submit">
 						<button style="">Search</button>
 					</fieldset>
 
