@@ -50,36 +50,18 @@
 
 					<h1>Hotel search</h1>
 
-					<fieldset id="destination">
-						<div style="margin-right:30px">
-							<input type="text" placeholder="Destination, hotel, landmark or address"/>
-							<img src="current_location.png" style="position:absolute; right:12px; top:2px;"/>
-							<div id="autosuggest" style="display:none;">
-								<ul>
-									<li>London, United Kingdom</li>
-									<li>London, Canada</li>
-									<li>Londonderry, United Kingdom</li>
-									<li>New London, Connecticut, United States</li>
-									<li>Londrina, Brazil</li>
-									<li>London, Kentucky, United States</li>
-									<li>Covent Garden, London, United Kingdom</li>
-								</ul>
-							</div>
-						</div>
-						
-					</fieldset>
-
 
 					<style type="text/css">
 						@media only screen and (min-width:0px) {
-							
-							#dates-stacked {margin-bottom:6px;}
-							#dates-stacked .date {background-color:#fff; padding:6px 6px 3px; margin-bottom:0; overflow:hidden;}
+							fieldset#destination {margin:0 0 6px 12px; padding:0 12px 0 0;}
+							#dates-stacked {margin:0 0 6px;}
+							#dates-stacked .date {background-color:#fff; padding:6px 12px 3px; margin-bottom:0; overflow:hidden;}
 
 							#dates-stacked .date {} 
 							#dates-stacked .date label {display:block;}
 							#dates-stacked .date input {float:left; width:60%; border:0; padding:3px 0 0; font-size:16px;}
 							#dates-stacked .date .nights {float:right; text-align:right; display:block; padding:6px;}
+							fieldset#submit {margin:0;}
 						}
 
 						@media only screen and (min-width:600px) {
@@ -104,6 +86,27 @@
 							#page {margin:0; max-width:1140px; margin:0 auto;}
 						}
 					</style>
+
+
+					<fieldset id="destination">
+						<div style="margin-right:30px">
+							<input type="text" placeholder="Destination, hotel, landmark or address"/>
+							<img src="current_location.png" style="position:absolute; right:12px; top:2px;"/>
+							<div id="autosuggest" style="display:none;">
+								<ul>
+									<li>London, United Kingdom</li>
+									<li>London, Canada</li>
+									<li>Londonderry, United Kingdom</li>
+									<li>New London, Connecticut, United States</li>
+									<li>Londrina, Brazil</li>
+									<li>London, Kentucky, United States</li>
+									<li>Covent Garden, London, United Kingdom</li>
+								</ul>
+							</div>
+						</div>
+						
+					</fieldset>
+
 
 					<fieldset id="dates-stacked">
 						<div style="overflow:hidden;">
@@ -139,7 +142,8 @@
 					</fieldset>
 
 					<style type="text/css">
-						#basic select{line-height: 1; border: 0; border-radius: 6px; -webkit-appearance: none; width:100%; font-size:14px; padding:12px; font-family:arial; background-color:#fff;}
+						
+						#basic select{line-height: 1; border: 0; border-radius: 6px; -webkit-appearance: none; width:100%; font-size:14px; padding:6px 12px; font-family:arial; background-color:#fff;}
 
 						#detailed {padding:12px; background-color:#fff; border-radius:6px;display:none;}
 						#detailed div.numrooms {border-bottom:solid 1px #ccc; padding-bottom:6px;}
@@ -201,7 +205,7 @@
 						});
 					</script>
 
-					<fieldset id="new-rooms" style="margin:0 0 12px">
+					<fieldset id="new-rooms" style="margin:6px 0 6px">
 
 						<div id="basic">
 							<select>
@@ -281,7 +285,7 @@
 						</div>
 
 					</fieldset>
-					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 12px; display:none;">
+					<div class="addroom" style="background-color:#a5a5a5; text-align:center; padding:6px 0; font-size:14px; margin:0 12px 0px; display:none;">
 						Add room
 					</div>
 
