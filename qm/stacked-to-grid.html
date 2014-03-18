@@ -59,6 +59,9 @@
 							#dates-stacked {margin:0 0 6px;}
 							#dates-stacked .date {background-color:#fff; padding:6px 12px 3px; margin-bottom:0; overflow:hidden;}
 
+							#dates-stacked #checkin {border-bottom:dashed 1px #ccc; border-top-left-radius: 6px; border-top-right-radius: 6px}
+							#dates-stacked #checkout {border-bottom-right-radius: 6px; border-bottom-left-radius: 6px}
+
 							#dates-stacked .date {} 
 							#dates-stacked .date label {display:block;}
 							#dates-stacked .date input {float:left; width:60%; border:0; padding:3px 0 0; font-size:16px;}
@@ -113,7 +116,7 @@
 					<fieldset id="dates-stacked">
 						<div style="overflow:hidden;">
 							<div>
-								<div id="checkin" class="date" style="border-bottom:dashed 1px #ccc;">
+								<div id="checkin" class="date">
 									<label>Check in</label>
 									
 										<input type="text" readonly="true"  placeholder="dd/mm/yyyy"/>
