@@ -8,8 +8,12 @@
 
 		<script src="../jquery.js"></script>
 		<script>
+		var calselected;
+		 	var checkindate = 0;
+			var checkoutdate = 0;
+			var numnights = 0;
 		 $(function() {
-
+		 	
 		 	$("#calendar .title a").on("click", function(e){
 		 		e.preventDefault();
 		 		$("#calendar").hide();
@@ -20,9 +24,12 @@
 				calselected = $(this).attr("id");
 
 				if (calselected == "checkin") {
-					$("#checkout").addClass("selectedcal");
+					//$("#checkout").addClass("selectedcal");
+					$("#calendar h1").text("Check in");
+
 				} else {
-					$("#checkin").addClass("selectedcal");
+					//$("#checkin").addClass("selectedcal");
+					$("#calendar h1").text("Check out");
 				}
 
 				$("#calendar").show();
@@ -424,6 +431,35 @@
 			.title h1 {font-size:18px; color:#fff; line-height:18px; margin:0; padding:0;}
 			.title a {position:absolute; top:6px; right: 6px; display:inline-block; padding:6px; font-weight:bold; color:#fff; font-size:14px; text-decoration: none;}
 						</style>
+
+						<script>
+							$(function() {
+								$(".numbers a").on("click", function(e){
+									var num = $(this).text();
+									if (calselected == "checkin"){
+										checkindate = $(this).text();
+									} else {
+										checkoutdate = $(this).text();
+									}
+				
+									$("#dates-stacked div#" + calselected + " input").val(num + "/08/2014");
+									$("#dates-stacked div#" + calselected + " .day").text($(this).attr("rel"));
+									$("#calendar").hide();
+
+				
+									if (checkindate != 0 && checkoutdate != 0) {
+										var numnights = checkoutdate - checkindate;
+										console.log("nights - " + numnights);
+										$("#dates-stacked div#checkout .nights").text(numnights + " nights");
+
+									}
+
+									$(this).addClass("selected");
+									
+
+								})
+							});
+						</script>
 
 						<div id="calendar" class="modal" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:#fff; background-color:#eae8e0; display:none;">
 
