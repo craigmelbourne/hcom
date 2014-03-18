@@ -72,9 +72,13 @@
 
 					<style type="text/css">
 						@media only screen and (min-width:0px) {
-							#dates-stacked .date {background-color:#fff; padding:12px; margin-bottom:12px; overflow:hidden;}
+							
+							#dates-stacked {margin-bottom:6px;}
+							#dates-stacked .date {background-color:#fff; padding:6px 6px 3px; margin-bottom:0; overflow:hidden;}
+
+							#dates-stacked .date {} 
 							#dates-stacked .date label {display:block;}
-							#dates-stacked .date input {float:left; width:60%; border:0; padding:6px 0 0; font-size:16px;}
+							#dates-stacked .date input {float:left; width:60%; border:0; padding:3px 0 0; font-size:16px;}
 							#dates-stacked .date .nights {float:right; text-align:right; display:block; padding:6px;}
 						}
 
@@ -104,7 +108,7 @@
 					<fieldset id="dates-stacked">
 						<div style="overflow:hidden;">
 							<div>
-								<div id="checkin" class="date">
+								<div id="checkin" class="date" style="border-bottom:dashed 1px #ccc;">
 									<label>Check in</label>
 									
 										<input type="text" readonly="true"  placeholder="dd/mm/yyyy"/>
