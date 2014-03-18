@@ -17,6 +17,7 @@
 		 	$("#calendar .title a").on("click", function(e){
 		 		e.preventDefault();
 		 		$("#calendar").hide();
+		 		$("#overlay").hide();
 		 	});
 
 		 	$(".date").on("click", function(e){
@@ -33,6 +34,7 @@
 				}
 
 				$("#calendar").show();
+				$("#overlay").show();
 			}); 
 
 		 });
@@ -416,20 +418,28 @@
 						<style type="text/css">
 							 .calendar { top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0;  overflow:hidden; margin:12px 12px;}
 
-				 .day {font-size:12px; line-height:18px}
-				 .nights {font-size:12px; line-height:18px; font-weight:bold;}
+				 			.day {font-size:12px; line-height:18px}
+				 			.nights {font-size:12px; line-height:18px; font-weight:bold;}
 
-				 ul.letters, ul.numbers {}
-				 ul.letters li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; display:block; text-align:center; padding:6px 0; font-size:12px; font-weight:bold; background-color:#fff;}
-				 ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; background-color:#fff;}
+				 			ul.letters, ul.numbers {}
+				 			ul.letters li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; display:block; text-align:center; padding:6px 0; font-size:12px; font-weight:bold; background-color:#fff;}
+				 			ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; background-color:#fff;}
 
-				 ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
+				 			ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
 
-				ul.numbers li a.selected {background-color:#026DC5; color:#fff;}
+							ul.numbers li a.selected {background-color:#026DC5; color:#fff;}
 
-				.title {background-color:#555; color:#555; padding:12px; position:relative;}
-			.title h1 {font-size:18px; color:#fff; line-height:18px; margin:0; padding:0;}
-			.title a {position:absolute; top:6px; right: 6px; display:inline-block; padding:6px; font-weight:bold; color:#fff; font-size:14px; text-decoration: none;}
+							.title {background-color:#555; color:#555; padding:12px; position:relative;}
+							.title h1 {font-size:18px; color:#fff; line-height:18px; margin:0; padding:0;}
+							.title a {position:absolute; top:6px; right: 6px; display:inline-block; padding:6px; font-weight:bold; color:#fff; font-size:14px; text-decoration: none;}
+
+							@media only screen and (min-width:0px) { 
+								.modal {position:absolute; left:0; right:0; top:0; bottom:0; background-color:#fff; background-color:#eae8e0; display:none;}
+							}
+
+							@media only screen and (min-width:600px) { 
+								.modal {width:320px; left:50%; margin-left:-160px; top:20px; bottom:auto;}
+							}
 						</style>
 
 						<script>
@@ -445,6 +455,7 @@
 									$("#dates-stacked div#" + calselected + " input").val(num + "/08/2014");
 									$("#dates-stacked div#" + calselected + " .day").text($(this).attr("rel"));
 									$("#calendar").hide();
+									$("#overlay").hide();
 
 				
 									if (checkindate != 0 && checkoutdate != 0) {
@@ -460,8 +471,9 @@
 								})
 							});
 						</script>
+						<div id="overlay" style="position:absolute; top:0; left:0; right:0; bottom:0; opacity:0.7;  background-color:#000; display:none;"></div>
 
-						<div id="calendar" class="modal" style="position:absolute; left:0; right:0; top:0; bottom:0; background-color:#fff; background-color:#eae8e0; display:none;">
+						<div id="calendar" class="modal" style="">
 
 							<div class="title">
 								<a href="#" rel="calendar">close</a>
