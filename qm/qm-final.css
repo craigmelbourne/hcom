@@ -1,0 +1,82 @@
+ul {margin:0; padding:0;}
+			li {list-style-type: none;}
+
+			input[type=text]{box-sizing:border-box;font-size:12px;padding: 4px 10px 4px 7px; color:#555; width:100%; font-family:arial;}
+			label {font-size:14px; line-height:18px;font-weight:bold;}
+
+			h1 {font-size:24px; line-height: 24px; padding:12px; margin:0;} 
+			
+			fieldset {border:0; margin:0; padding:0 12px;}
+			
+			fieldset#destination {padding:0 12px 12px; position:relative;}
+			
+			button {width:100%; border:0; background-color:#026DC5; color:#fff; font-size:18px; padding:6px 0; font-family:arial; font-weight:bold; border-radius:6px;}
+
+
+			@media only screen and (min-width: 0px) {
+				body {}
+				#page {margin:0;}
+				#wrapper {background-color:#fff; background-color:#555;}
+
+				h1 {font-size:20px;}
+
+				#qm-container {width:100%; background-color:#eae8e0; padding-bottom:12px;}
+				fieldset#destination input {width:100%; font-size:16px; z-index:1000;}
+				
+				#autosuggest {position:absolute; top:30px; left:12px; right:12px; border:solid 1px #ccc; background-color:#fff; z-index:3000;}
+				#autosuggest li {font-size:12px; padding:6px 12px; border-bottom: solid 1px #ccc;}
+				#autosuggest li:last-child {border:0;}
+				#autosuggest li:hover{cursor:pointer; background-color:#026DC5; color:#fff;}
+
+				#dates {position:relative;}
+				#dates input {border:0; font-family:arial; padding:3px 0; font-size:18px;}
+
+				#dates #checkin {margin-right:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px} 
+				#dates #checkout {margin-left:6px; background-color:#fff; padding:12px; border-radius:6px; height:82px}
+
+				#dates .selectedcal {background-color:#eee!important;}
+				#dates .selectedcal label, .selectedcal .nights, .selectedcal .day {color:#ccc;}
+				#dates .selectedcal input {background-color:#eee; color:#ccc;}
+				
+				#dates .calendar {background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0; width:100%; margin:12px 0; overflow:hidden;}
+
+				#dates .day {font-size:12px; line-height:18px}
+				#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
+
+				#dates ul.letters li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc; display:block; text-align:center; padding:6px 0; font-size:12px; font-weight:bold;}
+				#dates ul.numbers li {float:left; width:14.2857143%; box-sizing: border-box; border-bottom:solid 1px #ccc; border-right:solid 1px #ccc;}
+
+				#dates ul.numbers li a {display:block; text-align:center; padding:6px 0; font-size:14px; text-decoration: none;}
+
+				#dates ul.numbers li a.selected {background-color:#026DC5; color:#fff;}
+
+
+				
+
+				#dropdown select {background: #fff; width: 100%; padding: 6px 12px; font-family:arial; line-height: 1; border: 0; border-radius: 0; height: 34px; -webkit-appearance: none; border-radius:6px;}
+
+				#rooms select:hover {cursor: pointer;}
+
+ 			}
+
+
+			@media only screen and (min-width: 600px) {
+				#page {margin:0}
+				#wrapper {padding:24px;}
+				#qm-container {width:540px; margin:auto;}
+
+				#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:100px; border:solid 1px #ccc; border-right:0; border-bottom:0; width:300px;}
+			}
+
+			@media only screen and (min-width:750px) {
+	
+			}
+
+			@media only screen and (min-width:900px) {
+	
+			}
+			
+			@media only screen and (min-width:1160px) {
+				#page {max-width:1136px; margin:0 auto; }
+
+			}
