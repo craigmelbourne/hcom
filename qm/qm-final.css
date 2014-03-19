@@ -39,6 +39,8 @@ ul {margin:0; padding:0;}
 				#dates .selectedcal input {background-color:#eee; color:#ccc;}
 				
 				#dates .calendar {background-color:#fff; top:110px; border:solid 1px #ccc; border-right:0; border-bottom:0; width:100%; margin:12px 0; overflow:hidden;}
+				#dates .calendar #month2 {display:none;}
+
 
 				#dates .day {font-size:12px; line-height:18px}
 				#dates .nights {font-size:12px; line-height:18px; font-weight:bold;}
@@ -65,7 +67,12 @@ ul {margin:0; padding:0;}
 				#wrapper {padding:24px;}
 				#qm-container {width:540px; margin:0 auto;}
 
-				#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:100px; border:solid 1px #ccc; border-right:0; border-bottom:0; width:300px;}
+				#dates .calendar {position:absolute; right:12px; left:12px; background-color:#fff; top:100px; border:solid 1px #ccc; border-right:0; border-bottom:0;}
+				#dates .calendar {width:520px;}
+				#dates .calendar .wrapper {float:left; width:50%;}
+				#dates .calendar #month2 {display: block;}
+				#dates .calendar #month1 .plus {display:none;}
+				#dates .calendar #month2 .minus {display:none;}
 			}
 
 			@media only screen and (min-width:750px) {
