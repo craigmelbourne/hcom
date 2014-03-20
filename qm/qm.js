@@ -13,6 +13,12 @@ $(function() {
     			}
 			});
 
+			$('#destination input').on("click", function(e){
+				var jumpvalue = $("#destination input").offset().top - 6;
+				$(document).scrollTop( jumpvalue);
+				console.log("dest slected");
+			})
+
 			$("#autosuggest ul li").on("click", function(e){
 				e.preventDefault();
 				$("#destination input").val($(this).text());
@@ -38,7 +44,7 @@ $(function() {
 					$(".calendar").slideUp("medium").slideDown("medium");
 				}
 
-				$(document).scrollTop( $("#destination input").offset().top );
+
 					
 				
 			}); 
