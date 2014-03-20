@@ -40,10 +40,12 @@ $(function() {
 				
 				if ($(".calendar").is(":hidden")){
 					//$(".calendar").slideDown("fast");
-					$(".calendar").slideDown("fast");
+					$(".calendar").slideDown(100);
 				} else {
 					//$(".calendar").slideUp("medium").slideDown("fast");
-					$(".calendar").hide().slideDown("fast");
+					$(".calendar").slideUp(100, function(){
+						$(".calendar").slideDown(100);
+					});
 				}
 
 
@@ -66,7 +68,7 @@ $(function() {
 				$("#dates div#" + calselected + " input").val(num + "/08/2014");
 				$("#dates div#" + calselected + " .day").text($(this).attr("rel"));
 				//$(".calendar").slideUp("fast");
-				$(".calendar").hide();
+				$(".calendar").slideUp(100);
 
 				
 				if (checkindate != 0 && checkoutdate != 0) {
