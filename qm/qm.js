@@ -25,11 +25,19 @@ $(function() {
 
 				if (calselected == "checkin") {
 					$("#checkout").addClass("selectedcal");
+					$("#checkin").removeClass("selectedcal");
+					
 				} else {
 					$("#checkin").addClass("selectedcal");
+					$("#checkout").removeClass("selectedcal");
 				}
-
-				$(".calendar").show();
+					if ($(".calendar").is(":hidden")){
+						$(".calendar").slideDown("fast");
+					} else {
+						$(".calendar").slideUp("fast").slideDown("fast");
+					}
+					
+				
 			}); 
 
 			$(".numbers a").on("click", function(e){
@@ -42,7 +50,7 @@ $(function() {
 				
 				$("#dates div#" + calselected + " input").val(num + "/08/2014");
 				$("#dates div#" + calselected + " .day").text($(this).attr("rel"));
-				$(".calendar").hide();
+				$(".calendar").slideUp("fast");
 
 				
 				if (checkindate != 0 && checkoutdate != 0) {
