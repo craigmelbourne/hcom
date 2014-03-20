@@ -31,11 +31,14 @@ $(function() {
 					$("#checkin").addClass("selectedcal");
 					$("#checkout").removeClass("selectedcal");
 				}
-					if ($(".calendar").is(":hidden")){
-						$(".calendar").slideDown("medium");
-					} else {
-						$(".calendar").slideUp("medium").slideDown("medium");
-					}
+				
+				if ($(".calendar").is(":hidden")){
+					$(".calendar").slideDown("medium");
+				} else {
+					$(".calendar").slideUp("medium").slideDown("medium");
+				}
+
+				$(document).scrollTop( $("#destination input").offset().top );
 					
 				
 			}); 
