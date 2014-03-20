@@ -32,9 +32,9 @@ $(function() {
 					$("#checkout").removeClass("selectedcal");
 				}
 					if ($(".calendar").is(":hidden")){
-						$(".calendar").slideDown("fast");
+						$(".calendar").slideDown("medium");
 					} else {
-						$(".calendar").slideUp("fast").slideDown("fast");
+						$(".calendar").slideUp("medium").slideDown("medium");
 					}
 					
 				
@@ -50,7 +50,7 @@ $(function() {
 				
 				$("#dates div#" + calselected + " input").val(num + "/08/2014");
 				$("#dates div#" + calselected + " .day").text($(this).attr("rel"));
-				$(".calendar").slideUp("fast");
+				$(".calendar").slideUp("medium");
 
 				
 				if (checkindate != 0 && checkoutdate != 0) {
