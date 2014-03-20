@@ -40,10 +40,10 @@ $(function() {
 				
 				if ($(".calendar").is(":hidden")){
 					//$(".calendar").slideDown("fast");
-					$(".calendar").show();
+					$(".calendar").slideDown("fast");
 				} else {
 					//$(".calendar").slideUp("medium").slideDown("fast");
-					$(".calendar").hide();
+					$(".calendar").hide().slideDown("fast");
 				}
 
 
