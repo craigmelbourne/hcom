@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="../jquery.js"></script>
+		<script src="../jquery-ui.js"></script>
+		<script src="locations.js"></script>
+		 <script type="text/javascript"
+      		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+    	</script>
+
+		<style type="text/css">
+			body {font-family:arial; padding:0; margin:0;}
+			ul {margin:0; padding:0; list-style-type: none;}
+			ul.ui-autocomplete {list-style-type: none; margin:0; padding:0; border:solid 1px #ccc; background-color:#fff; width:400px;}
+			ul.ui-autocomplete li {padding:5px 10px; }
+			.ui-state-focus {color:White; background:#009; outline:none; cursor: pointer;}
+
+			span.ui-helper-hidden-accessible {display:none;}
+
+			#header {}
+			input#destination {font-size:16px; width:400px;}
+		</style>
+
+		<script>
+
+			var newYork = new google.maps.LatLng(40.730098, -73.997861);
+			var NYHotels = [
+				[40.721021, -74.004179],
+				[40.72108, -74.00534],
+				[40.71905, -74.00519],
+				[40.72808, -73.99097],
+				[40.72334, -73.99028],
+				[40.72304, -73.98941],
+				[40.72194, -73.9934],
+				[40.72137, -73.99266],
+				[40.72, -73.98807],
+				[40.71873, -73.99269],
+				[40.71856, -73.99508],
+				[40.717291, -73.995431],
+				[40.713724, -73.993646],
+				[40.715425, -73.999515],
+				[40.71994, -73.99873],
+				[40.719762, -74.000411],
+				[40.71919, -73.9999],
+				[40.71847, -74.00052],
+				[40.715425, -73.999515],
+				[40.71617, -74.00726],
+				[40.71534, -74.00874],
+				[40.73476, -73.98467],
+				[40.73653, -73.98899],
+				[40.73813, -74.00845],
+				[40.73827, -73.98566],
+				[40.73954, -73.98274],
+				[40.742032, -74.00373],
+				[40.716685, -73.994646]
+			]
+
+			function initializeMap() {
+	
+				map = new google.maps.Map(document.getElementById('map_canvas'), {
+	      			center: newYork,
+	      			zoom: 14,
+	      			mapTypeId: 'roadmap',
+		  			mapTypeId: google.maps.MapTypeId.ROADMAP, 
+		  			panControl: false,
+					mapTypeControl: false,
+					streetViewControl:false,
+		  			zoomControl: true,
+		  			zoomControlOptions: {
+		        	style: google.maps.ZoomControlStyle.MEDIUM,
+		        		position: google.maps.ControlPosition.RIGHT_TOP
+		  			}
+	    		});
+
+	    		for (i = 0; i < NYHotels.length; i++) {  
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(NYHotels[i][0], NYHotels[i][1]),
+						map: map
+						//icon: icon
+					});
+				}
+	    	}
+			
+			// functions *****************
+			// page load *****************
+
+			$(function() {
+
+				
+			
+				$( "#destination" ).autocomplete({
+      				select: function( event, ui ) {
+      					$(this).blur().animate({width:"150"}, 200, function(){
+      						$("li.filter").show();
+      					});
+      					
+      				},
+      				source: function(req, responseFn) {
+        				var re = $.ui.autocomplete.escapeRegex(req.term);
+        				var matcher = new RegExp( "^" + re, "i" );
+        				var a = $.grep( destinations, function(item,index){
+            				return matcher.test(item);
+        				});
+        				responseFn( a );
+    				}
+    			});
+
+    			$("#destination").keypress(function(e) {
+    				if (e.which !== 0) {
+        				console.log("Charcter was typed. It was: " + String.fromCharCode(e.which));
+    				}
+    				if(!$('#results').is(':visible')) {
+    					
+    					$("#strapline").slideUp("fast", function(){
+    						$('#results').show();
+    						initializeMap();
+    					});
+
+    					
+    					
+    				}
+				});
+
+				$("#destination").focus(function(){
+					if($('#results').is(':visible')) {
+						$("li.filter").hide();
+						$(this).animate({width:"400"}, 200);
+					}
+				});
+			});
+
+		</script>
+
+	</head>
+
+
+	<body>
+
+		<div id="header">
+			<div style="padding:10px 25px;background-color:#D41200;">
+				<img src="i/logo.png" />
+			</div>
+			<div style="background-color:#E8E5DC">
+				<div id="strapline" style="border-left: solid 80px #F6F4F0; padding: 20px 0 0 20px;">
+						<h2 style="margin:50px 0 10px 0; padding:0">Insert compelling strapline here</h2>
+						<label style="display:block; font-size:18px;">Where are you going</label>
+				</div>
+				<div style="display:inline-block; width:80px; vertical-align:top; padding:10px 0 15px;background-color:#F6F4F0">
+					<img src="i/search.png" style="margin-left:30px;"/>
+				</div>
+				<div style="display:inline-block; vertical-align:top; padding:10px 10px;">
+					
+					<style type="text/css">
+						ul.searchform {margin:0; padding:0; list-style-type: none; overflow:hidden;}
+						ul.searchform li {float:left; margin-right:0px; padding:11px 5px;}
+						ul.searchform li.date, ul.searchform li.people {padding:14px 17px 14px 49px; background-color:#fff;  background-repeat: no-repeat; background-position: 14px 11px;}
+						ul.searchform li.filter {padding:14px; background-color:#fff; display:none;}
+					</style>
+
+					<ul class="searchform">
+						<li style="background-color:#fff;">
+							<input id="destination" type="text" placeholder="Destination" style="border:0; outline:0; padding-left:5px;"/></li>
+						<li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
+						<li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
+						<li class="filter" style="margin-left:10px;">Price</li>
+						<li class="filter" >Star rating</li>
+						<li class="filter" >Amenities</li>
+						<li class="filter" >Location</li>
+					</ul>
+					
+					
+				</div>
+				
+				
+			</div>
+
+		</div>
+
+		<style type="text/css">
+			a {text-decoration: none;}
+			#srl {padding:0; margin:0; list-style-type: none;}
+			#srl li {padding-left:110px; background-repeat: no-repeat; background-position: -70px 0; margin-bottom:20px;}
+			#srl li span.wr {font-size: 12px; color:#666;}
+			#srl li div.value {overflow:hidden; margin-top:5px;}
+			#srl li div.price {color:#D41200; font-size:32px; float:left; margin-right:10px;}
+			#srl li div.message {float:left; font-size:12px; color:#999; padding-top:4px;}
+		</style>
+
+		<!-- Search results -->
+		<div id="results" style="position:absolute; top:125px; left:0; right:0; bottom:0; background-color:#E8E5DC; display:none;">
+			<div style="position:absolute; top:0; left:0; bottom:0; width:80px;  background-color:#F6F4F0">
+				<div style="padding:20px 0; margin-left:30px;">
+					<img src="i/icons.png" />
+				</div>
+			</div>
+			<div style="position:absolute; top:0; left:80px; bottom:0; width:440px; overflow-y:scroll;">
+				<div style="padding:10px 15px;">
+					
+					<ul id="srl">
+						<li style="background-image:url('http://media.expedia.com/hotels/1000000/30000/23700/23677/23677_131_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">Grand Hyatt New York</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$125
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+						<li style="background-image: url('http://exp.cdn-hotels.com/hotels/3000000/2250000/2244300/2244255/2244255_55_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">Ace Hotel New York</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$140
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+						<li style="background-image:url('http://exp.cdn-hotels.com/hotels/3000000/2450000/2442800/2442707/2442707_195_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">Hotel Indigo NYC Chelsea</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$276
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+						<li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/910000/903500/903465/903465_180_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">Eurostars Wall Street</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$95
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+						<li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/810000/801000/800989/800989_82_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">Hotel Chandler</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$145
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+						<li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/50000/41900/41864/41864_172_e.jpg')">
+							<img src="i/stars-3.png" /><br />
+							<a href="#" class="name">The Roosevelt Hotel New York</a><br />
+							<span class="wr"> Collect  welcome rewards nights</span>
+							<div class="value">
+								<div class="price">
+									$109
+								</div>
+								<div class="message">For 1 night<br /> including taxes and fees</div>
+							</div>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			<div style="position:absolute; top:0; left:520px; bottom:0; right:0;">
+				<div id="map_canvas" style="position:absolute; top: 10px; bottom:10px; right:10px; left:0;"></div>
+			</div>
+		</div>
+
+		
+	</body>
+<html>
