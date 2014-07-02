@@ -36,6 +36,30 @@ var states = ['New York', 'Las Vegas', 'Orlando',
 
 		$(function() {
 
+			var substringMatcher = function(strs) {
+  				return function findMatches(q, cb) {
+    				var matches, substringRegex;
+ 
+    				// an array that will be populated with substring matches
+    				matches = [];
+ 
+    				// regex used to determine if a string contains the substring `q`
+    				substrRegex = new RegExp(q, 'i');
+ 
+    				// iterate through the pool of strings and for any string that
+    				// contains the substring `q`, add it to the `matches` array
+    				$.each(strs, function(i, str) {
+      					if (substrRegex.test(str)) {
+        					// the typeahead jQuery plugin expects suggestions to a
+        					// JavaScript object, refer to typeahead docs for more info
+        					matches.push({ value: str });
+      					}
+    				});
+ 
+    			cb(matches);
+  				};
+			};
+
 			$('.typeahead').typeahead({
   				hint: true,
   				minLength: 1,
@@ -73,6 +97,12 @@ var states = ['New York', 'Las Vegas', 'Orlando',
     			font-size: 14px;
     			line-height:14px;
 			}
+
+			.tt-cursor {
+				background-color: #009; 
+				color:#fff;
+				cursor: pointer;
+			}
 		</style>
 
 	</head>
@@ -80,6 +110,6 @@ var states = ['New York', 'Las Vegas', 'Orlando',
 		<h1>Auto suggest/complete/typeahead demo</h1>
 		<p style="color:#666; font-size:12px;">Based on  <a href="http://twitter.github.io/typeahead.js/examples/" style="color:#666;">Twitters typeahead plugin</a></p>
 		<p style="margin-top:30px;">Search for major US cities</p>
-		<input class="typeahead" placeholder="Destination name"/>
+		<input class="typeahead" placeholder=""/>
 	</body>
 </html>
