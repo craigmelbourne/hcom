@@ -7,54 +7,17 @@
           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
       </script>
 		<script type="text/javascript" src="typeahead.bundle.js"></script>
+    <script type="text/javascript" src="blaze.js"></script>
     <script type="text/javascript" src="locations.js"></script>
 
 		<script type="text/javascript">
-			var substringMatcher = function(strs) {
-        return function findMatches(q, cb) {
-          var matches, substringRegex;
- 
-          // an array that will be populated with substring matches
-          matches = [];
- 
-          // regex used to determine if a string contains the substring `q`
-          substrRegex = new RegExp(q, 'i');
- 
-          // iterate through the pool of strings and for any string that
-          // contains the substring `q`, add it to the `matches` array
-          $.each(strs, function(i, str) {
-            if (substrRegex.test(str)) {
-              // the typeahead jQuery plugin expects suggestions to a
-              // JavaScript object, refer to typeahead docs for more info
-              matches.push({ value: str });
-            }
-          });
- 
-          cb(matches);
-        };
-      };
 
-      var newYork = new google.maps.LatLng(40.730098, -73.997861);
 
-      function initializeMap() {
-  
-        map = new google.maps.Map(document.getElementById('map_canvas'), {
-              center: newYork,
-              zoom: 14,
-              mapTypeId: 'roadmap',
-            mapTypeId: google.maps.MapTypeId.ROADMAP, 
-            panControl: false,
-          mapTypeControl: false,
-          streetViewControl:false,
-            zoomControl: true,
-            zoomControlOptions: {
-              style: google.maps.ZoomControlStyle.MEDIUM,
-                position: google.maps.ControlPosition.RIGHT_TOP
-            }
-          });
-        }
+
+
+      
  
-      var matches;
+      
 
 		$(function() {
 
@@ -62,38 +25,27 @@
 
       $("#destination").keyup(function(e) {
         console.log(matches[0].value);
-        var result = $.grep(cities, function(e){
-          return e.city == matches[0].value
-        });
 
-        var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
-        map.panTo(NA);
+        if (matches[0].value != currentdestination){
+          var result = $.grep(cities, function(e){
+            return e.city == matches[0].value
+          });
+
+          var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
+          map.panTo(NA);
+          currentdestination = matches[0].value;
+          $("#srl").fadeOut("100", function(){
+            $("#srl").fadeIn("100");
+          });
+        }
+
+
+        
+
+        
       }) 
 
-			var substringMatcher = function(strs) {
-  				return function findMatches(q, cb) {
-    				var substringRegex;
- 
-    				// an array that will be populated with substring matches
-    				matches = [];
- 
-    				// regex used to determine if a string contains the substring `q`
-    				substrRegex = new RegExp( "^" + q, "i" );
- 
-    				// iterate through the pool of strings and for any string that
-    				// contains the substring `q`, add it to the `matches` array
-    				$.each(strs, function(i, str) {
-                //console.log(str);
-      					if (substrRegex.test(str)) {
-        					// the typeahead jQuery plugin expects suggestions to a
-        					// JavaScript object, refer to typeahead docs for more info
-        					matches.push({ value: str });
-      					}
-    				});
-          //console.log(matches)
-    			cb(matches);
-  				};
-			};
+			
 
 			$('.typeahead').typeahead({
   				hint: true,
@@ -102,7 +54,6 @@
 
 			},
 			{
-  				
   				name: 'destinations',
   				displayKey: 'value',
   				source: substringMatcher(destinations)
@@ -162,6 +113,11 @@
       #srl li div.value {overflow:hidden; margin-top:5px;}
       #srl li div.price {color:#D41200; font-size:32px; float:left; margin-right:10px;}
       #srl li div.message {float:left; font-size:12px; color:#999; padding-top:4px;}
+
+      ul.searchform {margin:0; padding:0; list-style-type: none;}
+            ul.searchform li {display:inline-block; vertical-align:top; margin-right:20px; padding:0;}
+            ul.searchform li.date, ul.searchform li.people {padding:10px 0 10px 30px; background-color:#fff;  background-repeat: no-repeat; background-position: 0 5px;}
+            ul.searchform li.filter {padding:10px; background-color:#fff;}
     </style>
 
     <div id="navigation" style="position:absolute; top:0; left:0; bottom:0; width:80px; background-color:#E74C3C;">
@@ -246,7 +202,19 @@
 
     <div style="position:absolute;top: 0; left: 80px; right:0 height:60px; background-color:#fff;">
       <div style="padding:10px 15px;">
-        <input id="destination" class="typeahead" value="New York" placeholder="" autofocus style="border:0; outline:0;"/>
+        
+
+        <ul class="searchform">
+            <li style="background-color:#fff; ">
+              <input id="destination" class="typeahead" value="New York" placeholder="" autofocus style="border:0; border-bottom:solid 1px; outline:0;"/>
+            </li>
+            <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
+            <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
+            <li class="filter" style="margin-left:10px;">Price</li>
+            <li class="filter" >Star rating</li>
+            <li class="filter" >Amenities</li>
+            <li class="filter" >Location</li>
+          </ul>
       </div>
         
     </div>
