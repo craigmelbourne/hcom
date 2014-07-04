@@ -109,6 +109,10 @@
         var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
         map.panTo(NA);
 
+        $("#srl").fadeOut("100", function(){
+          $("#srl").fadeIn("100")
+        });
+
         //var result = $.grep(myArray, function(e){ return e.id == id; });
 
       }
