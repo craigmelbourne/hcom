@@ -54,15 +54,25 @@
           });
         }
  
-
+      var matches;
 
 		$(function() {
 
       initializeMap();
 
+      $("#destination").keyup(function(e) {
+        console.log(matches[0].value);
+        var result = $.grep(cities, function(e){
+          return e.city == matches[0].value
+        });
+
+        var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
+        map.panTo(NA);
+      }) 
+
 			var substringMatcher = function(strs) {
   				return function findMatches(q, cb) {
-    				var matches, substringRegex;
+    				var substringRegex;
  
     				// an array that will be populated with substring matches
     				matches = [];
@@ -236,7 +246,7 @@
 
     <div style="position:absolute;top: 0; left: 80px; right:0 height:60px; background-color:#fff;">
       <div style="padding:10px 15px;">
-        <input class="typeahead" value="New York" placeholder="" autofocus style="border:0; outline:0;"/>
+        <input id="destination" class="typeahead" value="New York" placeholder="" autofocus style="border:0; outline:0;"/>
       </div>
         
     </div>
