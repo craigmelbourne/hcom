@@ -13,8 +13,65 @@
 		<script type="text/javascript">
 
 
+    function displaySearchInstruction(val){
+      
+      if(val == true) {
+        var ddpos = $(".tt-dropdown-menu").offset();
+        var ddheight = $(".tt-dropdown-menu").height();
+        console.log ("top = " + ddpos.top + ", height = " + ddheight)
+        $("#searchinstruction").show().css({
+            "top": ddpos.top + ddheight + 10 + "px"
+          });
+      } else {
+        $("#searchinstruction").hide();
+      }
+      
+    }
 
+    function handleResults(dest){
+      
 
+       if (dest != currentdestination){
+          var result = $.grep(cities, function(e){
+            return e.city == dest;
+          });
+          //console.log (result[0].ranking)
+          if (result[0].ranking == 0){
+            displaySearchInstruction(false);
+            //console.log("primary");
+
+            var loc = new google.maps.LatLng(result[0].lon, result[0].lat);
+            map.panTo(loc);
+            
+
+            if ($("#srl").is(':visible')){
+              $("#srl").fadeOut("100", function(){
+                $("#srl").fadeIn("100");
+              });
+
+            } else {
+              $("#srl").fadeIn("100");
+            }
+
+            $("#map_wrapper").show();
+
+            
+          } else  {
+            
+            //console.log("secondary");
+            if ($("#srl").is(':visible')){
+              $("#srl").hide();
+              $("#map_wrapper").hide();
+              displaySearchInstruction(true);
+            }
+            
+          }
+          currentdestination = dest;
+
+          
+        }
+
+    }
       
  
       
@@ -24,26 +81,18 @@
       initializeMap();
 
       $("#destination").keyup(function(e) {
-        console.log(matches[0].value);
+        console.log(e.which);
+        var cursorKeys = [13, 37, 38, 39, 40];
 
-        if (matches[0].value != currentdestination){
-          var result = $.grep(cities, function(e){
-            return e.city == matches[0].value
-          });
-
-          var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
-          map.panTo(NA);
-          currentdestination = matches[0].value;
-          $("#srl").fadeOut("100", function(){
-            $("#srl").fadeIn("100");
-          });
+        if(jQuery.inArray(e.which, cursorKeys) === -1) {
+          var dest = matches[0].value;
+          handleResults(dest);
         }
+      }); 
 
-
-        
-
-        
-      }) 
+      function onCursorChanged($e, obj, datum) {
+          handleResults(obj.value);
+      }
 
 			
 
@@ -70,28 +119,23 @@
         var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
         map.panTo(NA);
 
-        $("#srl").fadeOut("100", function(){
-          $("#srl").fadeIn("100")
-        });
+        if ($("#srl").is(':visible')){
+              $("#srl").fadeOut("100", function(){
+                $("#srl").fadeIn("100");
+              });
+
+            } else {
+              $("#srl").fadeIn("100");
+            }
+
+            $("#map_wrapper").show();
+            displaySearchInstruction(false);
 
         //var result = $.grep(myArray, function(e){ return e.id == id; });
 
       }
 
-      function onCursorChanged($e, obj, datum) {
-        var city = obj.value;
-        var result = $.grep(cities, function(e){
-          return e.city == city
-        });
-
-        //console.log (r);
-        var NA = new google.maps.LatLng(result[0].lon, result[0].lat);
-        map.panTo(NA);
-
-        $("#srl").fadeOut("100", function(){
-          $("#srl").fadeIn("100")
-        });
-      }
+      
 
 		})
 		</script>
@@ -99,7 +143,7 @@
 
 		<style type="text/css">
 			body {font-family: arial; margin:50px 100px;}
-
+      #hotels {position:absolute; top: 60px; left:80px; bottom:0; width:400px; background-color: #fff; overflow-y:scroll;}
 			
 		</style>
 
@@ -118,16 +162,17 @@
             ul.searchform li {display:inline-block; vertical-align:top; margin-right:20px; padding:0;}
             ul.searchform li.date, ul.searchform li.people {padding:10px 0 10px 30px; background-color:#fff;  background-repeat: no-repeat; background-position: 0 5px;}
             ul.searchform li.filter {padding:10px; background-color:#fff;}
+            span.stars {font-size:13px;}
     </style>
 
     <div id="navigation" style="position:absolute; top:0; left:0; bottom:0; width:80px; background-color:#E74C3C;">
       <img src="i/blaze_icons.png" style="margin-left:10px; margin-top:10px"/>
     </div>
 
-    <div id="hotels" style="position:absolute; top: 60px; left:80px; bottom:0; width:400px; background-color: rgb(232, 229, 220); overflow-y:scroll;">
+    <div id="hotels">
       <ul id="srl">
             <li style="background-image:url('http://media.expedia.com/hotels/1000000/30000/23700/23677/23677_131_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">Grand Hyatt New York</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -138,7 +183,7 @@
               </div>
             </li>
             <li style="background-image: url('http://exp.cdn-hotels.com/hotels/3000000/2250000/2244300/2244255/2244255_55_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">Ace Hotel New York</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -149,7 +194,7 @@
               </div>
             </li>
             <li style="background-image:url('http://exp.cdn-hotels.com/hotels/3000000/2450000/2442800/2442707/2442707_195_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">Hotel Indigo NYC Chelsea</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -160,7 +205,7 @@
               </div>
             </li>
             <li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/910000/903500/903465/903465_180_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">Eurostars Wall Street</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -171,7 +216,7 @@
               </div>
             </li>
             <li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/810000/801000/800989/800989_82_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+             <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">Hotel Chandler</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -182,7 +227,7 @@
               </div>
             </li>
             <li style="background-image:url('http://exp.cdn-hotels.com/hotels/1000000/50000/41900/41864/41864_172_e.jpg')">
-              <img src="i/stars-3.png" /><br />
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br />
               <a href="#" class="name">The Roosevelt Hotel New York</a><br />
               <span class="wr"> Collect  welcome rewards nights</span>
               <div class="value">
@@ -196,7 +241,7 @@
 
     </div>
 
-    <div style=" position:absolute; top:60px; right:0; left:480px; bottom:0;">
+    <div id="map_wrapper" style=" position:absolute; top:60px; right:0; left:480px; bottom:0;">
        <div id="map_canvas" style="width:100%; height:100%;"></div>
     </div>
 
@@ -220,7 +265,7 @@
     </div>
 	
 
-
+    <div id="searchinstruction" style="position:absolute; top:300px; left:105px; font-size: 13px; color:#666;display:none;">Press Enter to search</div>
     
    
 	</body>
