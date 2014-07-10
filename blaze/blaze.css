@@ -1,4 +1,4 @@
-.typeahead {font-size:16px; padding:6px; width:360px;}
+.typeahead {font-size:16px; padding:6px; width:560px;}
 
 			.tt-dropdown-menu {
   position: absolute;
@@ -44,6 +44,6 @@
 				cursor: pointer;
 			}
 
-      .tt-hint {color:#aaa;}
+      .tt-hint {color:#aaa; display:none;}
 
 

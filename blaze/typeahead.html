@@ -35,13 +35,26 @@
         $("#map_wrapper").show();
         $("#hotels").show();
         $("#navigation").show();
-        $(".filter").show();
+        //$(".filter").show();
         $("#search").removeClass("home");
         $("#strapline").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
+        homePageDisplayed = false;
       } 
 
       
+    }
+
+    function displayFilters(val) {
+      if (val == true) {
+        $(".typeahead").animate({
+          width: "200px"
+        }, 200).blur();
+        $(".filter").show();
+      } else {
+        $(".filter").hide();
+      }
+
     }
 
     function displaySearchInstruction(val){
@@ -63,40 +76,50 @@
       
 
        if (dest != currentdestination){
+
           var result = $.grep(cities, function(e){
             return e.city == dest;
           });
-          //console.log (result[0].ranking)
-          if (result[0].ranking == 0){
-            displaySearchInstruction(false);
-            //console.log("primary");
 
-            var loc = new google.maps.LatLng(result[0].lon, result[0].lat);
-            map.panTo(loc);
+          if(result.length != 0){
+            if (result[0].ranking == 0){
+              displaySearchInstruction(false);
+
+              var loc = new google.maps.LatLng(result[0].lon, result[0].lat);
+              map.panTo(loc);
             
 
-            if ($("#srl").is(':visible')){
-              $("#srl").fadeOut("100", function(){
+              if ($("#srl").is(':visible')){
+                $("#srl").fadeOut("100", function(){
+                  $("#srl").fadeIn("100");
+                });
+
+              } else {
                 $("#srl").fadeIn("100");
-              });
+              }
 
-            } else {
-              $("#srl").fadeIn("100");
+              $("#map_wrapper").show();
+            
+            } else if(result[0].ranking == 1)  {
+            
+              if ($("#srl").is(':visible')){
+                $("#srl").hide();
+                $("#map_wrapper").hide();
+                displaySearchInstruction(true);
+              }
+            
             }
-
-            $("#map_wrapper").show();
-
-            
-          } else  {
-            
-            //console.log("secondary");
+          } else {
+            console.log("in here");
+            displaySearchInstruction(false);
             if ($("#srl").is(':visible')){
               $("#srl").hide();
               $("#map_wrapper").hide();
-              displaySearchInstruction(true);
             }
-            
           }
+
+
+           
           currentdestination = dest;
 
           
@@ -104,7 +127,10 @@
 
     }
       
- 
+ //else {
+            //
+            //
+          //}
       
 
 		$(function() {
@@ -115,22 +141,32 @@
         
       }
 
-      
+      $("#destination").focus(function(){
+            $(".filter").hide();
+            $(this).animate({width:"560"}, 200);
+          
+        });
 
       $("#destination").keyup(function(e) {
-
+        console.log(e.which);
         var cursorKeys = [13, 37, 38, 39, 40];
         var dest = matches[0].value;
+
         if(jQuery.inArray(e.which, cursorKeys) === -1) {
+          
+
           if (homePageDisplayed == true) {
             displayResultsScreen(dest);
-            homePageDisplayed == false;
-
-          } else {
+          }  else {
+           
             handleResults(dest);
           }
           
           
+        } else if(e.which == 13) {
+            console.log($("#destination").val());
+            $(".tt-dropdown-menu").hide();
+            handleResults($("#destination").val());
         }
       }); 
 
@@ -173,7 +209,9 @@
             }
 
             $("#map_wrapper").show();
+
             displaySearchInstruction(false);
+            displayFilters(true);
 
         //var result = $.grep(myArray, function(e){ return e.id == id; });
 
@@ -294,12 +332,12 @@
     </div>
 
     <style type="text/css">
-      .search_home {padding:10px 15px; background-color:#fff; width:620px; text-align:left; margin:0 auto;}
+      .search_home {padding:10px 15px; background-color:#fff; width:820px; text-align:left; margin:0 auto;}
       .search_results {padding:10px 15px; background-color:#fff; width:auto; text-align:left; margin:0;}
     </style>
 
     <div id="search" class="results">
-      <div id="strapline" style=" padding:0; width: 650px; margin:0 auto; text-align:left;">
+      <div id="strapline" style=" padding:0; width: 850px; margin:0 auto; text-align:left;">
             <h2 style="margin:50px 0 20px 0; padding:0 15px;">Branding and compelling strapline</h2>
             <div style="background-color:#fff; padding:15px 15px 0">
               <label style="display:block; font-size:18px;">Where are you going?</label>
