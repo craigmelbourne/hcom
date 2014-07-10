@@ -9,9 +9,14 @@ var newYork = new google.maps.LatLng(40.730098, -73.997861);
 //functions
 
 
-function initializeMap() {
+function initializeMap(result) {
+
+  
+
+  var loc = new google.maps.LatLng(result[0].lon, result[0].lat);
+
   map = new google.maps.Map(document.getElementById('map_canvas'), {
-    center: newYork,
+    center: loc,
     zoom: 14,
     mapTypeId: 'roadmap',
     mapTypeId: google.maps.MapTypeId.ROADMAP, 

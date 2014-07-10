@@ -6,8 +6,8 @@ var destinations = [
 ];
 
 var cities = [
-	{"city": "Atlantic City", "lat":-74.422928, "lon": 39.364285, "ranking": 0},
-    {"city": "Austin", "lat":-97.743057, "lon":30.267153, "ranking": 0},
+	{"city": "Atlantic City", "lat":-74.422928, "lon": 39.364285, "ranking": 1},
+    {"city": "Austin", "lat":-97.743057, "lon":30.267153, "ranking": 1},
     {"city": "Baltimore", "lat":-76.612190, "lon":39.290386, "ranking": 1},
     {"city": "Boston", "lat":-71.059776, "lon":42.358433, "ranking": 0},
     {"city": "Chicago", "lat":-87.629799,"lon":41.878113, "ranking": 0},
