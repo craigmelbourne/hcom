@@ -21,7 +21,7 @@ var cities = [
     {"city": "Montreal", "lat":-73.553993, "lon":45.508671, "ranking": 1},
     {"city": "New York", "lat":-74.005974, "lon":40.714352, "ranking": 0},
     {"city": "Nashville", "lat":-86.783333, "lon":36.166668, "ranking": 1},
-    {"city": "New Orleans", "lat":-80.226440, "lon":25.788969, "ranking": 0},
+    {"city": "New Orleans", "lat":-90.071532, "lon":29.951066, "ranking": 0},
     {"city": "Orlando", "lat":-81.379234, "lon":28.538336, "ranking": 0},
     {"city": "Portland", "lat":-122.676208, "lon": 45.523453, "ranking": 0},
     {"city": "Philadelphia", "lat":-75.163788, "lon":39.952335, "ranking": 1},
