@@ -2,63 +2,208 @@
 <html lang="en">
 	<head>
     	<link rel="stylesheet" href="blaze.css">
+        <style type="text/css">
+            body {font-family: arial;}
+            ul{margin:0; padding:0;}
+             #list ul {margin-top:10px}
+            #list ul li {padding:5px 15px;}
+            #list ul li .price {font-size:32px; color:#D41200; margin-top:5px;}
+            #list ul li .thumb {display:inline-block; vertical-align: top; margin-right:10px;}
+            #list ul li .thumb img {height:90px;}
+            #list ul li .ta {height:12px; margin-top:5px;}
+            #list ul li .details {display:inline-block; vertical-align: top}
+        </style>
 		<script src="../jquery.js"></script>
+        <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+        </script>
 		<script>
+
+            var result;
+            var newYork = {"city": "New York", "lon":-74.005974, "lat":40.714352, "ranking": 0}
+
+            var cities = [
+    {"city": "Atlantic City", "lon":-74.422928, "lat": 39.364285, "ranking": 1},
+    {"city": "Austin", "lon":-97.743057, "lat":30.267153, "ranking": 1},
+    {"city": "Baltimore", "lon":-76.612190, "lat":39.290386, "ranking": 1},
+    {"city": "Boston", "lon":-71.059776, "lat":42.358433, "ranking": 0},
+    {"city": "Chicago", "lon":-87.629799,"lat":41.878113, "ranking": 0},
+    {"city": "Dallas", "lon":-96.769920,"lat":32.802956, "ranking": 0},
+    {"city": "Denver", "lon":-104.984718, "lat": 39.737568, "ranking": 0},
+    {"city": "Honolulu", "lon":-157.858337,"lat":21.306944, "ranking": 0},
+    {"city": "Las Vegas", "lon":-115.172813,"lat":36.114647, "ranking": 0},
+    {"city": "Los Angeles", "lon":-118.243683,"lat":34.052235, "ranking": 0},
+    {"city": "Miami", "lon":-80.226440,"lat":25.788969, "ranking": 0},
+    {"city": "Minneapolis", "lon":-93.266670,"lat":44.983334, "ranking": 1},
+    {"city": "Montreal", "lon":-73.553993, "lat":45.508671, "ranking": 1},
+    {"city": "New York", "lon":-74.005974, "lat":40.714352, "ranking": 0},
+    {"city": "Nashville", "lon":-86.783333, "lat":36.166668, "ranking": 1},
+    {"city": "New Orleans", "lon":-90.071532, "lat":29.951066, "ranking": 0},
+    {"city": "Orlando", "lon":-81.379234, "lat":28.538336, "ranking": 0},
+    {"city": "Portland", "lon":-122.676208, "lat": 45.523453, "ranking": 0},
+    {"city": "Philadelphia", "lon":-75.163788, "lat":39.952335, "ranking": 1},
+    {"city": "San Francisco", "lon":-122.419418, "lat": 37.774929, "ranking": 0},
+    {"city": "Seattle", "lon":-122.332069, "lat":47.606209, "ranking": 0},
+    {"city": "San Antonio", "lon":-98.493629, "lat":29.424122, "ranking": 1},
+    {"city": "Vancouver", "lon":-123.113930, "lat":49.261227, "ranking": 0},
+    {"city": "Washington", "lon":-77.036369,"lat":38.895111, "ranking": 0}
+]
+
+
+                function buildDestinationSelctBox(){
+                    $.each(cities, function(i, city) {
+                            
+                            $("select").append("<option>" + city.city + "</option>")
+                        
+                        });
+                }    
+
+                function initializeMap(result) {
+                    var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
+                    map = new google.maps.Map(document.getElementById('map_canvas'), {
+                        center: loc,
+                        zoom: 13,
+                        mapTypeId: 'roadmap',
+                        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+                        panControl: false,
+                        mapTypeControl: false,
+                        streetViewControl:false,
+                        zoomControl: true,
+                        zoomControlOptions: {
+                            style: google.maps.ZoomControlStyle.MEDIUM,
+                            position: google.maps.ControlPosition.RIGHT_TOP
+                        }
+                    });
+                }
+
+                function fetchResults(result){
+                    $(".fetching").show();
+                    $("#list ul li").remove();
+                    $.ajax({
+
+                    crossDomain: true,
+                    // the URL for the request
+                    url: "https://api.eancdn.com/ean-services/rs/hotel/v3/list",
+ 
+                    // the data to send (will be converted to a query string)
+                    data: {
+                        cid: 55505,
+                        minorRev: 99,
+                        apiKey: "xgdsee58vcvfhpr4hhvvhych",
+                        locale: "en_US",
+                        currencyCode: "USD",
+                        arrivalDate: "07/31/2014",
+                        departureDate: "08/01/2014",
+                        longitude: result[0].lon,
+                        latitude: result[0].lat,
+                        numberOfResults: 20
+                    },
+
+                    // whether this is a POST or GET request
+                    type: "GET",
+
+                    // the type of data we expect back
+                    dataType : "jsonp",
+ 
+                    // code to run if the request succeeds;
+                    // the response is passed to the function
+                    success: function( json ) {
+                        
+                        var hotels = json.HotelListResponse.HotelList.HotelSummary;
+                        console.log(hotels);
+                        $(".fetching").hide()
+                        
+                        $.each(hotels, function(i, hotel) {
+                            
+                            //console.log(hotel.name + " - " + hotel.lowRate);
+                            $("#list ul").append(
+                                "<li>"
+                                + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
+                                + "<div class='details'>"
+                                + "<div class='name'>" + hotel.name + "</div>" 
+                                + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
+                                + "<div class='price'>$" + Math.round(hotel.lowRate) + "</div>"
+                                
+                                + "</div>"
+                                + "</li>")
+                            var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
+                                map: map
+                                //icon: icon
+                            });
+                        });
+                    },
+ 
+                    // code to run if the request fails; the raw request and
+                    // status codes are passed to the function
+                    error: function( xhr, status, errorThrown ) {
+                        alert( "Sorry, there was a problem!" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                    },
+ 
+                    // code to run regardless of success or failure
+                    complete: function( xhr, status ) {
+                        //alert( "The request is complete!" );
+                    }
+                    });
+                }
+
 			$(function() {
 				// Using the core $.ajax() method
-				https://api.eancdn.com/ean-services/rs/hotel/v3/ping?cid=55505&minorRev=99&apiKey=xgdsee58vcvfhpr4hhvvhych&locale=en_GB&currencyCode=GBP&xml=%3CPingRequest%3E%0A%20%20%20%20%3Cecho%3EThis%20message%20should%20be%20echoed%20back%20to%20you.%3C%2Fecho%3E%0A%3C%2FPingRequest%3E
-$.ajax({
+                
+                buildDestinationSelctBox();
 
-    crossDomain: true,
-    // the URL for the request
-    url: "https://api.eancdn.com/ean-services/rs/hotel/v3/geoSearch",
- 
- 	
-    // the data to send (will be converted to a query string)
-    data: {
-        cid: 55505,
-        minorRev: 99,
-        apiKey: "xgdsee58vcvfhpr4hhvvhych",
-        locale: "en_US",
-        //currencyCode: "USD",
-        destinationString: "London"
+                $("#destdd").on("change", function(){
+                    var city = $( "#destdd option:selected" ).text();
 
-    },
+                    result = $.grep(cities, function(e){
+                        return e.city == city;
+                    });
 
+                    console.log(result[0].city);
+                    initializeMap(result);
+                    fetchResults(result);
+                })
 
- 
-    // whether this is a POST or GET request
-    type: "GET",
- 
-    // the type of data we expect back
-    dataType : "jsonp",
- 
-    // code to run if the request succeeds;
-    // the response is passed to the function
-    success: function( json ) {
-        console.log (json);
-        $( "<h1/>" ).text(json).appendTo( "body" );
-        //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
-    },
- 
-    // code to run if the request fails; the raw request and
-    // status codes are passed to the function
-    error: function( xhr, status, errorThrown ) {
-        alert( "Sorry, there was a problem!" );
-        console.log( "Error: " + errorThrown );
-        console.log( "Status: " + status );
-        console.dir( xhr );
-    },
- 
-    // code to run regardless of success or failure
-    complete: function( xhr, status ) {
-        alert( "The request is complete!" );
-    }
-});
+                
+
+                
+
 			});
 		</script>
 
 	</head>
-	<body></body>
+	<body>
+
+        
+        <div id="navigation" style=" position:absolute; top:0; left:0px; bottom:0; width:50px; background-color:#555;"></div>
+
+
+        <div id="content" style=" position:absolute; top:0; left:50px; right:0; height:100px; background-color:#f1f1f1;">
+            <div style="padding:15px;">
+                Fetch hotels for
+                <select id="destdd">
+                    <option>Select a destination</option>
+                </select>
+            </div>
+
+            
+            
+           
+        </div>
+
+        <div id="list" style=" position:absolute; top:100px; width:520px; left:50px; bottom:0; overflow-y:scroll;">
+            <span class="fetching" style="display:none;">fetching results...</span>
+            <ul>
+
+            </ul>
+        </div>
+
+        <div id="map_wrapper" style=" position:absolute; top:100px; right:0; left:520px; bottom:0;">
+            <div id="map_canvas" style="width:100%; height:100%;"></div>
+        </div>
+    </body>
 
 	</html>
