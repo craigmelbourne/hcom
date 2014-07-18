@@ -14,6 +14,20 @@
 
     var homePageDisplayed = true;
 
+    function hideResults(hide){
+      if (hide == true) {
+        $("#list ul").hide();
+        $("#tools").hide();
+      } else {
+        $("#list ul").show();
+        $("#tools").show();
+      }
+
+      
+    }
+
+    
+
     function displayHomePage(){
       $("#map_wrapper").hide();
       $("#hotels").hide();
@@ -30,7 +44,9 @@
         return e.city == dest;
       });
 
-      if (result[0].ranking == 0) {
+
+
+      if (result.length > 0 && result[0].ranking == 0) {
         initializeMap(result);
         $("#map_wrapper").show();
         $("#hotels").show();
@@ -87,24 +103,28 @@
             return e.city == dest;
           });
 
+          //console.log("len" + result.length);
+
           if(result.length != 0){
             if (result[0].ranking == 0){
+
+              console.log("ranking 0")
               displaySearchInstruction(false);
 
-              var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
-              map.panTo(loc);
+              geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+                  map.panTo(pos[0].geometry.location);
+                } 
+              });
+
+              //var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
+              //map.panTo(loc);
             
               fetchResults(result);
 
-              if ($("#srl").is(':visible')){
-                $("#srl").fadeOut("100", function(){
-                  $("#srl").fadeIn("100");
-                });
-
-              } else {
-                $("#srl").fadeIn("100");
-              }
-
+              
+              $("#list ul").show();
               $("#map_wrapper").show();
               $(".tools").show();
             
@@ -122,7 +142,8 @@
             console.log("in here");
             displaySearchInstruction(false);
             if ($("#list ul").is(':visible')){
-              $("#list").hide();
+              $("#list ul").hide();
+              $(".tools").hide();
               $("#map_wrapper").hide();
             }
           }
@@ -165,7 +186,19 @@
       $("#destination").keyup(function(e) {
         console.log(e.which);
         var cursorKeys = [13, 37, 38, 39, 40];
-        var dest = matches[0].value;
+        
+
+        if (matches.length != 0) {
+          var dest = matches[0].value;
+          //hideResults(false);
+        } else {
+          dest = $("#destination").val();
+          //hideResults(true);
+        }
+
+        
+
+
 
         if(jQuery.inArray(e.which, cursorKeys) === -1) {
           
@@ -203,6 +236,8 @@
   				source: substringMatcher(destinations)
 			}).on('typeahead:selected', onSelected).on('typeahead:cursorchanged', onCursorChanged);
 
+      
+
       function onSelected($e, obj, datum) {
         console.log(obj.value + " - " + currentdestination);
         var city = obj.value;
@@ -211,8 +246,12 @@
         });
 
         //console.log (r);
-        var NA = new google.maps.LatLng(result[0].lat, result[0].lon);
-        map.panTo(NA);
+        geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+                  map.panTo(pos[0].geometry.location);
+                } 
+              });
 
         if($("#list ul").is(':hidden')){
           fetchResults(result);

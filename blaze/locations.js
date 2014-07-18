@@ -1,7 +1,7 @@
 var destinations = [  
       'Atlantic City', 'Austin', 'Baltimore', 'Boston', 'Chicago', 'Dallas', 
       'Denver', 'Honolulu', 'Las Vegas', 'Los Angeles', 'Miami', 'Minneapolis', 
-      'Montreal', 'New York', 'Nashville', 'New Orleans',  'Orlando', 'Philadelphia', 
+      'Montreal', 'New York', 'Nashville', 'New Orleans',  'Orlando', 'Paris', 'Philadelphia', 
       'Portland', 'San Francisco', 'Seattle', 'San Antonio', 'Vancouver', 'Washington'
 ];
 
@@ -23,6 +23,7 @@ var cities = [
     {"city": "Nashville", "lat":-86.783333, "lon":36.166668, "ranking": 1},
     {"city": "New Orleans", "lat":-90.071532, "lon":29.951066, "ranking": 0},
     {"city": "Orlando", "lat":-81.379234, "lon":28.538336, "ranking": 0},
+    {"city": "Paris", "lat":-81.379234, "lon":28.538336, "ranking": 0},
     {"city": "Portland", "lat":-122.676208, "lon": 45.523453, "ranking": 0},
     {"city": "Philadelphia", "lat":-75.163788, "lon":39.952335, "ranking": 1},
     {"city": "San Francisco", "lat":-122.419418, "lon": 37.774929, "ranking": 0},

@@ -2,41 +2,71 @@ var result;
 var gmarkers = [];
 var matches;
 var currentdestination;
+var geocoder = new google.maps.Geocoder();
 
-var destinations = [  
-      'Atlantic City', 'Austin', 'Baltimore', 'Boston', 'Chicago', 'Dallas', 
-      'Denver', 'Honolulu', 'Las Vegas', 'Los Angeles', 'Miami', 'Minneapolis', 
-      'Montreal', 'New York', 'Nashville', 'New Orleans',  'Orlando', 'Philadelphia', 
-      'Portland', 'San Francisco', 'Seattle', 'San Antonio', 'Vancouver', 'Washington'
-];
+
+var destinations = [];
 
 var cities = [
-    {"city": "Atlantic City", "lon":-74.422928, "lat": 39.364285, "ranking": 1},
-    {"city": "Austin", "lon":-97.743057, "lat":30.267153, "ranking": 1},
-    {"city": "Baltimore", "lon":-76.612190, "lat":39.290386, "ranking": 1},
-    {"city": "Boston", "lon":-71.059776, "lat":42.358433, "ranking": 0},
-    {"city": "Chicago", "lon":-87.629799,"lat":41.878113, "ranking": 0},
-    {"city": "Dallas", "lon":-96.769920,"lat":32.802956, "ranking": 0},
-    {"city": "Denver", "lon":-104.984718, "lat": 39.737568, "ranking": 0},
-    {"city": "Honolulu", "lon":-157.858337,"lat":21.306944, "ranking": 0},
-    {"city": "Las Vegas", "lon":-115.172813,"lat":36.114647, "ranking": 0},
-    {"city": "Los Angeles", "lon":-118.243683,"lat":34.052235, "ranking": 0},
-    {"city": "Miami", "lon":-80.226440,"lat":25.788969, "ranking": 0},
-    {"city": "Minneapolis", "lon":-93.266670,"lat":44.983334, "ranking": 1},
-    {"city": "Montreal", "lon":-73.553993, "lat":45.508671, "ranking": 1},
-    {"city": "New York", "lon":-74.005974, "lat":40.714352, "ranking": 0},
-    {"city": "Nashville", "lon":-86.783333, "lat":36.166668, "ranking": 1},
-    {"city": "New Orleans", "lon":-90.071532, "lat":29.951066, "ranking": 0},
-    {"city": "Orlando", "lon":-81.379234, "lat":28.538336, "ranking": 0},
-    {"city": "Portland", "lon":-122.676208, "lat": 45.523453, "ranking": 0},
-    {"city": "Philadelphia", "lon":-75.163788, "lat":39.952335, "ranking": 1},
-    {"city": "San Francisco", "lon":-122.419418, "lat": 37.774929, "ranking": 0},
-    {"city": "Seattle", "lon":-122.332069, "lat":47.606209, "ranking": 0},
-    {"city": "San Antonio", "lon":-98.493629, "lat":29.424122, "ranking": 1},
-    {"city": "Vancouver", "lon":-123.113930, "lat":49.261227, "ranking": 0},
-    {"city": "Washington", "lon":-77.036369,"lat":38.895111, "ranking": 0}
+    {"city": "Amsterdam", "ranking": 0},
+    {"city": "Aberdeen", "ranking": 1},
+    {"city": "Barcelona", "ranking": 0},
+    {"city": "Berlin", "ranking": 0},
+    {"city": "Belfast", "ranking": 0},
+    {"city": "Birmingham", "ranking": 0},
+    {"city": "Blackpool", "ranking": 1},
+    {"city": "Bournemouth", "ranking": 1},
+    {"city": "Brighton", "ranking": 1},
+    {"city": "Bristol", "ranking": 1},
+    {"city": "Brussels", "ranking": 1},
+    {"city": "Cambridge", "ranking": 0},
+    {"city": "Cardiff", "ranking": 0},
+    {"city": "Cheltenham", "ranking": 0},
+    {"city": "Chester", "ranking": 0},
+    {"city": "Copenhagen", "ranking": 1},
+    {"city": "Chester", "ranking": 1},
+    {"city": "Copenhagen", "ranking": 0},
+    {"city": "Cork", "ranking": 1},
+    {"city": "Dubai", "ranking": 0},
+    {"city": "Dublin", "ranking": 0},
+    {"city": "Durham", "ranking": 0},
+    {"city": "Edinburgh", "ranking": 0},
+    {"city": "Florence", "ranking": 1},
+    {"city": "Glasgow", "ranking": 0},
+    {"city": "Inverness", "ranking": 0},
+    {"city": "London", "ranking": 0},
+    {"city": "Las Vegas", "ranking": 1},
+    {"city": "Leeds", "ranking": 0},
+    {"city": "Lincoln", "ranking": 0},
+    {"city": "Liverpool", "ranking": 0},
+    {"city": "Leicester", "ranking": 0},
+    {"city": "Manchester", "ranking": 0},
+    {"city": "Milan", "ranking": 0},
+    {"city": "Munich", "ranking": 0},
+    {"city": "New York", "ranking": 0},
+    {"city": "Newcastle", "ranking": 0},
+    {"city": "Nice", "ranking": 0},
+    {"city": "Norwich", "ranking": 0},
+    {"city": "Oxford", "ranking": 0},
+    {"city": "Paris", "ranking": 0},
+    {"city": "Prague", "ranking": 0},
+    {"city": "Rome", "ranking": 0},
+    {"city": "Reading", "ranking": 0},
+    {"city": "Scarborough", "ranking": 0},
+    {"city": "Shefford", "ranking": 0},
+    {"city": "Southampton", "ranking": 0},
+    {"city": "Venice", "ranking": 0},
+    {"city": "Windsor", "ranking": 0},
+    {"city": "York", "ranking": 0}
 ]
 
+function buildDestinationList() {
+    $.each(cities, function(i, city) {
+      destinations.push(city.city);
+    });
+}
+
+buildDestinationList();
 
 function buildDestinationSelctBox(){
     $.each(cities, function(i, city) {
@@ -45,9 +75,13 @@ function buildDestinationSelctBox(){
 } 
 
 function initializeMap(result) {
-    var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
+    
+    console.log(result[0].city)
+    
+
+//var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
     map = new google.maps.Map(document.getElementById('map_canvas'), {
-        center: loc,
+        //center: loc,
         zoom: 13,
         mapTypeId: 'roadmap',
         mapTypeId: google.maps.MapTypeId.ROADMAP, 
@@ -60,6 +94,17 @@ function initializeMap(result) {
             position: google.maps.ControlPosition.RIGHT_TOP
         }
     });
+
+
+    geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+            map.setCenter(pos[0].geometry.location);
+        } 
+    });
+
+
+    
 }
 
 function openInfoBox(id) {
@@ -71,8 +116,19 @@ function openInfoBox(id) {
 var infowindow = new google.maps.InfoWindow;
 
 function fetchResults(result){
+    console.log("fetching results")
     $(".fetching").show();
     $("#list ul li").remove();
+    var lon;
+    var lat;
+
+    geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            lon = pos[0].geometry.location.B;
+            lat = pos[0].geometry.location.k;
+
+           
+        
     $.ajax({
         crossDomain: true,
         // the URL for the request
@@ -84,11 +140,11 @@ function fetchResults(result){
             minorRev: 99,
             apiKey: "xgdsee58vcvfhpr4hhvvhych",
             locale: "en_US",
-            currencyCode: "USD",
+            currencyCode: "GBP",
             arrivalDate: "07/31/2014",
             departureDate: "08/01/2014",
-            longitude: result[0].lon,
-            latitude: result[0].lat,
+            longitude: lon, //result[0].lon,
+            latitude: lat, //result[0].lat,
             numberOfResults: 20
         },
 
@@ -101,9 +157,11 @@ function fetchResults(result){
         // code to run if the request succeeds;
         // the response is passed to the function
         success: function( json ) {
+            console.log ("got results")
             var hotels = json.HotelListResponse.HotelList.HotelSummary;
-            console.log(hotels);
+            //console.log(hotels);
             $(".fetching").hide()
+            $("#list ul").show();
                         
             $.each(hotels, function(i, hotel) {
                 $("#list ul").append(
@@ -112,7 +170,7 @@ function fetchResults(result){
                     + "<div class='details'>"
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
-                    + "<div class='price'>$" + Math.round(hotel.lowRate) + "</div>"
+                    + "<div class='price'>&pound" + Math.round(hotel.lowRate) + "</div>"
                     + "</div>"
                     + "</li>");
                             
@@ -148,6 +206,11 @@ function fetchResults(result){
             //alert( "The request is complete!" );
         }
     });
+
+    } 
+    });
+
+
 }
 
 
