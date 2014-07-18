@@ -47,4 +47,13 @@ input[type=text]:hover{background-color:#fff;}
 
       .tt-hint {color:#aaa; display:none;}
 
-
+ul{margin:0; padding:0;}
+#list ul {margin-top:10px}
+#list ul li {padding:5px 15px;}
+.name {font-size: 14px;}
+.price {font-size:32px; color:#D41200; margin-top:5px;}
+.thumb {display:inline-block; vertical-align: top; margin-right:10px;}
+.thumb img {height:90px;}
+.ta {height:12px; margin-top:5px;}
+#list ul li .details {display:inline-block; vertical-align: top; width:240px;}
+#list ul li:hover {cursor:pointer;}

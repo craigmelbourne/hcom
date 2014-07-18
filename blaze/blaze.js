@@ -2,8 +2,8 @@
 
 // global vars
 var matches;
-var currentdestination = "New York";
-var newYork = new google.maps.LatLng(40.730098, -73.997861);
+var currentdestination;
+//var newYork = new google.maps.LatLng(40.730098, -73.997861);
 
 
 //functions

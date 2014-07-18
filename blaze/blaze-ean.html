@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <link rel="stylesheet" href="blaze.css">
+		<script src="../jquery.js"></script>
+    <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+      </script>
+		<script type="text/javascript" src="typeahead.bundle.js"></script>
+    <script type="text/javascript" src="blaze-ean.js"></script>
+    <!--<script type="text/javascript" src="locations.js"></script>-->
+
+		<script type="text/javascript">
+
+    var homePageDisplayed = true;
+
+    function displayHomePage(){
+      $("#map_wrapper").hide();
+      $("#hotels").hide();
+      $("#navigation").hide();
+      $(".filter").hide();
+      $(".tools").hide();
+      $("#search").addClass("home");
+      $("#search_wrapper").addClass("search_home");
+    }
+
+    function displayResultsScreen(dest){
+      
+      var result = $.grep(cities, function(e){
+        return e.city == dest;
+      });
+
+      if (result[0].ranking == 0) {
+        initializeMap(result);
+        $("#map_wrapper").show();
+        $("#hotels").show();
+        $("#navigation").show();
+        //$(".filter").show();
+        $("#search").removeClass("home");
+         $(".tools").show();
+        $("#strapline").hide();
+        $("#search_wrapper").removeClass("search_home").addClass("search_results");
+        homePageDisplayed = false;
+      } 
+
+      
+    }
+
+    function displayFilters(val) {
+      if (val == true) {
+        $(".typeahead").animate({
+          width: "200px"
+        }, 200).blur().css("background-color","transparent");
+        $(".filter").show();
+      } else {
+        $(".filter").hide();
+      }
+
+    }
+
+    function displaySearchInstruction(val){
+      
+      if(val == true) {
+        var ddpos = $(".tt-dropdown-menu").offset();
+        var ddheight = $(".tt-dropdown-menu").height();
+        console.log ("top = " + ddpos.top + ", height = " + ddheight)
+        $("#searchinstruction").show().css({
+            "top": ddpos.top + ddheight + 10 + "px"
+          });
+      } else {
+        $("#searchinstruction").hide();
+      }
+      
+    }
+
+    function handleResults(dest){
+      
+      $("#list ul").on("click", "li", function(e){
+        e.preventDefault();
+        //console.log("hover")
+        openInfoBox($(this).attr("id"));
+      });
+
+       if (dest != currentdestination){
+
+          var result = $.grep(cities, function(e){
+            return e.city == dest;
+          });
+
+          if(result.length != 0){
+            if (result[0].ranking == 0){
+              displaySearchInstruction(false);
+
+              var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
+              map.panTo(loc);
+            
+              fetchResults(result);
+
+              if ($("#srl").is(':visible')){
+                $("#srl").fadeOut("100", function(){
+                  $("#srl").fadeIn("100");
+                });
+
+              } else {
+                $("#srl").fadeIn("100");
+              }
+
+              $("#map_wrapper").show();
+              $(".tools").show();
+            
+            } else if(result[0].ranking == 1)  {
+            
+              if ($("#list ul").is(':visible')){
+                $("#list ul").hide();
+                $("#map_wrapper").hide();
+                $(".tools").hide();
+                displaySearchInstruction(true);
+              }
+            
+            }
+          } else {
+            console.log("in here");
+            displaySearchInstruction(false);
+            if ($("#list ul").is(':visible')){
+              $("#list").hide();
+              $("#map_wrapper").hide();
+            }
+          }
+
+
+           
+          currentdestination = dest;
+
+          
+        }
+
+    }
+      
+ //else {
+            //
+            //
+          //}
+      
+
+		$(function() {
+
+      
+      if (homePageDisplayed == true) {
+        displayHomePage();
+        
+      }
+
+      $("#destination").focus(function(){
+            $(".filter").hide();
+            $(this).animate({width:"560"}, 200).css("background-color","#fff");
+          
+        });
+
+      $("#destination").hover(function(){
+
+            $("#destination").css("background-color","#fff");
+          
+        });
+
+      $("#destination").keyup(function(e) {
+        console.log(e.which);
+        var cursorKeys = [13, 37, 38, 39, 40];
+        var dest = matches[0].value;
+
+        if(jQuery.inArray(e.which, cursorKeys) === -1) {
+          
+
+          if (homePageDisplayed == true) {
+            displayResultsScreen(dest);
+          }  else {
+           
+            handleResults(dest);
+          }
+          
+          
+        } else if(e.which == 13) {
+            console.log($("#destination").val());
+            $(".tt-dropdown-menu").hide();
+            handleResults($("#destination").val());
+        }
+      }); 
+
+      function onCursorChanged($e, obj, datum) {
+          handleResults(obj.value);
+      }
+
+			
+
+			$('.typeahead').typeahead({
+  				hint: true,
+  				minLength: 1,
+  				items: 5
+
+			},
+			{
+  				name: 'destinations',
+  				displayKey: 'value',
+  				source: substringMatcher(destinations)
+			}).on('typeahead:selected', onSelected).on('typeahead:cursorchanged', onCursorChanged);
+
+      function onSelected($e, obj, datum) {
+        console.log(obj.value + " - " + currentdestination);
+        var city = obj.value;
+        var result = $.grep(cities, function(e){
+          return e.city == city
+        });
+
+        //console.log (r);
+        var NA = new google.maps.LatLng(result[0].lat, result[0].lon);
+        map.panTo(NA);
+
+        if($("#list ul").is(':hidden')){
+          fetchResults(result);
+          $("#list ul").show();
+        }
+
+        
+        if ($("#srl").is(':visible')){
+              $("#srl").fadeOut("100", function(){
+                $("#srl").fadeIn("100");
+              });
+
+            } else {
+              $("#srl").fadeIn("100");
+            }
+
+            $("#map_wrapper").show();
+            $(".tools").show();
+
+            displaySearchInstruction(false);
+            displayFilters(true);
+
+        //var result = $.grep(myArray, function(e){ return e.id == id; });
+
+      }
+
+      
+
+		})
+		</script>
+
+
+		<style type="text/css">
+			body {font-family: arial; margin:50px 100px; color:#555;}
+      #list {position:absolute; top: 100px; left:55px; bottom:0; width:450px; background-color: #fff; overflow-y:scroll;}
+			
+		</style>
+
+	</head>
+	<body>
+
+    <style type="text/css">
+      #srl {padding:0; margin:15px; list-style-type: none;}
+      #srl li {padding-left:110px; background-repeat: no-repeat; background-position: -70px 0; margin-bottom:20px;}
+      #srl li span.wr {font-size: 12px; color:#666;}
+      #srl li div.value {overflow:hidden; margin-top:5px;}
+      #srl li div.price {color:#D41200; font-size:32px; float:left; margin-right:10px;}
+      #srl li div.message {float:left; font-size:12px; color:#999; padding-top:4px;}
+
+
+      .results {position:absolute; top:0; left:55px; right:0; height:60px; background-color:#f1f1f1; border-bottom:1px solid #ccc;}
+      .home {position:absolute;top: 0; left: 0px; right:0; height:260px; background-color:#f1f1f1; text-align:center; padding-top:160px;}
+      .tools {position:absolute; top:61px; left:55px; right:0; height:40px; background-color:#f1f1f1; border-top:1px solid #fff;}
+      #search ul.searchhome {}
+      ul.searchform {margin:0; padding:0; list-style-type: none;}
+            ul.searchform li {display:inline-block; vertical-align:top; margin-right:20px; padding:0;}
+            ul.searchform li.date, ul.searchform li.people {padding:10px 0 10px 30px;  background-repeat: no-repeat; background-position: 0 5px;}
+            ul.searchform li.filter {padding:10px;}
+            span.stars {font-size:13px;}
+    </style>
+
+    <div id="navigation" style="position:absolute; top:0; left:0; bottom:0; width:55px; background-color:#333;">
+      <img src="i/icons.png" style="margin-top:10px"/>
+    </div>
+
+    <div id="list">
+      <div class="fetching" style="display:none; margin-top:200px; text-align:center;">fetching results...</div>
+      <ul>
+           
+      </ul>
+
+    </div>
+
+    <div id="map_wrapper" style=" position:absolute; top:100px; right:0; left:520px; bottom:0;">
+       <div id="map_canvas" style="width:100%; height:100%;"></div>
+    </div>
+
+    <style type="text/css">
+      .search_home {padding:10px 15px; background-color:#f1f1f1; width:820px; text-align:left; margin:0 auto;}
+      .search_results {padding:10px 15px; background-color:#f1f1f1; width:auto; text-align:left; margin:0;}
+    </style>
+
+    <div id="search" class="results">
+      <div id="strapline" style=" padding:0; width: 850px; margin:0 auto; text-align:left;">
+            <h2 style="margin:50px 0 20px 0; padding:0 15px;">Branding and compelling strapline</h2>
+            <div style="padding:15px 15px 0">
+              <label style="display:block; font-size:18px;">Where are you going?</label>
+            </div>
+            
+        </div>
+      <div id="search_wrapper" class="">
+        
+
+        <ul  class="searchform">
+            <li style="">
+              <input id="destination" class="typeahead" placeholder="" autofocus style=""/>
+            </li>
+            <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
+            <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
+            <li class="filter" style="margin-left:10px;">Price</li>
+            <li class="filter" >Star rating</li>
+            <li class="filter" >Amenities</li>
+            <li class="filter" >Location</li>
+          </ul>
+      </div>
+        
+    </div>
+    <style type="text/css">
+      .tools ul {margin:0 0 0 15px; padding:8px 0;}
+      .tools ul li {display:inline-block; vertical-align: top; padding:5px 5px; font-size:13px; margin-right:10px;}
+      .tools ul li.selected {background-color:#900; color:#fff; border-radius:4px;}
+    </style>
+    <div class="tools">
+      <div style="display:inline-block; width:460px;">
+        <ul>
+          <li>All</li>
+          <li class="selected">Top 10</li>
+          <li>Deals</li>
+          <li>Saved</li>
+        </ul>
+      </div>
+      <div style="display:inline-block; width:500px;">
+       
+      </div>
+    </div>
+	
+
+    <div id="searchinstruction" style="position:absolute; top:300px; left:80px; font-size: 13px; color:#666;display:none;">Press Enter to search</div>
+    
+   
+	</body>
+</html>
