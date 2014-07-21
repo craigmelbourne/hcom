@@ -14,30 +14,29 @@ var cities = [
     {"city": "Berlin", "ranking": 0},
     {"city": "Belfast", "ranking": 0},
     {"city": "Birmingham", "ranking": 0},
-    {"city": "Blackpool", "ranking": 1},
-    {"city": "Bournemouth", "ranking": 1},
-    {"city": "Brighton", "ranking": 1},
-    {"city": "Bristol", "ranking": 1},
-    {"city": "Brussels", "ranking": 1},
+    {"city": "Blackpool", "ranking": 0},
+    {"city": "Bournemouth", "ranking": 0},
+    {"city": "Brighton", "ranking": 0},
+    {"city": "Bristol", "ranking": 0},
+    {"city": "Brussels", "ranking": 0},
     {"city": "Cambridge", "ranking": 0},
     {"city": "Cardiff", "ranking": 0},
     {"city": "Cheltenham", "ranking": 0},
     {"city": "Chester", "ranking": 0},
-    {"city": "Copenhagen", "ranking": 1},
-    {"city": "Chester", "ranking": 1},
     {"city": "Copenhagen", "ranking": 0},
-    {"city": "Cork", "ranking": 1},
+    {"city": "Chester", "ranking": 0},
+    {"city": "Copenhagen", "ranking": 0},
+    {"city": "Cork", "ranking": 0},
     {"city": "Dubai", "ranking": 0},
     {"city": "Dublin", "ranking": 0},
     {"city": "Durham", "ranking": 0},
     {"city": "Edinburgh", "ranking": 0},
-    {"city": "Florence", "ranking": 1},
+    {"city": "Florence", "ranking": 0},
     {"city": "Glasgow", "ranking": 0},
     {"city": "Inverness", "ranking": 0},
     {"city": "London", "ranking": 0},
     {"city": "Las Vegas", "ranking": 1},
     {"city": "Leeds", "ranking": 0},
-    {"city": "Lincoln", "ranking": 0},
     {"city": "Liverpool", "ranking": 0},
     {"city": "Leicester", "ranking": 0},
     {"city": "Manchester", "ranking": 0},
@@ -116,20 +115,20 @@ function openInfoBox(id) {
 var infowindow = new google.maps.InfoWindow;
 
 function fetchResults(result){
-    console.log("fetching results")
-    $(".fetching").show();
-    $("#list ul li").remove();
-    var lon;
+
+       var lon;
     var lat;
 
     geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
+            console.log(pos);
             lon = pos[0].geometry.location.B;
             lat = pos[0].geometry.location.k;
 
            
         
     $.ajax({
+        
         crossDomain: true,
         // the URL for the request
         url: "https://api.eancdn.com/ean-services/rs/hotel/v3/list",
@@ -157,11 +156,11 @@ function fetchResults(result){
         // code to run if the request succeeds;
         // the response is passed to the function
         success: function( json ) {
-            console.log ("got results")
+            console.log("got results")
             var hotels = json.HotelListResponse.HotelList.HotelSummary;
             //console.log(hotels);
             $(".fetching").hide()
-            $("#list ul").show();
+            //$("#list ul").show();
                         
             $.each(hotels, function(i, hotel) {
                 $("#list ul").append(
@@ -170,7 +169,7 @@ function fetchResults(result){
                     + "<div class='details'>"
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
-                    + "<div class='price'>&pound" + Math.round(hotel.lowRate) + "</div>"
+                    + "<div class='price'>" + Math.round(hotel.lowRate) + "</div>"
                     + "</div>"
                     + "</li>");
                             
@@ -195,7 +194,7 @@ function fetchResults(result){
         // code to run if the request fails; the raw request and
         // status codes are passed to the function
         error: function( xhr, status, errorThrown ) {
-             //alert( "Sorry, there was a problem!" );
+             alert( "Sorry, there was a problem!" );
             console.log( "Error: " + errorThrown );
             console.log( "Status: " + status );
             console.dir( xhr );
@@ -203,11 +202,13 @@ function fetchResults(result){
  
         // code to run regardless of success or failure
         complete: function( xhr, status ) {
-            //alert( "The request is complete!" );
+            console.log( "The request is complete!" );
         }
     });
 
-    } 
+    } else {
+        console.log("hasn't worked");
+    }
     });
 
 

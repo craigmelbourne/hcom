@@ -108,7 +108,6 @@
           if(result.length != 0){
             if (result[0].ranking == 0){
 
-              console.log("ranking 0")
               displaySearchInstruction(false);
 
               geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
@@ -117,13 +116,10 @@
                   map.panTo(pos[0].geometry.location);
                 } 
               });
-
-              //var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
-              //map.panTo(loc);
             
               fetchResults(result);
-
-              
+              $(".fetching").show();
+              $("#list ul li").remove();
               $("#list ul").show();
               $("#map_wrapper").show();
               $(".tools").show();
@@ -139,13 +135,16 @@
             
             }
           } else {
-            console.log("in here");
+
             displaySearchInstruction(false);
             if ($("#list ul").is(':visible')){
               $("#list ul").hide();
               $(".tools").hide();
               $("#map_wrapper").hide();
+              
             }
+
+            
           }
 
 
@@ -186,22 +185,20 @@
       $("#destination").keyup(function(e) {
         console.log(e.which);
         var cursorKeys = [13, 37, 38, 39, 40];
-        
+        var dest; 
 
-        if (matches.length != 0) {
-          var dest = matches[0].value;
-          //hideResults(false);
-        } else {
-          dest = $("#destination").val();
-          //hideResults(true);
-        }
-
-        
-
-
+        console.log("length:" + matches.length)
 
         if(jQuery.inArray(e.which, cursorKeys) === -1) {
-          
+          if (matches.length != 0 && $("#destination").val() != "") {
+            dest = matches[0].value;
+          } else {
+            dest = $("#destination").val();
+            $(".fetching").hide();
+            $("#list ul li").remove();
+
+          }
+
 
           if (homePageDisplayed == true) {
             displayResultsScreen(dest);
@@ -210,11 +207,24 @@
             handleResults(dest);
           }
           
-          
+          // ENTER KEY PRESSED
         } else if(e.which == 13) {
-            console.log($("#destination").val());
+
+            dest = $("#destination").val();
             $(".tt-dropdown-menu").hide();
-            handleResults($("#destination").val());
+            //handleResults($("#destination").val());
+
+            geocoder.geocode( { 'address': dest}, function(pos, status) {
+                console.log(dest + " code")
+                if (status == google.maps.GeocoderStatus.OK) {
+                  //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+                  map.panTo(pos[0].geometry.location);
+                  console.log("yay");
+                  console.log(pos);
+                } else {
+                  console.log("can't work it out")
+                }
+              });
         }
       }); 
 
@@ -254,6 +264,9 @@
               });
 
         if($("#list ul").is(':hidden')){
+           $(".fetching").show();
+          $("#list ul li").remove();
+
           fetchResults(result);
           $("#list ul").show();
         }
