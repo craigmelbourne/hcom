@@ -48,7 +48,8 @@ input[type=text]:hover{background-color:#fff;}
       .tt-hint {color:#aaa; display:none;}
 
 ul{margin:0; padding:0;}
-#list ul {margin-top:10px}
+#list {position:absolute; top: 100px; left:55px; bottom:0; width:400px; background-color: #fff; overflow-y:scroll;}
+#list ul {margin-top:10px; border-right:solid 1px #000;}
 #list ul li {padding:5px 15px;}
 .name {font-size: 14px;}
 .price {font-size:32px; color:#D41200; margin-top:5px;}
@@ -57,3 +58,7 @@ ul{margin:0; padding:0;}
 .ta {height:12px; margin-top:5px;}
 #list ul li .details {display:inline-block; vertical-align: top; width:240px;}
 #list ul li:hover {cursor:pointer;}
+.star {font-size:12px;}
+
+#map_wrapper {position:absolute; top:100px; right:0; left:455px; bottom:0;}
+

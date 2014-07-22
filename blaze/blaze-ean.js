@@ -78,12 +78,27 @@ function buildHotelist(hotels){
     $(".fetching").hide()
             //$("#list ul").show();
             $("#list ul li").remove();
-            console.log(hotels)
+            console.log(hotels); 
+
+
+
+
     $.each(hotels, function(i, hotel) {
+        var starRating = "";
+        for (i = 1; i <= Math.floor(hotel.hotelRating) ; i++) { 
+            starRating += "<span class='star'>&#9733;</span>";
+        }
+
+        for (i = 1; i <= (5 - Math.floor(hotel.hotelRating)) ; i++) { 
+            starRating += "<span class='star' style='color:#ccc'>&#9733;</span>";
+        }
+
+
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
                     + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
                     + "<div class='details'>"
+                    + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
                     + "<div class='price'>&pound;" + Math.round(hotel.lowRate) + "</div>"
