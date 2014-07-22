@@ -32,7 +32,6 @@
       $("#map_wrapper").hide();
       $("#list").hide();
       $("#navigation").hide();
-      $(".filter").hide();
       $(".tools").hide();
       $("#search").addClass("home");
       $("#search_wrapper").addClass("search_home");
@@ -51,7 +50,6 @@
         $("#map_wrapper").show();
         $("#list").show();
         $("#navigation").show();
-        //$(".filter").show();
         $("#search").removeClass("home");
          $(".tools").show();
         $("#strapline").hide();
@@ -67,9 +65,9 @@
         $(".typeahead").animate({
           width: "200px"
         }, 200).blur().css("background-color","transparent");
-        $(".filter").show();
+        //$(".filter").show();
       } else {
-        $(".filter").hide();
+        //$(".filter").hide();
       }
 
     }
@@ -366,26 +364,30 @@
             </li>
             <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
             <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
-            <li class="filter" style="margin-left:10px;">Price</li>
-            <li class="filter" >Star rating</li>
-            <li class="filter" >Amenities</li>
-            <li class="filter" >Location</li>
           </ul>
       </div>
         
     </div>
     <style type="text/css">
-      .tools ul {margin:0 0 0 15px; padding:8px 0;}
+      .tools ul {margin:0 0 0 15px; padding:0 0;}
       .tools ul li {display:inline-block; vertical-align: top; padding:5px 5px; font-size:13px; margin-right:10px;}
       .tools ul li.selected {background-color:#900; color:#fff; border-radius:4px;}
     </style>
     <div class="tools">
-      <div style="display:inline-block; width:460px;">
+      <div class="" style="display:inline-block; width:390px; border-right:solid 1px #000; overflow:hidden; margin:8px 0;">
         <ul>
-          <li>All</li>
-          <li class="selected">Top 10</li>
+          <li class="selected">All</li>
+          <li >Top 10</li>
           <li>Deals</li>
           <li>Saved</li>
+        </ul>
+      </div>
+      <div class="filters" style="display:inline-block; overflow:hidden; margin:8px 0;">
+        <ul>
+          <li>This location</li>
+          <li>Price</li>
+          <li>Star Rating</li>
+          <li>More</li>
         </ul>
       </div>
       <div style="display:inline-block; width:500px;">
