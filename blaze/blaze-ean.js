@@ -80,7 +80,8 @@ function buildHotelist(hotels){
             $("#list ul li").remove();
             console.log(hotels); 
 
-
+    var total = "";
+    
 
 
     $.each(hotels, function(i, hotel) {
@@ -93,6 +94,16 @@ function buildHotelist(hotels){
             starRating += "<span class='star' style='color:#ccc'>&#9733;</span>";
         }
 
+        if (Math.round(hotel.highRate) != Math.round(hotel.lowRate)){
+            total = "<span class='highprice'>&pound;" + Math.round(hotel.highRate) + "</span> <span class='total' style='color:#D41200'>&pound;" + Math.round(hotel.lowRate) + "</span>"
+        } else {
+            total = "<span class='total'>&pound;" + Math.round(hotel.lowRate) + "</span>";
+        }
+
+        
+
+       // total =  ;
+
 
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
@@ -101,8 +112,9 @@ function buildHotelist(hotels){
                     + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
-                    + "<div class='price'>&pound;" + Math.round(hotel.lowRate) + "</div>"
                     + "</div>"
+                    + "<div class='price-wrapper'><div class='price'>" + total + "</div></div></div>"
+                    
                     + "</li>");
                             
                 var marker = new google.maps.Marker({
