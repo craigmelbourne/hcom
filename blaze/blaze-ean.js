@@ -68,10 +68,45 @@ function buildDestinationList() {
 buildDestinationList();
 
 function buildDestinationSelctBox(){
+
     $.each(cities, function(i, city) {
       $("select").append("<option>" + city.city + "</option>")
     });
 } 
+
+function buildHotelist(hotels){
+    $(".fetching").hide()
+            //$("#list ul").show();
+            $("#list ul li").remove();
+            console.log(hotels)
+    $.each(hotels, function(i, hotel) {
+        $("#list ul").append(
+                    "<li id='" + hotel.hotelId + "''>"
+                    + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
+                    + "<div class='details'>"
+                    + "<div class='name'>" + hotel.name + "</div>" 
+                    + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
+                    + "<div class='price'>&pound;" + Math.round(hotel.lowRate) + "</div>"
+                    + "</div>"
+                    + "</li>");
+                            
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
+                    map: map
+                    //icon: icon
+                }); 
+
+                var infoWindowContent = "<div class='name'>" + hotel.name + "</div>" + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />" + "<div class='price'>&pound;" + Math.round(hotel.lowRate) + "</div>" ;
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(infoWindowContent);
+                    infowindow.open(map,marker);
+                });
+
+                gmarkers[hotel.hotelId] = marker;
+    });
+    
+}
 
 function initializeMap(result) {
     
@@ -116,10 +151,10 @@ var infowindow = new google.maps.InfoWindow;
 
 function fetchResults(result){
 
-       var lon;
+    var lon;
     var lat;
 
-    geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
+    geocoder.geocode( { 'address': result}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             console.log(pos);
             lon = pos[0].geometry.location.B;
@@ -144,6 +179,8 @@ function fetchResults(result){
             departureDate: "08/01/2014",
             longitude: lon, //result[0].lon,
             latitude: lat, //result[0].lat,
+            searchRadius: 2,
+            searchRadiusUnit: "MI",
             numberOfResults: 20
         },
 
@@ -156,39 +193,17 @@ function fetchResults(result){
         // code to run if the request succeeds;
         // the response is passed to the function
         success: function( json ) {
-            console.log("got results")
+            //console.log("got results")
             var hotels = json.HotelListResponse.HotelList.HotelSummary;
             //console.log(hotels);
-            $(".fetching").hide()
-            //$("#list ul").show();
-                        
-            $.each(hotels, function(i, hotel) {
-                $("#list ul").append(
-                    "<li id='" + hotel.hotelId + "''>"
-                    + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
-                    + "<div class='details'>"
-                    + "<div class='name'>" + hotel.name + "</div>" 
-                    + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
-                    + "<div class='price'>" + Math.round(hotel.lowRate) + "</div>"
-                    + "</div>"
-                    + "</li>");
-                            
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
-                    map: map
-                    //icon: icon
-                }); 
 
-                var infoWindowContent = "<div class='name'>" + hotel.name + "</div>" + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />" + "<div class='price'>$" + Math.round(hotel.lowRate) + "</div>" ;
+            if (currentdestination != result){
+                console.log("Last searched for" + currentdestination + " + results for " + result + " don't build");
+            }  else {
+                console.log("Last searched for" + currentdestination + " + results for " + result + " go build list");
+                buildHotelist(hotels);
+            }
 
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.setContent(infoWindowContent);
-                    infowindow.open(map,marker);
-                });
-
-                gmarkers[hotel.hotelId] = marker;
-
-            });
         },
  
         // code to run if the request fails; the raw request and
@@ -202,7 +217,7 @@ function fetchResults(result){
  
         // code to run regardless of success or failure
         complete: function( xhr, status ) {
-            console.log( "The request is complete!" );
+            
         }
     });
 

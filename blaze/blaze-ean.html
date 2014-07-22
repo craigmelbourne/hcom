@@ -79,7 +79,6 @@
       if(val == true) {
         var ddpos = $(".tt-dropdown-menu").offset();
         var ddheight = $(".tt-dropdown-menu").height();
-        console.log ("top = " + ddpos.top + ", height = " + ddheight)
         $("#searchinstruction").show().css({
             "top": ddpos.top + ddheight + 10 + "px"
           });
@@ -116,8 +115,8 @@
                   map.panTo(pos[0].geometry.location);
                 } 
               });
-            
-              fetchResults(result);
+              console.log("fetch " + result[0].city);
+              fetchResults(result[0].city);
               $(".fetching").show();
               $("#list ul li").remove();
               $("#list ul").show();
@@ -183,7 +182,7 @@
         });
 
       $("#destination").keyup(function(e) {
-        console.log(e.which);
+        //console.log(e.which);
         var cursorKeys = [13, 37, 38, 39, 40];
         var dest; 
 
@@ -219,10 +218,19 @@
                 if (status == google.maps.GeocoderStatus.OK) {
                   //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
                   map.panTo(pos[0].geometry.location);
-                  console.log("yay");
-                  console.log(pos);
+                  fetchResults(dest);
+                  if ($("#list ul").is(':hidden')){
+                    $(".fetching").show();
+                    $("#list ul").show();
+                    $("#map_wrapper").show();
+                    $(".tools").show();
+                //displaySearchInstruction(true);
+                  }
+                  //console.log("yay");
+                  //console.log(dest);
                 } else {
-                  console.log("can't work it out")
+                  //console.log("can't work it out")
+                  alert("try again");
                 }
               });
         }
@@ -249,7 +257,7 @@
       
 
       function onSelected($e, obj, datum) {
-        console.log(obj.value + " - " + currentdestination);
+        //console.log(obj.value + " - " + currentdestination);
         var city = obj.value;
         var result = $.grep(cities, function(e){
           return e.city == city
@@ -267,19 +275,12 @@
            $(".fetching").show();
           $("#list ul li").remove();
 
-          fetchResults(result);
+          fetchResults(result[0].city);
           $("#list ul").show();
         }
 
         
-        if ($("#srl").is(':visible')){
-              $("#srl").fadeOut("100", function(){
-                $("#srl").fadeIn("100");
-              });
-
-            } else {
-              $("#srl").fadeIn("100");
-            }
+        
 
             $("#map_wrapper").show();
             $(".tools").show();
