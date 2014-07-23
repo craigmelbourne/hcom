@@ -91,7 +91,16 @@ function buildHotelListing(hotel){
         $(".fetching").hide();
         $(".noresults").hide();
             //$("#list ul").show();
-        
+
+        var isBrand =  checkForBrand(hotel.name);
+        var thumb;   
+        if ( isBrand != false){
+            console.log (isBrand + " " + hotel.name); 
+            thumb = "<div class='thumb'><img  src='i/brands/" + isBrand + ".png'/></div>"
+        } else {
+            thumb = "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/><img src='i/image_mask.png' class='mask'/></div>"
+        }
+
         var total = "";
 
         var starRating = "";
@@ -111,7 +120,7 @@ function buildHotelListing(hotel){
 
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
-                    + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/><img src='i/image_mask.png' class='mask'/></div>" 
+                    + thumb 
                     + "<div class='details'>"
                     + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
@@ -140,23 +149,37 @@ function buildHotelListing(hotel){
 }
 
 function buildHotelist(hotels){
-    //console.log("build hotels");
-    //console.log(hotels);
     $(".fetching").hide();
     $(".noresults").hide();
             //$("#list ul").show();
     $("#list ul li").remove();
-    //console.log(hotels); 
-
-    //var total = "";
-    
-
 
     $.each(hotels, function(i, hotel) {
         buildHotelListing(hotel);
         
     });
     
+}
+
+function checkForBrand(str){
+    if (str.toLowerCase().indexOf("radisson") >= 0) {
+        return "radisson";
+    } else if (str.toLowerCase().indexOf("ramada") >= 0) {
+        return "ramada";
+    } else if (str.toLowerCase().indexOf("hilton") >= 0) {
+        return "hilton";
+    } else if (str.toLowerCase().indexOf("holiday inn") >= 0) {
+        return "holidayinn";
+    } else if (str.toLowerCase().indexOf("ibis") >= 0) {
+        return "ibis";
+    } else if (str.toLowerCase().indexOf("jurys inn") >= 0) {
+        return "jurysinn";
+    } else if (str.toLowerCase().indexOf("best western") >= 0) {
+        return "bestwestern";
+    } else {
+        return false;
+    }
+        
 }
 
 function initializeMap(result) {
