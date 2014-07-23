@@ -176,6 +176,10 @@ function checkForBrand(str){
         return "jurysinn";
     } else if (str.toLowerCase().indexOf("best western") >= 0) {
         return "bestwestern";
+    } else if (str.toLowerCase().indexOf("park inn") >= 0) {
+        return "parkinn";
+    } else if (str.toLowerCase().indexOf("marriott") >= 0) {
+        return "marriott";
     } else {
         return false;
     }
