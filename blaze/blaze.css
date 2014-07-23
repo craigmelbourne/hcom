@@ -54,8 +54,9 @@ ul{margin:0; padding:0;}
 #list ul li {padding:10px 0 8px 0; margin:0 15px 0 15px; border-bottom:solid 1px #e7e7e7;}
 .name {font-size: 14px;}
 
-.thumb {display:inline-block; vertical-align: top; margin-right:10px;}
+.thumb {display:inline-block; vertical-align: top; margin-right:10px; position:relative;}
 .thumb img {height:70px;}
+.thumb img.mask {position:absolute; top:0; left:0; width:71px;}
 .ta {height:12px; margin-top:5px;}
 #list ul li .details {display:inline-block; vertical-align: top; width:180px; }
 #list ul li .price-wrapper {display:inline-block; vertical-align: top; width:90px; height:70px; position:relative; text-align: right;}

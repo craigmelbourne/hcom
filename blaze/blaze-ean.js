@@ -111,7 +111,7 @@ function buildHotelListing(hotel){
 
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
-                    + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
+                    + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/><img src='i/image_mask.png' class='mask'/></div>" 
                     + "<div class='details'>"
                     + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
@@ -123,8 +123,8 @@ function buildHotelListing(hotel){
 
         var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
-                    map: map
-                    //icon: icon
+                    map: map,
+                    icon: 'i/hotel_pin.png'
                 }); 
 
                 var infoWindowContent = "<div class='name'>" + hotel.name + "</div>" + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />" + "<div class='price'>&pound;" + Math.round(hotel.lowRate) + "</div>" ;
