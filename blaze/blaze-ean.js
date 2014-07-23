@@ -9,7 +9,8 @@ var destinations = [];
 
 var cities = [
     {"city": "Amsterdam", "ranking": 0},
-    {"city": "Aberdeen", "ranking": 1},
+    {"city": "Aberdeen", "ranking": 0},
+    {"city": "Agadir", "ranking": 0},
     {"city": "Barcelona", "ranking": 0},
     {"city": "Berlin", "ranking": 0},
     {"city": "Belfast", "ranking": 0},
@@ -35,8 +36,8 @@ var cities = [
     {"city": "Glasgow", "ranking": 0},
     {"city": "Inverness", "ranking": 0},
     {"city": "London", "ranking": 0},
-    {"city": "Las Vegas", "ranking": 1},
-    {"city": "Leeds", "ranking": 0},
+    {"city": "Las Vegas", "ranking": 0},
+    {"city": "Leeds", "ranking": 1},
     {"city": "Liverpool", "ranking": 0},
     {"city": "Leicester", "ranking": 0},
     {"city": "Manchester", "ranking": 0},
@@ -55,7 +56,8 @@ var cities = [
     {"city": "Shefford", "ranking": 0},
     {"city": "Southampton", "ranking": 0},
     {"city": "Venice", "ranking": 0},
-    {"city": "Windsor", "ranking": 0},
+    {"city": "Windsor, UK", "ranking": 0},
+    {"city": "Whitby", "ranking": 0},
     {"city": "York", "ranking": 0}
 ]
 
@@ -74,17 +76,24 @@ function buildDestinationSelctBox(){
     });
 } 
 
-function buildHotelist(hotels){
-    $(".fetching").hide()
+function handleZeroResults(dest){
+    $(".fetching").hide();
+    $(".noresults").show().html("We couldn't find any hotels for <span style='font-weight:bold;'>" + dest + "</span>");
+}
+
+function handleOneResult(hotel){
+    $("#list ul li").remove();
+    buildHotelListing(hotel);
+}
+
+function buildHotelListing(hotel){
+        //console.log(hotel.name);
+        $(".fetching").hide();
+        $(".noresults").hide();
             //$("#list ul").show();
-            $("#list ul li").remove();
-            console.log(hotels); 
+        
+        var total = "";
 
-    var total = "";
-    
-
-
-    $.each(hotels, function(i, hotel) {
         var starRating = "";
         for (i = 1; i <= Math.floor(hotel.hotelRating) ; i++) { 
             starRating += "<span class='star'>&#9733;</span>";
@@ -100,11 +109,6 @@ function buildHotelist(hotels){
             total = "<span class='total'>&pound;" + Math.round(hotel.lowRate) + "</span>";
         }
 
-        
-
-       // total =  ;
-
-
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
                     + "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/></div>" 
@@ -116,8 +120,8 @@ function buildHotelist(hotels){
                     + "<div class='price-wrapper'><div class='price'>" + total + "</div></div></div>"
                     
                     + "</li>");
-                            
-                var marker = new google.maps.Marker({
+
+        var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
                     map: map
                     //icon: icon
@@ -131,13 +135,33 @@ function buildHotelist(hotels){
                 });
 
                 gmarkers[hotel.hotelId] = marker;
+
+
+}
+
+function buildHotelist(hotels){
+    //console.log("build hotels");
+    //console.log(hotels);
+    $(".fetching").hide();
+    $(".noresults").hide();
+            //$("#list ul").show();
+    $("#list ul li").remove();
+    //console.log(hotels); 
+
+    //var total = "";
+    
+
+
+    $.each(hotels, function(i, hotel) {
+        buildHotelListing(hotel);
+        
     });
     
 }
 
 function initializeMap(result) {
     
-    console.log(result[0].city)
+    //console.log(result[0].city)
     
 
 //var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
@@ -183,10 +207,12 @@ function fetchResults(result){
 
     geocoder.geocode( { 'address': result}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            console.log(pos);
+            //console.log(pos);
             lon = pos[0].geometry.location.B;
             lat = pos[0].geometry.location.k;
 
+            //console.log("pos");
+            //console.log(pos);
            
         
     $.ajax({
@@ -216,27 +242,44 @@ function fetchResults(result){
 
         // the type of data we expect back
         dataType : "jsonp",
+        timeout:3000,
  
         // code to run if the request succeeds;
         // the response is passed to the function
         success: function( json ) {
-            //console.log("got results")
-            var hotels = json.HotelListResponse.HotelList.HotelSummary;
+
+           console.log("success");
+            //console.log(json.HotelListResponse.HotelList['@size']);
+            //console.log(json.HotelListResponse.HotelList);
+            if (json.HotelListResponse.HotelList == undefined){
+                //console.log("no results");
+                handleZeroResults(pos[0].formatted_address)
+            } else if (json.HotelListResponse.HotelList['@size'] == "1"){
+                //var hotels = json.HotelListResponse.HotelList.HotelSummary;
+                //console.log("only 1 result returned");
+                //console.log(json.HotelListResponse.HotelList);
+                var hotel = json.HotelListResponse.HotelList.HotelSummary;
+                handleOneResult(hotel)
+            } else {
+                var hotels = json.HotelListResponse.HotelList.HotelSummary;
+                if (currentdestination == result){
+                    console.log("Last searched for" + currentdestination + " + results for " + result + " go build list");
+                    buildHotelist(hotels);
+                }
+            }
+
+            
+            
             //console.log(hotels);
 
-            if (currentdestination != result){
-                console.log("Last searched for" + currentdestination + " + results for " + result + " don't build");
-            }  else {
-                console.log("Last searched for" + currentdestination + " + results for " + result + " go build list");
-                buildHotelist(hotels);
-            }
+            
 
         },
  
         // code to run if the request fails; the raw request and
         // status codes are passed to the function
         error: function( xhr, status, errorThrown ) {
-             alert( "Sorry, there was a problem!" );
+             //alert( "Sorry, there was a problem!" );
             console.log( "Error: " + errorThrown );
             console.log( "Status: " + status );
             console.dir( xhr );
@@ -249,7 +292,7 @@ function fetchResults(result){
     });
 
     } else {
-        console.log("hasn't worked");
+        console.log("can't find destination");
     }
     });
 

@@ -184,7 +184,7 @@
         var cursorKeys = [13, 37, 38, 39, 40];
         var dest; 
 
-        console.log("length:" + matches.length)
+        //console.log("length:" + matches.length)
 
         if(jQuery.inArray(e.which, cursorKeys) === -1) {
           if (matches.length != 0 && $("#destination").val() != "") {
@@ -212,7 +212,7 @@
             //handleResults($("#destination").val());
 
             geocoder.geocode( { 'address': dest}, function(pos, status) {
-                console.log(dest + " code")
+                //console.log(dest + " code")
                 if (status == google.maps.GeocoderStatus.OK) {
                   //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
                   map.panTo(pos[0].geometry.location);
@@ -256,6 +256,7 @@
 
       function onSelected($e, obj, datum) {
         //console.log(obj.value + " - " + currentdestination);
+        console.log("ran thorugh selected");
         var city = obj.value;
         var result = $.grep(cities, function(e){
           return e.city == city
@@ -263,31 +264,33 @@
 
         //console.log (r);
         geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                  console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
-                  map.panTo(pos[0].geometry.location);
-                } 
-              });
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.panTo(pos[0].geometry.location);
+          } 
+        });
+
+        console.log(result[0].city + " " + currentdestination);
 
         if($("#list ul").is(':hidden')){
-           $(".fetching").show();
+          $(".fetching").show();
           $("#list ul li").remove();
-
+          currentdestination = result[0].city;
+           
           fetchResults(result[0].city);
-          $("#list ul").show();
+          
+          
+        } else if (result[0].city != currentdestination) {
+          $(".fetching").show();
+          $("#list ul li").remove();
+          currentdestination = result[0].city;
+          fetchResults(result[0].city);
         }
+        $("#list ul").show();
+        $("#map_wrapper").show();
+        $(".tools").show();
 
-        
-        
-
-            $("#map_wrapper").show();
-            $(".tools").show();
-
-            displaySearchInstruction(false);
-            displayFilters(true);
-
-        //var result = $.grep(myArray, function(e){ return e.id == id; });
-
+        displaySearchInstruction(false);
+            //displayFilters(true);
       }
 
       
@@ -333,6 +336,7 @@
 
     <div id="list">
       <div class="fetching" style="display:none; margin-top:200px; text-align:center;">fetching results...</div>
+      <div class="noresults" style="display:none; margin:200px 20px 0;">We couldn't find any results for this destination</div>
       <ul>
       </ul>
     </div>
