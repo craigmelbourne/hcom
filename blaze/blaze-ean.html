@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <link rel="stylesheet" href="blaze.css">
+    
 		<script src="../jquery.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="blaze.css">
+  <script src="http:///code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script type="text/javascript"
           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
       </script>
@@ -161,6 +164,19 @@
 
 		$(function() {
 
+      var cur = "";
+      $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 300,
+      values: [ 0, 300 ],
+      slide: function( event, ui ) {
+        $("#min").val(cur + ui.values[ 0 ]);
+        $("#max").val(cur + ui.values[ 1 ]);
+      }
+    });
+    $("#min").val(cur + $( "#slider-range" ).slider( "values", 0 ));
+    $("#max").val(cur + $( "#slider-range" ).slider( "values", 1 ));
       
       if (homePageDisplayed == true) {
         displayHomePage();
@@ -375,24 +391,28 @@
     </div>
     <style type="text/css">
       .tools ul {margin:0 0 0 15px; padding:0 0;}
-      .tools ul li {display:inline-block; vertical-align: top; padding:5px 5px; font-size:13px; margin-right:10px;}
+      .tools ul li {display:inline-block; vertical-align: top; padding:0; font-size:13px; margin-right:10px;}
       .tools ul li.selected {background-color:#900; color:#fff; border-radius:4px;}
     </style>
     <div class="tools">
-      <div class="" style="display:inline-block; width:390px; border-right:solid 1px #000; overflow:hidden; margin:8px 0;">
+      <div class="links" style="display:inline-block; vertical-align:top; width:390px; border-right:solid 1px #000; overflow:hidden; margin:0 0;">
         <ul>
-          <li class="selected">All</li>
-          <li >Top 10</li>
-          <li>Deals</li>
-          <li>Saved</li>
+          <li style="padding:10px 0">All hotels</li>
+          <li style="padding:10px 0">Top 10</li>
+          <li style="padding:10px 0">Deals</li>
+          <li style="padding:10px 0">Saved</li>
         </ul>
       </div>
-      <div class="filters" style="display:inline-block; overflow:hidden; margin:8px 0;">
+      <div class="filters" style="display:inline-block; vertical-align:top; overflow:hidden; margin:0;">
         <ul>
-          <li>This location</li>
-          <li>Price</li>
-          <li>Star Rating</li>
-          <li>More</li>
+          <li style="padding:6px 0 0; margin-bottom:0px;"><input type="text" placeholder="Search this location" style="padding:3px; width:200px;"/></li>
+          <li style="padding:8px 0">
+            <span style="display:inline-block; padding-top:3px; vertical-align:top; font-weight:bold; font-size:11px;">&pound;</span><input type="text" id="min" readonly style="border:0; font-weight:bold; display:inline-block; width:23px; color:#555; background-color:transparent" >
+            <div style="display:inline-block">  <div id="slider-range"></div></div>
+            <span style="display:inline-block; padding-top:3px; vertical-align:top; font-weight:bold; font-size:11px;">&pound;</span><input type="text" id="max" readonly style="border:0; font-weight:bold; display:inline-block; color:#555; background-color:transparent; width:30px">
+          </li>
+          <li style="padding:10px 0">Star Rating <span class='star'>&#9733;</span><span class='star'>&#9733;</span><span class='star'>&#9733;</span><span class='star'>&#9733;</span><span class='star'>&#9733;</span></li>
+          <li style="padding:10px 0">More filters...</li>
         </ul>
       </div>
       <div style="display:inline-block; width:500px;">
