@@ -9,7 +9,9 @@ input[type=text]:hover{background-color:#fff;}
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 400px;
+  min-width: 200px;
+  max-height:124px;
+  overflow:hidden;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -24,6 +26,7 @@ input[type=text]:hover{background-color:#fff;}
 .tt-suggestion > p {
   display: block;
   padding: 5px 10px;
+  border-bottom:solid 1px #eee;
   clear: both;
   font-weight: normal;
   line-height: 1.428571429;
