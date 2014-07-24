@@ -23,6 +23,7 @@ var cities = [
     {"city": "Atlanta", "ranking": 0},
     {"city": "Auckland", "ranking": 0},
     {"city": "Austin", "ranking": 0},
+    {"city": "Berlin", "ranking": 0},
     {"city": "Bath", "ranking": 0},
     {"city": "Barcelona", "ranking": 0},
     {"city": "Belfast", "ranking": 0},
@@ -31,10 +32,9 @@ var cities = [
     {"city": "Bangkok", "ranking": 0},
     {"city": "Baghdad", "ranking": 0},
     {"city": "Bari", "ranking": 0},
-    {"city": "Berlin", "ranking": 0},
     {"city": "Belgrade", "ranking": 0},
     {"city": "Bern", "ranking": 0},
-    {"city": "Bergin", "ranking": 0},
+    {"city": "Bergen", "ranking": 0},
     {"city": "Baltimore", "ranking": 0},
     {"city": "Blackpool", "ranking": 0},
     {"city": "Bournemouth", "ranking": 0},
@@ -193,6 +193,7 @@ function handleZeroResults(dest){
 
 function handleOneResult(hotel){
     $("#list ul li").remove();
+    $("#list").show();
     buildHotelListing(hotel);
 }
 
@@ -234,7 +235,7 @@ function buildHotelListing(hotel){
                     + "<div class='details'>"
                     + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
-                    + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
+                   // + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
                     + "</div>"
                     + "<div class='price-wrapper'><div class='price'>" + total + "</div></div></div>"
                     
@@ -261,7 +262,7 @@ function buildHotelListing(hotel){
 function buildHotelist(hotels){
     $(".fetching").hide();
     $(".noresults").hide();
-            //$("#list ul").show();
+    $("#list").show();
     $("#list ul li").remove();
 
     $.each(hotels, function(i, hotel) {
@@ -350,7 +351,7 @@ function fetchResults(result){
 
             //console.log("pos");
             //console.log(pos);
-           
+             
         
     $.ajax({
         

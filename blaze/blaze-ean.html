@@ -134,12 +134,12 @@
           } else {
 
             displaySearchInstruction(false);
-            if ($("#list ul").is(':visible')){
-              $("#list ul").hide();
+            //if ($("#list ul").is(':visible')){
+              $("#list").hide();
               $(".tools").hide();
               $("#map_wrapper").hide();
               
-            }
+            //}
 
             
           }
@@ -192,6 +192,7 @@
           } else {
             dest = $("#destination").val();
             $(".fetching").hide();
+            $("#list ul").hide();
             $("#list ul li").remove();
 
           }
