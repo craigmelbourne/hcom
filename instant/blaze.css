@@ -52,7 +52,7 @@ input[type=text]:hover{background-color:#fff;}
       .tt-hint {color:#aaa; display:none;}
 
 ul{margin:0; padding:0;}
-#list {position:absolute; top: 100px; left:55px; bottom:0; width:400px; background-color: #fff; overflow-y:scroll;}
+#list {position:absolute; top: 100px; left:55px; bottom:50px; width:400px; background-color: #fff; overflow-y:scroll;}
 #list ul {margin-top:10px; padding:0; list-style-type: none;}
 #list ul li {padding:10px 0 8px 0; margin:0 15px 0 15px; border-bottom:solid 1px #e7e7e7;}
 .name {font-size: 14px;}

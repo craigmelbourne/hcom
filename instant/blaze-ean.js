@@ -118,7 +118,7 @@ var cities = [
     {"city": "New York", "ranking": 0},
     {"city": "Newcastle", "ranking": 0},
     {"city": "Newquay", "ranking": 0},
-    {"city": "Newport", "ranking": 0},
+    {"city": "Newport, UK", "ranking": 0},
     {"city": "New Dehli", "ranking": 0},
     {"city": "Naples", "ranking": 0},
     {"city": "Nice", "ranking": 0},
@@ -187,6 +187,7 @@ function buildDestinationSelctBox(){
 } 
 
 function handleZeroResults(dest){
+    $("#list").show();
     $(".fetching").hide();
     $(".noresults").show().html("We couldn't find any hotels for <span style='font-weight:bold;'>" + dest + "</span>");
 }
@@ -194,6 +195,7 @@ function handleZeroResults(dest){
 function handleOneResult(hotel){
     $("#list ul li").remove();
     $("#list").show();
+    $(".price-match").show();
     buildHotelListing(hotel);
 }
 
@@ -235,7 +237,7 @@ function buildHotelListing(hotel){
                     + "<div class='details'>"
                     + "<div class='stars'>" + starRating + "</div>"
                     + "<div class='name'>" + hotel.name + "</div>" 
-                    + "<img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' />"
+                    + "<div><img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' style=''/></div>"
                     + "</div>"
                     + "<div class='price-wrapper'><div class='price'>" + total + "</div></div>"
                     + "</li>");
@@ -256,12 +258,15 @@ function buildHotelListing(hotel){
                 gmarkers[hotel.hotelId] = marker;
 
 
+
+
 }
 
 function buildHotelist(hotels){
     $(".fetching").hide();
     $(".noresults").hide();
     $("#list").show();
+    $(".price-match").show();
     $("#list ul li").remove();
 
     $.each(hotels, function(i, hotel) {
@@ -350,7 +355,7 @@ function fetchResults(result){
 
             //console.log("pos");
             //console.log(pos);
-             
+            $("#dest_label").text(pos[0].formatted_address);
         
     $.ajax({
         
@@ -400,16 +405,10 @@ function fetchResults(result){
             } else {
                 var hotels = json.HotelListResponse.HotelList.HotelSummary;
                 if (currentdestination == result){
-                    console.log("Last searched for" + currentdestination + " + results for " + result + " go build list");
+                    //console.log("Last searched for" + currentdestination + " + results for " + result + " go build list");
                     buildHotelist(hotels);
                 }
             }
-
-            
-            
-            //console.log(hotels);
-
-            
 
         },
  

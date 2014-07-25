@@ -24,12 +24,8 @@
       } else {
         $("#list ul").show();
         $("#tools").show();
-      }
-
-      
+      } 
     }
-
-    
 
     function displayHomePage(){
       $("#map_wrapper").hide();
@@ -46,8 +42,6 @@
         return e.city == dest;
       });
 
-
-
       if (result.length > 0 && result[0].ranking == 0) {
         initializeMap(result);
         $("#map_wrapper").show();
@@ -59,8 +53,6 @@
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
       } 
-
-      
     }
 
     function displayFilters(val) {
@@ -72,7 +64,6 @@
       } else {
         //$(".filter").hide();
       }
-
     }
 
     function displaySearchInstruction(val){
@@ -103,8 +94,6 @@
             return e.city == dest;
           });
 
-          //console.log("len" + result.length);
-
           if(result.length != 0){
             if (result[0].ranking == 0){
 
@@ -112,7 +101,6 @@
 
               geocoder.geocode( { 'address': result[0].city}, function(pos, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                  //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
                   map.panTo(pos[0].geometry.location);
                 } 
               });
@@ -123,6 +111,7 @@
               $("#list ul").show();
               $("#map_wrapper").show();
               $(".tools").show();
+              $(".price-match").hide();
             
             } else if(result[0].ranking == 1)  {
             
@@ -130,6 +119,7 @@
                 $("#list ul").hide();
                 $("#map_wrapper").hide();
                 $(".tools").hide();
+                $(".price-match").hide();
                 displaySearchInstruction(true);
               }
             
@@ -140,27 +130,16 @@
             //if ($("#list ul").is(':visible')){
               $("#list").hide();
               $(".tools").hide();
-              $("#map_wrapper").hide();
-              
-            //}
-
-            
+              $(".price-match").hide();
+              $("#map_wrapper").hide(); 
           }
 
-
-           
           currentdestination = dest;
-
-          
         }
 
     }
-      
- //else {
-            //
-            //
-          //}
-      
+
+    // PAGE LOAD FUNCTIONS
 
 		$(function() {
 
@@ -356,10 +335,13 @@
       <div class="noresults" style="display:none; margin:200px 20px 0;">We couldn't find any results for this destination</div>
       <ul>
       </ul>
+      
     </div>
+    <div class="price-match" style="position:fixed; bottom:0px; left:55px; width:380px; border-top:solid 1px #ccc; height:30px; background-color:#eff4ff; padding:10px; font-size:12px; line-height:18px;">Prices are for 1 night and include taxes and fees.<br />We also <a href="#">match any price</a></div>
 
     <div id="map_wrapper" style=" ">
        <div id="map_canvas" style="width:100%; height:100%;"></div>
+       <div id="dest_label" style="position:absolute; top:10px; left:10px; background-color:#000; color:#fff; padding:8px; opacity:0.7; font-size:12px;"></div>
     </div>
 
     <style type="text/css">
@@ -375,10 +357,8 @@
               <label style="display:block; font-size:18px;">Where are you going?</label>
             </div>
             
-        </div>
+      </div>
       <div id="search_wrapper" class="">
-        
-
         <ul  class="searchform">
             <li style="">
               <input id="destination" class="typeahead" placeholder="" autofocus style=""/>
