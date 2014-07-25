@@ -1,0 +1,85 @@
+
+input[type=text]:hover{background-color:#fff;}
+.typeahead:hover {background-color:#fff;}
+.tt-input {font-size:18px; padding:6px; width:560px; border:0; background-color:#fff; outline:0;}
+			.tt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 200px;
+  max-height:124px;
+  overflow:hidden;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+.tt-suggestion > p {
+  display: block;
+  padding: 5px 10px;
+  border-bottom:solid 1px #eee;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+  margin:0;
+}
+.tt-suggestion > p:hover,
+.tt-suggestion > p:focus,
+.tt-suggestion.tt-cursor p {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #428bca;
+}
+
+			.tt-cursor {
+				background-color: #009; 
+				color:#fff;
+				cursor: pointer;
+			}
+
+      .tt-hint {color:#aaa; display:none;}
+
+ul{margin:0; padding:0;}
+#list {position:absolute; top: 100px; left:55px; bottom:0; width:400px; background-color: #fff; overflow-y:scroll;}
+#list ul {margin-top:10px; padding:0; list-style-type: none;}
+#list ul li {padding:10px 0 8px 0; margin:0 15px 0 15px; border-bottom:solid 1px #e7e7e7;}
+.name {font-size: 14px;}
+
+.thumb {display:inline-block; vertical-align: top; margin-right:10px; position:relative;}
+.thumb img {height:70px;}
+.thumb img.mask {position:absolute; top:0; left:0; width:71px;}
+.ta {height:12px; margin-top:5px;}
+#list ul li .details {display:inline-block; vertical-align: top; width:180px; }
+#list ul li .price-wrapper {display:inline-block; vertical-align: top; width:90px; height:70px; position:relative; text-align: right;}
+#list ul li .price {position:absolute; bottom:0; left:0; right:0;}
+#list ul li .highprice {font-size:12px; color:#999; text-decoration: line-through;}
+#list ul li .total {font-size:20px;}
+#list ul li:hover {cursor:pointer;}
+.star {font-size:12px;}
+
+#map_wrapper {position:absolute; top:100px; right:0; left:455px; bottom:0;}
+
+.ui-slider .ui-slider-handle {
+    height: 15px;
+    width: 5px;
+    padding-left: 5px; //add this
+}
+
+.ui-slider-horizontal {
+height: 5px;
+}
+
+#slider-range {width:100px;display:inline-block;}
+
