@@ -1,5 +1,6 @@
 
 input[type=text]:hover{background-color:#fff;}
+a {text-decoration: none;}
 .typeahead:hover {background-color:#fff;}
 .tt-input {font-size:18px; padding:6px; width:560px; border:0; background-color:#fff; outline:0;}
 			.tt-dropdown-menu {
