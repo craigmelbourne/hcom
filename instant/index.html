@@ -145,6 +145,11 @@
 
 		$(function() {
 
+      $(".price-match-close").on("click", function(){
+        $(".price-match").hide();
+        $("#list").css("bottom", "0");
+      })
+
       var cur = "";
       $( "#slider-range" ).slider({
       range: true,
@@ -339,7 +344,10 @@
       </ul>
       
     </div>
-    <div class="price-match" style="position:fixed; bottom:0px; left:55px; width:380px; border-top:solid 1px #ccc; height:30px; background-color:#eff4ff; padding:10px; font-size:12px; line-height:18px;">Prices are for 1 night and include taxes and fees.<br />We also <a href="#">match any price</a></div>
+    <div class="price-match" style="position:fixed; bottom:0px; left:55px; width:380px; border-top:solid 1px #ccc; height:30px; background-color:#eff4ff; padding:10px; font-size:12px; line-height:18px;">
+      Prices are for 1 night and include taxes and fees.<br />We also <a href="#">match any price</a>
+      <a href="#" class="price-match-close" style="position:absolute; top:5px; right:5px;">X</a>
+    </div>
 
     <div id="map_wrapper" style=" ">
        <div id="map_canvas" style="width:100%; height:100%;"></div>
