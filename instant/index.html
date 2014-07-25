@@ -96,6 +96,8 @@
             return e.city == dest;
           });
 
+          $(".filters").hide();
+
           if(result.length != 0){
             if (result[0].ranking == 0){
 
@@ -151,18 +153,7 @@
       })
 
       var cur = "";
-      $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 300,
-      values: [ 0, 300 ],
-      slide: function( event, ui ) {
-        $("#min").val(cur + ui.values[ 0 ]);
-        $("#max").val(cur + ui.values[ 1 ]);
-      }
-    });
-    $("#min").val(cur + $( "#slider-range" ).slider( "values", 0 ));
-    $("#max").val(cur + $( "#slider-range" ).slider( "values", 1 ));
+      
       
       if (homePageDisplayed == true) {
         displayHomePage();

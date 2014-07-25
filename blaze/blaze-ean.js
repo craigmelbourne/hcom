@@ -7,6 +7,10 @@ var geocoder = new google.maps.Geocoder();
 
 var destinations = [];
 
+function getMaxOfArray(numArray) {
+    return Math.max.apply(null, numArray);
+}
+
 var cities = [
     {"city": "Amsterdam", "ranking": 0},
     {"city": "Aberdeen", "ranking": 0},

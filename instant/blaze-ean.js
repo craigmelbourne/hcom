@@ -3,6 +3,17 @@ var gmarkers = [];
 var matches;
 var currentdestination;
 var geocoder = new google.maps.Geocoder();
+var prices = [];
+var highPrice;
+var lowPrice;
+
+function getMaxOfArray(numArray) {
+    return Math.max.apply(null, numArray);
+}
+
+function getMinOfArray(numArray) {
+    return Math.min.apply(null, numArray);
+}
 
 
 var destinations = [];
@@ -189,6 +200,7 @@ function buildDestinationSelctBox(){
 function handleZeroResults(dest){
     $("#list").show();
     $(".fetching").hide();
+    $(".filters").hide();
     $(".noresults").show().html("We couldn't find any hotels for <span style='font-weight:bold;'>" + dest + "</span>");
 }
 
@@ -203,7 +215,9 @@ function buildHotelListing(hotel){
         //console.log(hotel.name);
         $(".fetching").hide();
         $(".noresults").hide();
-            //$("#list ul").show();
+        //$("#list ul").show();
+
+
 
         var isBrand =  checkForBrand(hotel.name);
         var thumb;   
@@ -230,6 +244,8 @@ function buildHotelListing(hotel){
         } else {
             total = "<span class='total'>&pound;" + Math.round(hotel.lowRate) + "</span>";
         }
+
+        prices.push(Math.round(hotel.lowRate));
 
         $("#list ul").append(
                     "<li id='" + hotel.hotelId + "''>"
@@ -258,6 +274,11 @@ function buildHotelListing(hotel){
                 gmarkers[hotel.hotelId] = marker;
 
 
+        $(".filters").show();
+
+
+
+
 
 
 }
@@ -268,11 +289,28 @@ function buildHotelist(hotels){
     $("#list").show();
     $(".price-match").show();
     $("#list ul li").remove();
-
+    
     $.each(hotels, function(i, hotel) {
         buildHotelListing(hotel);
-        
     });
+
+    highPrice = getMaxOfArray(prices);
+    lowPrice = getMinOfArray(prices)
+    //console.log(prices);
+    //console.log( + " - " + );
+
+    $( "#slider-range" ).slider({
+      range: true,
+      min: lowPrice,
+      max: highPrice,
+      values: [ lowPrice, highPrice],
+      slide: function( event, ui ) {
+        $("#min").val(ui.values[ 0 ]);
+        $("#max").val(ui.values[ 1 ]);
+      }
+    });
+    $("#min").val($( "#slider-range" ).slider( "values", 0 ));
+    $("#max").val($( "#slider-range" ).slider( "values", 1 ));
     
 }
 
@@ -389,7 +427,7 @@ function fetchResults(result){
         // code to run if the request succeeds;
         // the response is passed to the function
         success: function( json ) {
-
+            prices = [];
            console.log("success");
             //console.log(json.HotelListResponse.HotelList['@size']);
             //console.log(json.HotelListResponse.HotelList);
