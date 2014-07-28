@@ -231,6 +231,35 @@
         }
       }); 
 
+      $("#go").on("click", function(e){
+        e.preventDefault();
+        dest = $("#destination").val();
+            $(".tt-dropdown-menu").hide();
+            //handleResults($("#destination").val());
+
+            geocoder.geocode( { 'address': dest}, function(pos, status) {
+                //console.log(dest + " code")
+                if (status == google.maps.GeocoderStatus.OK) {
+                  //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+                  map.panTo(pos[0].geometry.location);
+                  fetchResults(dest);
+                  if ($("#list ul").is(':hidden')){
+                    $(".fetching").show();
+                    $("#list ul").show();
+                    $("#map_wrapper").show();
+                    $(".tools").show();
+                //displaySearchInstruction(true);
+                  }
+                  //console.log("yay");
+                  //console.log(dest);
+                } else {
+                  //console.log("can't work it out")
+                  alert("try again");
+                }
+              });
+
+      })
+
       function onCursorChanged($e, obj, datum) {
           handleResults(obj.value);
       }
@@ -297,9 +326,7 @@
 
 
 		<style type="text/css">
-			body {font-family: helvetica, arial; margin:50px 100px; color:#555;
-      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;}
+			
       
 			
 		</style>
@@ -359,7 +386,7 @@
       <div id="strapline" style=" padding:0; width: 850px; margin:0 auto; text-align:left;">
             <div style="text-align:center; margin-bottom:80px;">
               <img src="i/home-logo.png" />
-              <h1 style="color:#fff; font-size:60px; font-weight:normal; font-family:Hero; margin:20px; 0 0 0;">Hotels.com</h1>
+              <h1 style="color:#fff; font-size:60px; font-weight:normal; font-family:Hero, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial ; margin:20px; 0 0 0;">Hotels.com</h1>
             </div>
             
             <div style="padding:15px 15px 0; background-color:#fff;">
@@ -370,9 +397,10 @@
       <div id="search_wrapper" class="">
         <ul  class="searchform">
             <li style="">
-              <input id="destination" class="typeahead" placeholder="" autofocus style=""/>
+              <input id="destination" class="typeahead" placeholder="" autofocus style="border:solid 1px #ccc; height:22px;"/>
+              <div id="go" style="display:inline-block; vertical-align:top; background-color:#ccc; color:#666; padding:8px 6px 0; margin-top:0px; height:28px; margin-left:-4px;">Go</div>
             </li>
-            <li class="date" style="background-image:url('i/calendar_24.png');">Check in/out dates</li>
+            <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
             <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
           </ul>
       </div>
@@ -403,7 +431,7 @@
       </div>
       <div class="filters" style="display:inline-block; vertical-align:top; overflow:hidden; margin:0;">
         <ul>
-          <li style="padding:6px 0 0; margin-bottom:0px;"><input type="text" placeholder="Search this location" style="padding:3px; width:200px;"/></li>
+          <li style="padding:6px 0 0; margin-bottom:0px;"><input id="filter-name" type="text" placeholder="" style="padding:3px; width:200px;"/></li>
           <li style="padding:8px 0">
             <span style="display:inline-block; padding-top:3px; vertical-align:top; font-weight:bold; font-size:11px;">&pound;</span><input type="text" id="min" readonly style="border:0; font-weight:bold; display:inline-block; width:23px; color:#555; background-color:transparent" >
             <div style="display:inline-block">  <div id="slider-range"></div></div>

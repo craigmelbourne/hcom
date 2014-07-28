@@ -71,6 +71,7 @@ var cities = [
     {"city": "Edinburgh", "ranking": 0},
     {"city": "Exeter", "ranking": 0},
     {"city": "Eastbourne", "ranking": 0},
+    {"city": "Eskdale", "ranking": 0},
     {"city": "Florence", "ranking": 0},
     {"city": "Funchal", "ranking": 0},
     {"city": "Frankfurt", "ranking": 0},
@@ -147,6 +148,7 @@ var cities = [
     {"city": "Plymouth", "ranking": 0},
     {"city": "Prague", "ranking": 0},
     {"city": "Preston", "ranking": 0},
+    {"city": "Penrith", "ranking": 0},
     {"city": "Rome", "ranking": 0},
     {"city": "Reading, UK", "ranking": 0},
     {"city": "Rhodes", "ranking": 0},
@@ -199,9 +201,11 @@ function buildDestinationSelctBox(){
 
 function handleZeroResults(dest){
     $("#list").show();
+    $("#list ul li").remove();
     $(".fetching").hide();
     $(".filters").hide();
-    $(".noresults").show().html("We couldn't find any hotels for <span style='font-weight:bold;'>" + dest + "</span>");
+    $(".price-match").hide();
+    $(".noresults").show().html("We couldn't find any hotels for <span style='font-weight:bold;'>" + dest + "</span><p>Please try a different search</p>");
 }
 
 function handleOneResult(hotel){
@@ -214,7 +218,7 @@ function handleOneResult(hotel){
 function buildHotelListing(hotel){
         //console.log(hotel.name);
         $(".fetching").hide();
-        $(".noresults").hide();
+        //$(".noresults").hide();
         //$("#list ul").show();
 
 
@@ -255,7 +259,7 @@ function buildHotelListing(hotel){
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<div><img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' style=''/></div>"
                     + "</div>"
-                    + "<div class='price-wrapper'><div class='price'><div style='font-size:11px;'>prices from</div>" + total + "</div></div>"
+                    + "<div class='price-wrapper'><div class='price'>" + total + "</div></div>"
                     + "</li>");
 
         var marker = new google.maps.Marker({
@@ -311,6 +315,8 @@ function buildHotelist(hotels){
     });
     $("#min").val($( "#slider-range" ).slider( "values", 0 ));
     $("#max").val($( "#slider-range" ).slider( "values", 1 ));
+
+    $("#filter-name").attr("placeholder", "Search in " + currentdestination);
     
 }
 
