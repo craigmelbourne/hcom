@@ -2,7 +2,7 @@
 input[type=text]:hover{background-color:#fff;}
 a {text-decoration: none;}
 .typeahead:hover {background-color:#fff;}
-.tt-input {font-size:18px; padding:6px; width:560px; border:0; background-color:#fff; outline:0;}
+.tt-input {font-size:18px; padding:6px; width:460px; border:0; background-color:#fff; outline:0;}
 			.tt-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -57,8 +57,8 @@ ul{margin:0; padding:0;}
 #list ul {margin-top:0px; padding:0; list-style-type: none;}
 #list ul li {padding:10px 0 8px 15px; margin:0 0 0 0; border-bottom:solid 1px #e7e7e7;}
 .name {font-size: 14px;}
-#list ul li:hover {background-color:#eee;}
-#list ul li.selected {background-color:#ddd;}
+#list ul li:hover {background-color:#f2f2f2;}
+#list ul li.selected {background-color:#f2f2f2;}
 
 .thumb {display:inline-block; vertical-align: top; margin-right:10px; position:relative;}
 .thumb img {height:70px;}
