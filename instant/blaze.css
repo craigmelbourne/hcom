@@ -54,9 +54,11 @@ a {text-decoration: none;}
 
 ul{margin:0; padding:0;}
 #list {position:absolute; top: 100px; left:55px; bottom:50px; width:400px; background-color: #fff; overflow-y:scroll;}
-#list ul {margin-top:10px; padding:0; list-style-type: none;}
-#list ul li {padding:10px 0 8px 0; margin:0 15px 0 15px; border-bottom:solid 1px #e7e7e7;}
+#list ul {margin-top:0px; padding:0; list-style-type: none;}
+#list ul li {padding:10px 0 8px 15px; margin:0 0 0 0; border-bottom:solid 1px #e7e7e7;}
 .name {font-size: 14px;}
+#list ul li:hover {background-color:#eee;}
+#list ul li.selected {background-color:#ddd;}
 
 .thumb {display:inline-block; vertical-align: top; margin-right:10px; position:relative;}
 .thumb img {height:70px;}
