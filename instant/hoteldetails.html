@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<style type="text/css">
+			body {color:#555; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; font-size: 13px;}
+
+			h1#name {padding:0; margin:0;}
+			.highprice {text-decoration: line-through;}
+		</style>
+		<script src="jquery.js"></script>
+		<script type="text/javascript">
+			var hotelID = 193608;
+			var apiurl = 'https://api.eancdn.com/ean-services/rs/hotel/v3/info';
+
+			function buildHotelDetails(hotel){
+				console.log(hotel);
+				$("#name").text(hotel.HotelSummary.name);
+				$("#address").text(hotel.HotelSummary.address1 + ", " + hotel.HotelSummary.address2 + ", " + hotel.HotelSummary.postalCode + ", " + hotel.HotelSummary.city);
+				$("#star-rating").html(hotel.HotelSummary.hotelRating + " &#9733; hotel");
+				$("#trip-advisor img").attr("src", hotel.HotelSummary.tripAdvisorRatingUrl);
+				$("#trip-advisor span").text(hotel.HotelSummary.tripAdvisorReviewCount + " reviews");
+				$("#price span.actual").html("&pound;" + Math.round(hotel.HotelSummary.lowRate));
+				$("#price span.highprice").html("&pound;" + Math.round(hotel.HotelSummary.highRate));
+
+			}
+
+			function fetchHotelDetails(){
+        
+    			$.ajax({
+        
+        			crossDomain: true,
+        			// the URL for the request
+        			url: apiurl,
+ 
+        			// the data to send (will be converted to a query string)
+        			data: {
+            			cid: 55505,
+            			minorRev: 99,
+            			apiKey: "xgdsee58vcvfhpr4hhvvhych",
+            			locale: "en_US",
+            			currencyCode: "GBP",
+            			hotelId: hotelID
+            		},
+
+        			// whether this is a POST or GET request
+        			type: "GET",
+
+        			// the type of data we expect back
+        			dataType : "jsonp",
+        			timeout:3000,
+ 
+        			// code to run if the request succeeds;
+        			// the response is passed to the function
+        			success: function( json ) {
+            			//console.log(json.HotelInformationResponse);
+            			//var summary = json.
+            			buildHotelDetails(json.HotelInformationResponse)
+					},
+ 
+        			// code to run if the request fails; the raw request and
+        			// status codes are passed to the function
+        			error: function( xhr, status, errorThrown ) {
+             			//alert( "Sorry, there was a problem!" );
+            			console.log( "Error: " + errorThrown );
+            			console.log( "Status: " + status );
+            			console.dir( xhr );
+        			},
+ 
+        			// code to run regardless of success or failure
+        			complete: function( xhr, status ) {}
+    			});
+			};
+
+			// PAGE LOAD FUNCTIONS
+			$(function() {
+				fetchHotelDetails();
+			});
+		</script>
+
+	</head>
+	<body>
+
+<!--https://api.eancdn.com/ean-services/rs/hotel/v3/info?cid=55505&minorRev=99&apiKey=xgdsee58vcvfhpr4hhvvhych&locale=en_US&currencyCode=GBP&xml=%3CHotelInformationRequest%3E%0A%20%20%20%20%3ChotelId%3E122212%3C%2FhotelId%3E%0A%20%20%20%20%3Coptions%3E0%3C%2Foptions%3E%0A%3C%2FHotelInformationRequest%3E-->
+		
+		<!--<div id="price"><span class="actual"></span> <span class="highprice"></span></div>-->
+		<div style="width:600px; position:relative; border-bottom:solid;">
+			<div>
+				<div id="star-rating"></div>
+				<h1 id="name"></h1>
+				<div id="address"></div>
+			</div>
+			<div id="trip-advisor" style="position:absolute; right:0; bottom:2px; text-align:center;"><img src="" /> <br /><span id="ta-reviews"></span></div>
+		</div>
+		
+
+	</body>
+</html>
+
+
+
+
+
+
