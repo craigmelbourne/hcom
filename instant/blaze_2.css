@@ -9,7 +9,7 @@ a {text-decoration: none;}
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 10000;
   display: none;
   float: left;
   min-width: 200px;
@@ -58,7 +58,7 @@ a {text-decoration: none;}
 #go:hover {cursor: pointer;}
 
 ul{margin:0; padding:0;}
-#list {position:absolute; top: 100px; left:55px; bottom:50px; width:400px; background-color: #fff; overflow-y:scroll;}
+#list {position:absolute; top: 170px; left:55px; bottom:0px; width:400px; background-color: #fff; overflow-y:scroll;}
 #list ul {margin-top:0px; padding:0; list-style-type: none;}
 #list ul li {padding:10px 0 8px 15px; margin:0 0 0 0; border-bottom:solid 1px #e7e7e7;}
 .name {font-size: 14px;}
@@ -90,6 +90,4 @@ height: 5px;
 }
 
 #slider-range {width:100px;display:inline-block;}
-
-#overlay-results {position:fixed; bottom:0; left:0; right:0; top:100px; background-color: #fff; opacity: 0.7;}
-
+#overlay-results {position:fixed; bottom:0; left:55px; right:0; top:100px; background-color: #fff; opacity: 0.9;}

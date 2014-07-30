@@ -4,7 +4,7 @@
     
 		<script src="jquery.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="blaze.css">
+    <link rel="stylesheet" href="blaze_2.css">
   <script src="http:///code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
     <script type="text/javascript"
           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
@@ -36,6 +36,7 @@
       $("#search").addClass("home");
       $("#search_wrapper").addClass("search_home");
       $(".price-match").hide();
+      $("#overlay-results").hide();
     }
 
     function displayResultsScreen(dest){
@@ -55,6 +56,7 @@
         $("#strapline").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
+        $("#overlay-results").show();
       } 
     }
 
@@ -85,7 +87,13 @@
 
     function handleResults(dest){
       
-      
+      $("#list ul").on("click", "li", function(e){
+        e.preventDefault();
+        //console.log("hover")
+        openInfoBox($(this).attr("id"));
+        $("#list ul li").removeClass("selected");
+        $(this).addClass("selected");
+      });
 
        if (dest != currentdestination){
 
@@ -146,16 +154,8 @@
 
       $(".price-match-close").on("click", function(){
         $(".price-match").hide();
-        $("#list").css("bottom", "0");
+        $("#list").css("top", "100px");
       })
-
-      $("#list ul").on("click", "li", function(e){
-        e.preventDefault();
-        //console.log("hover")
-        openInfoBox($(this).attr("id"));
-        $("#list ul li").removeClass("selected");
-        $(this).addClass("selected");
-      });
 
       var cur = "";
       
@@ -185,6 +185,7 @@
         //console.log("length:" + matches.length)
 
         if(jQuery.inArray(e.which, cursorKeys) === -1) {
+          $("#overlay-results").show();
           if (matches.length != 0 && $("#destination").val() != "") {
             dest = matches[0].value;
           } else {
@@ -209,7 +210,7 @@
             dest = $("#destination").val();
             $(".tt-dropdown-menu").hide();
             //handleResults($("#destination").val());
-
+            $("#overlay-results").hide();
             geocoder.geocode( { 'address': dest}, function(pos, status) {
                 //console.log(dest + " code")
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -238,7 +239,7 @@
         dest = $("#destination").val();
             $(".tt-dropdown-menu").hide();
             //handleResults($("#destination").val());
-
+            $("#overlay-results").hide();
             geocoder.geocode( { 'address': dest}, function(pos, status) {
                 //console.log(dest + " code")
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -316,6 +317,7 @@
         $("#list ul").show();
         $("#map_wrapper").show();
         $(".tools").show();
+        $("#overlay-results").hide();
 
         displaySearchInstruction(false);
             //displayFilters(true);
@@ -368,7 +370,8 @@
       </ul>
       
     </div>
-    <div class="price-match" style="position:fixed; bottom:0px; left:55px; width:380px; border-top:solid 1px #ccc; height:30px; background-color:#eff4ff; padding:10px; font-size:12px; line-height:18px;">
+    <div class="price-match" style="position:fixed; top:100px; left:55px; width:380px; border-bottom:solid 1px #ccc; height:50px; background-color:#eff4ff; padding:10px; font-size:12px; line-height:18px;">
+      1200 Hotels for London<br />
       Prices are for 1 night and include taxes and fees.<br />We also <a href="#">match any price</a>
       <a href="#" class="price-match-close" style="position:absolute; top:5px; right:5px;">X</a>
     </div>
@@ -453,6 +456,6 @@
 
     <div id="searchinstruction" style="position:absolute; top:300px; left:80px; font-size: 13px; color:#666;display:none;">Press Enter to search</div>
     
-   
+   <div id="overlay-results"></div>
 	</body>
 </html>
