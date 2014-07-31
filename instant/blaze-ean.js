@@ -262,7 +262,7 @@ function buildHotelListing(hotel){
                     + "<div class='name'>" + hotel.name + "</div>" 
                     + "<div><img class='ta' src='" + hotel.tripAdvisorRatingUrl + "' style=''/></div>"
                     + "</div>"
-                    + "<div class='price-wrapper'><div class='price'>" + total + "</div></div>"
+                    + "<div class='price-wrapper'><div class='price'><div class='from' style='font-size:11px'>prices from</div>" + total + "</div></div>"
                     + "</li>");
 
         var marker = new google.maps.Marker({

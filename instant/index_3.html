@@ -56,6 +56,7 @@
         $("#search").removeClass("home");
          $(".tools").show();
         $("#strapline").hide();
+        $("#homepage").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
       } 
@@ -157,6 +158,7 @@
         $(".arrow_box").hide();
         $("#calendar_help").show();
         datesAdded = true;
+        $(".from").hide();
       })
 
       $("li.people").on("click", function(e){
@@ -389,6 +391,9 @@
             ul.searchform li.filter {padding:10px;}
             span.stars {font-size:13px;}
     </style>
+
+    <div id="homepage" style="position:absolute; top:50px; left:55px; bottom:0; right:0; background-color:#aaa">
+    </div>
 
     <div id="navigation" style="position:absolute; top:0; left:0; bottom:0; width:55px; background-color:#333;">
       <img src="i/icons.png" style="margin-top:10px"/>
