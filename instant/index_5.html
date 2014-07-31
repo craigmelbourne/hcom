@@ -40,9 +40,9 @@
 
     function setUpResultsScreen(){
       $("#navigation").show();
-        $(".site-tools").show();
+        //$(".site-tools").show();
         $("#search").removeClass("home");
-         $(".tools").show();
+         //$(".tools").show();
         $("#strapline").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
     }
@@ -147,6 +147,21 @@
     // PAGE LOAD FUNCTIONS
 
 		$(function() {
+
+      $("li.date").on("click", function(e){
+        $(".arrow_box").hide();
+        $("#calendar_help").show();
+      })
+
+      $("li.people").on("click", function(e){
+        $(".arrow_box").hide();
+        $("#rooms_help").show();
+      })
+
+      $(".arrow_box .close").on("click", function(e){
+        e.preventDefault(e);
+        $("#"+$(this).attr("rel")).hide();
+      })
 
       $(".price-match-close").on("click", function(){
         $(".price-match").hide();
@@ -411,7 +426,7 @@
               <input id="destination" class="typeahead" placeholder="" style="border:solid 1px #ccc; height:22px;"/>
               <div id="go" style="display:inline-block; vertical-align:top; background-color:#ccc; color:#666; padding:8px 6px 0; margin-top:0px; height:28px; margin-left:-4px;">Go</div>
             </li>
-            <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
+            <li class="date" style="background-image:url('i/calendar_24.png');">Check in/out</li>
             <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
           </ul>
       </div>
@@ -459,6 +474,18 @@
 	
 
     <div id="searchinstruction" style="position:absolute; top:300px; left:80px; font-size: 13px; color:#666;display:none;">Press Enter to search</div>
+
+    <div id="calendar_help" class="arrow_box" style="position:absolute; top: 20px; width:300px; padding:10px; left:400px; z-index:1110; position:relative; display:none;">
+      <strong>Check in/out</strong>
+      <p>Allows you to add check in and check out dates to your search<p>
+      <a href="#" class="close" rel="calendar_help" style="">X</a>
+    </div>
+
+    <div id="rooms_help" class="arrow_box" style="position:absolute; top: 20px; width:300px; padding:10px; left:500px; z-index:1110; position:relative; display:none;">
+      <strong>People and rooms</strong>
+      <p>Allows you to select the number of rooms you require for your stay<p>
+      <a href="#" class="close" rel="rooms_help" style="">X</a>
+    </div>
     
    
 	</body>

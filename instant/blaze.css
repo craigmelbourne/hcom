@@ -93,3 +93,34 @@ height: 5px;
 
 #overlay-results {position:fixed; bottom:0; left:0; right:0; top:100px; background-color: #fff; opacity: 0.7;}
 
+.arrow_box {
+  position: relative;
+  background: #eeeeee;
+  border: 2px solid #aaaaaa;
+}
+.arrow_box:after, .arrow_box:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(238, 238, 238, 0);
+  border-bottom-color: #eeeeee;
+  border-width: 20px;
+  margin-left: -20px;
+}
+.arrow_box:before {
+  border-color: rgba(170, 170, 170, 0);
+  border-bottom-color: #aaaaaa;
+  border-width: 23px;
+  margin-left: -23px;
+}
+
+.arrow_box .close {display:inline-block; position:absolute; top:5px; right:5px; background-color:#555; padding:3px 5px; color:#fff;}
+
