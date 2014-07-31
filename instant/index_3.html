@@ -33,7 +33,7 @@
       $("#map_wrapper").hide();
       $("#list").hide();
       //$("#navigation").hide();
-      $(".site-tools").hide();
+      //$(".site-tools").hide();
       $(".tools").hide();
       $("#search").removeClass("home");
       //$("#search").addClass("home");
@@ -60,6 +60,7 @@
         $("#homepage").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
+        handleResults(dest);
       } 
     }
 
@@ -188,8 +189,17 @@
         } else {
           console.log("dates added");
           if (pdpopen == false){
-            $("#pdp").show("slide", { direction: "left" }, 400);
+            $("#pdp").show("slide", { direction: "left" }, 400, function(){
+              var center = map.getCenter();
+            $("#map_wrapper").css("left", 455 + 720 + "px");
+              
+              console.log(center)
+              google.maps.event.trigger(map, "resize");
+              map.setCenter(center);
+            });
             pdpopen = true;
+            
+
           } else {
             $("#pdp img").hide();
             setTimeout(function(){
@@ -207,6 +217,12 @@
       $(".close-pdp").on("click", function(e){
         $("#pdp").hide("slide", { direction: "left" }, 400);
         pdpopen = false;
+        var center = map.getCenter();
+        $("#map_wrapper").css("left", 455 + "px");
+        console.log(center)
+              google.maps.event.trigger(map, "resize");
+              map.setCenter(center);
+        
       })
 
       var cur = "";
@@ -500,9 +516,9 @@
       </div>
     </div>
 
-    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#eee; overflow-y:scroll; border-top:solid 1px #fff; display:none;">
-        <div style="background-color:#f1f1f1; position:absolute; top:0; left:0; height:30px; width:700px;">
-          <a class="close-pdp" href-"#" style="padding:3px 5px; position:absolute; top:4px; right:10px;">X</a>
+    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#fff; overflow-y:scroll; border-top:solid 1px #fff; display:none;">
+        <div style="background-color:#fff; position:absolute; top:0; left:0; height:30px; width:700px; border-bottom:1px solid #eee;">
+          <a class="close-pdp" href-"#" style="padding:3px 5px; position:absolute; top:4px; right:10px; color:#900;">X</a>
         </div>
         <img src="i/hotel-details.jpg" style="margin-top:-90px;"/>
     </div>

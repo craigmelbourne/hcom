@@ -229,7 +229,7 @@ function buildHotelListing(hotel){
         var isBrand =  checkForBrand(hotel.name);
         var thumb;   
         if ( isBrand != false){
-            console.log (isBrand + " " + hotel.name); 
+            //console.log (isBrand + " " + hotel.name); 
             thumb = "<div class='thumb'><img  src='i/brands/" + isBrand + ".png'/></div>"
         } else {
             thumb = "<div class='thumb'><img  src='http://images.travelnow.com" + hotel.thumbNailUrl + "'/><img src='i/image_mask.png' class='mask'/></div>"
@@ -417,8 +417,8 @@ function fetchResults(result){
             apiKey: "xgdsee58vcvfhpr4hhvvhych",
             locale: "en_US",
             currencyCode: "GBP",
-            arrivalDate: "07/31/2014",
-            departureDate: "08/01/2014",
+            arrivalDate: "08/31/2014",
+            departureDate: "09/01/2014",
             longitude: lon, //result[0].lon,
             latitude: lat, //result[0].lat,
             searchRadius: 2,
@@ -437,7 +437,7 @@ function fetchResults(result){
         // the response is passed to the function
         success: function( json ) {
             prices = [];
-           console.log("success");
+           //console.log("success");
             //console.log(json.HotelListResponse.HotelList['@size']);
             //console.log(json.HotelListResponse.HotelList);
             if (json.HotelListResponse.HotelList == undefined){
