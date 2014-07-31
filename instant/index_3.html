@@ -17,6 +17,7 @@
 
     var homePageDisplayed = true;
     var datesAdded = false;
+    var pdpopen = false;
 
     function hideResults(hide){
       if (hide == true) {
@@ -186,7 +187,16 @@
           $("#dates-prompt").show();
         } else {
           console.log("dates added");
-          $("#pdp").show("slide", { direction: "left" }, 400);
+          if (pdpopen == false){
+            $("#pdp").show("slide", { direction: "left" }, 400);
+            pdpopen = true;
+          } else {
+            $("#pdp img").hide();
+            setTimeout(function(){
+              $("#pdp img").show();
+            }, 200);
+          }
+          
         }
 
         openInfoBox($(this).attr("id"));
@@ -196,6 +206,7 @@
 
       $(".close-pdp").on("click", function(e){
         $("#pdp").hide("slide", { direction: "left" }, 400);
+        pdpopen = false;
       })
 
       var cur = "";
@@ -443,8 +454,8 @@
               <input id="destination" class="typeahead" placeholder="Where to?" autofocus style="border:solid 1px #ccc; height:22px;"/>
               <div id="go" style="display:inline-block; vertical-align:top; background-color:#ccc; color:#666; padding:8px 6px 0; margin-top:0px; height:28px; margin-left:-4px;">Go</div>
             </li>
-            <li class="date" style="background-image:url('i/calendar_24.png');">Check in/out</li>
-            <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
+            <li class="date" style="background-image:url('i/calendar_24.png'); color:#009;">Check in/out</li>
+            <li class="people" style="background-image:url('i/people_24.png'); color:#009;">2 Adults</li>
           </ul>
       </div>
 
@@ -490,9 +501,10 @@
     </div>
 
     <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#eee; overflow-y:scroll; border-top:solid 1px #fff; display:none;">
-        <div style="text-align:right; padding:5px; background-color:#f1f1f1;">
-          <a class="close-pdp" href-"#" style="display:inline-block; padding:3px 5px;">X</a>
+        <div style="background-color:#f1f1f1; position:absolute; top:0; left:0; height:30px; width:700px;">
+          <a class="close-pdp" href-"#" style="padding:3px 5px; position:absolute; top:4px; right:10px;">X</a>
         </div>
+        <img src="i/hotel-details.jpg" style="margin-top:-90px;"/>
     </div>
 
 	

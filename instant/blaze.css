@@ -124,3 +124,5 @@ height: 5px;
 
 .close {display:inline-block; position:absolute; top:5px; right:5px; background-color:#555; padding:3px 5px; color:#fff;}
 
+.date:hover, .people:hover {cursor:pointer;}
+
