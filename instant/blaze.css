@@ -122,5 +122,5 @@ height: 5px;
   margin-left: -23px;
 }
 
-.arrow_box .close {display:inline-block; position:absolute; top:5px; right:5px; background-color:#555; padding:3px 5px; color:#fff;}
+.close {display:inline-block; position:absolute; top:5px; right:5px; background-color:#555; padding:3px 5px; color:#fff;}
 
