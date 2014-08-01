@@ -59,7 +59,7 @@
          $(".tools").show();
         $("#strapline").hide();
         $("#homepage").hide();
-        $("#pdp").show();
+        //$("#pdp").show();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
         handleResults(dest);
@@ -191,6 +191,22 @@
         e.preventDefault();
         //console.log("hover")
 
+        if (pdpopen == false){
+            $("#pdp").show("slide", { direction: "left" }, 400, function(){
+              var center = map.getCenter();
+            $("#map_wrapper").css("left", 455 + 720 + "px");
+              
+              console.log(center)
+              google.maps.event.trigger(map, "resize");
+              map.setCenter(center);
+            });
+            pdpopen = true;
+
+          } 
+
+
+
+
         fetchHotelDetails($(this).attr("id"));
 
         
@@ -199,13 +215,7 @@
       });
 
       $(".close-pdp").on("click", function(e){
-        $("#pdp").hide("slide", { direction: "left" }, 400);
-        pdpopen = false;
-        var center = map.getCenter();
-        $("#map_wrapper").css("left", 455 + "px");
-        console.log(center)
-              google.maps.event.trigger(map, "resize");
-              map.setCenter(center);
+        closePDP();
         
       })
 
@@ -247,6 +257,9 @@
 
           }
 
+          if(pdpopen == true){
+            closePDP();
+          }
 
           if (homePageDisplayed == true) {
             displayResultsScreen(dest);
@@ -500,8 +513,10 @@
       </div>
     </div>
 
-    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#fff; overflow-y:scroll; border-top:solid 1px #fff;">
-        
+    <div id="pdp" style="display:none">
+        <div style="background-color:#fff; text-align:right; border-bottom:1px solid #eee; padding:5px; margin-bottom:10px;">
+          <a class="close-pdp" href="#" style="color:#900;">X</a>
+        </div>
     </div>
 
 	

@@ -534,18 +534,32 @@ function buildHotelDetails(hotel){
     console.log(hotel);
     console.log(hotel.HotelSummary.name);
 
-    $("#pdp").empty();
+    $("#pdp .pdp-wrapper").remove();
 
     $("#pdp").append(
-        "<div style='position:relative;'><div>"
+        "<div class='pdp-wrapper'>"
+        + "<div style='position:relative;'><div>"
         + "<div id='star-rating'>" + hotel.HotelSummary.hotelRating + " &#9733; hotel" + "</div>"
         + "<h1>" + hotel.HotelSummary.name + "</h1>" 
-        + "<div id='address'>" + hotel.HotelSummary.address1 + ", " + hotel.HotelSummary.address2 + ", " + hotel.HotelSummary.postalCode + ", " + hotel.HotelSummary.city + "</div>"
+        + "<div id='address'>" + hotel.HotelSummary.address1 + ", " + hotel.HotelSummary.postalCode + ", " + hotel.HotelSummary.city + "</div>"
         + "</div>"
         + "<div id='trip-advisor'><img src='" + hotel.HotelSummary.tripAdvisorRatingUrl + "' style='width:80px;'/> <br /><span id='ta-reviews'>" + hotel.HotelSummary.tripAdvisorReviewCount + " reviews</span></div>"
         + "</div>"
         + "<div id='hotel-images'><img src='" + hotel.HotelImages.HotelImage[0].url + "' /></div>"
+        + "<div id='description'>" + hotel.HotelDetails.locationDescription + "</div>"
+        + "</div>"
     );
+}
+
+function closePDP(){
+    $("#pdp").hide("slide", { direction: "left" }, 400, function(){
+          $("#pdp .pdp-wrapper").remove();
+        });
+    pdpopen = false;
+    var center = map.getCenter();
+    $("#map_wrapper").css("left", 455 + "px");
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
 }
 
 var substringMatcher = function(strs) {
