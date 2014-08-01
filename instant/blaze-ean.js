@@ -482,6 +482,71 @@ function fetchResults(result){
 
 }
 
+function fetchHotelDetails(id){
+        
+                $.ajax({
+        
+                    crossDomain: true,
+                    // the URL for the request
+                    url: "https://api.eancdn.com/ean-services/rs/hotel/v3/info",
+ 
+                    // the data to send (will be converted to a query string)
+                    data: {
+                        cid: 55505,
+                        minorRev: 99,
+                        apiKey: "xgdsee58vcvfhpr4hhvvhych",
+                        locale: "en_US",
+                        currencyCode: "GBP",
+                        hotelId: id
+                    },
+
+                    // whether this is a POST or GET request
+                    type: "GET",
+
+                    // the type of data we expect back
+                    dataType : "jsonp",
+                    timeout:3000,
+ 
+                    // code to run if the request succeeds;
+                    // the response is passed to the function
+                    success: function( json ) {
+                        //console.log(json.HotelInformationResponse);
+                        //var summary = json.
+                        buildHotelDetails(json.HotelInformationResponse)
+                    },
+ 
+                    // code to run if the request fails; the raw request and
+                    // status codes are passed to the function
+                    error: function( xhr, status, errorThrown ) {
+                        //alert( "Sorry, there was a problem!" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                    },
+ 
+                    // code to run regardless of success or failure
+                    complete: function( xhr, status ) {}
+                });
+            };
+
+
+function buildHotelDetails(hotel){
+    console.log(hotel);
+    console.log(hotel.HotelSummary.name);
+
+    $("#pdp").empty();
+
+    $("#pdp").append(
+        "<div style='position:relative;'><div>"
+        + "<div id='star-rating'>" + hotel.HotelSummary.hotelRating + " &#9733; hotel" + "</div>"
+        + "<h1>" + hotel.HotelSummary.name + "</h1>" 
+        + "<div id='address'>" + hotel.HotelSummary.address1 + ", " + hotel.HotelSummary.address2 + ", " + hotel.HotelSummary.postalCode + ", " + hotel.HotelSummary.city + "</div>"
+        + "</div>"
+        + "<div id='trip-advisor'><img src='" + hotel.HotelSummary.tripAdvisorRatingUrl + "' style='width:80px;'/> <br /><span id='ta-reviews'>" + hotel.HotelSummary.tripAdvisorReviewCount + " reviews</span></div>"
+        + "</div>"
+        + "<div id='hotel-images'><img src='" + hotel.HotelImages.HotelImage[0].url + "' /></div>"
+    );
+}
 
 var substringMatcher = function(strs) {
           return function findMatches(q, cb) {

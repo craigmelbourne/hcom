@@ -16,8 +16,6 @@
 		<script type="text/javascript">
 
     var homePageDisplayed = true;
-    var datesAdded = false;
-    var pdpopen = false;
 
     function hideResults(hide){
       if (hide == true) {
@@ -32,13 +30,11 @@
     function displayHomePage(){
       $("#map_wrapper").hide();
       $("#list").hide();
-      //$("#navigation").hide();
-      //$(".site-tools").hide();
+      $("#navigation").hide();
+      $(".site-tools").hide();
       $(".tools").hide();
-      $("#search").removeClass("home");
-      //$("#search").addClass("home");
-      //$("#search_wrapper").addClass("search_home");
-      $("#search_wrapper").removeClass("search_home").addClass("search_results");
+      $("#search").addClass("home");
+      $("#search_wrapper").addClass("search_home");
       $(".price-match").hide();
     }
 
@@ -57,10 +53,8 @@
         $("#search").removeClass("home");
          $(".tools").show();
         $("#strapline").hide();
-        $("#homepage").hide();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
-        handleResults(dest);
       } 
     }
 
@@ -150,29 +144,6 @@
 
 		$(function() {
 
-      $("#dates-prompt .close").on("click", function(e){
-        e.preventDefault();
-        $("#overlay-fullscreen").hide();
-        $("#dates-prompt").hide();
-      })
-
-      $("li.date").on("click", function(e){
-        $(".arrow_box").hide();
-        $("#calendar_help").show();
-        datesAdded = true;
-        $(".from").hide();
-      })
-
-      $("li.people").on("click", function(e){
-        $(".arrow_box").hide();
-        $("#rooms_help").show();
-      })
-
-      $(".arrow_box .close").on("click", function(e){
-        e.preventDefault(e);
-        $("#"+$(this).attr("rel")).hide();
-      })
-
       $(".price-match-close").on("click", function(){
         $(".price-match").hide();
         $("#list").css("bottom", "0");
@@ -181,49 +152,10 @@
       $("#list ul").on("click", "li", function(e){
         e.preventDefault();
         //console.log("hover")
-
-        if(datesAdded == false){
-          console.log("prompt for dates");
-          $("#overlay-fullscreen").show();
-          $("#dates-prompt").show();
-        } else {
-          console.log("dates added");
-          if (pdpopen == false){
-            $("#pdp").show("slide", { direction: "left" }, 400, function(){
-              var center = map.getCenter();
-            $("#map_wrapper").css("left", 455 + 720 + "px");
-              
-              console.log(center)
-              google.maps.event.trigger(map, "resize");
-              map.setCenter(center);
-            });
-            pdpopen = true;
-            
-
-          } else {
-            $("#pdp img").hide();
-            setTimeout(function(){
-              $("#pdp img").show();
-            }, 200);
-          }
-          
-        }
-
         openInfoBox($(this).attr("id"));
         $("#list ul li").removeClass("selected");
         $(this).addClass("selected");
       });
-
-      $(".close-pdp").on("click", function(e){
-        $("#pdp").hide("slide", { direction: "left" }, 400);
-        pdpopen = false;
-        var center = map.getCenter();
-        $("#map_wrapper").css("left", 455 + "px");
-        console.log(center)
-              google.maps.event.trigger(map, "resize");
-              map.setCenter(center);
-        
-      })
 
       var cur = "";
       
@@ -424,18 +356,7 @@
             span.stars {font-size:13px;}
     </style>
 
-    <div id="homepage" style="position:absolute; top:50px; left:55px; bottom:0; right:0; background:url('i/background_image.jpg'); background-size:cover; background-position:">
-      <div style="position:absolute; top:70px; left:140px;">
-        <img src="i/seach_hotelscom.png"/>
-        <p style="margin-top:5px; padding-left:5px; color:#fff; font-size:20px;">Over 290,000 hotels worldwide</p>
-      </div>
-      <img src="i/tick.png" style="position:absolute; top:30px; left:40px;"/>
-      
-      <img src="i/deal_of_the_day.png" style="position:absolute; bottom:20px; right:20px;" />
-    </div>
-
     <div id="navigation" style="position:absolute; top:0; left:0; bottom:0; width:55px; background-color:#333;">
-      
       <img src="i/icons.png" style="margin-top:10px"/>
       <img src="i/hcom_logo.png" style="position:absolute; bottom:10px; left:10px;" />
     </div>
@@ -464,14 +385,27 @@
 
     <div id="search" class="results" style="">
       
+      <div id="strapline" style=" padding:0; width: 850px; margin:0 auto; text-align:left;">
+            <div style="text-align:center; margin-bottom:80px;">
+              <img src="i/home-logo.png" /><br /><br />
+              <!--<h1 style="color:#fff; font-size:60px; font-weight:normal; font-family:Hero, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial ; margin:20px; 0 0 0;">Hotels.com</h1>-->
+
+              <!--<img src="hcom_text_homepage.png" />-->
+            </div>
+            
+            <div style="padding:15px 15px 0; background-color:#fff;">
+              <label style="display:block; font-size:18px;">Where are you going?</label>
+            </div>
+            
+      </div>
       <div id="search_wrapper" class="">
         <ul  class="searchform">
             <li style="">
-              <input id="destination" class="typeahead" placeholder="Where to?" autofocus style="border:solid 1px #ccc; height:22px;"/>
+              <input id="destination" class="typeahead" placeholder="" autofocus style="border:solid 1px #ccc; height:22px;"/>
               <div id="go" style="display:inline-block; vertical-align:top; background-color:#ccc; color:#666; padding:8px 6px 0; margin-top:0px; height:28px; margin-left:-4px;">Go</div>
             </li>
-            <li class="date" style="background-image:url('i/calendar_24.png'); color:#009;">Check in/out</li>
-            <li class="people" style="background-image:url('i/people_24.png'); color:#009;">2 Adults</li>
+            <li class="date" style="background-image:url('i/calendar_24.png');">Tonight</li>
+            <li class="people" style="background-image:url('i/people_24.png');">2 Adults</li>
           </ul>
       </div>
 
@@ -515,40 +449,10 @@
        
       </div>
     </div>
-
-    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#fff; overflow-y:scroll; border-top:solid 1px #fff; display:none;">
-        <div style="background-color:#fff; position:absolute; top:0; left:0; height:30px; width:700px; border-bottom:1px solid #eee;">
-          <a class="close-pdp" href-"#" style="padding:3px 5px; position:absolute; top:4px; right:10px; color:#900;">X</a>
-        </div>
-        <img src="i/hotel-details.jpg" style="margin-top:-90px;"/>
-    </div>
-
 	
 
     <div id="searchinstruction" style="position:absolute; top:300px; left:80px; font-size: 13px; color:#666;display:none;">Press Enter to search</div>
     
-   <div id="calendar_help" class="arrow_box" style="position:absolute; top: 20px; width:300px; padding:10px; left:400px; z-index:1110; position:relative; display:none;">
-      <strong>Not working on this prototype</strong>
-      <p>Allows you to add check in and check out dates to your search</p>
-        <p>Close this box and we'll pretend you've done this</p>
-      <a href="#" class="close" rel="calendar_help" style="">X</a>
-    </div>
-
-    <div id="rooms_help" class="arrow_box" style="position:absolute; top: 20px; width:300px; padding:10px; left:500px; z-index:1110; position:relative; display:none;">
-      <strong>Not working on this prototype</strong>
-      <p>Allows you to select the number of rooms you require for your stay</p>
-        <p>Close this box and we'll pretend you've done this</p>
-      <a href="#" class="close" rel="rooms_help" style="">X</a>
-    </div>
-
-
-    <div id="overlay-fullscreen" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#fff; opacity:0.8; display:none; z-index:3000">
-    </div>
-
-    <div id="dates-prompt" class="arrow_box" style="width:300px; background-color:#f1f1f1; padding:20px 40px 20px 20px; border-radius:6px; position:relative; left:400px; top:20px; display:none; z-index:3001">
-      Enter your stay dates to see prices and availability for this hotel
-      <a href="#" class="close" rel="rooms_help" style="">X</a>
-    </div>
-
+   
 	</body>
 </html>

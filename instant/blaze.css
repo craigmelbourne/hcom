@@ -126,3 +126,9 @@ height: 5px;
 
 .date:hover, .people:hover {cursor:pointer;}
 
+#pdp {font-size:12px; padding:10px;}
+#pdp h1 {padding:0; margin:0; font-size:24px;}
+#pdp #trip-advisor {position:absolute; right:0; bottom:2px; text-align:center;}
+#pdp #hotel-images {margin-top:10px;}
+#pdp #hotel-images img {width:100%;}
+

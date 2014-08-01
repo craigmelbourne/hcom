@@ -16,7 +16,7 @@
 		<script type="text/javascript">
 
     var homePageDisplayed = true;
-    var datesAdded = false;
+    var datesAdded = true;
     var pdpopen = false;
 
     function hideResults(hide){
@@ -40,6 +40,7 @@
       //$("#search_wrapper").addClass("search_home");
       $("#search_wrapper").removeClass("search_home").addClass("search_results");
       $(".price-match").hide();
+      $("#pdp").hide();
     }
 
     function displayResultsScreen(dest){
@@ -58,6 +59,7 @@
          $(".tools").show();
         $("#strapline").hide();
         $("#homepage").hide();
+        $("#pdp").show();
         $("#search_wrapper").removeClass("search_home").addClass("search_results");
         homePageDisplayed = false;
         handleResults(dest);
@@ -178,38 +180,20 @@
         $("#list").css("bottom", "0");
       })
 
+      $("#list ul").on("mouseover", "li", function(e){
+        openInfoBox($(this).attr("id"));
+
+      });
+
+
+
       $("#list ul").on("click", "li", function(e){
         e.preventDefault();
         //console.log("hover")
 
-        if(datesAdded == false){
-          console.log("prompt for dates");
-          $("#overlay-fullscreen").show();
-          $("#dates-prompt").show();
-        } else {
-          console.log("dates added");
-          if (pdpopen == false){
-            $("#pdp").show("slide", { direction: "left" }, 400, function(){
-              var center = map.getCenter();
-            $("#map_wrapper").css("left", 455 + 720 + "px");
-              
-              console.log(center)
-              google.maps.event.trigger(map, "resize");
-              map.setCenter(center);
-            });
-            pdpopen = true;
-            
+        fetchHotelDetails($(this).attr("id"));
 
-          } else {
-            $("#pdp img").hide();
-            setTimeout(function(){
-              $("#pdp img").show();
-            }, 200);
-          }
-          
-        }
-
-        openInfoBox($(this).attr("id"));
+        
         $("#list ul li").removeClass("selected");
         $(this).addClass("selected");
       });
@@ -516,11 +500,8 @@
       </div>
     </div>
 
-    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#fff; overflow-y:scroll; border-top:solid 1px #fff; display:none;">
-        <div style="background-color:#fff; position:absolute; top:0; left:0; height:30px; width:700px; border-bottom:1px solid #eee;">
-          <a class="close-pdp" href-"#" style="padding:3px 5px; position:absolute; top:4px; right:10px; color:#900;">X</a>
-        </div>
-        <img src="i/hotel-details.jpg" style="margin-top:-90px;"/>
+    <div id="pdp" style="position:absolute; top:102px; left:455px; bottom:0; width:720px; background-color:#fff; overflow-y:scroll; border-top:solid 1px #fff;">
+        
     </div>
 
 	
