@@ -1,0 +1,38 @@
+[
+  {
+    "uid": 1,
+    "hotelname" : "Club Quarters, Trafalgar Square",
+    "thumbnail" : "http://images.travelnow.com/hotels/2000000/1590000/1584700/1584661/1584661_110_t.jpg",
+    "favorite": false
+  },
+  {
+    "uid": 2,
+    "hotelname" : "Park Plaza Westminster Bridge London",
+    "thumbnail" : "http://images.travelnow.com/hotels/4000000/3120000/3113100/3113039/3113039_116_t.jpg",
+    "favorite": false
+  },
+    {
+    "uid": 3,
+    "hotelname" : "Hotel Russell",
+    "thumbnail" : "http://images.travelnow.com/hotels/1000000/30000/21600/21514/21514_77_t.jpg",
+    "favorite": false
+  }, 
+  {
+    "uid": 4,
+    "hotelname" : "The Soho Hotel",
+    "thumbnail" : "http://images.travelnow.com/hotels/2000000/1120000/1112700/1112611/1112611_66_t.jpg",
+    "favorite": false
+  },
+  {
+    "uid": 5,
+    "hotelname" : "Melia White House Hotel",
+    "thumbnail" : "http://images.travelnow.com/hotels/1000000/530000/525900/525818/525818_194_t.jpg",
+    "favorite": false
+  },
+    {
+    "uid": 6,
+    "hotelname" : "London City Suites by Montcalm",
+    "thumbnail" : "http://images.travelnow.com/hotels/5000000/4930000/4924000/4923931/4923931_4_t.jpg",
+    "favorite": false
+  }
+]
