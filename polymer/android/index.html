@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Android</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../components/platform/platform.js"></script>
+  <link rel="import" href="../components/font-roboto/roboto.html">
+  <link rel="import" href="../components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="../components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="hotelcard.html">
+  
+  <style type="text/css">
+  	body, html {height: 100%; margin: 0; background-color: #E5E5E5; font-family: 'RobotoDraft', sans-serif;}
+  	core-header-panel {
+  		height: 100%;
+  		overflow: auto;
+  		-webkit-overflow-scrolling: touch; 
+	}
+  	core-toolbar {background-color: #d41200; color:#fff;}
+
+  </style>
+</head>
+
+<body unresolved touch-action="auto">
+
+
+
+		<core-header-panel>
+
+			<core-toolbar id="mainheader" >
+      			<div horizontal layout style="width:100%;">
+      				<div flex>Search details</div>
+      				<div>EDIT SEARCH</div>
+      				<div>FILTERS</div>
+      				<div>MAP</div>
+      			</div>
+    		</core-toolbar>
+
+    		<div style="border-bottom:solid 1px; box-sizing: border-box; padding-left:20px;" layout horizontal>
+
+    		<hotel-card>
+    			<img width="70" height="70" src="http://images.travelnow.com/hotels/2000000/1590000/1584700/1584661/1584661_110_t.jpg">
+      			<h2>Club Quarters, Trafalgar Square</h2>
+
+    		</hotel-card>
+
+    		<hotel-card>
+    			<img width="70" height="70" src="http://images.travelnow.com/hotels/2000000/1590000/1584700/1584661/1584661_110_t.jpg">
+      			<h2>Club Quarters, Trafalgar Square</h2>
+
+    		</hotel-card>
+    		
+    		<hotel-card>
+
+    			<img width="70" height="70" src="http://images.travelnow.com/hotels/2000000/1590000/1584700/1584661/1584661_110_t.jpg">
+      			<h2>Club Quarters, Trafalgar Square</h2>
+
+    		</hotel-card>
+
+    		</div>
+
+		</core-header-panel>
+
+		
+
+
+</body>
+
+</html>

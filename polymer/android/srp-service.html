@@ -1,0 +1,31 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+<polymer-element name="srp-service" attributes="hotels">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+
+    <core-ajax id="ajax"
+      auto
+      url="../api/hotels.json"
+      on-core-response="{{hotelsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+
+  </template>
+
+  <script>
+  	Polymer('srp-service', {
+  		created: function(){
+  			this.hotels = [];
+  		}, 
+  		 hotelsLoaded: function(){
+  		 	this.hotels = this.$.ajax.response.slice(0);
+  		}
+  	});
+  </script>
+</polymer-element>
