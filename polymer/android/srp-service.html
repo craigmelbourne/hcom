@@ -22,9 +22,11 @@
   	Polymer('srp-service', {
   		created: function(){
   			this.hotels = [];
+  			console.log("loaded");
   		}, 
   		 hotelsLoaded: function(){
   		 	this.hotels = this.$.ajax.response.slice(0);
+  		 	console.log(this.hotels);
   		}
   	});
   </script>

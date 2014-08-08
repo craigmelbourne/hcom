@@ -1,0 +1,382 @@
+<!doctype html>
+<html>
+<head>
+  <title>core-animated-pages</title>
+
+  <script src="../components/platform/platform.js"></script>
+  <link href="../components/core-animated-pages/core-animated-pages.html" rel="import">
+  <link rel="import" href="../components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../components/core-icon-button/core-icon-button.html">
+
+  <style>
+    body {
+      font-family: 'Roboto 2', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      background: #f1f1f1;
+    }
+
+    .green {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 350px;
+      background: #70c26f;
+    }
+
+    a {text-decoration: none;}
+
+    core-toolbar {background-color: #d41200; color:#fff;}
+    core-toolbar .nav {font-size:15px; padding:5px; }
+    core-icon-button {fill: #fff;}
+
+  </style>
+</head>
+<body>
+
+
+   <core-toolbar id="mainheader" >
+            <div horizontal layout center style="width:100%;">
+              <core-icon-button id="back" icon="arrow-back" style=""></core-icon-button>
+              <div style="font-size:14px;" flex>London, United Kingdom<br />Fri 8 Aug - Sat 9 Aug</div>
+              <div class="nav">EDIT SEARCH</div>
+              <div class="nav">FILTERS</div>
+              <div class="nav">MAP</div>
+            </div>
+        </core-toolbar>
+
+
+  <polymer-element name="music-demo">
+  <template>
+
+    <style>
+
+      a{text-decoration: none;}
+      .chip-container {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        left: 0;
+        text-align: center;
+      }
+
+      .chip {
+        display: inline-block;
+        position: relative;
+        border-radius: 3px;
+        margin: 4px;
+        overflow: hidden;
+        text-align: start;
+        background-color: #fff;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+
+        width:300px;
+      }
+
+      .chip-image {
+        width: 80px;
+        float:left;
+      }
+
+      .chip-details {
+        float:left;
+        width:220px;
+      }
+
+      .chip-album-title {
+        font-weight: bold;
+      }
+
+      .chip-name {padding:10px 5px 5px; white-space:nowrap; overflow:hidden; margin-right: 5px;}
+      .chip-stars {font-size:13px; color:#555; padding-left:5px;}
+      .chip-price {padding:0 5px;}
+      .chip-price .low, .room-price .low {color:#d41200; font-size: 24px;}
+      .chip-price .high, .room-price .high {color:#999; font-size: 14px; text-decoration: line-through;}
+
+      #details {
+        width:600px;
+        margin:0 auto;
+      }
+
+      .card {
+        position:fixed;
+        top:50px;
+        bottom:0px;
+        width:600px;
+        text-align: start;
+        overflow: scroll;
+        background: #fff;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .card-top {
+        height: 300px;
+      }
+
+      .card-bottom {
+      }
+
+      .card-icon {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-right: 16px;
+      }
+
+      .card-album-title {
+        font-size: 2em;
+      }
+
+      ul {margin:9px 14px 0; padding:0; overflow:hidden; list-style-type: none; font-size:13px;}
+      ul li {float:left; width:50%; box-sizing: border-box; padding:5px;}
+      ul li.even {background-color:#eee;}
+
+    </style>
+
+
+
+    <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
+
+      <section>
+
+        <div class="chip-container" hero-p on-tap="{{transition}}">
+
+          <template repeat="{{items as item}}">
+
+            <div class="chip" hero-id="{{item.name}}" hero?="{{selectedHotel === item }}">
+              <div class="chip-image" >
+                <div style="margin:5px; height:120px; background-color:#eee; hero-id="{{item.name}}-art" hero?="{{selectedHotel === item}}"">
+
+                </div>
+              </div>
+              <div class="chip-details" flex>
+                <div class="chip-name">{{item.name}}</div>
+                <div class="chip-stars">{{item.starRating | convertStars}}</div>
+                <div class="chip-price"><span class="low">&pound;{{item.lowPrice}}</span> <span class="high">&pound;{{item.highPrice}}</span></div>
+                <div style="padding:0 5px 5px; font-size:12px; color:#900;">Mobile exclusive deal</div>
+                <div class="chip-qual" style="padding:0 5px 5px; font-size:12px;">{{item.rating}}</div>
+              </div>
+            </div>
+
+          </template>
+
+        </div>
+      </section>
+
+      <section id="details" layout center>
+
+        <div class="card" hero-id="{{selectedHotel.name}}" hero on-tap="{{transition}}">
+          <div class="card-top" horizontal layout end  style="background: url('{{selectedHotel.mainImage}}') #eee no-repeat; background-size:cover;" hero-id="{{selectedHotel.name}}-art" hero>
+            <div class="card-album-artist" style="padding:24px; color:#fff;">
+              <div style="font-size:24px;">{{selectedHotel.name}}</div>
+              <div class="card-stars">{{selectedHotel.starRating | convertStars}}</div>
+            </div>
+          </div>
+          <div class="card-bottom" horizontal layout style="border-bottom:solid 1px #eee; padding:24px;">
+            
+              <div style="border-right:solid 1px #eee; padding:0 10px 0 0">
+                <div style="color:#555;">{{selectedHotel.rating}}</div>
+                <div><a href="#" style="font-size:13px;">415 hotels.com reviews</a></div>
+              </div>
+              <div style="padding:0 10px;">
+                <div style="color:#555;">Trip rating </div>
+                <div><a href="#" style="font-size:13px;">415 Trip Advisor reviews</a></div>
+              </div>
+              <div flex style="text-align:right">
+                <div style="padding:8px; background-color:#009; color:#fff; display:inline-block">Book</div>  
+              </div>
+          </div>
+          <div style="padding:10px 10px 0;" horizontal layout>
+            <div flex style="border:solid 1px #eee; border-bottom:0; margin-right:5px;">
+              <h2 style="padding:14px; margin:0; font-size:18px; font-weight:normal;">About this hotel</h2>
+              <div style="padding:0 14px; font-size:12px;">{{selectedHotel.description}}</div>
+              <ul class="amenities">
+                <li class="even">Air-conditioned</li>
+                <li class="even">Airport shuttle</li>
+                <li>Concierge</li>
+                <li>English speaking</li>
+                <li class="even">Fitness center</li>
+                <li class="even">Golf</li>
+                <li>Kitchenette</li>
+                <li>Lounge</li>
+              </ul>
+      
+            </div>
+            <div flex style="border:solid 1px #eee; border-bottom:0; margin-left:5px;">
+              <h2 style="padding:14px; margin:0; font-size:18px; font-weight:normal;">Location</h2>
+              <div style="height:100px; background-color:#eee;"></div>
+              <div style="padding:14px; font-size:12px;">{{selectedHotel.address}}</div>
+              
+            </div>
+          </div>
+          <div style="padding:0 10px;" horizontal layout>
+            <div flex style="padding:0 0 8px; text-align:center; font-size:14px; border:solid 1px #eee; border-top:0;margin-right:5px;">
+                <a href="#">More about this hotel</a>
+              </div>
+              <div flex style="padding:0 0 8px; text-align:center; font-size:14px; border:solid 1px #eee; border-top:0; margin-left:5px">
+                <a href="#">More about this location</a>
+              </div>
+          </div>
+
+
+          <style>
+            .room {}
+            .room h2 {padding:0 0 14px; margin:0; font-size:18px; font-weight: normal;}
+            .room .details {color:#555; font-size:13px; line-height: 20px;}
+            .room-price {margin:5px 0;}
+            .book {background-color:#009; color:#fff; padding:8px 16px; display: inline-block; font-size: 16px}
+          </style>
+          <div class="rooms" style="margin:10px;">
+            <div class="room" style="padding:14px; border:solid 1px #eee;">
+              <h2 class="room-name">Comfort Double or Twin room</h2>
+              <div horizontal layout>
+                <div style="width:200px; background-color:#eee;"></div>
+                <div class="details" flex style="padding:0 14px;">
+                  1 King bed or 2 twin beds<br/>
+                  Free cencellation, free wifi, breakfast included<br />
+                  <a href="#">More details</a>
+                  <div class="room-price">
+                    <span class="low">&pound;{{selectedHotel.lowPrice}}</span> <span class="high">&pound;{{selectedHotel.highPrice}}</span>
+                  </div>
+                  <div style="text-align:right" flex>
+                    <div class="book">Book</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </core-animated-pages>
+
+  </template>
+  <script>
+
+    Polymer('music-demo', {
+
+      page: 0,
+
+      items: [
+        { name: 'Lancaster London', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/1000000/520000/518100/518026/518026_76_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/1000000/520000/518100/518026/518026_76_b.jpg',
+          starRating: 4,
+          rating: 'Excellent 4.2 / 5',
+          address: 'Lancaster Terrace London, England, W2 2TY, United Kingdom, ‎0203 5644 408', 
+          lowPrice: '179',
+          highPrice: '259',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        },
+        { name: 'Sanctum Soho Hotel', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/3000000/2550000/2543900/2543847/2543847_54_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/5000000/4930000/4924000/4923931/4923931_4_y.jpg',
+          starRating: 4,
+          rating: 'Excellent 4.1 / 5', 
+          address: '20 Warwick Street Soho London, England, W1B 5NF United Kingdom, 0203 450 6788',
+          lowPrice: '204',
+          highPrice: '255',
+          description: "Riverfront hotel with Spa near Brandenburg Gate" 
+        },
+        { name: 'Britannia The International Hotel London, Canary Wharf',  
+          thumbnail: 'http://images.travelnow.com/hotels/1000000/30000/21600/21514/21514_77_t.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/1000000/10000/2000/1949/1949_35_y.jpg',
+          starRating: 4,
+          rating: 'Good 3.5 / 5', 
+          address: '163 Marsh Wall London, England, E14 9SJ United Kingdom, 0203 450 6788',
+          lowPrice: '128',
+          highPrice: '138',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        },
+        { name: 'Club Quarters St. Pauls', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/1000000/560000/559700/559690/559690_41_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/1000000/560000/559700/559690/559690_41_y.jpg',
+          starRating: 4,
+          rating: 'Excellent 4.3 / 5',
+          address: '24 Ludgate Hill London, England, EC4M 7DR, United Kingdom, ‎0203 5644 408', 
+          lowPrice: '155',
+          highPrice: '203',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        },
+        { name: 'The Park Grand London Paddington', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/4000000/3090000/3088000/3087913/3087913_3_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/4000000/3090000/3088000/3087913/3087913_3_y.jpg',
+          starRating: 4,
+          rating: 'Good 3.7 / 5', 
+          address: '20 Warwick Street Soho London, England, W1B 5NF United Kingdom, 0203 450 6788',
+          lowPrice: '143',
+          highPrice: '164',
+          description: "Riverfront hotel with Spa near Brandenburg Gate" 
+        },
+        { name: 'Copthorne Tara Hotel London Kensington',  
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/1000000/30000/26200/26145/26145_156_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/1000000/30000/26200/26145/26145_156_z.jpg',
+          starRating: 4,
+          rating: 'Good 3.8 / 5', 
+          address: 'Scarsdale Place, Kensington, London, England, W8 5SR, United Kingdom, ‎0203 5644 408',
+          lowPrice: '139',
+          highPrice: '169',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        } ,
+        { name: 'Melia White House Hotel', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_148_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg',
+          starRating: 4,
+          rating: 'Excellent 4.2 / 5',
+          address: 'Regents Park, Albany Street, London, England, NW1 3UP, United Kingdom, ‎0203 5644 408', 
+          lowPrice: '169',
+          highPrice: '283',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        },
+        { name: 'Durrants Hotel', 
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/2000000/1410000/1408400/1408397/1408397_56_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/2000000/1410000/1408400/1408397/1408397_22_z.jpg',
+          starRating: 4,
+          rating: 'Good 3.8 / 5', 
+          address: '26-32 George Street London, England, W1H 5BJ, United Kingdom, ‎0203 5644 408',
+          lowPrice: '165',
+          highPrice: '189',
+          description: "Riverfront hotel with Spa near Brandenburg Gate" 
+        },
+        { name: 'No.11 Cadogan Gardens',  
+          thumbnail: 'http://exp.cdn-hotels.com/hotels/3000000/2380000/2380000/2379978/2379978_93_e.jpg',
+          mainImage: 'http://exp.cdn-hotels.com/hotels/3000000/2380000/2380000/2379978/2379978_93_z.jpg',
+          starRating: 4,
+          rating: 'Good 3.8 / 5', 
+          address: '11 Cadogan Gardens, Knightsbridge, London, England, SW3 2RJ, United Kingdom, ‎0203 5644 408',
+          lowPrice: '208',
+          highPrice: '251',
+          description: "Riverfront hotel with Spa near Brandenburg Gate"
+        }  
+      ],
+
+      selectedHotel: null,
+
+      transition: function(e) {
+        if (this.page === 0 && e.target.templateInstance.model.item) {
+          this.selectedHotel = e.target.templateInstance.model.item;
+          this.page = 1;
+        } else {
+          this.page = 0;
+        }
+      }, 
+
+      convertStars: function(value){
+        var star = '';
+        for (i = 0; i < value; i++) { 
+          star += String.fromCharCode(9733);
+        }
+        return star;
+      }
+    });
+
+  </script>
+  </polymer-element>
+
+
+  <music-demo></music-demo>
+</body>
+</html>
