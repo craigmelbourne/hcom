@@ -33,7 +33,7 @@
 
   </style>
 </head>
-<body unresolved touch-action="auto">
+<body>
 
 
    <core-toolbar id="mainheader" >
@@ -166,6 +166,25 @@
 
       <section id="details" layout center>
 
+        <template repeat="{{items as item}}">
+
+            <div class="chip">
+              <div class="chip-image" >
+                <div style="margin:5px; height:120px; background-color:#eee;">
+
+                </div>
+              </div>
+              <div class="chip-details" flex>
+                <div class="chip-name">{{item.name}}</div>
+                <div class="chip-stars">{{item.starRating | convertStars}}</div>
+                <div class="chip-price"><span class="low">&pound;{{item.lowPrice}}</span> <span class="high">&pound;{{item.highPrice}}</span></div>
+                <div style="padding:0 5px 5px; font-size:12px; color:#900;">Mobile exclusive deal</div>
+                <div class="chip-qual" style="padding:0 5px 5px; font-size:12px;">{{item.rating}}</div>
+              </div>
+            </div>
+
+          </template>
+
         <div class="card" hero-id="{{selectedHotel.name}}" hero on-tap="{{transition}}">
           <div class="card-top" horizontal layout end  style="background: url('{{selectedHotel.mainImage}}') #eee no-repeat; background-size:cover;" hero-id="{{selectedHotel.name}}-art" hero>
             <div class="card-album-artist" style="padding:24px; color:#fff;">
@@ -207,9 +226,6 @@
               <h2 style="padding:14px; margin:0; font-size:18px; font-weight:normal;">Location</h2>
               <div style="height:100px; background-color:#eee;">
 
-                <style>
-                  
-                </style>
                 <google-map latitude="37.77493" longitude="-122.41942" fit></google-map>
 
               </div>
