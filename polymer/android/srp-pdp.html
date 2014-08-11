@@ -7,7 +7,7 @@
   <link href="../components/core-animated-pages/core-animated-pages.html" rel="import">
   <link rel="import" href="../components/core-toolbar/core-toolbar.html">
   <link rel="import" href="../components/core-icon-button/core-icon-button.html">
-  <link rel="import" href="../components/google-map.html">
+
 
   <style>
     body {
@@ -33,7 +33,7 @@
 
   </style>
 </head>
-<body touch-action="auto">
+<body>
 
 
    <core-toolbar id="mainheader" >
@@ -206,11 +206,6 @@
             <div flex style="border:solid 1px #eee; border-bottom:0; margin-left:5px;">
               <h2 style="padding:14px; margin:0; font-size:18px; font-weight:normal;">Location</h2>
               <div style="height:100px; background-color:#eee;">
-
-                <style>
-                  
-                </style>
-                <google-map latitude="37.77493" longitude="-122.41942" fit></google-map>
 
               </div>
               <div style="padding:14px; font-size:12px;">{{selectedHotel.address}}</div>
