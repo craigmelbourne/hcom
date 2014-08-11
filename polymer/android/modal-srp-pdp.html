@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Modal PDP</title>
+	<script src="../jquery.js"></script>
+	
+	<script>
+		$(function(){
+			$(".hotel").on("click", function(e){
+				$("#overlay").show();
+				$("#hotel-details").show();
+			});
+
+			$(".rooms").on("click", function(e){
+				$("#hotel-details").hide();
+				$("#room-details").show();
+			});
+
+			$(".details").on("click", function(e){
+				$("#hotel-details").show();
+				$("#room-details").hide();
+			});
+
+			$("#overlay").on("click", function(e){
+				$(this).hide();
+				$("#hotel-details").hide();
+				$("#room-details").hide();
+			});
+		})
+	</script>
+	
+	<style>
+		body {background-color:#f1f1f1; font-family: arial; padding:0; margin:0;}
+		#hotel-details, #room-details { position:fixed; top:30px; bottom:30px; left: 50%; margin-left: -300px; width:600px; background-color:#fff; overflow-y:scroll; display:none;}
+
+		.title {background-color:#f1f1f1; padding:12px; border-bottom:solid 1px #ddd; padding:12px;}
+		.room {margin:12px; border:solid 1px #eee; height:200px; padding:12px; font-weight:normal;}
+		.room h2 {padding:0; margin:0;}
+		h1 {padding:0; margin:0;}
+		.hotel-block {float:left; width:300px; background-color:#fff; border:solid 1px #ddd; margin-right:12px; height:110px; margin-bottom:12px;	}
+
+	</style>
+
+</head>
+
+<body>
+<div id="header" style="height:50px; background-color:#900;">
+</div>
+
+<div style="margin:12px 0 12px 12px;">
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+	<div class="hotel-block hotel"></div>
+</div>
+
+
+<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#000; opacity:0.7; display:none;"></div>
+<div id="hotel-details">
+	<div class="title">Hotel name</div>
+	<div style="position:relative; height:250px; background-color:#eee; ">
+		<h1 style="position:absolute; bottom:12px; left:12px;">Hotel name</h1>
+	</div>
+	<div class="room">
+		<a href="#" class="rooms">Show all rooms</a>
+	</div>
+	
+</div>
+<div id="room-details">
+	<div class="title"><a href="#" class="details">&laquo;</a>&nbsp;&nbsp;&nbsp;Choose a room</div>
+	<div class="room">
+		<h2>Comfort Double or Twin room</h2>
+	</div>
+	<div class="room">
+		<h2>Comfort Double or Twin room</h2>
+	</div>
+	<div class="room">
+		<h2>Comfort Double or Twin room</h2>
+	</div>
+</div>
+
+
+</body>
+
+</html>
