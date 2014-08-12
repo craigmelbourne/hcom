@@ -12,9 +12,11 @@
 	<script>
 		$(function(){
 			$("#hotel-list").on("click", "div.hotel" , function(e){
-				$("#overlay").show();
+				//$("#overlay").show();
 				$("#hotel-details").show();
 				$("#hotel-details h1").text($(this).find(".name").text());
+				$("#map-wrapper").show();
+				initializeMap();
 			});
 
 			$(".rooms").on("click", function(e){
@@ -27,10 +29,11 @@
 				$("#room-details").hide();
 			});
 
-			$("#overlay").on("click", function(e){
-				$(this).hide();
+			$(".close").on("click", function(e){
+				//$(this).hide();
 				$("#hotel-details").hide();
 				$("#room-details").hide();
+				$("#map-wrapper").hide();
 			});
 
 			fetchHotels();
@@ -39,12 +42,16 @@
 	
 	<style>
 		body {background-color:#f1f1f1; font-family: arial; padding:0; margin:0;}
-		#hotel-details, #room-details { position:fixed; top:30px; bottom:30px; left: 50%; margin-left: -300px; width:600px; background-color:#fff; overflow-y:scroll; display:none;}
+		#hotel-details, #room-details { position:fixed; top:0px; bottom:0px; width:600px; background-color:#fff; overflow-y:scroll; display:none; -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);
+-moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);
+box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
 
-		.title {background-color:#f1f1f1; padding:12px; border-bottom:solid 1px #ddd; padding:12px; background-color:#900; color:#fff;}
-		.title a {color:#fff;}
+		#map-wrapper {position:fixed; top:0; right:0; left:600px; bottom:0; background-color:#f1f1f1; display:none;}
+
+		.title {background-color:#f1f1f1; padding:12px; padding:12px; background-color:#eee; color:#555;}
+		.title a {color:#555;}
 		.room {margin:12px; border:solid 1px #eee; height:200px; padding:12px; font-weight:normal;}
-		.room h2 {padding:0; margin:0;}
+		 h2 {padding:0; margin:0; font-weight:normal; font-size:18px;}
 		h1 {padding:0; margin:0; font-size:20px;}
 		.hotel-block {float:left; width:300px; background-color:#fff; border:solid 1px #ddd; margin-right:12px; margin-bottom:12px;	}
 		.hotel-block .details {padding:12px 12px 0;}
@@ -60,21 +67,43 @@
 <div id="header" style="height:50px; background-color:#900;">
 </div>
 
-<div id="hotel-list" style="margin:12px auto; max-width:960px; margin:">
+<div id="hotel-list" style="margin:12px auto; max-width:960px;">
 	
 
 </div>
 
-
 <div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#000; opacity:0.7; display:none;"></div>
+<div id="map-wrapper">
+	<div id="map_canvas" style="width:100%; height:100%;"></div>
+	<div style="position:absolute; top:12px; right:12px; width:150px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+-moz-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);">
+		Hotel address and location details / functionality
+	</div>
+</div>
+
+
 <div id="hotel-details">
-	<div class="title">Hotel name</div>
-	<div style="position:relative; height:250px; background-color:#eee; ">
+	<div class="title" style="position:absolute; top:0; left:0; right:0; height:30px;">
+		<a href="#" class="close">&laquo;</a>
+	</div>
+
+	<div style="position:absolute; top:50px; bottom:0; left:0; right:0; overflow-y:scroll;">
+		<div style="position:relative; height:250px; background-color:#eee; ">
 		<h1 style="position:absolute; bottom:12px; left:12px;">Hotel name</h1>
 	</div>
 	<div class="room">
-		<a href="#" class="rooms">Show all rooms</a>
+		<h2>About this hotel</h2>
 	</div>
+	<div class="room">
+		<h2>Reviews</h2>
+	</div>
+	<div class="room">
+		<h2>Rooms</h2>
+	</div>
+	</div>
+
+	
 	
 </div>
 <div id="room-details">
@@ -91,9 +120,9 @@
 		<h2>Comfort Double or Twin room</h2>
 	</div>
 	</div>
-
-	
 </div>
+
+
 
 
 </body>
