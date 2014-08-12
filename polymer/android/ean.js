@@ -67,7 +67,7 @@ function fetchHotels () {
         			"<div class='hotel-block hotel'>" 
         			+ "<div class='details'>" 
         			+ "<div class='name'>" + hotel.name + "</div>" 
-        			+ "<div>" + starRating + "</div>"
+        			+ "<div class='star'>" + starRating + "</div>"
         			+ "<div class='price'>" + total + "</div>"
         			+ "</div>"
         			+ "<div class='image'></div>"
