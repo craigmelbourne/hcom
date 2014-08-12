@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <title>core-animated-pages</title>
+  <style type="text/css">
+  	body {font-family:arial; background-color:#f1f1f1;}
+  	#card {position:absolute; top:50px; left:50px; width:150px; border-right:solid 1px #ddd; bottom:auto; overflow-y:scroll; background-color:#fff;}
+  	#photo {position:relative; width:150px; height:100px; background-color:#eee; background: url('http://exp.cdn-hotels.com/hotels/1000000/580000/578700/578692/578692_93_z.jpg') no-repeat; background-size: cover;}
+  	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none; height:120px;}
+  	#map-wrapper {position:fixed; top:0; right:0; left:600px; bottom:0; background-color:#f1f1f1; display:none;}
+  </style>
+  <script src="../../jquery.js"></script>
+  <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+      </script>
+      <script src="../ean.js"></script>
+
+  <script>
+
+  	$(function(){
+  		$( "#card" ).click(function() {
+  			console.log("selected")
+  			$(this).animate({
+    			width: "600px",
+    			top: "0",
+    			left: "0"
+  			}, 400, function(){
+  				$("h1").show();
+  				$(this).animate({
+  					height:"100%"
+  				}, 200, function(){
+  					$(".details-block").fadeIn( function(){
+  						$("#map-wrapper").fadeIn();
+  						initializeMap();
+  					});
+  				})
+  			});
+
+  			$(this).find("#photo").animate({
+    			width: "600px",
+    			height: "300px"
+  			}, 400, function(){
+
+  			});
+		});
+  	});
+
+
+
+  		
+  </script>
+
+
+  
+</head>
+<body>
+
+	<div id="card" style=" ">
+		<div id="photo">
+			<h1 style="display:none; padding:0; margin:0; position:absolute; bottom:12px; left:24px; color:#fff;">Hotel name</h1>
+		</div>
+		<div class="details-block">
+			About this hotel
+		</div>
+		<div class="details-block">
+			Reviews
+		</div>
+		<div class="details-block">
+			Room
+		</div>
+		
+	</div>
+
+
+<div id="map-wrapper">
+	<div id="map_canvas" style="width:100%; height:100%;"></div>
+	<div style="position:absolute; top:12px; right:12px; width:150px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+-moz-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);">
+		Hotel address and location details / functionality
+	</div>
+</div>
+
+</body>
+</html>
