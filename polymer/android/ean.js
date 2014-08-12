@@ -121,8 +121,15 @@ function initializeMap() {
         if (status == google.maps.GeocoderStatus.OK) {
             //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
             map.setCenter(pos[0].geometry.location);
+            var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(pos[0].geometry.location.k, pos[0].geometry.location.A),
+                    map: map
+                });
         } 
     });
+
+    
+
 
 
     
