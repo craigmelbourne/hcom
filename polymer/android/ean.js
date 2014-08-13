@@ -64,7 +64,7 @@ function fetchHotels () {
         		}
 
         		$("#hotel-list").append(
-        			"<div class='hotel-block hotel'>" 
+        			"<div class='hotel-block hotel' id='"+ hotel.hotelId + "'>" 
         			+ "<div class='details'>" 
         			+ "<div class='name'>" + hotel.name + "</div>" 
         			+ "<div class='star'>" + starRating + "</div>"
@@ -95,6 +95,54 @@ function fetchHotels () {
 
 }
 
+function fetchHotelDetails(id){
+        
+                $.ajax({
+        
+                    crossDomain: true,
+                    // the URL for the request
+                    url: "https://api.eancdn.com/ean-services/rs/hotel/v3/info",
+ 
+                    // the data to send (will be converted to a query string)
+                    data: {
+                        cid: 55505,
+                        minorRev: 99,
+                        apiKey: "xgdsee58vcvfhpr4hhvvhych",
+                        locale: "en_US",
+                        currencyCode: "GBP",
+                        hotelId: id
+                    },
+
+                    // whether this is a POST or GET request
+                    type: "GET",
+
+                    // the type of data we expect back
+                    dataType : "jsonp",
+                    timeout:3000,
+ 
+                    // code to run if the request succeeds;
+                    // the response is passed to the function
+                    success: function( json ) {
+                        //console.log(json.HotelInformationResponse);
+                        //var summary = json.
+                        //buildHotelDetails(json.HotelInformationResponse)
+                        //console.log(json);
+                        buildHotelDetails(json.HotelInformationResponse)
+                    },
+ 
+                    // code to run if the request fails; the raw request and
+                    // status codes are passed to the function
+                    error: function( xhr, status, errorThrown ) {
+                        //alert( "Sorry, there was a problem!" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                    },
+ 
+                    // code to run regardless of success or failure
+                    complete: function( xhr, status ) {}
+                });
+            };
 
 function initializeMap() {
       //console.log(result[0].city)
@@ -129,8 +177,18 @@ function initializeMap() {
     });
 
     
-
-
-
-    
 }
+
+function buildHotelDetails(hotel){
+	console.log(hotel);
+	$("#address").html(hotel.HotelSummary.address1);
+	$(".photo h1").text(hotel.HotelSummary.name);
+	$(".about p").html(hotel.HotelDetails.amenitiesDescription); 
+	
+	var rooms = hotel.RoomTypes.RoomType;
+
+	$.each(rooms, function(i, room) {
+      $("#rooms").append("<div class='details-block'><h2>" + room.description + "</h2></div>")
+    });
+}
+
