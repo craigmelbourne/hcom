@@ -7,7 +7,7 @@
   	.card {position:absolute; width:300px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
 
   	.pdp { -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
-  	.card .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
+  	.card .photo {position:relative; width:120px; height:90px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
   	
   	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none;}
   	.details-block h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
@@ -19,12 +19,12 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
 
-	.chip {width:300px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px;}
-	.chip .details {padding:12px;} 
+	.chip {width:400px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px; overflow:hidden;}
+	.chip .details {padding:12px 12px 12px 0; float:left; width:220px;} 
 	.chip .details .name {white-space: nowrap; overflow: hidden;}
 	.chip .details .stars {color:#900;}
 	.chip .details .price {font-size:24px;}
-	.chip .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
+	.chip .photo {float:left; width:120px; height:90px; background-repeat: no-repeat; background-color:#eee; background-size: cover; margin:12px;}
   </style>
   <script src="../../jquery.js"></script>
   <script type="text/javascript"
@@ -37,6 +37,17 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   	$(function(){
 
   		initializeMap();
+  		getHotels();
+
+  		$("#listview").on("click", function(){
+  			$(this).fadeOut();
+  			$(".card").fadeOut(100);
+  			$(".chip").fadeIn(function(){
+  				showMarkers();
+  				map.setZoom(13);
+  			});
+  			
+  		})
 
   		$(".chip").on("click", function(e){
   			var pos = $(this).find(".photo").offset();
@@ -55,6 +66,11 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   		function animateCard(hotelId){
   			var c = $(".card");
   			fetchHotelDetails(hotelId);
+  			clearMarkers();
+
+
+  			//$("#listview").fadeIn();
+
   			c.animate({
   				width:"640px",
   				top: "50px",
@@ -66,8 +82,9 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   					height:"100%"
   				}, 200, function(){
   					$(".details-block").fadeIn( function(){
-  						$("#map-wrapper").fadeIn();
+  						//$("#map-wrapper").fadeIn();
   						//initializeMap();
+  						$("#listview").fadeIn();
   					});
   				})
 
@@ -98,37 +115,74 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 <div id="map-wrapper">
 	<div id="map_canvas" style="width:100%; height:100%;"></div>
-	<!--<div id="address"></div>-->
+	<div id="listview" style="position:absolute; top:15px; right:15px; background-color:#000; opacity:0.7; color:#fff; padding:12px; display:none;">Back to list</div>
 </div>
 
-<div style="z-index:1000; position:fixed; top:50px; left:0; bottom:0; width:324px; overflow:scroll; padding:12px;">
+<div style="z-index:1000; position:fixed; top:50px; left:0; bottom:0; width:424px; overflow:scroll; padding:12px;">
 
 
 
 <div class="chip" id="335698">
+	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
 	<div class="details">
 		<div class="name">Park Plaza Westminster Bridge London</div>
 		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
 		<div class="price">$212</div>
 	</div>
-	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
+	
 </div>
 
 <div class="chip" id="223825">
-	<div class="details">
-	<div class="name">The Soho Hotel</div>
-		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$198</div></div>
 	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg')"></div>
+	<div class="details">
+		<div class="name">The Soho Hotel</div>
+		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		<div class="price">$198</div>
+	</div>
+	
 </div>
 
 <div class="chip" id="193608">
-	<div class="details">
-	<div class="name">Hotel Russell</div>
-		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$245</div></div>
 	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg')"></div>
+	<div class="details">
+		<div class="name">Hotel Russell</div>
+		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		<div class="price">$245</div>
+	</div>
+	
 </div>
+
+<div class="chip" id="335698">
+	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
+	<div class="details">
+		<div class="name">Park Plaza Westminster Bridge London</div>
+		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		<div class="price">$212</div>
+	</div>
+	
+</div>
+
+<div class="chip" id="223825">
+	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg')"></div>
+	<div class="details">
+		<div class="name">The Soho Hotel</div>
+		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		<div class="price">$198</div>
+	</div>
+	
+</div>
+
+<div class="chip" id="193608">
+	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg')"></div>
+	<div class="details">
+		<div class="name">Hotel Russell</div>
+		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		<div class="price">$245</div>
+	</div>
+	
+</div>
+
+
 
 
 </div>
