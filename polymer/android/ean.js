@@ -160,7 +160,7 @@ function initializeMap() {
         zoomControl: true,
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.SMALL,
-            position: google.maps.ControlPosition.LEFT_TOP
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
         }
     });
 
