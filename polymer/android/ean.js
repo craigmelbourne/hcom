@@ -5,6 +5,7 @@ var center;
 var geocoder = new google.maps.Geocoder();
 var map;
 var markers = [];
+var list;
 
 function geocodeString(callback) {
 	geocoder.geocode( { 'address': city}, function(pos, status) {
@@ -52,9 +53,17 @@ function getHotels(){
 			addMarker(hotel.latitude, hotel.longitude);
 		
 		});
-
+		showChips();
 	});
 
+
+
+}
+
+function showChips() {
+	$('.chip').each(function(i) {
+		$(this).delay((i++) * 100).fadeIn(200); 
+	})
 }
 
 function fetchHotelsList(callback) {
@@ -123,11 +132,13 @@ function fetchHotels() {
 	var lon;
     var lat;
 
+
+
     geocoder.geocode( { 'address': 'london, uk'}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             console.log(pos);
-            lon = pos[0].geometry.location.A;
-            lat = pos[0].geometry.location.k;
+            var loc = pos[0].geometry.location
+            
         
 
 
@@ -145,8 +156,8 @@ function fetchHotels() {
             currencyCode: "GBP",
             arrivalDate: "09/30/2014",
             departureDate: "10/01/2014",
-            longitude: lon, //result[0].lon,
-            latitude: lat, //result[0].lat,
+            longitude: loc.lng(), //result[0].lon,
+            latitude: loc.lat(), //result[0].lat,
             searchRadius: 2,
             searchRadiusUnit: "MI",
             numberOfResults: 15
@@ -293,8 +304,13 @@ function initializeMap(pan) {
             if (pan != 0) {
             	console.log("pan = " + pan)
             	map.panBy(pan, 0);
+
             }
             
+            if (list != null) {
+				
+				getHotels();
+			}
         } 
     });
 
