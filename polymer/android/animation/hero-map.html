@@ -4,7 +4,7 @@
   <title>core-animated-pages</title>
   <style type="text/css">
   	body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
-  	.card {position:absolute; width:120px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
+  	.card {position:absolute; width:120px; border-right:solid 1px #ddd;  background-color:#fff; overflow-y:scroll; display:none;}
 
   	.pdp { -webkit-box-shadow: 2px 2px 5px 0px #999; -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 2px 5px 0px #999;}
   	.card .photo {position:relative; width:120px; height:90px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
@@ -47,9 +47,11 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   		$("#listview").on("click", function(){
   			$(this).fadeOut();
   			$(".card").fadeOut(100, function(){
-  				$(".card").css({width:'120px', height:'auto'});
+  				$(".card").css({width:'120px', bottom:'auto'});
   				$(".details-block").css("display", "none");
   				$(".card .photo").css({width:'120px', height:'80px'});
+  				$(".card .photo h1").empty();
+  				$(".card #rooms").empty();
   			});
   			$(".chip").fadeIn(function(){
   				returnSRPView();
@@ -92,6 +94,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   						//$("#map-wrapper").fadeIn();
   						//initializeMap();
   						$("#listview").fadeIn();
+  						c.css({bottom: "0", height:"auto"});
   					});
   				})
 
@@ -125,7 +128,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 	<div id="listview" style="position:absolute; top:15px; right:15px; background-color:#000; opacity:0.7; color:#fff; padding:12px; display:none;">Back to all hotels</div>
 </div>
 
-<div style="z-index:1000; position:fixed; top:50px; left:0; bottom:0; width:424px; overflow:scroll; padding:12px;">
+<div style="position:fixed; top:50px; left:0; bottom:0; width:424px; overflow:scroll; padding:12px;">
 
 
 
