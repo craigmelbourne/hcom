@@ -4,6 +4,10 @@
   <title>core-animated-pages</title>
   <style type="text/css">
   	body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
+
+  	.back-button {display:inline-block; margin: 8px 12px;}
+  	.back-button:hover {cursor:pointer;}
+
   	.card {position:absolute; width:120px; border-right:solid 1px #ddd;  background-color:#fff; overflow-y:scroll; display:none;}
 
   	.pdp { -webkit-box-shadow: 2px 2px 5px 0px #999; -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 2px 5px 0px #999;}
@@ -44,6 +48,8 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   		initializeMap(-300);
   		getHotels();
 
+
+
   		$("#listview").on("click", function(){
   			$(this).fadeOut();
   			$(".card").fadeOut(100, function(){
@@ -56,8 +62,29 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   			$(".chip").fadeIn(function(){
   				returnSRPView();
   			});
+  			$("#pdp-header").hide();
+  			$("#srp-header").show();
   			
-  		})
+  		});
+
+  		$("#back-pdp").on("click", function(){
+  			$("#listview").fadeOut();
+  			$(".card").fadeOut(100, function(){
+  				$(".card").css({width:'120px', bottom:'auto'});
+  				$(".details-block").css("display", "none");
+  				$(".card .photo").css({width:'120px', height:'80px'});
+  				$(".card .photo h1").empty();
+  				$(".card #rooms").empty();
+  			});
+  			$(".chip").fadeIn(function(){
+  				returnSRPView();
+  			});
+  			$("#pdp-header").hide();
+  			$("#srp-header").show();
+  			
+  		});
+
+
 
   		$(".chip").on("click", function(e){
   			var pos = $(this).find(".photo").offset();
@@ -73,6 +100,10 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   			$(".chip").fadeOut();
 
   			center = map.getCenter();
+  			$("#pdp-header").show();
+  			$("#srp-header").hide();
+
+  			$(".hotel-name").text($(this).find(".name").text());
   		});
 
   		function animateCard(hotelId){
@@ -121,7 +152,24 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 
 
 
-<div style="height:50px; background-color:#d41200; position:fixed; top:0; left:0; right:0;"></div>
+<div style="height:50px; background-color:#d41200; position:fixed; top:0; left:0; right:0; color:#fff;">
+	<div id="srp-header">
+		<div id="back-srp" class="back-button"><img src="../back-arrow.png" /></div>
+		<div style="display:inline-block; vertical-align:top; margin:8px;">
+			<span>London, United Kingdom</span><br />
+			<span style="font-size:12px;">12/09/2014 - 13/09/2014</span>
+		</div>
+	</div>	
+	<div id="pdp-header" style="display:none;">
+		<div id="back-pdp" class="back-button"><img src="../back-arrow.png" /></div>
+		<div style="display:inline-block; vertical-align:top; margin:8px;">
+			<span class="hotel-name">Hotel name</span><br />
+			<span style="font-size:12px;">12/09/2014 - 13/09/2014</span>
+		</div>
+	</div>
+	
+	
+</div>
 
 <div id="map-wrapper">
 	<div id="map_canvas" style="width:100%; height:100%;"></div>
