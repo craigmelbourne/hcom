@@ -66,7 +66,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   				}, 200, function(){
   					$(".details-block").fadeIn( function(){
   						$("#map-wrapper").fadeIn();
-  						initializeMap();
+  						initializeMap(0);
   					});
   				})
 
@@ -85,6 +85,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   			console.log($(this).attr("id"))
   			fetchHotelDetails($(this).attr("id"));
 
+
   			$(this).animate({
     			width: "640px",
     			top: "0",
@@ -97,7 +98,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   				}, 200, function(){
   					$(".details-block").fadeIn( function(){
   						$("#map-wrapper").fadeIn();
-  						initializeMap();
+  						initializeMap(0);
   					});
   				})
   			});

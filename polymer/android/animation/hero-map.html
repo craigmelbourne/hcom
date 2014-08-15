@@ -4,9 +4,9 @@
   <title>core-animated-pages</title>
   <style type="text/css">
   	body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
-  	.card {position:absolute; width:300px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
+  	.card {position:absolute; width:120px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
 
-  	.pdp { -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
+  	.pdp { -webkit-box-shadow: 2px 2px 5px 0px #999; -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 2px 5px 0px #999;}
   	.card .photo {position:relative; width:120px; height:90px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
   	
   	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none;}
@@ -19,11 +19,16 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
 
-	.chip {width:400px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px; overflow:hidden;}
+	.chip {width:400px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px; overflow:hidden; -webkit-box-shadow: 1px 1px 3px 0px #999;
+-moz-box-shadow: 1px 1px 3px 0px #999;
+box-shadow: 1px 1px 3px 0px #999;}
+	.chip:hover {-webkit-box-shadow: 5px 5px 3px 0px #999;
+-moz-box-shadow: 5px 5px 3px 0px #999;
+box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 	.chip .details {padding:12px 12px 12px 0; float:left; width:220px;} 
 	.chip .details .name {white-space: nowrap; overflow: hidden;}
-	.chip .details .stars {color:#900;}
-	.chip .details .price {font-size:24px;}
+	.chip .details .stars {color:#d41200; font-size:12px;}
+	.chip .details .price {font-size:24px; margin-top:6px;}
 	.chip .photo {float:left; width:120px; height:90px; background-repeat: no-repeat; background-color:#eee; background-size: cover; margin:12px;}
   </style>
   <script src="../../jquery.js"></script>
@@ -36,15 +41,18 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
   	$(function(){
 
-  		initializeMap();
+  		initializeMap(-300);
   		getHotels();
 
   		$("#listview").on("click", function(){
   			$(this).fadeOut();
-  			$(".card").fadeOut(100);
+  			$(".card").fadeOut(100, function(){
+  				$(".card").css({width:'120px', height:'auto'});
+  				$(".details-block").css("display", "none");
+  				$(".card .photo").css({width:'120px', height:'80px'});
+  			});
   			$(".chip").fadeIn(function(){
-  				showMarkers();
-  				map.setZoom(13);
+  				returnSRPView();
   			});
   			
   		})
@@ -61,15 +69,14 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   			var hotelId = $(this).attr("id");
   			animateCard(hotelId);
   			$(".chip").fadeOut();
+
+  			center = map.getCenter();
   		});
 
   		function animateCard(hotelId){
   			var c = $(".card");
   			fetchHotelDetails(hotelId);
   			clearMarkers();
-
-
-  			//$("#listview").fadeIn();
 
   			c.animate({
   				width:"640px",
@@ -111,11 +118,11 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 
 
-<div style="height:50px; background-color:#900; position:fixed; top:0; left:0; right:0;"></div>
+<div style="height:50px; background-color:#d41200; position:fixed; top:0; left:0; right:0;"></div>
 
 <div id="map-wrapper">
 	<div id="map_canvas" style="width:100%; height:100%;"></div>
-	<div id="listview" style="position:absolute; top:15px; right:15px; background-color:#000; opacity:0.7; color:#fff; padding:12px; display:none;">Back to list</div>
+	<div id="listview" style="position:absolute; top:15px; right:15px; background-color:#000; opacity:0.7; color:#fff; padding:12px; display:none;">Back to all hotels</div>
 </div>
 
 <div style="z-index:1000; position:fixed; top:50px; left:0; bottom:0; width:424px; overflow:scroll; padding:12px;">

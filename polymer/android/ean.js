@@ -1,13 +1,17 @@
 
+var city = "London, UK"
+var cityLatLng;
+var center;
 var geocoder = new google.maps.Geocoder();
 var map;
 var markers = [];
 
 function geocodeString(callback) {
-	geocoder.geocode( { 'address': 'london, uk'}, function(pos, status) {
+	geocoder.geocode( { 'address': city}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
         	console.log("success");
         	callback(pos);
+        	cityLatLng = pos[0].geometry.location;
         } else {
         	console.log("failed");
         	callback(status);
@@ -19,7 +23,8 @@ function geocodeString(callback) {
 function addMarker(lat, lng) {
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(lat, lng),
-    map: map
+    map: map,
+    icon: '../pin.png'
   });
   markers.push(marker);
 }
@@ -240,7 +245,9 @@ function fetchHotelDetails(id){
                         //var summary = json.
                         //buildHotelDetails(json.HotelInformationResponse)
                         //console.log(json);
-                        buildHotelDetails(json.HotelInformationResponse)
+                        buildHotelDetails(json.HotelInformationResponse);
+                        //mapPDP(json.HotelInformationResponse);
+
                     },
  
                     // code to run if the request fails; the raw request and
@@ -257,7 +264,7 @@ function fetchHotelDetails(id){
                 });
             };
 
-function initializeMap() {
+function initializeMap(pan) {
       //console.log(result[0].city)
     
 
@@ -282,8 +289,16 @@ function initializeMap() {
         if (status == google.maps.GeocoderStatus.OK) {
             //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
             map.setCenter(pos[0].geometry.location);
+            
+            if (pan != 0) {
+            	console.log("pan = " + pan)
+            	map.panBy(pan, 0);
+            }
+            
         } 
     });
+
+
 
     
 }
@@ -300,11 +315,24 @@ function buildHotelDetails(hotel){
       $("#rooms").append("<div class='details-block'><h2>" + room.description + "</h2></div>")
     });
 
+	if (map != null) {
+		mapPDP(hotel);
+	}
+
+}
+
+function mapPDP(hotel){
 	map.setZoom(15);
     addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
     map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
-    
     map.panBy(-300, 0);
+}
+
+function returnSRPView(){
+
+	map.setZoom(14);
+	map.setCenter(center);
+    showMarkers();
 
 }
 
