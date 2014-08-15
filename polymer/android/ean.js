@@ -59,7 +59,7 @@ function fetchHotelsList(callback) {
     //var geo = geocodeString();
     geocodeString(function(pos){
     	console.log(pos);
-    	lon = pos[0].geometry.location.A;
+    	lon = pos[0].geometry.location.B;
         lat = pos[0].geometry.location.k;
     	$.ajax({
 
