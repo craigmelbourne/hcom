@@ -321,9 +321,20 @@ function initializeMap(pan) {
 
 function buildHotelDetails(hotel){
 	console.log(hotel);
+
+	var hotelId = hotel.HotelSummary.hotelId
+
 	$("#address").html(hotel.HotelSummary.address1);
 	$(".photo h1").text(hotel.HotelSummary.name);
-	$(".about p").html(hotel.HotelDetails.amenitiesDescription); 
+	$(".photo div").html($("#" + hotelId).find(".stars").html());
+	$(".about p").html(hotel.HotelDetails.amenitiesDescription);
+	$("#trip-score").html(
+		"<img src='" + hotel.HotelSummary.tripAdvisorRatingUrl + "' /><br /><span style='font-size:12px'>" + hotel.HotelSummary.tripAdvisorReviewCount + " Trip Advisor reviews</span>"
+	);
+
+	$("#review-score .score").text($("#" + hotelId).find(".review").text());
+
+	
 	
 	var rooms = hotel.RoomTypes.RoomType;
 

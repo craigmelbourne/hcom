@@ -21,7 +21,8 @@
 -moz-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
 box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
-	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
+	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:40px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
+	.card .photo div {padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:18px; font-weight: normal; text-shadow: 1px 1px #555;} 
 
 	.chip {width:400px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px; overflow:hidden; -webkit-box-shadow: 1px 1px 3px 0px #999;
 -moz-box-shadow: 1px 1px 3px 0px #999;
@@ -62,6 +63,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   				$(".details-block").css("display", "none");
   				$(".card .photo").css({width:'120px', height:'80px'});
   				$(".card .photo h1").empty();
+  				$(".card .photo div").empty();
   				$(".card #rooms").empty();
   			});
   			$("#chip-wrapper").css("visibility", "visible");
@@ -80,6 +82,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   				$(".details-block").css("display", "none");
   				$(".card .photo").css({width:'120px', height:'80px'});
   				$(".card .photo h1").empty();
+  				$(".card .photo div").empty();
   				$(".card #rooms").empty();
   			});
   			$("#chip-wrapper").css("visibility", "visible");
@@ -126,6 +129,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   			}, 400, function(){
   				c.addClass("pdp");
   				$("h1").show();
+  				$(".photo div").show();
   				c.animate({
   					height:"100%"
   				}, 200, function(){
@@ -307,6 +311,20 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 	<div class="card" id="">
 		<div class="photo">
 			<h1></h1>
+			<div></div>
+		</div>
+		<div class="details-block">
+			<div style="overflow:hidden;">
+				<div id="review-score" style="float:left; margin-right:36px;">
+					<span class="score" style="font-size:20px;"></span><br />
+					<span style="font-size:12px;">200 customer reviews</span>
+				</div>
+				<div id="trip-score" style="float:left; "></div>
+				<div style="float:right; ">
+					<div style="display:inline-block; padding:12px 18px; background-color:#009; color:#fff;">Book</div>
+				</div>
+			</div>
+			
 		</div>
 		<div class="details-block about">
 			<h2>About this hotel</h2>
