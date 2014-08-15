@@ -80,6 +80,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   				$(".card .photo h1").empty();
   				$(".card #rooms").empty();
   			});
+  			$("#chip-wrapper").css("visibility", "visible");
   			$(".chip").fadeIn(function(){
   				returnSRPView();
   			});
@@ -101,7 +102,8 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
   			$(".card .photo").css("background-image", photoURL);
   			var hotelId = $(this).attr("id");
   			animateCard(hotelId);
-  			$(".chip").fadeOut();
+  			//$(".chip").fadeOut();
+  			$("#chip-wrapper").css("visibility", "hidden");
 
   			center = map.getCenter();
   			$("#pdp-header").show();
@@ -180,7 +182,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 	<div id="listview" style="position:absolute; top:15px; right:15px; background-color:#000; opacity:0.7; color:#fff; padding:12px; display:none;">Back to all hotels</div>
 </div>
 
-<div style="position:fixed; top:50px; left:0; bottom:0; width:424px; overflow:scroll; padding:12px;">
+<div id="chip-wrapper" style="position:fixed; top:50px; left:0; bottom:0; width:424px; overflow-y:scroll; padding:12px;">
 
 
 
