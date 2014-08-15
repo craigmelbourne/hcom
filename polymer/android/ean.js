@@ -53,14 +53,14 @@ function getHotels(){
 }
 
 function fetchHotelsList(callback) {
-	var lon;
-    var lat;
+
     var hotels;
     //var geo = geocodeString();
     geocodeString(function(pos){
-    	console.log(pos);
-    	lon = pos[0].geometry.location.B;
-        lat = pos[0].geometry.location.k;
+
+		var loc = pos[0].geometry.location
+    	
+
     	$.ajax({
 
 			crossDomain: true,
@@ -73,8 +73,8 @@ function fetchHotelsList(callback) {
             	currencyCode: "GBP",
             	arrivalDate: "09/30/2014",
             	departureDate: "10/01/2014",
-            	longitude: lon, //result[0].lon,
-            	latitude: lat, //result[0].lat,
+            	longitude: loc.lng(), //result[0].lon,
+            	latitude: loc.lat(), //result[0].lat,
             	searchRadius: 2,
             	searchRadiusUnit: "MI",
             	numberOfResults: 50
