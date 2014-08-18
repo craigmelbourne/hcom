@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
 <head>
-  <title>core-animated-pages</title>
+  <title>Hero list</title>
+  <link rel="stylesheet" type="text/css" href="base.css" />
   <style type="text/css">
   	body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
 
-  	.back-button {display:inline-block; margin: 8px 12px;}
-  	.back-button:hover {cursor:pointer;}
+
+
+  	
 
   	.card {position:absolute; width:120px; border-right:solid 1px #ddd;  background-color:#fff; overflow-y:scroll; display:none;}
 
@@ -17,12 +19,11 @@
   	.details-block h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
   	.details-block p {font-size:14px; margin-bottom:0;}
   	#map-wrapper {position:fixed; top:50px; right:0; left:0; bottom:0; background-color:#f1f1f1; }
-  	#address {position:absolute; top:12px; right:12px; width:150px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+  	#address {position:absolute; top:12px; right:12px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
 -moz-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
 box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
-	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:40px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
-	.card .photo div {padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:18px; font-weight: normal; text-shadow: 1px 1px #555;} 
+	
 
 	.chip {width:400px; border:solid 1px #ddd; background-color:#fff; margin-right:12px; margin-bottom:12px; overflow:hidden; -webkit-box-shadow: 1px 1px 3px 0px #999;
 -moz-box-shadow: 1px 1px 3px 0px #999;
@@ -162,19 +163,16 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 
 
 <style type="text/css">
-	.tools {float:right; overflow: hidden; margin-right:12px;}
-	.tools ul {list-style-type: none; padding:0; margin:0;}
-	.tools ul li {color:#fff; float:left; margin-right:24px; height:50px; box-sizing: border-box; padding-top:16px;}
-	.tools ul li.selected {border-bottom:solid 3px #fff;}
+	
 </style>
 
 
-<div style="height:50px; background-color:#d41200; position:fixed; top:0; left:0; right:0; color:#fff;">
+<div id="header" style="">
 	<div id="srp-header">
 		<div id="back-srp" class="back-button"><img src="../back-arrow.png" /></div>
-		<div style="display:inline-block; vertical-align:top; margin:8px;">
+		<div class="title">
 			<span>London, United Kingdom</span><br />
-			<span style="font-size:12px;">12/09/2014 - 13/09/2014</span>
+			<span class="dates">12/09/2014 - 13/09/2014</span>
 		</div>
 		<div class="tools">
 			<ul>
@@ -186,7 +184,7 @@ box-shadow: 5px 5px 3px 0px #999; cursor: pointer;}
 	</div>	
 	<div id="pdp-header" style="display:none;">
 		<div id="back-pdp" class="back-button"><img src="../back-arrow.png" /></div>
-		<div style="display:inline-block; vertical-align:top; margin:8px;">
+		<div class="title">
 			<span class="hotel-name">Hotel name</span><br />
 			<span style="font-size:12px;">12/09/2014 - 13/09/2014</span>
 		</div>

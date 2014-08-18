@@ -6,6 +6,7 @@ var geocoder = new google.maps.Geocoder();
 var map;
 var markers = [];
 var list;
+var hotel;
 
 function geocodeString(callback) {
 	geocoder.geocode( { 'address': city}, function(pos, status) {
@@ -42,6 +43,11 @@ function clearMarkers() {
 
 function showMarkers() {
   setAllMap(map);
+}
+
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
 }
 
 function getHotels(){
@@ -256,7 +262,8 @@ function fetchHotelDetails(id){
                         //var summary = json.
                         //buildHotelDetails(json.HotelInformationResponse)
                         //console.log(json);
-                        buildHotelDetails(json.HotelInformationResponse);
+                        hotel = json.HotelInformationResponse
+                        buildHotelDetails(hotel);
                         //mapPDP(json.HotelInformationResponse);
 
                     },
@@ -324,7 +331,7 @@ function buildHotelDetails(hotel){
 
 	var hotelId = hotel.HotelSummary.hotelId
 
-	$("#address").html(hotel.HotelSummary.address1);
+	$("#address").html(hotel.HotelSummary.address1 + ", " + hotel.HotelSummary.city + ", " + hotel.HotelSummary.postalCode);
 	$(".photo h1").text(hotel.HotelSummary.name);
 	$(".photo div").html($("#" + hotelId).find(".stars").html());
 	$(".about p").html(hotel.HotelDetails.amenitiesDescription);
@@ -342,18 +349,38 @@ function buildHotelDetails(hotel){
       $("#rooms").append("<div class='details-block'><h2>" + room.description + "</h2></div>")
     });
 
-	if (map != null) {
+	if (map != null){
 		mapPDP(hotel);
 	}
+	 
 
 }
 
 function mapPDP(hotel){
-	map.setZoom(15);
-    addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
-    map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
-    map.panBy(-300, 0);
+
+
+	if (map != null){
+		map.setZoom(15);
+    	addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
+    	map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
+    	map.panBy(-300, 0);
+	} else {
+		
+    	//map.panBy(-300, 0);
+	}
+
+
+	
 }
+
+function mapPDPList(hotel){
+	
+		deleteMarkers();
+		map.setZoom(15);
+    	addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
+    	map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
+}
+
 
 function returnSRPView(){
 

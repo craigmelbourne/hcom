@@ -1,0 +1,17 @@
+body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
+
+#header {height:50px; background-color:#d41200; position:fixed; top:0; left:0; right:0; color:#fff;}
+#header .tools {float:right; overflow: hidden; margin-right:12px;}
+#header .tools ul {list-style-type: none; padding:0; margin:0;}
+#header .tools ul li {color:#fff; float:left; margin-right:24px; height:50px; box-sizing: border-box; padding-top:16px;}
+#header .tools ul li.selected {border-bottom:solid 3px #fff;}
+
+.back-button {display:inline-block; margin: 8px 12px;}
+.back-button:hover {cursor:pointer;}
+
+.title {display:inline-block; vertical-align:top; margin:8px;}
+.title .dates {font-size:12px;}
+
+
+.card .photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:40px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
+.card .photo div {padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:18px; font-weight: normal; text-shadow: 1px 1px #555;} 

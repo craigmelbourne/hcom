@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>core-animated-pages</title>
+  <link rel="stylesheet" type="text/css" href="base.css" />
   <style type="text/css">
-  	body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding:0;}
-  	.card {position:absolute; width:300px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
+  	  	.card {position:absolute; width:300px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
 
   	.pdp { -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
   	.card .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
@@ -12,18 +12,20 @@
   	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none;}
   	.details-block h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
   	.details-block p {font-size:14px; margin-bottom:0;}
-  	#map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1; display:none;}
-  	#address {position:absolute; top:12px; right:12px; width:150px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
+  	#map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
+    #map-hider {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
+  	#address {position:absolute; top:12px; right:12px; font-size:13px; color:#555; background-color:#fff; padding:12px;-webkit-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
 -moz-box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);
 box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
 
-	.chip {width:300px; border:solid 1px #ddd; background-color: #fff; display:inline-block; margin-right:12px;}
+	.chip {width:300px; border:solid 1px #ddd; background-color: #fff; display:inline-block; margin-right:12px; vertical-align:top; margin-bottom:12px;}
 	.chip .details {padding:12px;} 
 	.chip .details .name {white-space: nowrap; overflow: hidden;}
-	.chip .details .stars {color:#900;}
-	.chip .details .price {font-size:24px;}
+  .chip .details .stars {color:#d41200; font-size:12px;}
+  .chip .details .price {font-size:24px; margin-top:6px;}
+  .chip .details .review {font-size:12px; margin-top:6px;}
 	.chip .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
   </style>
   <script src="../../jquery.js"></script>
@@ -34,11 +36,14 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
   <script>
 
+    var pos;
+
   	$(function(){
 
+      initializeMap(0)
 
   		$(".chip").on("click", function(e){
-  			var pos = $(this).find(".photo").offset();
+  			pos = $(this).find(".photo").offset();
   			var photoURL = $(this).find(".photo").css("background-image");
   			var styles = {
       			top: pos.top,
@@ -48,14 +53,21 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   			$(".card .photo").css("background-image", photoURL);
   			var hotelId = $(this).attr("id");
   			animateCard(hotelId);
-  			$(".chip").fadeOut();
+  			$("#chip-wrapper").fadeOut();
+
+        $("#pdp-header").show();
+        $("#srp-header").hide();
+
+        $(".hotel-name").text($(this).find(".name").text());
   		});
 
-  		function animateCard(hotelId){
+  		
+      function animateCard(hotelId){
   			var c = $(".card");
   			fetchHotelDetails(hotelId);
   			c.animate({
   				width:"640px",
+          height: "300px",
   				top: "50px",
   				left:"0"
   			}, 400, function(){
@@ -65,8 +77,9 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   					height:"100%"
   				}, 200, function(){
   					$(".details-block").fadeIn( function(){
-  						$("#map-wrapper").fadeIn();
-  						initializeMap(0);
+  						mapPDPList(hotel);
+              $("#map-hider").fadeOut();
+  						
   					});
   				})
 
@@ -77,38 +90,50 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
     			height: "300px"
   			}, 400);
   		}
+  	
 
-  		$( ".clard" ).click(function() {
+      $("#back-pdp").on("click", function(){
+        console.log("back selected");
+        $("#map-hider").fadeIn();
+        $(".details-block").fadeOut(200, function(){
+          
+          
+        });
 
-  			var pos = ($(this).offset())
-  			
-  			console.log($(this).attr("id"))
-  			fetchHotelDetails($(this).attr("id"));
+        $(".card").delay(300).animate({height:"300px"}, 200, function(){
+            $("h1").hide();
+            $(".card").animate({
+              width: "300px",
+              height: "150px",
+              top: pos.top,
+              left: pos.left
+            }, 200, function(){
+              $(".card").hide();
+              $(".card .photo h1").empty();
+              $(".card .photo div").empty();
+              $(".card #rooms").empty();
+            });
+
+            console.log("run this");
+
+            $(".card").find(".photo").animate({
+              width:"300px",
+              height:"150px"
+            }, 200);
+
+            $("#chip-wrapper").fadeIn();
+          });
+
+        $("#pdp-header").hide();
+        $("#srp-header").show();
+
+        
+      })
 
 
-  			$(this).animate({
-    			width: "640px",
-    			top: "0",
-    			left: "0"
-  			}, 400, function(){
-  				$(this).addClass("pdp");
-  				$("h1").show();
-  				$(this).animate({
-  					height:"100%"
-  				}, 200, function(){
-  					$(".details-block").fadeIn( function(){
-  						$("#map-wrapper").fadeIn();
-  						initializeMap(0);
-  					});
-  				})
-  			});
+    });
 
-  			$(this).find("#photo").animate({
-    			width: "640px",
-    			height: "300px"
-  			}, 400);
-		});
-  	});
+    
 
 
 
@@ -124,9 +149,49 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 
 
-<div style="height:50px; background-color:#900;"></div>
+<div id="header">
+  <div id="srp-header">
+    <div id="back-srp" class="back-button"><img src="../back-arrow.png" /></div>
+    <div class="title">
+      <span>London, United Kingdom</span><br />
+      <span class="dates">12/09/2014 - 13/09/2014</span>
+    </div>
+    <div class="tools">
+      <ul>
+        <li>EDIT</li>
+        <li>FILTERS</li>
+        <li>MAP VIEW</li>
+      </ul>
+    </div>
+  </div>  
+  <div id="pdp-header" style="display:none;">
+    <div id="back-pdp" class="back-button"><img src="../back-arrow.png" /></div>
+    <div class="title">
+      <span class="hotel-name">Hotel name</span><br />
+      <span class="dates">12/09/2014 - 13/09/2014</span>
+    </div>
+    <div class="tools">
+      <ul>
+        <!--<li>EDIT</li>-->
+        <li>ROOMS</li>
+        <li>REVIEWS</li>
+        <li class="selected">MAP</li>
+      </ul>
+    </div>
+  </div>
 
-<div style="margin:12px 0 0 12px">
+</div>
+
+
+
+<div id="map-wrapper">
+  <div id="map_canvas" style="width:100%; height:100%;"></div>
+  <div id="address"></div>
+</div>
+
+<div id="map-hider"></div>
+
+<div id="chip-wrapper" style="margin:12px 0 0 12px; z-index:2000; position:absolute; top:50px; left:0; right:0; bottom:0; overflow-y:scroll;">
 
 
 
@@ -135,6 +200,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 		<div class="name">Park Plaza Westminster Bridge London</div>
 		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
 		<div class="price">$212</div>
+    <div class="review">4.5/5 Excellent</div>
 	</div>
 	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
 </div>
@@ -143,7 +209,9 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 	<div class="details">
 	<div class="name">The Soho Hotel</div>
 		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$198</div></div>
+		<div class="price">$198</div>
+    <div class="review">4.9/5 Outstanding</div>
+  </div>
 	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg')"></div>
 </div>
 
@@ -151,22 +219,124 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 	<div class="details">
 	<div class="name">Hotel Russell</div>
 		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$245</div></div>
+		<div class="price">$245</div>
+    <div class="review">3.9/5 Good</div>
+  </div>
 	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg')"></div>
 </div>
 
+<div class="chip" id="172847">
+  
+  <div class="details">
+    <div class="name">The Savoy, A Fairmont Managed Hotel</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$390</div>
+    <div class="review">4.8/5 Outstanding</div>
+  </div>
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/27200/27158/27158_94_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="145127">
+  
+  <div class="details">
+    <div class="name">The Ritz London</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$449</div>
+    <div class="review">4.7/5 Outstanding</div>
+  </div>
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/28200/28146/28146_103_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="120639">
+  
+  <div class="details">
+    <div class="name">The Marylebone Hotel</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$245</div>
+    <div class="review">4.5 / 5 Excellent</div>
+  </div>
+
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/470000/470000/469914/469914_26_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="180395">
+  
+  <div class="details">
+    <div class="name">Club Quarters, Trafalgar Square</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$199</div>
+    <div class="review">4.3/5 Excellent</div>
+  </div>
+
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1590000/1584700/1584661/1584661_105_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="117650">
+  
+  <div class="details">
+    <div class="name">Kingsway Hall Hotel</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$188</div>
+    <div class="review">4.3/5 Excellent</div>
+  </div>
+
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/120000/116100/116041/116041_52_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="190752">
+  
+  <div class="details">
+    <div class="name">The Bloomsbury Hotel</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$208</div>
+    <div class="review">4.5 / 5 Excellent</div>
+  </div>
+
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg')"></div>
+  
+</div>
+
+<div class="chip" id="105992">
+  
+  <div class="details">
+    <div class="name">The Melia White House Hotel</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="price">$164</div>
+    <div class="review">4.2/5 Excellent</div>
+  </div>
+  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg')"></div>
+  
+</div>
+
 
 </div>
 
-<div id="map-wrapper">
-	<div id="map_canvas" style="width:100%; height:100%;"></div>
-	<div id="address"></div>
-</div>
+
 
 	<div class="card" id="">
 		<div class="photo">
-			<h1></h1>
-		</div>
+      <h1></h1>
+      <div></div>
+    </div>
+
+    <div class="details-block">
+      <div style="overflow:hidden;">
+        <div id="review-score" style="float:left; margin-right:36px;">
+          <span class="score" style="font-size:20px;"></span><br />
+          <span style="font-size:12px;">200 customer reviews</span>
+        </div>
+        <div id="trip-score" style="float:left; "></div>
+        <div style="float:right; ">
+          <div style="display:inline-block; padding:12px 18px; background-color:#009; color:#fff;">Book</div>
+        </div>
+      </div>
+      
+    </div>
 		<div class="details-block about">
 			<h2>About this hotel</h2>
 			<p></p>
