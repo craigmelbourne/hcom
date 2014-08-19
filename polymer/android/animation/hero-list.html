@@ -10,7 +10,7 @@
   	.card .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
   	
   	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none; background-color:#fff;}
-  	.details-block h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
+  	h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
   	.details-block p {font-size:14px; margin-bottom:0;}
   	
 
@@ -120,7 +120,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
               $(".card").hide();
               $(".card .photo h1").empty();
               $(".card .photo div").empty();
-              $("#rooms-wrapper").empty();
+              $("#rooms-wrapper .rooms").empty();
             });
 
             console.log("run this");
@@ -131,6 +131,11 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
             }, 200);
 
             $("#chip-wrapper").fadeIn();
+             $("#map-wrapper").show();
+
+          $("#rooms-wrapper").hide();
+
+          $("#reviews-wrapper").hide();
           });
 
         $("#pdp-header").hide();
@@ -213,19 +218,6 @@ function changeContentPanel(id){
 
 </div>
 
-
-
-<div id="map-wrapper">
-  <div id="map_canvas" style="width:100%; height:100%;"></div>
-  <div id="address"></div>
-</div>
-
-<div id="reviews-wrapper">
-  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
-    <h2 style="padding:0; margin:0;">Guest reviews</h2>
-  </div>
-</div>
-
 <div id="rooms-wrapper">
   <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
     <h2 style="padding:0; margin:0;">Rooms</h2>
@@ -233,7 +225,21 @@ function changeContentPanel(id){
   <div class="rooms" style="position:absolute; top:60px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
 </div>
 
+<div id="map-wrapper">
+  <div id="map_canvas" style="width:100%; height:100%;"></div>
+  <div id="address"></div>
+</div>
 <div id="map-hider"></div>
+
+<div id="reviews-wrapper">
+  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
+    <h2 style="padding:0; margin:0;">Guest reviews</h2>
+  </div>
+</div>
+
+
+
+
 
 <div id="chip-wrapper" style="margin:12px 0 0 12px; z-index:2000; position:absolute; top:50px; left:0; right:0; bottom:0; overflow-y:scroll;">
 
