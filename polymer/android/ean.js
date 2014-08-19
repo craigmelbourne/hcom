@@ -7,6 +7,7 @@ var map;
 var markers = [];
 var list;
 var hotel;
+var rooms;
 
 function geocodeString(callback) {
 	geocoder.geocode( { 'address': city}, function(pos, status) {
@@ -341,11 +342,9 @@ function buildHotelDetails(hotel){
 
 	
 	
-	var rooms = hotel.RoomTypes.RoomType;
+	//var rooms = hotel.RoomTypes.RoomType;
 
-	$.each(rooms, function(i, room) {
-      $("#rooms-wrapper .rooms").append("<div style='padding:12px; margin:12px; background-color:#fff;'><h2>" + room.description + "</h2></div>")
-    });
+	
 
 	if (map != null){
 		mapPDP(hotel);
@@ -407,6 +406,90 @@ function displayHotelList(){
 		});
 		showChips();
 	});
+
+}
+
+
+function getRooms(hotelId){
+
+
+			$.ajax({
+
+			crossDomain: true,
+        	url: "https://api.eancdn.com/ean-services/rs/hotel/v3/avail",
+
+			data: {
+            	cid: 55505,
+            	minorRev: 99,
+            	apiKey: "xgdsee58vcvfhpr4hhvvhych",
+            	locale: "en_US",
+            	currencyCode: "GBP",
+            	arrivalDate: "09/30/2014",
+            	departureDate: "10/01/2014",
+            	hotelId: hotelId,
+            	room1: 2
+        	},
+
+        	// whether this is a POST or GET request
+        	type: "GET",
+
+        	// the type of data we expect back
+        	dataType : "jsonp",
+        	timeout:3000,
+ 
+        	// code to run if the request succeeds;
+        	// the response is passed to the function
+        	success: function( json ) {
+        		console.log (json.HotelRoomAvailabilityResponse);
+        		rooms = json.HotelRoomAvailabilityResponse.HotelRoomResponse
+
+        		$("#room #rate .total").append(
+        			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"])
+        		);
+
+
+        		$.each(rooms, function(i, room) {
+      				$("#rooms-wrapper .rooms").append(
+      					"<div style='padding:12px; margin:12px; background-color:#fff;'>" 
+      					+ "<h2>" + room.roomTypeDescription + "</h2>"
+      					+ "<div>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>" 
+      					+ "</div>")
+    			});
+
+        		//$.each(rooms, function(i, room) {
+
+        			//$("body").append(
+        				//"<div class='rate'>"
+        				//+ room.roomTypeDescription + " - " 
+        				//+ room.quotedOccupancy + " - "
+        				//+ room.RateInfos.RateInfo.ChargeableRateInfo["@total"]
+        				//+ "</div>"
+        			//);
+
+
+						//console.log(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]);
+
+		
+				//});
+
+        		//var hotels = json.HotelListResponse.HotelList.HotelSummary;
+        		//callback(hotels);
+        	
+        	}, 
+
+        	error: function( xhr, status, errorThrown ) {
+            	 //alert( "Sorry, there was a problem!" );
+            	console.log( "Error: " + errorThrown );
+            	console.log( "Status: " + status );
+            	console.dir( xhr );
+        	},
+ 
+        	// code to run regardless of success or failure
+        	complete: function( xhr, status ) {
+            
+        	}
+
+		});
 
 }
 
