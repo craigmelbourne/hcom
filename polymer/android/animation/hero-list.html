@@ -110,7 +110,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
           
         });
 
-        $(".card").delay(300).animate({height:"300px"}, 200, function(){
+        $(".card").delay(300).animate({height:"300px"}, 500, function(){
             $("h1").hide();
             $(".card").animate({
               width: "300px",
@@ -223,7 +223,7 @@ function changeContentPanel(id){
   <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
     <h2 style="padding:0; margin:0;">Rooms</h2>
   </div>
-  <div class="rooms" style="position:absolute; top:60px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
+  <div class="rooms" style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
 </div>
 
 <div id="map-wrapper">
@@ -377,7 +377,7 @@ function changeContentPanel(id){
 
     <div class="details-block">
       <div style="overflow:hidden;">
-        <div id="review-score" style="float:left; margin-right:36px;">
+        <div id="review-score" style="float:left; width:50%">
           <span class="score" style="font-size:20px;"></span><br />
           <span style="font-size:12px;">200 customer reviews</span>
         </div>
@@ -398,7 +398,7 @@ function changeContentPanel(id){
           <div><a href="#" style="font-size:12px; text-decoration:none;">More room information</a></div>
         </div>
         
-        <button class="panel" rel="rooms-wrapper" style="background-color:#00c; color:#fff;">BOOK THIS ROOM</button> <button class="panel" rel="rooms-wrapper">SEE ALL ROOMS</button>
+        <button class="panel" style="background-color:#00c; color:#fff;">BOOK THIS ROOM</button> <button id="allrooms"  class="panel" rel="rooms-wrapper">SEE ALL ROOMS</button>
       </div>
       
     </div>

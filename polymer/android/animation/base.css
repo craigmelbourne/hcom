@@ -27,8 +27,10 @@ button.panel {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14
 .rooms h2 {padding-bottom:12px;}
 .rooms .image {width:80px; height:80px; background-color:#f1f1f1;}
 
+.chip, .details-block, .room {-webkit-box-shadow: 1px 1px 3px 0px #ccc; -moz-box-shadow: 1px 1px 3px 0px #ccc; box-shadow: 1px 1px 3px 0px #ccc;}
 
 
+.extra {font-size: 13px; margin:5px 0;}
 
 
 

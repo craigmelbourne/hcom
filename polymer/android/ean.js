@@ -440,22 +440,53 @@ function getRooms(hotelId){
         	// code to run if the request succeeds;
         	// the response is passed to the function
         	success: function( json ) {
-        		console.log (json.HotelRoomAvailabilityResponse);
+        		console.log (json);
         		rooms = json.HotelRoomAvailabilityResponse.HotelRoomResponse
 
-        		$("#room #rate .total").append(
+        		$("#room #rate .total").text(
         			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"])
         		);
 
+        		$("#allrooms").text("SEE ALL ROOMS (" + json.HotelRoomAvailabilityResponse["@size"] + ")");
+
 
         		$.each(rooms, function(i, room) {
+
+        			var cancellation;
+        			var extras = ""; 
+
+        			if (room.RateInfos.RateInfo.nonRefundable == true){
+        				cancellation = "<div style='font-size:13px; margin: 12px 0'>Non refundable</div>";
+        			} else {
+        				cancellation = "<div style='font-size:13px; margin: 12px 0; color:#090;'>Free cancellation</div>";
+        			}
+
+        			if (typeof (room.ValueAdds) === "undefined") {
+        				console.log("type" + typeof (room.ValueAdds))
+        			} else if (room.ValueAdds["@size"] == 1) {
+        
+    					extras = "<div class='extra'>" + room.ValueAdds.ValueAdd.description + "</div>";
+        			} else {
+        				for (i = 0; i < room.ValueAdds["@size"]; i++) { 
+    						extras += "<div class='extra'>" + room.ValueAdds.ValueAdd[i].description + "</div>";
+						}
+        			}
+        			
+        			
+        				//extras = "<div>" + room.ValueAdds["@size"] + "</div>";
+        			
+
       				$("#rooms-wrapper .rooms").append(
-      					"<div style='padding:12px; margin:12px; background-color:#fff;'>" 
+      					"<div class='room' style='padding:12px; margin:12px; background-color:#fff;'>" 
       					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px'><h2>" + room.roomTypeDescription + "</h2> <div class='image'></div></div>"
-      					+ "<div style='text-align:right; padding-top:12px;'>" 
+      					+ "<div style='overflow:hidden'>"
+      					+ "<div style='float:left; width:50%'>" + cancellation + extras + "</div>"
+      					+ "<div style='float:50%; text-align:right; padding-top:12px;'>" 
       					+ "<div style='color:#d41200; font-size:32px;'>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>"
       					+ "</div>" 
-      					+ "</div>")
+      					+ "</div>"
+      					+ "</div>"
+      					)
     			});
 
         		//$.each(rooms, function(i, room) {
