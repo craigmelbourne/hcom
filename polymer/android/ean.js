@@ -344,7 +344,7 @@ function buildHotelDetails(hotel){
 	var rooms = hotel.RoomTypes.RoomType;
 
 	$.each(rooms, function(i, room) {
-      $("#rooms").append("<div class='details-block'><h2>" + room.description + "</h2></div>")
+      $("#rooms-wrapper .rooms").append("<div class='details-block'><h2>" + room.description + "</h2></div>")
     });
 
 	if (map != null){
