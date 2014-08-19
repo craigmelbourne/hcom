@@ -451,8 +451,10 @@ function getRooms(hotelId){
         		$.each(rooms, function(i, room) {
       				$("#rooms-wrapper .rooms").append(
       					"<div style='padding:12px; margin:12px; background-color:#fff;'>" 
-      					+ "<h2>" + room.roomTypeDescription + "</h2>"
-      					+ "<div>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>" 
+      					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px'><h2>" + room.roomTypeDescription + "</h2> <div class='image'></div></div>"
+      					+ "<div style='text-align:right; padding-top:12px;'>" 
+      					+ "<div style='color:#d41200; font-size:24px;'>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>"
+      					+ "</div>" 
       					+ "</div>")
     			});
 

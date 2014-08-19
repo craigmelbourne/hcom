@@ -24,6 +24,9 @@ body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding
 
 button.panel {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
 
+.rooms h2 {padding-bottom:12px;}
+.rooms .image {width:80px; height:80px; background-color:#f1f1f1;}
+
 
 
 
