@@ -1,15 +1,15 @@
 <!doctype html>
 <html>
 <head>
-  <title>core-animated-pages</title>
+  <title>SRP - List View</title>
   <link rel="stylesheet" type="text/css" href="base.css" />
   <style type="text/css">
-  	  	.card {position:absolute; width:300px; border-right:solid 1px #ddd; bottom:auto;  background-color:#fff; overflow-y:scroll; display:none;}
+  	  	.card {position:absolute; width:300px; border-right:solid 1px #ddd;  background-color:#f1f1f1; overflow-y:scroll; display:none; box-sizing:border-box;}
 
-  	.pdp { -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
+  	.pd-p { -webkit-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); -moz-box-shadow: 2px 0px 5px 0px rgba(56,56,56,1); box-shadow: 2px 0px 5px 0px rgba(56,56,56,1);}
   	.card .photo {position:relative; width:300px; height:150px; background-repeat: no-repeat; background-color:#eee; background-size: cover;}
   	
-  	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none;}
+  	.details-block {border:solid 1px #eee; padding:12px; margin:12px; display:none; background-color:#fff;}
   	.details-block h2 {padding:0; margin:0; font-size:18px; font-weight: normal;}
   	.details-block p {font-size:14px; margin-bottom:0;}
   	#map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
@@ -38,11 +38,17 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
     var pos;
 
+
   	$(function(){
 
-      initializeMap(0)
 
-  		$(".chip").on("click", function(e){
+      console.log($(window).width() / 2);
+
+
+      initializeMap(0);
+      displayHotelList();
+
+  		$("#chip-wrapper").on("click", ".chip", function(e){
   			pos = $(this).find(".photo").offset();
   			var photoURL = $(this).find(".photo").css("background-image");
   			var styles = {
@@ -66,7 +72,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   			var c = $(".card");
   			fetchHotelDetails(hotelId);
   			c.animate({
-  				width:"640px",
+  				width:$(window).width() / 2,
           height: "300px",
   				top: "50px",
   				left:"0"
@@ -77,8 +83,11 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   					height:"100%"
   				}, 200, function(){
   					$(".details-block").fadeIn( function(){
+              $("#map-wrapper").css("left", $(window).width() / 2);
+
   						mapPDPList(hotel);
               $("#map-hider").fadeOut();
+              c.css({bottom: "0", height:"auto"});
   						
   					});
   				})
@@ -86,15 +95,15 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   			});
 
   			c.find(".photo").animate({
-    			width: "640px",
-    			height: "300px"
+    			width: $(window).width() / 2,
+    			height: $(window).width() / 4
   			}, 400);
   		}
   	
 
       $("#back-pdp").on("click", function(){
         console.log("back selected");
-        $("#map-hider").fadeIn();
+        $("#map-hider").css("left", $(window).width() / 2).fadeIn();
         $(".details-block").fadeOut(200, function(){
           
           

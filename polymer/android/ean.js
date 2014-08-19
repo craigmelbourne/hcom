@@ -62,8 +62,6 @@ function getHotels(){
 		showChips();
 	});
 
-
-
 }
 
 function showChips() {
@@ -358,35 +356,57 @@ function buildHotelDetails(hotel){
 
 function mapPDP(hotel){
 
-
-	if (map != null){
 		map.setZoom(15);
     	addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
     	map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
     	map.panBy(-300, 0);
-	} else {
-		
-    	//map.panBy(-300, 0);
-	}
-
-
 	
 }
 
 function mapPDPList(hotel){
-	
-		deleteMarkers();
-		map.setZoom(15);
-    	addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
-    	map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
+	deleteMarkers();
+	map.setZoom(15);
+    addMarker(hotel.HotelSummary.latitude, hotel.HotelSummary.longitude);
+    map.setCenter({lat: hotel.HotelSummary.latitude, lng: hotel.HotelSummary.longitude});
 }
 
 
 function returnSRPView(){
-
 	map.setZoom(14);
 	map.setCenter(center);
     showMarkers();
+}
+
+var hotelImages = [
+	"http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg", 
+	"http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/30000/27200/27158/27158_94_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/30000/28200/28146/28146_103_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/470000/470000/469914/469914_26_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/2000000/1590000/1584700/1584661/1584661_105_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/120000/116100/116041/116041_52_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg",
+	"http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg"
+]
+
+function displayHotelList(){
+
+	fetchHotelsList(function(hotels){
+
+		console.log (hotels.length)
+
+		for (i = 0; i < hotelImages.length; i++) {
+    		console.log(hotels[i].name + " - " + hotelImages[i] + " - $" + Math.floor(hotels[i].lowRate));
+		}
+
+		$.each(hotels, function(i, hotel) {
+
+			//addMarker(hotel.latitude, hotel.longitude);
+		
+		});
+		showChips();
+	});
 
 }
 
