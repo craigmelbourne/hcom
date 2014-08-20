@@ -22,7 +22,8 @@ body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding
 
 #reviews-wrapper, #rooms-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;display:none; overflow-y:scroll;}
 
-button.panel {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
+button {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
+button.book {background-color:#00c; color:#fff;}
 
 .rooms h2 {padding-bottom:12px;}
 .rooms .image {width:80px; height:80px; background-color:#f1f1f1;}

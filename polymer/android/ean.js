@@ -1,5 +1,5 @@
 
-var city = "London, UK"
+var city = "London, United Kingdom"
 var cityLatLng;
 var center;
 var geocoder = new google.maps.Geocoder();
@@ -376,17 +376,19 @@ function returnSRPView(){
     showMarkers();
 }
 
-var hotelImages = [
-	"http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg", 
-	"http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/30000/27200/27158/27158_94_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/30000/28200/28146/28146_103_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/470000/470000/469914/469914_26_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/2000000/1590000/1584700/1584661/1584661_105_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/120000/116100/116041/116041_52_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg",
-	"http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg"
+var hotelList = [
+	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg", "rating": "4.5/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg", "rating": "4.9/5 Outstanding"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg", "rating": "3.9/5 Good"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/27200/27158/27158_94_z.jpg", "rating": "4.8/5 Outstanding"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/28200/28146/28146_103_z.jpg", "rating": "4.7/5 Outstanding"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/470000/470000/469914/469914_26_z.jpg", "rating": "4.5/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/2000000/1590000/1584700/1584661/1584661_105_z.jpg", "rating": "4.3/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/120000/116100/116041/116041_52_z.jpg", "rating": "4.3/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg", "rating": "4.5 / 5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg", "rating": "4.2/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/22500/22478/22478_77_z.jpg", "rating": "4.1/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3300000/3296200/3296165/3296165_136_z.jpg", "rating": "4.4/5 Excellent"}
 ]
 
 function displayHotelList(){
@@ -395,16 +397,39 @@ function displayHotelList(){
 
 		console.log (hotels.length)
 
-		for (i = 0; i < hotelImages.length; i++) {
-    		console.log(hotels[i].name + " - " + hotelImages[i] + " - $" + Math.floor(hotels[i].lowRate));
+		for (i = 0; i < hotelList.length; i++) {
+    		console.log(hotels[i].name + " - " + hotelList[i].image + " - $" + Math.floor(hotels[i].lowRate));
+    		$("#chip-wrapper").append(
+    			"<div class='chip' id='" + hotels[i].hotelId + "'>"
+    			+ "<div class='details'>"
+    			+ "<div class='name'>" + hotels[i].name + "</div>"
+    			+ "<div class='stars'>&#9733;&#9733;&#9733;&#9733;</div>"
+    			+ "<div class='price'>$" + Math.floor(hotels[i].lowRate) + "</div>"
+    			+ "<div class='review'>" + hotelList[i].rating + "</div>"
+    			+ "</div>"
+    			+ "<div class='photo' style='background-image: url(" + hotelList[i].image + ")'></div>"
+    			+ "</div>"
+    		)
 		}
+
+
+		//
+	//<div class="details">
+		//<div class="name">Park Plaza Westminster Bridge London</div>
+		//<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+		//<div class="price">$212</div>
+    //<div class="review">4.5/5 Excellent</div>
+	//</div>
+	//<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
+//
+
 
 		$.each(hotels, function(i, hotel) {
 
 			//addMarker(hotel.latitude, hotel.longitude);
 		
 		});
-		showChips();
+		//showChips();
 	});
 
 }
@@ -447,6 +472,12 @@ function getRooms(hotelId){
         			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"])
         		);
 
+        		$("#room #rate .fullprice").text(
+        			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"] * 1.2)
+        		);
+
+        		
+
         		$("#allrooms").text("SEE ALL ROOMS (" + json.HotelRoomAvailabilityResponse["@size"] + ")");
 
 
@@ -454,11 +485,12 @@ function getRooms(hotelId){
 
         			var cancellation;
         			var extras = ""; 
+        			var beds = "";
 
         			if (room.RateInfos.RateInfo.nonRefundable == true){
-        				cancellation = "<div style='font-size:13px; margin: 12px 0'>Non refundable</div>";
+        				cancellation = "<div style='font-size:13px; margin: 12px 0 5px'>Non refundable</div>";
         			} else {
-        				cancellation = "<div style='font-size:13px; margin: 12px 0; color:#090;'>Free cancellation</div>";
+        				cancellation = "<div style='font-size:13px; margin: 12px 0 5px; color:#090;'>Free cancellation</div>";
         			}
 
         			if (typeof (room.ValueAdds) === "undefined") {
@@ -471,6 +503,17 @@ function getRooms(hotelId){
     						extras += "<div class='extra'>" + room.ValueAdds.ValueAdd[i].description + "</div>";
 						}
         			}
+
+        			if (room.BedTypes["@size"] == "1"){
+        				beds = room.BedTypes.BedType.description;
+        			} else {
+        				//beds = "more than 1 bed";
+        				for (i = 0; i < room.BedTypes["@size"]; i++) { 
+    						beds += "<div>" + room.BedTypes.BedType[i].description + "</div>";
+						}
+        			}
+
+        			
         			
         			
         				//extras = "<div>" + room.ValueAdds["@size"] + "</div>";
@@ -478,35 +521,22 @@ function getRooms(hotelId){
 
       				$("#rooms-wrapper .rooms").append(
       					"<div class='room' style='padding:12px; margin:12px; background-color:#fff;'>" 
-      					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px'><h2>" + room.roomTypeDescription + "</h2> <div class='image'></div></div>"
+      					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px; overflow:hidden;'>" 
+      					+ "<div class='image' style='float:left; margin-right:12px;'></div>"
+      					+ "<div class='details' style='float:left; width:300px;'><div>" + room.roomTypeDescription + "</div><div style='margin:5px 0; font-size:13px;'>" + beds + "</div></div>"
+      					+ "</div>"
       					+ "<div style='overflow:hidden'>"
-      					+ "<div style='float:left; width:50%'>" + cancellation + extras + "</div>"
+      					+ "<div style='float:left; width:50%'>" + cancellation + extras + "<div style='font-size:13px; color:purple'>Welcome Rewards</div></div>"
       					+ "<div style='float:50%; text-align:right; padding-top:12px;'>" 
-      					+ "<div style='color:#d41200; font-size:32px;'>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>"
+      					+ "<div style='color:#999; font-size:14px; text-decoration:line-through'>$" + (Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"] * 1.2)) + "</div>"
+      					+ "<div style='color:#d41200; font-size:28px;'>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>"
+      					+ "<div style='color:#999; margin:5px 0; font-size:13px;'>1 room for 1 night</div><div style='color:#999; margin:5px 0; font-size:12px;'>includes taxes and fees</div>"
+      					+ "<button class='book'>BOOK</button>"	
       					+ "</div>" 
       					+ "</div>"
       					+ "</div>"
       					)
     			});
-
-        		//$.each(rooms, function(i, room) {
-
-        			//$("body").append(
-        				//"<div class='rate'>"
-        				//+ room.roomTypeDescription + " - " 
-        				//+ room.quotedOccupancy + " - "
-        				//+ room.RateInfos.RateInfo.ChargeableRateInfo["@total"]
-        				//+ "</div>"
-        			//);
-
-
-						//console.log(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]);
-
-		
-				//});
-
-        		//var hotels = json.HotelListResponse.HotelList.HotelSummary;
-        		//callback(hotels);
         	
         	}, 
 
