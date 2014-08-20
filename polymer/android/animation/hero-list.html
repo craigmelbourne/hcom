@@ -148,21 +148,34 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
       $("button.panel").on("click", function(){
         var id = $(this).attr("rel");
+
+        $("#overlay").fadeIn(300, function(){
+
+          $("#"+id).show();
+
+        });
         //$("#pdp-tools li").removeClass("selected")
         //$(this).addClass("selected");
         //$("#pdp-tools").find("li[rel='" + id + "']");
 
         //$("#map-wrapper").fadeOut();
 
-          $("#map-wrapper").fadeOut();
+          //$("#map-wrapper").fadeOut();
 
-          $("#rooms-wrapper").fadeOut();
+          //$("#rooms-wrapper").fadeOut();
 
-          $("#reviews-wrapper").fadeOut();
+          //$("#reviews-wrapper").fadeOut();
 
 
         $("#" + id).css("left", $(window).width() / 2).fadeIn();
 
+      });
+
+      $("#overlay").on("click", function(){
+        //$("#rooms-wrapper").hide();
+
+        $(".modal").hide();
+        $(this).fadeOut(300);
       })
 
     });
@@ -219,66 +232,14 @@ function changeContentPanel(id){
 
 </div>
 
-<div id="rooms-wrapper">
-  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
-    <h2 style="padding:0; margin:0;">Rooms</h2>
-  </div>
-  <div class="rooms" style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
-</div>
-
 <div id="map-wrapper">
   <div id="map_canvas" style="width:100%; height:100%;"></div>
   <div id="address"></div>
 </div>
 <div id="map-hider"></div>
 
-<div id="reviews-wrapper">
-  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
-    <h2 style="padding:0; margin:0;">Guest reviews</h2>
-  </div>
-  <div id="reviews" style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow-y:scroll;">
-    <div class="details-block" >
-      <h3>5.0/5 "You have to stay here!"</h3>
-      <p>"It was our 30th wedding anniversary. We loved the room and the Spa was outstanding. Unfortunately we missed the Bassoon Bar and the Oyster Bar because we stayed on a Sunday - we will just have to come back again..."</p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "Wonderful"</h3>
-      <p>
-        "This is an amazing hotel! Great staff, big rooms, nice spa. Best hotel I've stayed in for a while."
-      </p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "Wonderful experience right in the heart of London"</h3>
-      <p>
-        "I booked this hotel for a special occassion and was not disappointed. From the moment we walked into the entrance foyer we knew we were in for a treat. Friendly staff, great room, attentive service and a Spa and pool that we relaxed in every day after trips around the sites in London. Breakfast was great and we treated ourselves to a dinner in the Northall restaurant which was delicious! My only complaint was that we had to leave and get "back to reality"! We will be back, the Spa has to be experienced to be believed"
-      </p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "Incredible service"</h3>
-      <p>
-        "The Corinthia promised much after all these glowing reviews but truly delivered. They were extremely accommodating for all my in room arrival treat requests and the spa was incredible. Every single member of staff made us feel welcome and bent over backward to ensure all fine details were perfect. What a hotel! I'm a convert and will be seeking out their other hotels in Europe. Pricey but well worth it."
-      </p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "Great central hotel with lovely spa"</h3>
-      <p>
-        "Great central located hotel with a good spa facilities. Many london sights within walking distance. Breakfast staff provided an excellent service. Only downside was the room did not have a easy to use ipod docking system. Needed a connecting wire for it to work."
-      </p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "All round wonderful"</h3>
-      <p>
-        "Simply couldn't fault it. Had a fabulous stay and would most certainly go back which is a first for me! Only negative would be the overpriced wine in the gargantuan list but all comparative in relation to it being London!"
-      </p>
-    </div>
-    <div class="details-block" >
-       <h3>5.0/5 "Faultless"</h3>
-      <p>
-        "This is a fabulous hotel and the staff could not do enough. The welcome at reception was great and the hotel room was spotless. I was also informed of the Spa which was free to use - I wish I had more time to take advantage!"
-      </p>
-    </div>
-  </div>
-</div>
+
+
 
 
 
@@ -472,13 +433,69 @@ function changeContentPanel(id){
       </p>
       <button class="panel" style="width:100%; margin-top:12px;" rel="reviews-wrapper">SEE ALL REVIEWS (200)</button>
     </div>
-    <div class="details-block" >
-      <button class="panel" style="width:100%" rel="map-wrapper">Show map</button>
-    </div>
+
 		
 	</div>
 
 
+
+<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#000; opacity:0.7; display:none;"></div>
+
+<div id="rooms-wrapper" class="modal">
+  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
+    <h2 style="padding:0; margin:0;">Rooms</h2>
+  </div>
+  <div class="rooms" style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
+</div>
+
+
+<div id="reviews-wrapper" class="modal">
+  <div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
+    <h2 style="padding:0; margin:0;">Guest reviews</h2>
+  </div>
+  <div id="reviews" style="position:absolute; top:46px; left:0; right:0; bottom:0; overflow-y:scroll;">
+    <div class="details-block" >
+      <h3>5.0/5 "You have to stay here!"</h3>
+      <p>"It was our 30th wedding anniversary. We loved the room and the Spa was outstanding. Unfortunately we missed the Bassoon Bar and the Oyster Bar because we stayed on a Sunday - we will just have to come back again..."</p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "Wonderful"</h3>
+      <p>
+        "This is an amazing hotel! Great staff, big rooms, nice spa. Best hotel I've stayed in for a while."
+      </p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "Wonderful experience right in the heart of London"</h3>
+      <p>
+        "I booked this hotel for a special occassion and was not disappointed. From the moment we walked into the entrance foyer we knew we were in for a treat. Friendly staff, great room, attentive service and a Spa and pool that we relaxed in every day after trips around the sites in London. Breakfast was great and we treated ourselves to a dinner in the Northall restaurant which was delicious! My only complaint was that we had to leave and get "back to reality"! We will be back, the Spa has to be experienced to be believed"
+      </p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "Incredible service"</h3>
+      <p>
+        "The Corinthia promised much after all these glowing reviews but truly delivered. They were extremely accommodating for all my in room arrival treat requests and the spa was incredible. Every single member of staff made us feel welcome and bent over backward to ensure all fine details were perfect. What a hotel! I'm a convert and will be seeking out their other hotels in Europe. Pricey but well worth it."
+      </p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "Great central hotel with lovely spa"</h3>
+      <p>
+        "Great central located hotel with a good spa facilities. Many london sights within walking distance. Breakfast staff provided an excellent service. Only downside was the room did not have a easy to use ipod docking system. Needed a connecting wire for it to work."
+      </p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "All round wonderful"</h3>
+      <p>
+        "Simply couldn't fault it. Had a fabulous stay and would most certainly go back which is a first for me! Only negative would be the overpriced wine in the gargantuan list but all comparative in relation to it being London!"
+      </p>
+    </div>
+    <div class="details-block" >
+       <h3>5.0/5 "Faultless"</h3>
+      <p>
+        "This is a fabulous hotel and the staff could not do enough. The welcome at reception was great and the hotel room was spotless. I was also informed of the Spa which was free to use - I wish I had more time to take advantage!"
+      </p>
+    </div>
+  </div>
+</div>
 
 
 </body>

@@ -598,7 +598,7 @@ function roomLayout(room){
 						}
         			}
 
-      				$("#room #rate").append(
+      				$("#room #rate").html(
       					"<div>" 
       					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px; overflow:hidden;'>" 
       					+ "<div class='image' style='float:left; margin-right:12px; width:60px; height:60px; background-color:#eee;'></div>"
