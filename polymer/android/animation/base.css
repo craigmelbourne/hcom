@@ -20,7 +20,7 @@ body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding
 #map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 #map-hider {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 
-#reviews-wrapper, #rooms-wrapper {position:fixed; top:0px; width:600px; left:50%; margin-left:-300px; bottom:0px; background-color:transparent; display:none; overflow-y:scroll;}
+#reviews-wrapper, #rooms-wrapper {position:fixed; top:0px; width:400px; left:50%; margin-left:-200px; bottom:0px; background-color:transparent; display:none; overflow-y:scroll;}
 
 button {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
 button.book {background-color:#00c; color:#fff;}
