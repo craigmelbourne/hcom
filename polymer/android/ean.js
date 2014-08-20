@@ -388,7 +388,19 @@ var hotelList = [
 	{"image": "http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg", "rating": "4.5 / 5 Excellent"},
 	{"image": "http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg", "rating": "4.2/5 Excellent"},
 	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/22500/22478/22478_77_z.jpg", "rating": "4.1/5 Excellent"},
-	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3300000/3296200/3296165/3296165_136_z.jpg", "rating": "4.4/5 Excellent"}
+	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3300000/3296200/3296165/3296165_136_z.jpg", "rating": "4.4/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/560000/559700/559689/559689_81_z.jpg", "rating": "4.1/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3980000/3978000/3977996/3977996_77_z.jpg", "rating": "4.5/5 Outstanding"},
+	{"image": "http://exp.cdn-hotels.com/hotels/3000000/2540000/2531100/2531003/2531003_57_z.jpg", "rating": "2.5/5 Fair"},
+	{"image": "http://exp.cdn-hotels.com/hotels/4000000/3910000/3907800/3907784/3907784_147_z.jpg", "rating": "4.4/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/3000000/2150000/2143100/2143095/2143095_57_z.jpg", "rating": "3.9/5 Good"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/30000/26100/26035/26035_89_z.jpg", "rating": "4.5/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/5000000/4220000/4212200/4212191/4212191_71_z.jpg", "rating": "4.3/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/440000/436300/436225/436225_93_z.jpg", "rating": "4.3/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/440000/431700/431650/431650_147_z.jpg", "rating": "4.5 / 5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/2000000/1190000/1183300/1183289/1183289_131_y.jpg", "rating": "4.2/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/810000/805000/804955/804955_114_z.jpg", "rating": "4.1/5 Excellent"},
+	{"image": "http://exp.cdn-hotels.com/hotels/1000000/10000/2700/2651/2651_67_z.jpg", "rating": "4.4/5 Excellent"}
 ]
 
 function displayHotelList(){
@@ -404,7 +416,7 @@ function displayHotelList(){
     			+ "<div class='details'>"
     			+ "<div class='name'>" + hotels[i].name + "</div>"
     			+ "<div class='stars'>&#9733;&#9733;&#9733;&#9733;</div>"
-    			+ "<div class='price'>$" + Math.floor(hotels[i].lowRate) + "</div>"
+    			+ "<div class='price'>$" + Math.floor(hotels[i].lowRate) + " <span style='font-size:13px; color:#999; text-decoration:line-through;'>$" + Math.floor(hotels[i].lowRate * 1.2)  + "</span></div>"
     			+ "<div class='review'>" + hotelList[i].rating + "</div>"
     			+ "</div>"
     			+ "<div class='photo' style='background-image: url(" + hotelList[i].image + ")'></div>"
@@ -468,6 +480,9 @@ function getRooms(hotelId){
         		console.log (json);
         		rooms = json.HotelRoomAvailabilityResponse.HotelRoomResponse
 
+        		roomLayout(rooms[0]);
+
+
         		$("#room #rate .total").text(
         			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"])
         		);
@@ -513,12 +528,6 @@ function getRooms(hotelId){
 						}
         			}
 
-        			
-        			
-        			
-        				//extras = "<div>" + room.ValueAdds["@size"] + "</div>";
-        			
-
       				$("#rooms-wrapper .rooms").append(
       					"<div class='room' style='padding:12px; margin:12px; background-color:#fff;'>" 
       					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px; overflow:hidden;'>" 
@@ -553,6 +562,60 @@ function getRooms(hotelId){
         	}
 
 		});
+
+}
+
+function roomLayout(room){
+ 	console.log(room);
+
+ 	var cancellation;
+        			var extras = ""; 
+        			var beds = "";
+
+        			if (room.RateInfos.RateInfo.nonRefundable == true){
+        				cancellation = "<div style='font-size:13px; margin: 12px 0 5px'>Non refundable</div>";
+        			} else {
+        				cancellation = "<div style='font-size:13px; margin: 12px 0 5px; color:#090;'>Free cancellation</div>";
+        			}
+
+        			if (typeof (room.ValueAdds) === "undefined") {
+        				console.log("type" + typeof (room.ValueAdds))
+        			} else if (room.ValueAdds["@size"] == 1) {
+        
+    					extras = "<div class='extra'>" + room.ValueAdds.ValueAdd.description + "</div>";
+        			} else {
+        				for (i = 0; i < room.ValueAdds["@size"]; i++) { 
+    						extras += "<div class='extra'>" + room.ValueAdds.ValueAdd[i].description + "</div>";
+						}
+        			}
+
+        			if (room.BedTypes["@size"] == "1"){
+        				beds = room.BedTypes.BedType.description;
+        			} else {
+        				//beds = "more than 1 bed";
+        				for (i = 0; i < room.BedTypes["@size"]; i++) { 
+    						beds += "<div>" + room.BedTypes.BedType[i].description + "</div>";
+						}
+        			}
+
+      				$("#room #rate").append(
+      					"<div>" 
+      					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px; overflow:hidden;'>" 
+      					+ "<div class='image' style='float:left; margin-right:12px; width:60px; height:60px; background-color:#eee;'></div>"
+      					+ "<div class='details' style='float:left; width:300px;'><div>" + room.roomTypeDescription + "</div><div style='margin:5px 0; font-size:13px;'>" + beds + "</div></div>"
+      					+ "</div>"
+      					+ "<div style='overflow:hidden'>"
+      					+ "<div style='float:left; width:50%'>" + cancellation + extras + "<div style='font-size:13px; color:purple'>Welcome Rewards</div></div>"
+      					+ "<div style='float:50%; text-align:right; padding-top:12px;'>" 
+      					+ "<div style='color:#999; font-size:14px; text-decoration:line-through'>$" + (Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"] * 1.2)) + "</div>"
+      					+ "<div style='color:#d41200; font-size:28px;'>$" + Math.floor(room.RateInfos.RateInfo.ChargeableRateInfo["@total"]) + "</div>"
+      					+ "<div style='color:#999; margin:5px 0; font-size:13px;'>1 room for 1 night</div><div style='color:#999; margin:5px 0; font-size:12px;'>includes taxes and fees</div>"
+      					+ "<button class='book'>BOOK</button>"	
+      					+ "</div>" 
+      					+ "</div>"
+      					+ "</div>"
+      					)
+
 
 }
 
