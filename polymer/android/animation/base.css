@@ -20,7 +20,7 @@ body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding
 #map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 #map-hider {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 
-#reviews-wrapper, #rooms-wrapper {position:fixed; top:0px; width:50%; left:0px; bottom:0px; background-color:transparent; display:none; overflow-y:scroll;}
+#reviews-wrapper, #rooms-wrapper {position:fixed; top:0px; width:700px; left:50%;  bottom:0px; margin-left:-350px; background-color:transparent; display:none; overflow-y:scroll;}
 
 button {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
 button.book {background-color:#00c; color:#fff;}
@@ -30,7 +30,8 @@ button.book {background-color:#00c; color:#fff;}
 
 .chip, .details-block {-webkit-box-shadow: 1px 1px 3px 0px #ccc; -moz-box-shadow: 1px 1px 3px 0px #ccc; box-shadow: 1px 1px 3px 0px #ccc;}
 .room, #room-details {-webkit-box-shadow: 1px 1px 3px 0px #666; -moz-box-shadow: 1px 1px 3px 0px #666; box-shadow: 1px 1px 3px 0px #666;}
-
+.rooms {}
+.room {width:500px;}
 
 .extra {font-size: 13px; margin:5px 0;}
 
@@ -41,6 +42,7 @@ button.book {background-color:#00c; color:#fff;}
 .modal {}
 
 a.rooms-more {font-size:13px; text-decoration: none;}
+.more-info {display:none; height:100px; background-color:#eee;}
 #overlay {position:fixed; top:0; left:0; right:0; bottom:0; background-color:#eee; opacity:0.9; display:none;}
 
 

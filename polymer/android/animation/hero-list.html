@@ -172,10 +172,12 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
       $(".rooms").on("click", ".rooms-more", function(){
         //alert("click");
         var id = $(this).attr("rel");
-        $(".rooms").find(".room:not(#"+ id +")").fadeOut(function(){
-          $("#room-details-wrapper").fadeIn();
-         
-        });
+        $("#" + id).animate({
+          width:"672px"
+        }, 200); 
+
+        $("#" + id).find(".more-info").slideDown(200);
+
       }); 
 
       $("#room-details-wrapper").on("click", function(){
@@ -313,7 +315,7 @@ function changeContentPanel(id){
   <!--<div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
     <h2 style="padding:0; margin:0;">Rooms</h2>
   </div>-->
-  <div class="rooms" style="position:absolute; top:0; padding:12px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
+  <div class="rooms" style="position:absolute; top:0; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
 </div>
 
 <div id="room-details-wrapper" style="position:fixed; width:50%; right:0; top:0; bottom:0;display:none;">
