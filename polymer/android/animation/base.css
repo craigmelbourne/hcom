@@ -43,7 +43,7 @@ button.book {background-color:#00c; color:#fff;}
 
 a.rooms-more {font-size:13px; text-decoration: none;}
 .more-info {display:none; height:100px; background-color:#eee;}
-#overlay {position:fixed; top:0; left:0; right:0; bottom:0; background-color:#eee; opacity:1.0; display:none;}
+#overlay {position:fixed; top:0; left:0; right:0; bottom:0; background-color:#eee; opacity:0.0; display:none;}
 
 
 
