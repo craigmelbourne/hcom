@@ -3,6 +3,20 @@
 
 <head>
 
+	<style type="text/css">
+		.wrapper {
+ /* arbitary for demo only */
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.internal {
+	display: inline-block; width:300px; height:200px; background-color:#ddd; margin-right:12px
+}
+	</style>
+
 </head>
 
 <body style="background-color:#f1f1f1;">
@@ -25,10 +39,12 @@
 
 <div style="position:absolute; top:180px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
 
-	<div style="margin-left:100px; overflow:hidden; ">
-		<div style="width:300px; height:200px; background-color:#ddd; float:left; margin-right:20px"></div>
-		<div style="width:300px; height:200px; background-color:#ddd; float:left; margin-right:20px"></div>
-		<div style="width:300px; height:200px; background-color:#ddd; float:left; margin-right:20px"></div>
+	<div class="wrapper">
+		<div class="internal"></div>
+		<div class="internal"></div>
+		<div class="internal"></div>
+		<div class="internal"></div>
+		<div class="internal"></div>
 	</div>
 
 </div>
