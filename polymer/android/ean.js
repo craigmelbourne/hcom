@@ -483,6 +483,12 @@ function getRooms(hotelId){
         		roomLayout(rooms[0]);
 
 
+
+
+
+        		var roomdescription = "<div style='width:25%; float:left;'>Complimentary wireless Internet access keeps you connected, and the 40-inch flat-screen TV offers satellite channels. A refrigerator is supplied. The private bathroom has a shower with a rainfall showerhead, as well as bathrobes and complimentary toiletries. Air conditioning, complimentary bottled water, and a safe are among the conveniences offered. This room is Non-Smoking.</div>"
+        		var roomamenities = "<div style='width:75%; float:left;'><ul class='amenities-room'><li>Air conditioning</li><li>Bathrobes</li><li>Complimentary bottled water</li><li>Complimentary newspaper</li><li>Complimentary toiletries</li><li>Connecting/adjoining rooms available</li><li>Daily housekeeping</li><li>Egyptian-cotton sheets</li><li>First-run movies</li><li>Flat-panel TV</li><li>Free Wi-Fi</li><li>Hair dryer</li><li>Individually decorated</li><li>Individually furnished</li><li>In-room safe</li><li>Iron/ironing board (on request)</li><li>Phone</li><li>Private bathroom</li><li>Rainfall showerhead</li><li>Refrigerator</li><li>Satellite TV service</li><li>Shower only</li><li>Soundproofed rooms</li><li>Turndown service</li></ul></div>";
+
         		$("#room #rate .total").text(
         			"$" + Math.floor(rooms[0].RateInfos.RateInfo.ChargeableRateInfo["@total"])
         		);
@@ -535,7 +541,7 @@ function getRooms(hotelId){
       					+ "<div class='details' style='float:left; width:250px;'><div>" + room.roomTypeDescription + "</div><div style='margin:5px 0; font-size:13px;'>" + beds + "</div><div><a href='#' class='rooms-more' rel='"+ i +"'>More information</a></div></div>"
       					
       					+ "</div>"
-      					+ "<div class='more-info'></div>"
+      					+ "<div class='more-info'>" + roomdescription + roomamenities +"</div>"
       					+ "<div style='overflow:hidden'>"
       					+ "<div style='float:left; width:50%'>" + cancellation + extras + "<div style='font-size:13px; color:purple'>Welcome Rewards</div></div>"
       					+ "<div style='float:50%; text-align:right; padding-top:12px;'>" 

@@ -20,7 +20,7 @@ body {font-family:arial; background-color:#f1f1f1; color:#555; margin:0; padding
 #map-wrapper {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 #map-hider {position:fixed; top:50px; right:0; left:600px; bottom:0; background-color:#f1f1f1;}
 
-#reviews-wrapper, #rooms-wrapper {position:fixed; top:0px; width:700px; left:50%;  bottom:0px; margin-left:-350px; background-color:transparent; display:none; overflow-y:scroll;}
+#reviews-wrapper, #rooms-wrapper {position:fixed; top:50px; width:900px; left:50%;  bottom:0px; margin-left:-450px; background-color:transparent; display:none; overflow-y:scroll;}
 
 button {border:0; padding:8px 12px; background-color:#f1f1f1; font-size:14px;}
 button.book {background-color:#00c; color:#fff;}
@@ -42,8 +42,17 @@ button.book {background-color:#00c; color:#fff;}
 .modal {}
 
 a.rooms-more {font-size:13px; text-decoration: none;}
-.more-info {display:none; height:100px; background-color:#eee;}
-#overlay {position:fixed; top:0; left:0; right:0; bottom:0; background-color:#eee; opacity:0.0; display:none;}
+.more-info {display:none; background-color: #f1f1f1; padding:12px; font-size:12px; line-height: 18px; overflow:hidden;}
+#overlay {position:fixed; top:50px; left:0; right:0; bottom:0; background-color:#eee; opacity:1.0; display:none;}
+
+ul.amenities {overflow:hidden; margin:0; padding:0; list-style-type: none; margin-top:12px;}
+ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px; font-size:13px;}
+ul.amenities li.highlight {background-color:#eee;}
+
+
+ul.amenities-room {overflow:hidden; margin:0; padding:0; list-style-type: none;}
+ul.amenities-room li {float:left; width:33%; box-sizing: border-box; padding:0px 6px 12px; font-size:12px;}
+ul.amenities li.highlight {background-color:#eee;}
 
 
 
