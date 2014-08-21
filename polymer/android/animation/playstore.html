@@ -17,6 +17,17 @@
 }
 	</style>
 
+	<script src="../../jquery.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+
+			var pos = $("#start").offset();
+
+			$(".internal:first-child").css("margin-left", pos.left - 24+"px")
+		})
+	</script>
+
 </head>
 
 <body style="background-color:#f1f1f1;">
@@ -25,7 +36,7 @@
 
 <div style="position:absolute; top:0; width:900px; left:50%; margin-left:-450px;">
 
-	<div style="width:800px; margin:100px auto 0; height:400px; background-color:#fff;">
+	<div id="start" style="width:800px; margin:100px auto 0; height:400px; background-color:#fff;">
 
 	</div>
 
@@ -40,11 +51,12 @@
 <div style="position:absolute; top:180px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
 
 	<div class="wrapper">
-		<div class="internal"></div>
-		<div class="internal"></div>
-		<div class="internal"></div>
-		<div class="internal"></div>
-		<div class="internal"></div>
+			<div class="internal"></div>
+			<div class="internal"></div>
+			<div class="internal"></div>
+			<div class="internal"></div>
+			<div class="internal"></div>
+		
 	</div>
 
 </div>
