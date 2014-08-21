@@ -39,16 +39,17 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
   <script>
 
     var pos;
+    var level = 0;
 
 
   	$(function(){
 
-
-      console.log($(window).width() / 2);
-
-
       initializeMap(0);
       displayHotelList();
+      
+
+
+      
 
   		$("#chip-wrapper").on("click", ".chip", function(e){
   			pos = $(this).find(".photo").offset();
@@ -150,20 +151,50 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
       $("button.panel").on("click", function(){
         var id = $(this).attr("rel");
-
+        level = 1;
         $("#overlay").fadeIn(300, function(){
 
           $("#"+id).show();
+          
 
         });
       });
 
       $("#overlay").on("click", function(){
         //$("#rooms-wrapper").hide();
+        console.log(level);
+        if (level == 1){
+          $(".modal").hide();
+          $(this).fadeOut(300);
+        } else if (level == 2) {
+          $("#room-details-wrapper").fadeOut(function(){
+            $(".rooms").find(".room").fadeIn();
+          });
+          
+        }
+        
+      }); 
 
-        $(".modal").hide();
-        $(this).fadeOut(300);
-      })
+      $(".rooms").on("click", ".rooms-more", function(){
+        //alert("click");
+        var id = $(this).attr("rel");
+        
+
+        $(".rooms").find(".room:not(#"+ id +")").fadeOut(function(){
+          $("#room-details-wrapper").fadeIn();
+          level = 2;
+        });
+      }); 
+
+      $(".rooms").on("click", function(){
+
+        if (level == 2){
+          $("#room-details-wrapper").fadeOut(function(){
+            $(".rooms").find(".room").fadeIn();
+          });
+        }
+        
+      });
 
     });
 
@@ -288,13 +319,17 @@ function changeContentPanel(id){
 
 
 
-<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#999; opacity:0.8; display:none;"></div>
+<div id="overlay"></div>
 
 <div id="rooms-wrapper" class="modal">
   <!--<div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
     <h2 style="padding:0; margin:0;">Rooms</h2>
   </div>-->
   <div class="rooms" style="position:absolute; top:0; padding:12px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
+</div>
+
+<div id="room-details-wrapper" style="position:fixed; width:50%; right:0; top:0; bottom:0;display:none;">
+  <div id="room-details" style="position:absolute; top:24px; right:24px; left:24px; bottom:24px; background-color:#fff; "></div>
 </div>
 
 
