@@ -151,7 +151,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
       $("button.panel").on("click", function(){
         var id = $(this).attr("rel");
-        level = 1;
+        
         $("#overlay").fadeIn(300, function(){
 
           $("#"+id).show();
@@ -162,39 +162,27 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
       $("#overlay").on("click", function(){
         //$("#rooms-wrapper").hide();
-        console.log(level);
-        if (level == 1){
+        
           $(".modal").hide();
           $(this).fadeOut(300);
-        } else if (level == 2) {
-          $("#room-details-wrapper").fadeOut(function(){
-            $(".rooms").find(".room").fadeIn();
-          });
-          
-        }
+        
         
       }); 
 
       $(".rooms").on("click", ".rooms-more", function(){
         //alert("click");
         var id = $(this).attr("rel");
-        
-
         $(".rooms").find(".room:not(#"+ id +")").fadeOut(function(){
           $("#room-details-wrapper").fadeIn();
-          level = 2;
+         
         });
       }); 
 
-      $(".rooms").on("click", function(){
-
-        if (level == 2){
-          $("#room-details-wrapper").fadeOut(function(){
-            $(".rooms").find(".room").fadeIn();
-          });
-        }
-        
-      });
+      $("#room-details-wrapper").on("click", function(){
+        $(this).fadeOut(function(){
+          $(".rooms").find(".room").fadeIn();
+        });
+      })
 
     });
 
