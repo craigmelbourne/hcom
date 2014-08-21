@@ -46,7 +46,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
       initializeMap(0);
       displayHotelList();
-      
+      window.scrollTo(0,1);
 
 
       
@@ -173,10 +173,27 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
         //alert("click");
         var id = $(this).attr("rel");
         $("#" + id).animate({
-          width:"772px"
-        }, 200); 
+          width:"672px"
+        }, 200, function(){
+          $(this).addClass("selected-room");
+        });
 
-        $("#" + id).find(".more-info").slideDown(200);
+        ".details"
+
+        $("#" + id).find(".image").animate({
+          width:"150px",
+          height:"150px"
+        }, 200, function(){
+          
+        }); 
+
+        $("#" + id).find(".details").animate({
+          width:"480px",
+        }, 200, function(){
+          $("#" + id).find(".more-info").slideDown(200);
+        });
+
+        
 
       }); 
 
