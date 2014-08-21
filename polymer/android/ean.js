@@ -532,7 +532,7 @@ function getRooms(hotelId){
       					"<div class='room' style='padding:12px; margin:12px; background-color:#fff;'>" 
       					+ "<div style='border-bottom:solid 1px #eee; padding-bottom:12px; overflow:hidden;'>" 
       					+ "<div class='image' style='float:left; margin-right:12px;'></div>"
-      					+ "<div class='details' style='float:left; width:250px;'><div>" + room.roomTypeDescription + "</div><div style='margin:5px 0; font-size:13px;'>" + beds + "</div></div>"
+      					+ "<div class='details' style='float:left; width:250px;'><div>" + room.roomTypeDescription + "</div><div style='margin:5px 0; font-size:13px;'>" + beds + "</div><div><a href='#' class='rooms-more'>More information</a></div></div>"
       					+ "</div>"
       					+ "<div style='overflow:hidden'>"
       					+ "<div style='float:left; width:50%'>" + cancellation + extras + "<div style='font-size:13px; color:purple'>Welcome Rewards</div></div>"

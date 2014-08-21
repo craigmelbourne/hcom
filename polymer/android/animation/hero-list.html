@@ -20,6 +20,8 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
 
 	.photo h1 {display:none; padding:0 12px; margin:0; position:absolute; bottom:12px; left:12px; color:#fff; font-size:24px; font-weight: normal; text-shadow: 1px 1px #555;}
 
+
+  #chip-wrapper {margin:12px 0 0 12px; z-index:2000; position:absolute; top:50px; left:0; right:0; bottom:0; overflow-y:scroll;}
 	.chip {width:300px; border:solid 1px #ddd; background-color: #fff; display:inline-block; margin-right:12px; vertical-align:top; margin-bottom:12px;}
   .chip .details {padding:12px;} 
   .chip .details .name {white-space: nowrap; overflow: hidden;}
@@ -154,21 +156,6 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
           $("#"+id).show();
 
         });
-        //$("#pdp-tools li").removeClass("selected")
-        //$(this).addClass("selected");
-        //$("#pdp-tools").find("li[rel='" + id + "']");
-
-        //$("#map-wrapper").fadeOut();
-
-          //$("#map-wrapper").fadeOut();
-
-          //$("#rooms-wrapper").fadeOut();
-
-          //$("#reviews-wrapper").fadeOut();
-
-
-        //$("#" + id).css("left", $(window).width() / 2).fadeIn();
-
       });
 
       $("#overlay").on("click", function(){
@@ -239,136 +226,7 @@ function changeContentPanel(id){
 <div id="map-hider"></div>
 
 
-
-
-
-
-
-
-<div id="chip-wrapper" style="margin:12px 0 0 12px; z-index:2000; position:absolute; top:50px; left:0; right:0; bottom:0; overflow-y:scroll;">
-
-<!--
-
-<div class="chip" id="335698">
-	<div class="details">
-		<div class="name">Park Plaza Westminster Bridge London</div>
-		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$212</div>
-    <div class="review">4.5/5 Excellent</div>
-	</div>
-	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/4000000/3120000/3113100/3113039/3113039_116_z.jpg')"></div>
-</div>
-
-<div class="chip" id="223825">
-	<div class="details">
-	<div class="name">The Soho Hotel</div>
-		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$198</div>
-    <div class="review">4.9/5 Outstanding</div>
-  </div>
-	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1120000/1112700/1112611/1112611_56_z.jpg')"></div>
-</div>
-
-<div class="chip" id="193608">
-	<div class="details">
-	<div class="name">Hotel Russell</div>
-		<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-		<div class="price">$245</div>
-    <div class="review">3.9/5 Good</div>
-  </div>
-	<div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/21600/21514/21514_77_z.jpg')"></div>
-</div>
-
-<div class="chip" id="172847">
-  
-  <div class="details">
-    <div class="name">The Savoy, A Fairmont Managed Hotel</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$390</div>
-    <div class="review">4.8/5 Outstanding</div>
-  </div>
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/27200/27158/27158_94_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="145127">
-  
-  <div class="details">
-    <div class="name">The Ritz London</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$449</div>
-    <div class="review">4.7/5 Outstanding</div>
-  </div>
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/30000/28200/28146/28146_103_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="120639">
-  
-  <div class="details">
-    <div class="name">The Marylebone Hotel</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$245</div>
-    <div class="review">4.5 / 5 Excellent</div>
-  </div>
-
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/470000/470000/469914/469914_26_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="180395">
-  
-  <div class="details">
-    <div class="name">Club Quarters, Trafalgar Square</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$199</div>
-    <div class="review">4.3/5 Excellent</div>
-  </div>
-
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/2000000/1590000/1584700/1584661/1584661_105_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="117650">
-  
-  <div class="details">
-    <div class="name">Kingsway Hall Hotel</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$188</div>
-    <div class="review">4.3/5 Excellent</div>
-  </div>
-
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/120000/116100/116041/116041_52_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="190752">
-  
-  <div class="details">
-    <div class="name">The Bloomsbury Hotel</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$208</div>
-    <div class="review">4.5 / 5 Excellent</div>
-  </div>
-
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/570000/565700/565604/565604_71_z.jpg')"></div>
-  
-</div>
-
-<div class="chip" id="105992">
-  
-  <div class="details">
-    <div class="name">The Melia White House Hotel</div>
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
-    <div class="price">$164</div>
-    <div class="review">4.2/5 Excellent</div>
-  </div>
-  <div class="photo" style="background-image: url('http://exp.cdn-hotels.com/hotels/1000000/530000/525900/525818/525818_194_y.jpg')"></div>
-  
-</div>
--->
-
-</div>
+<div id="chip-wrapper"></div>
 
 
 
@@ -392,17 +250,8 @@ function changeContentPanel(id){
       <h2>Lowest price room</h2>
       <div style="font-size:12px; margin:4px 0 12px;">1 room, 1 night, 2 people</div>
 
-      <div id="rate" >
-        <!--<div class="details" style="margin-bottom:12px; height:72px;">
-          <div class="fullprice" style="color:#999; font-size:13px; text-decoration:line-through "></div>
-          <div class="total" style="color:#d41200; font-size:20px; "></div>
-          <div style="font-size:12px;">includes taxes and fees</div>
-          <div><a href="#" style="font-size:12px; text-decoration:none;">More room information</a></div>
-        </div>
-        
-        <button class="book panel" >BOOK THIS ROOM</button> -->
-        
-      </div>
+      <div id="rate" ></div>
+
       <button id="allrooms" style="width:100%; margin-top:12px;"  class="panel" rel="rooms-wrapper">SEE ALL ROOMS</button>
     </div>
 		<div class="details-block about">
@@ -439,13 +288,13 @@ function changeContentPanel(id){
 
 
 
-<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#000; opacity:0.7; display:none;"></div>
+<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#999; opacity:0.8; display:none;"></div>
 
 <div id="rooms-wrapper" class="modal">
   <!--<div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
     <h2 style="padding:0; margin:0;">Rooms</h2>
   </div>-->
-  <div class="rooms" style="position:absolute; top:0; padding-top:20px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
+  <div class="rooms" style="position:absolute; top:0; padding:12px; left:0; right:0; bottom:0; overflow-y:scroll;"></div>
 </div>
 
 

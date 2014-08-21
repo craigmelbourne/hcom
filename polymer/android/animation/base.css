@@ -28,7 +28,8 @@ button.book {background-color:#00c; color:#fff;}
 .rooms h2 {padding-bottom:12px;}
 .rooms .image {width:80px; height:80px; background-color:#f1f1f1;}
 
-.chip, .details-block, .room {-webkit-box-shadow: 1px 1px 3px 0px #ccc; -moz-box-shadow: 1px 1px 3px 0px #ccc; box-shadow: 1px 1px 3px 0px #ccc;}
+.chip, .details-block {-webkit-box-shadow: 1px 1px 3px 0px #ccc; -moz-box-shadow: 1px 1px 3px 0px #ccc; box-shadow: 1px 1px 3px 0px #ccc;}
+.room {-webkit-box-shadow: 1px 1px 3px 0px #666; -moz-box-shadow: 1px 1px 3px 0px #666; box-shadow: 1px 1px 3px 0px #666;}
 
 
 .extra {font-size: 13px; margin:5px 0;}
@@ -38,6 +39,8 @@ button.book {background-color:#00c; color:#fff;}
 #reviews h3 {font-size:16px; font-weight:bold; margin:0; padding:0;}
 
 .modal {}
+
+a.rooms-more {font-size:13px; text-decoration: }
 
 
 
