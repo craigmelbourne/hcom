@@ -155,6 +155,12 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
         $(".overlay").fadeIn(300, function(){
 
           $("#"+id).show();
+
+          if(id == "rooms-wrapper"){
+            $(".title-modal").text("Rooms");
+          } else {
+            $(".title-modal").text("Reviews");
+          }
           
 
         });
@@ -316,7 +322,7 @@ function changeContentPanel(id){
       <p>
         "This is an amazing hotel! Great staff, big rooms, nice spa. Best hotel I've stayed in for a while."
       </p>
-      <button class="panel" style="width:100%; margin-top:12px;" rel="reviews-wrapper">SEE ALL REVIEWS (200)</button>
+      <button id="" class="panel" style="width:100%; margin-top:12px;" rel="reviews-wrapper">SEE ALL REVIEWS (200)</button>
     </div>
 
 		
@@ -329,7 +335,7 @@ function changeContentPanel(id){
 
 <div id="overlay-header" class="overlay" style="background-color:#d41200; position:fixed; top:50px; left:0; right:0; height:50px; display:none;">
   <div style="position:absolute; width:526px; left:50%; margin-left:-262px; background-color:#555; color:#fff; font-size;16px; height:50px; ">
-    <div style="padding:12px 12px 0">Title</div>
+    <div style="padding:12px 12px 0" class="title-modal"></div>
   </div>
 </div>
 
