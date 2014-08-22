@@ -152,7 +152,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
       $("button.panel").on("click", function(){
         var id = $(this).attr("rel");
         
-        $("#overlay").fadeIn(300, function(){
+        $(".overlay").fadeIn(300, function(){
 
           $("#"+id).show();
           
@@ -164,7 +164,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
         //$("#rooms-wrapper").hide();
         
           $(".modal").hide();
-          $(this).fadeOut(300);
+          $(".overlay").fadeOut(300);
         
         
       }); 
@@ -224,7 +224,7 @@ function changeContentPanel(id){
 
 
 
-<div id="header">
+<div id="header" style="">
   <div id="srp-header">
     <div id="back-srp" class="back-button"><img src="../back-arrow.png" /></div>
     <div class="title">
@@ -324,7 +324,14 @@ function changeContentPanel(id){
 
 
 
-<div id="overlay"></div>
+<div id="overlay" class="overlay"></div>
+<div id="overlay-strip" class="overlay" style="position:absolute; top:100px; height:50px; left:0; right:0; background-color:#d41200; display:none;"></div>
+
+<div id="overlay-header" class="overlay" style="background-color:#d41200; position:fixed; top:50px; left:0; right:0; height:50px; display:none;">
+  <div style="position:absolute; width:526px; left:50%; margin-left:-262px; background-color:#555; color:#fff; font-size;16px; height:50px; ">
+    <div style="padding:12px 12px 0">Rooms</div>
+  </div>
+</div>
 
 <div id="rooms-wrapper" class="modal">
   <!--<div style="position:absolute; top:0; left:0; right:0; padding:12px; background-color:#ddd;">
