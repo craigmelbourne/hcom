@@ -282,10 +282,7 @@ function fetchHotelDetails(id){
             };
 
 function initializeMap(pan) {
-      //console.log(result[0].city)
-    
-
-//var loc = new google.maps.LatLng(result[0].lat, result[0].lon);
+      
     map = new google.maps.Map(document.getElementById('map_canvas'), {
         //center: loc,
         zoom: 14,
@@ -319,10 +316,6 @@ function initializeMap(pan) {
 			}
         } 
     });
-
-
-
-    
 }
 
 function buildHotelDetails(hotel){
