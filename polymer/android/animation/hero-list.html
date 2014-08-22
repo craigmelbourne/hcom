@@ -166,7 +166,7 @@ box-shadow: 1px 1px 5px 0px rgba(56,56,56,1);}
         });
       });
 
-      $("#overlay").on("click", function(){
+      $(".overlay").on("click", function(){
         //$("#rooms-wrapper").hide();
         
           $(".modal").hide();
@@ -331,10 +331,10 @@ function changeContentPanel(id){
 
 
 <div id="overlay" class="overlay"></div>
-<div id="overlay-strip" class="overlay" style="position:absolute; top:100px; height:50px; left:0; right:0; background-color:#d41200; display:none;"></div>
+<div id="overlay-strip" class="overlay" style="position:absolute; top:50px; height:100px; left:0; right:0; background-color:#d41200; display:none;"></div>
 
-<div id="overlay-header" class="overlay" style="background-color:#d41200; position:fixed; top:50px; left:0; right:0; height:50px; display:none;">
-  <div style="position:absolute; width:526px; left:50%; margin-left:-262px; background-color:#555; color:#fff; font-size;16px; height:50px; ">
+<div id="overlay-header" class="overlay" style="background-color:transparent; position:fixed; top:50px; left:0; right:0; bottom:0;  display:none;">
+  <div style="position:absolute; width:550px; left:50%; margin-left:-275px; background-color:#fff; color:#555; font-size;16px; bottom:0; top:0; ">
     <div style="padding:12px 12px 0" class="title-modal"></div>
   </div>
 </div>
