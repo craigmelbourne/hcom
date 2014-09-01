@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<style type="text/css">
+
+		body{background-color: #f1f1f1; font-family:arial; color:#777;}
+		a {text-decoration:none;}
+		.all {text-align:right; padding:12px 0 0; font-size:13px; border-top:solid 1px #eee; margin-top:12px; clear:both;}
+		.slideshow-wrapper {
+ /* arbitary for demo only */
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.internal {
+	display: inline-block; height:100%; background-color:transparent; margin-left:12px
+}
+
+.internal img {height:100%;}
+
+div#headline {position:fixed; left:0; top:50px; bottom:0; width:50%; background-color:#e1e1e1; box-sizing:border-box; padding:24px;}
+
+div#content {position:absolute; right:0; top:50px; bottom:0; width:50%; padding:24px; box-sizing:border-box;}
+div#content > div {min-height:100px; background-color:#fff; margin-bottom:24px; padding:18px; overflow:hidden;}
+
+#map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
+
+
+h2 {margin:0 0 12px 0; padding:0; font-size:18px; font-weight:normal;}
+
+.room-details{ min-height:80px; overflow:hidden; padding-bottom:12px;}
+.rate-details {border-top:solid 1px #eee; padding:12px 0; overflow:hidden;}
+.rate-details:last-child{padding-bottom:0;}
+
+ul.amenities {overflow:hidden; margin:0; padding:0; list-style-type: none;}
+ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px; font-size:13px;}
+ul.amenities li.highlight {background-color:#eee;}
+ul.landmarks {overflow:hidden; margin:0; padding:0; list-style-type: none; margin-top:3px;}
+ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
+ul.landmarks li.highlight {background-color:#eee;}
+
+.details-wrapper {float:left;40%;}
+.details {font-size:14px; line-height:24px;}
+.cancellation-free {color:#090;}
+.wr {color:purple;}
+.hint {color:#999;}
+
+.price-wrapper {float:right:40%; text-align:right;}
+.price {float:right; padding:5px; margin-right:12px;}
+.highprice {font-size:14px; text-decoration:line-through}
+.total {font-size:24px;}
+.deal {color:#d41200;}
+.rule {font-size:12px;}
+div.book {float:right;}
+button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-align: center; color:#fff; font-size:14px;}
+
+	</style>
+
+	<script src="../../jquery.js"></script>
+	<script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+      </script>
+
+	<script type="text/javascript">
+
+		var geocoder = new google.maps.Geocoder();
+		$(function(){
+
+			initializeMap();
+
+			$("#allrooms").on("click", function(e){
+				e.preventDefault();
+				$(".rate-details").slideDown();
+			}); 
+
+			$("#overlay").on("click", function(){
+				$(this).fadeOut();
+				$("#modal").hide();
+			}); 
+
+			$(".all a.modal").on("click", function(e){
+				e.preventDefault();
+				$("#overlay").fadeIn(function(){
+					$("#modal").fadeIn().find("p").text($(this).attr("rel"));	
+				});
+				
+			});
+		}); 
+
+function initializeMap() {
+      
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        //center: loc,
+        zoom: 14,
+        mapTypeId: 'roadmap',
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        panControl: false,
+        mapTypeControl: false,
+        streetViewControl:false,
+        zoomControl: false,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
+        }
+    });
+
+
+    geocoder.geocode( { 'address': 'London, UK'}, function(pos, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+            map.setCenter(pos[0].geometry.location);
+            map.panBy(0, 200);
+
+        } 
+    });
+}
+	</script>
+
+</head>
+
+<body style="background-color:#f1f1f1;">
+
+<div id="header" style="position:fixed; top:0; left:0; right:0; height:50px; background-color:#d41200; z-index:1000"></div>
+
+<div id="headline">
+
+	<div style="position:absolute; top:24px; left:24px; right:24px; bottom:24px; background-color:#fff;">
+		<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:18px 18px 0;">The Great Northern hotel</h1>
+		<div style="color:#d41200; padding:0 18px;">&#9733;&#9733;&#9733;&#9733;</div>
+	</div>
+
+	<div style="position:absolute; top:108px; left:0px; right:12px; bottom:180px; z-index:2000">
+		<div class="slideshow-wrapper">
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg" />
+			</div>
+			
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_11_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_14_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_z.jpg" />
+			</div>
+		</div>
+
+		<!--<h1 style="font-size:20px; font-weight:normal; color:#555; margin:0; padding:12px 6px 0;">The Great Northern hotel</h1>
+			<div style="color:#d41200; padding:0 6px;">&#9733;&#9733;&#9733;&#9733;</div>-->
+	</div>
+
+	<div style="position:absolute; bottom:24px; left:24px; right:24px;">
+		<div style="background-color:#fff; padding:18px; box-sizing:border-box;">
+		<div class="description" style="font-size:13px; line-height:18px; float:left; width:50%; box-sizing:border-box; padding-right:24px;">The hotel offers 3 restaurants along with a bar/lounge. Complimentary wireless Internet access is available in public areas.</div>
+
+		<div style="float:left:50%;box-sizing:border-box">
+			<ul class="amenities">
+        <li class="highlight">Air conditioned</li>
+        <li class="highlight">Airport shuttle</li>
+        <li>Concierge</li>
+        <li>English Speaking</li>
+        <li class="highlight">Fitness Center</li>
+        <li class="highlight">Swimming pool</li>
+      </ul>
+		</div>
+
+		<div class="all" style="text-align:left;">
+			<a href="#">All amenities</a>
+		</div>
+	</div>
+	</div>
+	
+
+</div>
+<div id="content">
+	
+	
+	
+	<div>
+		<h2>Our lowest price room</h2>
+		<div class="room-details">
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+		<div class="rate-details">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-Fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book"><button class="book">BOOK</button></div>
+				<div class="price">
+					<span class="highprice">&pound179</span> 
+					<span class="total deal">&pound152</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="rate-details" style="display:none;">
+			<div class="details-wrapper">
+				<span class="details cancellation-free">FREE Cancellation</span> <span class="hint" style="font-size:12px">Until Aug 23 2014</span><br />
+				<span class="details extra">Free Wi-fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div style="text-align:left;background-color:#090; color:#fff; font-size:12px; width:80px; padding:6px; box-sizing:border-box; margin-top:6px;">
+						Pay now or at hotel
+					</div>
+				</div>
+				<div class="price">
+					<span class="total">&pound179</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="rate-details" style="display:none;">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-fi</span><br />
+				<span class="details extra">Breakfast included</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book"><button class="book">BOOK</button></div>
+				<div class="price">
+					<span class="highprice">&pound218</span> 
+					<span class="total deal">&pound185</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="all">
+			<a href="#" id="allrooms">All rooms (16)</a>
+		</div>
+	</div>
+
+	<div>
+		<h2>Guest reviews (200)</h2>
+		<div style="overflow:hidden;">
+		<div class="score" style="float:left; width:50%; box-sizing:border-box; padding-right:24px;">
+
+			<div style="width:120px; float:left;">
+				<div style="font-size:32px;">4.5 / 5</div>
+				<div style="font-size:20px;">Excellent</div>
+				
+			</div>
+			<div style="margin-left:120px; overflow:hidden;">
+				<div style="">
+					<ul style="font-size:12px; margin:0; padding:0; list-style-type:none;">
+						<li>
+							<div style="background-color:#eee; width:84%; border-bottom:solid 2px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							</div>
+						</li>
+						<li>
+							<div style="background-color:#eee; width:66%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							</div>
+						</li>
+						<li><div style="background-color:#eee; width:44%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:24%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:24%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							</div></li>
+						
+					</ul>
+				</div>
+
+			</div>
+
+			
+		</div>
+		<div class="review" style="font-size:13px; line-height:18px; float:left; width:50%; box-sizing:border-box;">
+			<p>"Beautiful but small rooms. Decorated to very high standard. Great shower! Loved the pantry at the end of the corridor!"</p>
+		</div>
+		</div>
+		<div class="all">
+			<a href="#" rel="modal">All guest reviews (200)</a>
+		</div>
+	</div>
+
+	<div>
+
+		<div style="overflow:hidden;">
+			<div style="width:60%; float:left; box-sizing:border-box; height:150px; background-color:#eee; position:relative;">
+				<div id="map-wrapper">
+  		<div id="map_canvas" style="width:100%; height:100%;"></div>
+  		
+	</div>
+			</div>
+			<div style="width:40%; float:left; box-sizing:border-box; padding-left:24px;">
+				<span style="font-size:14px;">Nearby attractions</span>	
+				<ul class="landmarks">
+        			<li>0.1km King Cross Station</li>
+        			<li>0.3km British Library</li>
+        			<li>0.6km Euston Station</li>
+        			<li>0.9km Cartwright Gardens</li>
+        			
+      </ul>
+			</div>
+		</div>
+		<div class="all">
+			<a href="#" class="modal" rel="Show map in here">Full screen map</a>
+		</div>
+
+	</div>
+	
+
+	
+
+	
+
+</div>
+
+
+<div id="overlay" style="background-color:#ddd; opacity:0.8; position:fixed; top:0; left:0; right:0; bottom:0; display:none; z-index:2000;"></div>
+<div id="modal" style="display:none; width:600px; position:fixed; left:50%; margin-left:-300px; top:20px; bottom:20px; background-color:#fff; z-index:2001; border:solid 5px #eee; -webkit-box-shadow: 1px 1px 3px 0px #666; -moz-box-shadow: 1px 1px 3px 0px #666; box-shadow: 1px 1px 3px 0px #666;">
+	<p></p>
+</div>
+
+</body>
+
+</html>
