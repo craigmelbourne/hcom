@@ -8,7 +8,7 @@
 		body{background-color: #f1f1f1; font-family:arial; color:#777;}
 		a {text-decoration:none;}
 		.all {text-align:right; padding:12px 0 0; font-size:13px; border-top:solid 1px #eee; margin-top:12px; clear:both;}
-		.wrapper {
+		.slideshow-wrapper {
  /* arbitary for demo only */
 	white-space: nowrap;
 	overflow-y: hidden;
@@ -17,12 +17,14 @@
 }
 
 .internal {
-	display: inline-block; width:300px; height:200px; background-color:#ddd; margin-right:12px
+	display: inline-block; height:100%; background-color:#ddd; margin-right:12px
 }
 
-div#headline {position:fixed; left:0; top:50px; bottom:0; width:33%; background-color:#e1e1e1; box-sizing:border-box; padding:24px;}
+.internal img {height:100%;}
 
-div#content {position:absolute; right:0; top:50px; bottom:0; width:67%; padding:24px; box-sizing:border-box;}
+div#headline {position:fixed; left:0; top:50px; bottom:0; width:50%; background-color:#e1e1e1; box-sizing:border-box; padding:24px;}
+
+div#content {position:absolute; right:0; top:50px; bottom:0; width:50%; padding:24px; box-sizing:border-box;}
 div#content > div {min-height:100px; background-color:#fff; margin-bottom:24px; padding:12px; overflow:hidden;}
 
 #map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
@@ -126,20 +128,54 @@ function initializeMap() {
 
 <div id="headline">
 
-	
+	<div style="position:absolute; top:24px; left:24px; right:24px; bottom:250px;">
+		<div class="slideshow-wrapper">
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg" />
+			</div>
+			
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_11_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_14_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_z.jpg" />
+			</div>
+		</div>
 
-	<div style="box-sizing:border-box; border:solid 5px #fff; background-color:#fff;">
-		<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg" style="max-width:100%"/>
-		
+		<!--<h1 style="font-size:20px; font-weight:normal; color:#555; margin:0; padding:12px 6px 0;">The Great Northern hotel</h1>
+			<div style="color:#d41200; padding:0 6px;">&#9733;&#9733;&#9733;&#9733;</div>-->
 	</div>
 
-	<h1 style="font-size:20px; font-weight:normal; color:#555; margin:0; padding:12px 6px 0;">The Great Northern hotel</h1>
-		<div style="color:#d41200; padding:0 6px;">&#9733;&#9733;&#9733;&#9733;</div>
+	<div style="position:absolute; bottom:24px; left:24px; right:24px;">
+		<div id="map" style="background-color:#fff; padding:12px; box-sizing:border-box;">
 
+		<div style="overflow:hidden;">
+			<div style="width:50%; float:left; height:150px; box-sizing:border-box; background-color:#eee; position:relative;">
+				<div id="map-wrapper">
+  					<div id="map_canvas" style="width:100%; height:100%;"></div>
+ 				</div>
+			</div>
+			<div style="width:50%; float:left; box-sizing:border-box; padding-left:24px;">
+				<span style="font-size:14px;">Nearby attractions</span>	
+				<ul class="landmarks">
+        			<li>0.1km King Cross Station</li>
+        			<li>0.3km British Library</li>
+        			<li>0.6km Euston Station</li>
+        			<!--<li>0.9km Cartwright Gardens</li>-->
+        		</ul>
+			</div>
+		</div>
+		<div class="all">
+			<a href="#" class="modal" rel="Show map in here">Full screen map</a>
+		</div>
 
-	<div style="margin-top:12px; padding:0 6px;">
-		<span>Prices from</span><br />
-		<span style="font-size:32px; line-height:36px;color:#d41200;" >&pound152</span>
+	</div>
 	</div>
 	
 
@@ -276,31 +312,7 @@ function initializeMap() {
 		</div>
 	</div>
 
-	<div>
-
-		<div style="overflow:hidden;">
-			<div style="width:60%; float:left; box-sizing:border-box; height:150px; background-color:#eee; position:relative;">
-				<div id="map-wrapper">
-  		<div id="map_canvas" style="width:100%; height:100%;"></div>
-  		
-	</div>
-			</div>
-			<div style="width:40%; float:left; box-sizing:border-box; padding-left:24px;">
-				<span style="font-size:14px;">Nearby attractions</span>	
-				<ul class="landmarks">
-        			<li>0.1km King Cross Station</li>
-        			<li>0.3km British Library</li>
-        			<li>0.6km Euston Station</li>
-        			<li>0.9km Cartwright Gardens</li>
-        			
-      </ul>
-			</div>
-		</div>
-		<div class="all">
-			<a href="#" class="modal" rel="Show map in here">Full screen map</a>
-		</div>
-
-	</div>
+	
 	
 
 	
