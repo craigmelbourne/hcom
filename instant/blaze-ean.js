@@ -265,7 +265,7 @@ function buildHotelListing(hotel){
                     + "<div class='price-wrapper'><div class='price'><div class='from' style='font-size:11px'>prices from</div>" + total + "</div></div>"
                     + "</li>");
 
-        var marker = new google.maps.Marker({
+                var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(hotel.latitude, hotel.longitude),
                     map: map,
                     icon: 'i/hotel_pin.png'

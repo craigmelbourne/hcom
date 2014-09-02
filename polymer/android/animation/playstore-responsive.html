@@ -142,13 +142,33 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 
 <body style="background-color:#f1f1f1;">
 
-<div id="header" style="position:absolute; top:0; left:0; right:0; height:250px; background-color:#d41200"></div>
+<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:250px; background-color:#d41200"></div>
+<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:50px; background-color:#d41200; z-index:5000;"></div>
 
 <div id="page-wrapper" style="">
 
-	<div class="content-block" id="start" style="">
-		<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
-		<div style="color:#d41200; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
+	<div class="content-block" id="start" style="overflow:hidden; height:500px;">
+		<div style="width:50%; float:left; box-sizing:border-box;">
+			<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
+			<div style="color:#d41200; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
+		</div>
+		<div style="width:50%; float:left; box-sizing:border-box; text-align:right; padding:24px ">
+			<div>
+				<span style="font-size:16px; text-decoration:line-through">&pound;229</span> 
+				<span style="color:#d41200; font-size:28px;">&pound;195</span>
+			</div>
+			<span style="font-size:13px; line-height:32px;">price for 1 night including taxes and fees</span><br />
+			<button style="background-color:#eee; color:#555; border:0; font-size:18px; padding:6px 12px;">Shortlist</button>
+			<button style="background-color:#136eb8; color:#fff; border:0; font-size:18px; padding:6px 12px;">Book Now</button>
+		</div>
+
+		<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px;">
+			dates
+		</div>
+		<div style="border-bottom:solid 1px #eee; clear:both; padding:18px 24px;">
+			review score
+		</div>
+		
 
 	</div>
 
@@ -309,7 +329,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 
 </div>
 
-<div style="position:absolute; top:190px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
+<div style="position:absolute; top:375px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
 
 	<div class="wrapper">
 			<div class="internal">
