@@ -25,7 +25,7 @@
 .internal img {height:200px;}
 
 .blue-bg {background-color: #3f51b5; color:#fff;}
-a {color:#3f51b5;}
+a {color:#3b50ce;}
 
 #map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
 
@@ -145,15 +145,25 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 
 <body style="background-color:#f1f1f1;">
 
-<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:250px; background-color:#e51c23"></div>
+<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:300px; background-color:#e51c23"></div>
 <div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:50px; background-color:#e51c23; z-index:5000;"></div>
 
 <div id="page-wrapper" style="">
 
-	<div class="content-block" id="start" style="overflow:hidden; height:500px;">
+	<div class="content-block" id="start" style="overflow:hidden; height:360px;">
 		<div style="width:50%; float:left; box-sizing:border-box;">
 			<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
 			<div style="color:#e51c23; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
+			<div style="clear:both; padding:18px 24px;">
+			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
+				<span style="font-size:20px;">4.4 / 5 Excellent</span> <br />
+				<span style="font-size:13px;">230 Hotels.com reviews</span>
+			</div>
+			<div style="display:inline-block; vertical-align:top;">
+				<img src="i/trip45.png" /> <br />
+				<span style="font-size:13px;">230 Trip Advisor reviews</span>
+			</div>
+		</div>
 		</div>
 		<div style="width:50%; float:left; box-sizing:border-box; text-align:right; padding:24px ">
 			<div>
@@ -162,14 +172,14 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 			</div>
 			<span style="font-size:13px; display:inline-block; margin:12px 0;">price for 1 night including taxes and fees</span><br />
 			<button style="background-color:#eee; color:#555; border:0; font-size:18px; padding:6px 12px;">Shortlist</button>
-			<button style="background-color:#3f51b5; color:#fff; border:0; font-size:18px; padding:6px 12px;">Book Now</button>
+			<button style="background-color:#5677fc; color:#fff; border:0; font-size:18px; padding:6px 12px;">Book Now</button>
 		</div>
 
-		<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px; overflow:hidden;">
+		<!--<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px; overflow:hidden;">
 			<div style="float:left;">Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
 			<div style="float:right; color:#136eb8;">EDIT</div>
-		</div>
-		<div style="border-bottom:solid 1px #eee; clear:both; padding:18px 24px;">
+		</div>-->
+		<div style="border-bottom:solid 1px #eee; clear:both; padding:18px 24px; display:none;">
 			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
 				<span style="font-size:20px;">4.4 / 5 Excellent</span> <br />
 				<span style="font-size:13px;">230 Hotels.com reviews</span>
@@ -205,12 +215,12 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 		</div>
 	</div>
 
-	<!--<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:transparent; margin-top:20px;" >
+	<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:#d0d9ff; margin-top:20px; color:#555; border-bottom:solid 1px #eee;" >
 			<div style="float:left;">Availability for: Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
 			<div style="float:right; color:#136eb8;">EDIT</div>
-		</div>-->
+		</div>
 
-	<div class="norm" style="margin:20px auto 0;">
+	<div class="norm" style="margin:0 auto 0;">
 		<h2>Our lowest price room</h2>
 		<div class="room-details">
 			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
@@ -348,7 +358,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 
 </div>
 
-<div style="position:absolute; top:400px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
+<div style="position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
 
 	<div class="wrapper">
 			<div class="internal">
