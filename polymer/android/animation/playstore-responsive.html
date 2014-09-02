@@ -57,7 +57,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
  		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
  		.content-block {width:550px; margin:100px auto 0; height:300px; background-color:#fff;}	
 
- 		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:12px 24px 24px; box-sizing:border-box;}
+ 		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}
 
 }
 
@@ -65,7 +65,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 @media only screen and (min-width:800px) {
  		#page-wrapper {position:absolute; top:0; width:720px; left:50%; margin-left:-360px; padding-bottom:20px;}
  		.content-block {width:720px; margin:100px auto 0; height:300px; background-color:#fff;}	
- 		.norm {width:720px; margin:0 auto 0; background-color:#fff; padding:12px 24px 24px; box-sizing:border-box;}	
+ 		.norm {width:720px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
 
 }
 
@@ -73,7 +73,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 @media only screen and (min-width:960px) {
  		#page-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
  		.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}	
- 		.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:12px 24px 24px; box-sizing:border-box;}	
+ 		.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
 
 }
 
@@ -81,7 +81,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 @media only screen and (min-width:1100px) {
  	#page-wrapper {position:absolute; top:0; width:1100px; left:50%; margin-left:-550px; padding-bottom:20px;}		
  	.content-block {width:1000px; margin:100px auto 0; height:300px; background-color:#fff;}
- 	.norm {width:1000px; margin:0 auto 0; background-color:#fff; padding:12px 24px 24px; box-sizing:border-box;}	
+ 	.norm {width:1000px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
 
 }
 
@@ -162,11 +162,19 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 			<button style="background-color:#136eb8; color:#fff; border:0; font-size:18px; padding:6px 12px;">Book Now</button>
 		</div>
 
-		<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px;">
-			dates
+		<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px; overflow:hidden;">
+			<div style="float:left;">Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
+			<div style="float:right; color:#136eb8;">EDIT</div>
 		</div>
 		<div style="border-bottom:solid 1px #eee; clear:both; padding:18px 24px;">
-			review score
+			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
+				<span style="font-size:20px;">4.4 / 5 Excellent</span> <br />
+				<span style="font-size:13px;">230 Hotels.com reviews</span>
+			</div>
+			<div style="display:inline-block; vertical-align:top;">
+				<img src="i/trip45.png" /> <br />
+				<span style="font-size:13px;">230 Trip Advisor reviews</span>
+			</div>
 		</div>
 		
 
@@ -193,6 +201,11 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 			<a href="#">All amenities</a>
 		</div>
 	</div>
+
+	<!--<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:transparent; margin-top:20px;" >
+			<div style="float:left;">Availability for: Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
+			<div style="float:right; color:#136eb8;">EDIT</div>
+		</div>-->
 
 	<div class="norm" style="margin:20px auto 0;">
 		<h2>Our lowest price room</h2>
@@ -329,7 +342,7 @@ button.book {border:0; background-color:#009; padding:6px 0; width:80px; text-al
 
 </div>
 
-<div style="position:absolute; top:375px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
+<div style="position:absolute; top:400px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;">
 
 	<div class="wrapper">
 			<div class="internal">
