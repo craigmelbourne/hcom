@@ -20,9 +20,11 @@
 	display: inline-block; height:100%; background-color:transparent; margin-left:12px
 }
 
+.internal:first-child{margin-left:24px;}
+
 .internal img {height:100%;}
 
-div#headline {position:fixed; left:0; top:50px; bottom:0; width:50%; background-color:#e1e1e1; box-sizing:border-box; padding:24px;}
+div#headline {position:fixed; left:0; top:50px; bottom:0; width:50%; background-color:#fff; box-sizing:border-box; padding:24px;}
 
 div#content {position:absolute; right:0; top:50px; bottom:0; width:50%; padding:24px; box-sizing:border-box;}
 div#content > div {min-height:100px; background-color:#fff; margin-bottom:24px; padding:18px; overflow:hidden;}
@@ -128,12 +130,12 @@ function initializeMap() {
 
 <div id="headline">
 
-	<div style="position:absolute; top:24px; left:24px; right:24px; bottom:24px; background-color:#fff;">
+	<div style="position:absolute; top:12px; left:12px; right:12px; bottom:12px; background-color:#fff;">
 		<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:18px 18px 0;">The Great Northern hotel</h1>
 		<div style="color:#d41200; padding:0 18px;">&#9733;&#9733;&#9733;&#9733;</div>
 	</div>
 
-	<div style="position:absolute; top:108px; left:0px; right:12px; bottom:180px; z-index:2000">
+	<div style="position:absolute; top:96px; left:0px; right:0px; bottom:180px; z-index:2000">
 		<div class="slideshow-wrapper">
 			<div class="internal">
 				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg" />
@@ -157,7 +159,7 @@ function initializeMap() {
 			<div style="color:#d41200; padding:0 6px;">&#9733;&#9733;&#9733;&#9733;</div>-->
 	</div>
 
-	<div style="position:absolute; bottom:24px; left:24px; right:24px;">
+	<div style="position:absolute; bottom:12px; left:12px; right:12px;">
 		<div style="background-color:#fff; padding:18px; box-sizing:border-box;">
 		<div class="description" style="font-size:13px; line-height:18px; float:left; width:50%; box-sizing:border-box; padding-right:24px;">The hotel offers 3 restaurants along with a bar/lounge. Complimentary wireless Internet access is available in public areas.</div>
 
