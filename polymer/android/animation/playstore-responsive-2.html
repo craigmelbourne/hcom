@@ -116,11 +116,6 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 
 			$(".internal:first-child").css("margin-left", pos.left - 12+"px");
 
-			$("#allrooms").on("click", function(e){
-				e.preventDefault();
-				$(".rate-details").slideDown();
-			});
-
 			$(window).scroll(function() {
 
 				//$("#scroll").text($(window).scrollTop());
@@ -134,8 +129,46 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
     			}
 			});
 
+			$("#allrooms").on("click", function(e){
+				e.preventDefault();
+				launchRooms();
+			})
+
 
 		});
+
+
+		function launchRooms(){
+			var p = $("#rooms-module").offset();
+			var h = $("#rooms-module").height();
+			var w = $("#rooms-module").width();
+			var t = $('#rooms-module').position().top - $(window).scrollTop();
+
+			console.log(t + " " + p.left + " " + h + " " + w);
+			$("#all-rooms-modal").css({
+      			"height": h + 24 + "px",
+      			"width": w + 24 + "px",
+      			"top": t + 20 + "px",
+      			"left": p.left + "px"
+    		});
+
+    		$("#all-rooms-modal").show().animate({
+
+    			left: 0,
+    			width: "100%",
+    			top: 0,
+    			height: "100%"
+
+    		}, 400);
+
+    		$("#price-guarantee").slideDown(400, function(){
+    			$(".more-rates").slideDown(function(){
+    				$(".more-rooms").slideDown();
+    			});
+    		});
+
+		}
+
 
 		function initializeMap() {
       
@@ -253,8 +286,8 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 			<div style="float:right; color:#136eb8;">EDIT</div>
 		</div>-->
 
-	<div class="norm" style="margin:20px auto 0;">
-		<h2>Our lowest price room</h2>
+	<div id="rooms-module" class="norm" style="margin:20px auto 0;">
+		<h2 style="margin:0; padding:0 0 24px 0;">Our lowest price room</h2>
 		<div class="room-details">
 			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
 			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
@@ -279,41 +312,8 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 				</div>
 			</div>
 		</div>
-		<div class="rate-details" style="display:none;">
-			<div class="details-wrapper">
-				<span class="details cancellation-free">FREE Cancellation</span> <span class="hint" style="font-size:12px">Until Aug 23 2014</span><br />
-				<span class="details extra">Free Wi-fi</span><br />
-				<span class="details wr">Welcome rewards</span>
-			</div>
-			<div class="price-wrapper">
-				<div class="book">
-					<button class="book">BOOK</button>
-					<div style="text-align:left;background-color:#090; color:#fff; font-size:12px; width:80px; padding:6px; box-sizing:border-box; margin-top:6px;">
-						Pay now or at hotel
-					</div>
-				</div>
-				<div class="price">
-					<span class="total">&pound179</span><br />
-					<span class="rule">price for 1 night including taxes and fees</span>
-				</div>
-			</div>
-		</div>
-		<div class="rate-details" style="display:none;">
-			<div class="details-wrapper">
-				<span class="details cancellation">Non-refundable</span><br />
-				<span class="details extra">Free Wi-fi</span><br />
-				<span class="details extra">Breakfast included</span><br />
-				<span class="details wr">Welcome rewards</span>
-			</div>
-			<div class="price-wrapper">
-				<div class="book"><button class="book">BOOK</button></div>
-				<div class="price">
-					<span class="highprice">&pound218</span> 
-					<span class="total deal">&pound185</span><br />
-					<span class="rule">price for 1 night including taxes and fees</span>
-				</div>
-			</div>
-		</div>
+		
+		
 		<div class="all">
 			<a href="#" id="allrooms">All rooms (16)</a>
 		</div>
@@ -414,6 +414,187 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 	</div>
 
 </div>
+
+
+<div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000">
+	<div style="border-bottom:solid 1px #eee; padding:24px;">
+		X
+	</div>
+
+	<div id="rooms" style="width:762px; margin:0 auto;">
+		<div id="price-guarantee" style="height:100px; display:none;">
+
+		</div>
+		<div class="room-details">
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+		<div class="rate-details">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-Fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book"><button class="book">BOOK</button></div>
+				<div class="price">
+					<span class="highprice">&pound179</span> 
+					<span class="total deal">&pound152</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="more-rates" style="display:none;">
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					<div class="book"><button class="book">BOOK</button></div>
+					<div class="price">
+						<span class="highprice">&pound179</span> 
+						<span class="total deal">&pound152</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					<div class="book"><button class="book">BOOK</button></div>
+					<div class="price">
+						<span class="highprice">&pound179</span> 
+						<span class="total deal">&pound152</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="more-rooms" style="display:none; margin-top:30px;">
+			<div class="room-details">
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					<div class="book"><button class="book">BOOK</button></div>
+					<div class="price">
+						<span class="highprice">&pound179</span> 
+						<span class="total deal">&pound152</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					<div class="book"><button class="book">BOOK</button></div>
+					<div class="price">
+						<span class="highprice">&pound179</span> 
+						<span class="total deal">&pound152</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+		<!--<h2>Our lowest price room</h2>
+		<div class="room-details">
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+		<div class="rate-details">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-Fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book"><button class="book">BOOK</button></div>
+				<div class="price">
+					<span class="highprice">&pound179</span> 
+					<span class="total deal">&pound152</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="rate-details" style="display:none;">
+			<div class="details-wrapper">
+				<span class="details cancellation-free">FREE Cancellation</span> <span class="hint" style="font-size:12px">Until Aug 23 2014</span><br />
+				<span class="details extra">Free Wi-fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div style="text-align:left;background-color:#090; color:#fff; font-size:12px; width:80px; padding:6px; box-sizing:border-box; margin-top:6px;">
+						Pay now or at hotel
+					</div>
+				</div>
+				<div class="price">
+					<span class="total">&pound179</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="rate-details" style="display:none;">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-fi</span><br />
+				<span class="details extra">Breakfast included</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				<div class="book"><button class="book">BOOK</button></div>
+				<div class="price">
+					<span class="highprice">&pound218</span> 
+					<span class="total deal">&pound185</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+			</div>
+		</div>
+		<div class="all">
+			<a href="#" id="allrooms">All rooms (16)</a>
+		</div>-->
+	</div>
+
 
 </body>
 
