@@ -132,6 +132,13 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 			$("#allrooms").on("click", function(e){
 				e.preventDefault();
 				launchRooms();
+			});
+
+			$(".close").on("click", function(){
+				$("#all-rooms-modal").hide();
+				$("#price-guarantee").hide();
+				$(".more-rates").hide();
+				$(".more-rooms").hide();
 			})
 
 
@@ -418,7 +425,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 
 <div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000">
 	<div style="border-bottom:solid 1px #eee; padding:24px;">
-		X
+		<div class="close">X</div>
 	</div>
 
 	<div id="rooms" style="width:762px; margin:0 auto;">
