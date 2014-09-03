@@ -91,10 +91,10 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 }
 
 
-@media only screen and (min-width:1100px) {
- 	#page-wrapper {position:absolute; top:0; width:1100px; left:50%; margin-left:-550px; padding-bottom:20px;}		
- 	.content-block {width:1000px; margin:100px auto 0; height:300px; background-color:#fff;}
- 	.norm {width:1000px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+@media only screen and (min-width:1000px) {
+ 	#page-wrapper {position:absolute; top:0; width:1000px; left:50%; margin-left:-500px; padding-bottom:20px;}		
+ 	.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}
+ 	.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
 
 }
 
@@ -114,12 +114,27 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 			var pos = $("#start").offset();
 			initializeMap();
 
-			$(".internal:first-child").css("margin-left", pos.left + 24+"px");
+			$(".internal:first-child").css("margin-left", pos.left - 12+"px");
 
 			$("#allrooms").on("click", function(e){
 				e.preventDefault();
 				$(".rate-details").slideDown();
 			});
+
+			$(window).scroll(function() {
+
+				//$("#scroll").text($(window).scrollTop());
+    			if ($(window).scrollTop() > 120) {
+        			$(".app-title").fadeIn();
+        			$(".edit-search").fadeIn();
+    			}
+    			else {
+        			$(".app-title").fadeOut();
+        			$(".edit-search").fadeOut();
+    			}
+			});
+
+
 		});
 
 		function initializeMap() {
@@ -156,7 +171,15 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 <body style="background-color:#f1f1f1;">
 
 <div id="big-header" style="position:absolute; top:0; left:0; right:0; height:300px; background-color:#e51c23"></div>
-<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:50px; background-color:#e51c23; z-index:5000;"></div>
+<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:64px; background-color:#e51c23; z-index:5000; overflow:hidden;">
+	<div class="app-title" style="display:none; margin-left:64px; margin-top:12px; float:left;">
+		<div class="hotel-name" style="color:#fff; font-size:18px;">Great Northern Hotel</div>
+		<div class="dates-people" style="color:#fff; font-size:13px;">Wed 3 Sep - Thur 4 Sep</div>
+	</div>
+	<div class="edit-search" style="float:right; color:#fff; padding:18px 24px; display:none;">
+		EDIT
+	</div>
+</div>
 
 <div id="page-wrapper" style="">
 
@@ -225,12 +248,12 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 		</div>
 	</div>
 
-	<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:#d0d9ff; margin-top:20px; color:#555; border-bottom:solid 1px #eee;" >
+	<!--<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:#d0d9ff; margin-top:20px; color:#555; border-bottom:solid 1px #eee;" >
 			<div style="float:left;">Availability for: Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
 			<div style="float:right; color:#136eb8;">EDIT</div>
-		</div>
+		</div>-->
 
-	<div class="norm" style="margin:0 auto 0;">
+	<div class="norm" style="margin:20px auto 0;">
 		<h2>Our lowest price room</h2>
 		<div class="room-details">
 			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
