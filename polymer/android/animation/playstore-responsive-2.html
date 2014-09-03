@@ -134,7 +134,8 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 				launchRooms();
 			});
 
-			$(".close").on("click", function(){
+			$(".close").on("click", function(e){
+				e.preventDefault();
 				$("#all-rooms-modal").hide();
 				$("#price-guarantee").hide();
 				$(".more-rates").hide();
@@ -425,7 +426,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 
 <div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000">
 	<div style="border-bottom:solid 1px #eee; ">
-		<div class="close" style="padding:24px; display:inline-block;">X</div>
+		<a href="#" class="close" style="padding:24px; display:inline-block;">X</a>
 	</div>
 
 	<div id="rooms" style="width:762px; margin:0 auto;">
