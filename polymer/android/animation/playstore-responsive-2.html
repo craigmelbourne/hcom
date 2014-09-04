@@ -32,6 +32,8 @@ a {color:#3b50ce;}
 #map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
 
 .room-details{ min-height:80px; overflow:hidden; padding-bottom:12px;}
+.room-details h3 {padding:0; margin:0 0 12px 0; font-weight:normal;}
+.room-details .image {float:left; height:80px; width:15%; background-color:#eee; overflow:hidden;}
 .rate-details {border-top:solid 1px #eee; padding:12px 0; overflow:hidden;}
 .rate-details:last-child{padding-bottom:0;}
 
@@ -42,25 +44,28 @@ ul.landmarks {overflow:hidden; margin:0; padding:0; list-style-type: none; margi
 ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
 ul.landmarks li.highlight {background-color:#eee;}
 
-.details-wrapper {float:left;40%;}
+.details-wrapper {float:left; width:40%; box-sizing: border-box;}
 .details {font-size:14px; line-height:24px;}
 .cancellation-free {color:#090;}
+.pay-later {color:#090; font-size:14px;}
 .wr {color:purple;}
 .hint {color:#999;}
 
-.price-wrapper {float:right:40%; text-align:right;}
-.price {float:right; padding:5px; margin-right:12px;}
+.price-wrapper {float:right:60%; box-sizing: border-box; text-align:right;}
+.price {display:inline-block; padding:5px; vertical-align:top;}
 .highprice {font-size:14px; text-decoration:line-through}
 .total {font-size:24px;}
 .deal {color:#d41200;}
 .rule {font-size:12px;}
-div.book {float:right;}
-button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; text-align:center; font-size:16px;}
+div.book {display:inline-block; vertical-align:top; margin-left:12px;}
+button.book {border:0; background-color: #5677fc; color:#fff; width:100px; padding:6px 0; text-align:center; font-size:16px;}
+.urgency {width:100px; background-color:#fff9c4; padding:6px 0; text-align:center; font-size:14px;}
 
 
 @media only screen and (min-width:600px) {
  		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
- 		.content-block {width:550px; margin:100px auto 0; height:300px; background-color:#fff;}	
+ 		.content-block {width:550px; margin:100px auto 0; height:300px; background-color:#fff;}
+ 		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
 
  		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}
 
@@ -71,6 +76,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
  		#page-wrapper {position:absolute; top:0; width:720px; left:50%; margin-left:-360px; padding-bottom:20px;}
  		.content-block {width:720px; margin:100px auto 0; height:300px; background-color:#fff;}	
  		.norm {width:720px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
  		#lower-rating {display:none;}
  		#top-rating {display:block;}
  		#slideshow {position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
@@ -83,6 +89,9 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
  		#page-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
  		.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}	
  		.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 		#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
+
+
  		#slideshow {position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
  		#lower-rating {display:none;}
  		#top-rating {display:block;}
@@ -95,6 +104,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
  	#page-wrapper {position:absolute; top:0; width:1000px; left:50%; margin-left:-500px; padding-bottom:20px;}		
  	.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}
  	.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
 
 }
 
@@ -297,9 +307,11 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 	<div id="rooms-module" class="norm" style="margin:20px auto 0;">
 		<h2 style="margin:0; padding:0 0 24px 0;">Our lowest price room</h2>
 		<div class="room-details">
-			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<h3>Standard Room, 1 Double Bed (Couchette)</h3>
+			<div class="image">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_e.jpg" style="heigth:80px;"/>
+			</div>
 			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
-				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
 				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
 				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
 				<a href="#" style="font-size:12px">More information</a>
@@ -312,11 +324,15 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 				<span class="details wr">Welcome rewards</span>
 			</div>
 			<div class="price-wrapper">
-				<div class="book"><button class="book">BOOK</button></div>
+				
 				<div class="price">
-					<span class="highprice">&pound179</span> 
-					<span class="total deal">&pound152</span><br />
+					<span class="highprice">&pound229</span> 
+					<span class="total deal">&pound195</span><br />
 					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div class="urgency">1 room left</div>
 				</div>
 			</div>
 		</div>
@@ -432,15 +448,17 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 	<div style="position:absolute; top:48px; left:0; right:0; bottom:0; overflow-y:scroll;">
 
 
-	<div id="rooms" style="width:800px; margin:0 auto;">
+	<div id="rooms" style="">
 		<div id="price-guarantee" style="display:none; overflow:hidden;">
 			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Welcome rewards message</div>
 			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Price match guarantee</div>
 		</div>
 		<div class="room-details">
-			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
+			<h3>Standard Room, 1 Double Bed (Couchette)</h3>
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_e.jpg" style="heigth:80px;"/>
+			</div>
 			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
-				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
 				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
 				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
 				<a href="#" style="font-size:12px">More information</a>
@@ -453,11 +471,15 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 				<span class="details wr">Welcome rewards</span>
 			</div>
 			<div class="price-wrapper">
-				<div class="book"><button class="book">BOOK</button></div>
+				
 				<div class="price">
-					<span class="highprice">&pound179</span> 
-					<span class="total deal">&pound152</span><br />
+					<span class="highprice">&pound229</span> 
+					<span class="total deal">&pound195</span><br />
 					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div class="urgency">1 room left</div>
 				</div>
 			</div>
 		</div>
@@ -467,45 +489,50 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 				<div class="details-wrapper">
 					<span class="details cancellation">Non-refundable</span><br />
 					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
 					<span class="details wr">Welcome rewards</span>
 				</div>
 				<div class="price-wrapper">
-					<div class="book"><button class="book">BOOK</button></div>
+					
 					<div class="price">
-						<span class="highprice">&pound179</span> 
-						<span class="total deal">&pound152</span><br />
+						<span class="highprice">&pound268</span> 
+						<span class="total deal">&pound228</span><br />
 						<span class="rule">price for 1 night including taxes and fees</span>
 					</div>
+					<div class="book"><button class="book">BOOK</button></div>
 				</div>
 			</div>
 
 			<div class="rate-details">
 				<div class="details-wrapper">
-					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details cancellation-free">Free Cancellation</span><br />
 					<span class="details extra">Free Wi-Fi</span><br />
 					<span class="details wr">Welcome rewards</span>
 				</div>
 				<div class="price-wrapper">
-					<div class="book"><button class="book">BOOK</button></div>
+					
 					<div class="price">
-						<span class="highprice">&pound179</span> 
-						<span class="total deal">&pound152</span><br />
-						<span class="rule">price for 1 night including taxes and fees</span>
+						<span class="total">&pound229</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">Pay now or at hotel</span>
 					</div>
+					<div class="book"><button class="book">BOOK</button></div>
 				</div>
 			</div>
 		</div>
 
-		<div class="more-rooms" style="display:none; margin-top:30px;">
-			<div class="room-details">
-			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
-			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
-				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
-				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
-				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
-				<a href="#" style="font-size:12px">More information</a>
+		<div class="more-rooms" style="display:none; ">
+			<div class="room-details" style="margin-top:40px;">
+				<h3>Superior Room, 1 King Bed (Wainscot)</h3>
+				<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+					<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_e.jpg" style="heigth:80px;"/>
+				</div>
+				<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+					<span class="bed-choices" style="font-size:12px;">King Bed</span><br />
+					<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+					<a href="#" style="font-size:12px">More information</a>
+				</div>
 			</div>
-		</div>
 			<div class="rate-details">
 				<div class="details-wrapper">
 					<span class="details cancellation">Non-refundable</span><br />
@@ -513,12 +540,60 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 					<span class="details wr">Welcome rewards</span>
 				</div>
 				<div class="price-wrapper">
-					<div class="book"><button class="book">BOOK</button></div>
+					
 					<div class="price">
-						<span class="highprice">&pound179</span> 
-						<span class="total deal">&pound152</span><br />
+						<span class="highprice">&pound259</span> 
+						<span class="total deal">&pound220</span><br />
 						<span class="rule">price for 1 night including taxes and fees</span>
 					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound298</span> 
+						<span class="total deal">&pound253</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation-free">Free Cancellation</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="total">&pound259</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">pay now or at the hotel</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="room-details" style="margin-top:40px;">
+				<h3>Deluxe Room, 1 King Bed (Cubitt)</h3>
+				<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+					<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_14_e.jpg" style="heigth:80px;"/>
+				</div>
+				<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+					<span class="bed-choices" style="font-size:12px;">King Bed</span><br />
+					<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+					<a href="#" style="font-size:12px">More information</a>
 				</div>
 			</div>
 
@@ -529,12 +604,48 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 					<span class="details wr">Welcome rewards</span>
 				</div>
 				<div class="price-wrapper">
-					<div class="book"><button class="book">BOOK</button></div>
+					
 					<div class="price">
-						<span class="highprice">&pound179</span> 
-						<span class="total deal">&pound152</span><br />
+						<span class="highprice">&pound279</span> 
+						<span class="total deal">&pound237</span><br />
 						<span class="rule">price for 1 night including taxes and fees</span>
 					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound318</span> 
+						<span class="total deal">&pound270</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation-free">Free Cancellation</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="total">&pound279</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">pay now or at the hotel</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
 				</div>
 			</div>
 		</div>
