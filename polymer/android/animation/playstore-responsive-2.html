@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -19,10 +19,10 @@
 }
 
 .internal {
-	display: inline-block; height:200px; background-color:#ddd; margin-right:12px; min-width:100px;
+	display: inline-block; height:auto; background-color:#ddd; margin-right:12px; width:auto;
 }
 
-.internal img {height:200px;}
+.internal img {height:200px; max-width:100%;}
 
 
 .blue-bg {background-color: #3f51b5; color:#fff;}
@@ -157,6 +157,39 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				$("#price-guarantee").hide();
 				$(".more-rates").hide();
 				$(".more-rooms").hide();
+			}); 
+
+			$("#slideshow img").on("click", function(){
+				$("#overlay").show();
+				console.log($(window).height());
+
+				$("#slideshow").animate({
+					top: ($(window).height() - 400) / 2, 
+					height: 400
+				}, 200)
+
+
+				$(".internal img").animate({ 
+					height: 400,
+					width: $(this).width * 2
+				}, 200)
+
+
+			}); 
+
+			$("#overlay").on("click", function(){
+
+				$(this).fadeOut();
+
+				$("#slideshow").animate({
+					top: 260, 
+					height: 200
+				}, 200)
+
+				$(".internal img").animate({ 
+					height: 200,
+					width: $(this).width / 2
+				}, 200)
 			})
 
 
@@ -422,7 +455,9 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 </div>
 
-<div id="slideshow" style="">
+<div id="overlay" style="position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.8; z-index:5001; display:none;"></div>
+
+<div id="slideshow" style="z-index:5002">
 
 	<div class="wrapper">
 			<div class="internal">
