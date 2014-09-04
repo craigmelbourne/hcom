@@ -64,10 +64,17 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 @media only screen and (min-width:600px) {
  		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
+
+ 		#guest-rating {display:inline-block; margin-right:36px; vertical-align:top; margin-bottom:6px;}
+ 		#trip-rating {display:inline-block; vertical-align:top; margin-left:-4px;}
+ 		.review-score {font-size:18px}
+ 		.review-count {font-size:13px}
  		.content-block {width:550px; margin:100px auto 0; height:300px; background-color:#fff;}
  		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
-
+ 		#lower-rating {display:none;}
+ 		#slideshow {position:absolute; top:300px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
  		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}
+ 		#start {overflow:hidden; height:400px;}
 
 }
 
@@ -77,7 +84,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
  		.content-block {width:720px; margin:100px auto 0; height:300px; background-color:#fff;}	
  		.norm {width:720px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
- 		#lower-rating {display:none;}
+ 		
  		#top-rating {display:block;}
  		#slideshow {position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
  		#start {overflow:hidden; height:360px;}
@@ -239,13 +246,13 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
 			<div style="color:#e51c23; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
 			<div id="top-rating" style="clear:both; padding:18px 24px;">
-			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
-				<span style="font-size:20px;">4.4 / 5 Excellent</span> <br />
-				<span style="font-size:13px;">230 Hotels.com reviews</span>
+			<div id="guest-rating">
+				<span class="review-score" >4.4 / 5 Excellent</span> <br />
+				<span class="review-count" >230 Hotels.com reviews</span>
 			</div>
-			<div style="display:inline-block; vertical-align:top;">
+			<div id="trip-rating">
 				<img src="i/trip45.png" /> <br />
-				<span style="font-size:13px;">230 Trip Advisor reviews</span>
+				<span class="review-count">230 Trip Advisor reviews</span>
 			</div>
 		</div>
 		</div>
@@ -255,7 +262,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				<span style="color:#e51c23; font-size:28px;">&pound;195</span>
 			</div>
 			<span style="font-size:13px; display:inline-block; margin:12px 0;">price for 1 night including taxes and fees</span><br />
-			<button style="background-color:#eee; color:#555; border:0; font-size:16px; padding:6px 12px;">SHORTLIST</button>
+			<!--<button style="background-color:#eee; color:#555; border:0; font-size:16px; padding:6px 12px;">SHORTLIST</button>-->
 			<button style="background-color:#5677fc; color:#fff; border:0; font-size:16px; padding:6px 12px;">BOOK NOW</button>
 		</div>
 
