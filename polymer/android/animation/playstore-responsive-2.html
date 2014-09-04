@@ -424,14 +424,18 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 </div>
 
 
-<div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000">
-	<div style="border-bottom:solid 1px #eee; ">
-		<a href="#" class="close" style="padding:24px; display:inline-block;">X</a>
+<div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
+	<div style="border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;">
+		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
 	</div>
 
-	<div id="rooms" style="width:762px; margin:0 auto;">
-		<div id="price-guarantee" style="height:100px; display:none;">
+	<div style="position:absolute; top:48px; left:0; right:0; bottom:0; overflow-y:scroll;">
 
+
+	<div id="rooms" style="width:800px; margin:0 auto;">
+		<div id="price-guarantee" style="display:none; overflow:hidden;">
+			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Welcome rewards message</div>
+			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Price match guarantee</div>
 		</div>
 		<div class="room-details">
 			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
@@ -537,6 +541,8 @@ button.book {border:0; background-color: #5677fc; color:#fff; padding:6px 12px; 
 
 
 	</div>
+
+</div>
 
 		<!--<h2>Our lowest price room</h2>
 		<div class="room-details">
