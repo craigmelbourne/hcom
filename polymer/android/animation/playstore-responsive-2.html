@@ -190,6 +190,52 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 					height: 200,
 					width: $(this).width / 2
 				}, 200)
+			});
+
+			$("#open-map").on("click", function(e){
+				e.preventDefault();
+				var center = map.getCenter()
+				var t = $("#map-placeholder").position().top - $(window).scrollTop();
+				$("#map-wrapper").css({
+					position: "fixed",
+					height: 150,
+					width: $("#map-placeholder").width(),
+					left: $("#map-placeholder").offset().left,
+					top: t,
+					zIndex: 10001
+				});
+
+				$("#map-wrapper").animate({
+					top:0,
+					left: 0,
+					height: "100%",
+					width:"100%"
+				}, function(){
+					google.maps.event.trigger(map, 'resize');
+					//map.setCenter(center);
+
+					$("#map-close").slideDown();
+				})
+
+			});
+
+			$("#map-close").on("click", function(){
+				var t = $("#map-placeholder").position().top - $(window).scrollTop();
+				$("#map-close").hide();
+
+				$("#map-wrapper").animate({
+					top:t,
+					left: $("#map-placeholder").offset().left,
+					height: 150,
+					width:$("#map-placeholder").width()
+				}, function(){
+					//google.maps.event.trigger(map, 'resize');
+					//map.setCenter(center);
+
+					//$("#map-close").slideDown();
+				})
+
+
 			})
 
 
@@ -428,13 +474,14 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 		</div>
 	</div>
 
-	<div class="norm" style="margin:20px auto 0;">
+	<div id="map" class="norm" style="margin:20px auto 0;">
 		<h2>Location</h2>
 		<p style="font-size:13px;">King's Cross St Pancras Station, Pancras Road, London, England, N1C 4TB, United Kingdom, 0203 027 9779</p>
 		<div style="overflow:hidden; margin-top:12px;">
-			<div style="width:60%; float:left; box-sizing:border-box; height:150px; background-color:#eee; position:relative;">
+			<div id="map-placeholder" style="width:60%; float:left; box-sizing:border-box; height:150px; background-color:#eee; position:relative;">
 				<div id="map-wrapper">
   					<div id="map_canvas" style="width:100%; height:100%;"></div>
+  					<div id="map-close" style="position:absolute; top:24px; left:24px; padding:12px; display:none; background-color:#fff;">X | Close map</div>
 				</div>
 			</div>
 			<div style="width:40%; float:left; box-sizing:border-box; padding-left:24px;">
@@ -449,7 +496,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			</div>
 		</div>
 		<div class="all">
-			<a href="#" class="modal" rel="Show map in here">Full screen map</a>
+			<a href="#" id="open-map" class="modal" rel="Show map in here">Full screen map</a>
 		</div>
 	</div>
 
