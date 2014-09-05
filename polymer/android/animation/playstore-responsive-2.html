@@ -229,11 +229,15 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 					height: 150,
 					width:$("#map-placeholder").width()
 				}, function(){
-					//google.maps.event.trigger(map, 'resize');
-					//map.setCenter(center);
+					console.log("rn this")	
 
-					//$("#map-close").slideDown();
-				})
+					$("#map-wrapper").css({
+						position: "static",
+						zIndex: "auto"
+					});
+				});
+
+				
 
 
 			})
