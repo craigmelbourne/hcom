@@ -163,6 +163,11 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				$("#overlay").show();
 				console.log($(window).height());
 
+				$("#slideshow").css({
+					zIndex:5002,
+					position:"fixed"
+				})
+
 				$("#slideshow").animate({
 					top: ($(window).height() - 400) / 2, 
 					height: 400
@@ -181,10 +186,17 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 				$(this).fadeOut();
 
+				$("#slideshow").css({
+					zIndex:"auto",
+					position:"absolute"
+				})
+
 				$("#slideshow").animate({
 					top: 260, 
 					height: 200
-				}, 200)
+				}, 200, function(){
+					
+				})
 
 				$(".internal img").animate({ 
 					height: 200,
@@ -228,17 +240,13 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 					left: $("#map-placeholder").offset().left,
 					height: 150,
 					width:$("#map-placeholder").width()
-				}, function(){
-					console.log("rn this")	
+				}, function(){	
 
 					$("#map-wrapper").css({
 						position: "static",
 						zIndex: "auto"
 					});
 				});
-
-				
-
 
 			})
 
@@ -508,7 +516,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 <div id="overlay" style="position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.8; z-index:5001; display:none;"></div>
 
-<div id="slideshow" style="z-index:5002">
+<div id="slideshow">
 
 	<div class="wrapper">
 			<div class="internal">
@@ -527,7 +535,55 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			<div class="internal">
 				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_z.jpg" />
 			</div>
-		
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_28_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_27_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_10_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_22_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_23_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_25_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_13_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_24_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_30_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_26_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_19_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_32_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_20_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_18_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_17_z.jpg" />
+			</div>
+
 	</div>
 
 </div>
