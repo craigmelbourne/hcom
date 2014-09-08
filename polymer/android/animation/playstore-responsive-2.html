@@ -8,15 +8,10 @@
 		body{background-color: #f1f1f1; font-family:arial; color:#777;}
 		a {text-decoration:none;}
 		h2 {margin:0 0 12px 0; padding:0; font-size:18px; font-weight:normal;}
-		.all {text-align:right; padding:12px 0 0; font-size:13px; border-top:solid 1px #eee; margin-top:24px; clear:both;}
+		.all {text-align:right; border-top:solid 1px #eee; margin-top:24px; clear:both;}
+		.all a {display:inline-block; font-size:13px; padding:24px 0;}
 
-		.wrapper {
- /* arbitary for demo only */
-	white-space: nowrap;
-	overflow-y: hidden;
-	overflow-x: scroll;
-	-webkit-overflow-scrolling: touch;
-}
+		.wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch;}
 
 .internal {
 	display: inline-block; height:auto; background-color:#ddd; margin-right:12px; width:auto;
@@ -73,7 +68,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
  		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
  		#lower-rating {display:none;}
  		#slideshow {position:absolute; top:300px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
- 		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}
+ 		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 0; box-sizing:border-box;}
  		#start {overflow:hidden; height:400px;}
 
 }
@@ -82,7 +77,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 @media only screen and (min-width:800px) {
  		#page-wrapper {position:absolute; top:0; width:720px; left:50%; margin-left:-360px; padding-bottom:20px;}
  		.content-block {width:720px; margin:100px auto 0; height:300px; background-color:#fff;}	
- 		.norm {width:720px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 		.norm {width:720px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
  		
  		#top-rating {display:block;}
@@ -95,7 +90,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 @media only screen and (min-width:960px) {
  		#page-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
  		.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}	
- 		.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 		.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
 
 
@@ -110,7 +105,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 @media only screen and (min-width:1000px) {
  	#page-wrapper {position:absolute; top:0; width:1000px; left:50%; margin-left:-500px; padding-bottom:20px;}		
  	.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}
- 	.norm {width:900px; margin:0 auto 0; background-color:#fff; padding:24px 24px 24px; box-sizing:border-box;}	
+ 	.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
 
 }
@@ -161,11 +156,12 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 			$("#slideshow img").on("click", function(){
 				$("#overlay").show();
-				console.log($(window).height());
-
+				//console.log($(window).height());
+				console.log($("#slideshow").offset().top - $(window).scrollTop());
 				$("#slideshow").css({
 					zIndex:5002,
-					position:"fixed"
+					position:"fixed",
+					top: $(this).offset().top - $(window).scrollTop()
 				})
 
 				$("#slideshow").animate({
