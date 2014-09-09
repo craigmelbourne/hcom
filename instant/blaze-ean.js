@@ -396,7 +396,7 @@ function fetchResults(result){
 
     geocoder.geocode( { 'address': result}, function(pos, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            //console.log(pos);
+            console.log(pos);
             lon = pos[0].geometry.location.B;
             lat = pos[0].geometry.location.k;
 
@@ -417,7 +417,7 @@ function fetchResults(result){
             apiKey: "xgdsee58vcvfhpr4hhvvhych",
             locale: "en_US",
             currencyCode: "GBP",
-            arrivalDate: "09/31/2014",
+            arrivalDate: "09/30/2014",
             departureDate: "10/01/2014",
             longitude: lon, //result[0].lon,
             latitude: lat, //result[0].lat,
@@ -437,7 +437,7 @@ function fetchResults(result){
         // the response is passed to the function
         success: function( json ) {
             prices = [];
-           //console.log("success");
+           console.log(json);
             //console.log(json.HotelListResponse.HotelList['@size']);
             //console.log(json.HotelListResponse.HotelList);
             if (json.HotelListResponse.HotelList == undefined){
