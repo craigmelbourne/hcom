@@ -28,6 +28,12 @@
 		#hero .item {background-color:#5677fc; padding-top:0;  margin:6px 6px 0;  height:40px;}
 		#hero .item span, #hero #page span {display:block; padding-top:12px; color:#fff; text-align:center;}
 		#hero #page {background-color:#5677fc; position:absolute;}
+
+		#slide .title {background-color:#5677fc; padding:50px 12px 6px; color:#fff;}
+
+		.shadowLeft {-webkit-box-shadow: -4px 0px 5px 0px rgba(99, 99, 99, 0.75);
+-moz-box-shadow:    -4px 0px 5px 0px rgba(99, 99, 99, 0.75);
+box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
 	</style>
 
 	<script src="jquery.js"></script>
@@ -76,12 +82,12 @@
 				
 
 				//$(this).hide();
-				$("#hero .item").show();
+				$("#hero .item").show().css("opacity", "0.3");
 				var p = $("#hero #" + elHero).position();
 				var w = $("#hero #" + elHero).width();
 				var h = $("#hero #" + elHero).height();
 
-				console.log (p.left + " " + p.top + " " + w + " " + h) 
+				//console.log (p.left + " " + p.top + " " + w + " " + h) 
 
 				$(this).animate({
 					"top": p.top + 6,
@@ -89,14 +95,43 @@
 					"width": w,
 					"height": h
 				}, function(){
-					$(this).hide();
+					$("#hero .item").animate({
+						"opacity": 1.0
+					}, function(){
+						$("#hero #page").hide();
+					})
+					
 				});
 
 				$(this).find("span").animate({
 					"paddingTop": 12,
 					"fontSize": 16
 				})
-			})
+			});
+
+			//set up slide transition
+
+			//console.log("width = " + $("#page1").width());
+
+			$("#page2").css({
+				"width": $("#page1").width(),
+				"left": $("#page1").width() + 6
+			}); 
+
+			$("#slide #page1 li").on("click", function(){
+				
+				var title = $(this).text();
+				$("#page2 .title").text(title)
+				$("#page2").animate({
+					"left": 0
+				})
+			});
+
+			$("#page2").on("click", function(){
+				$("#page2").animate({
+					"left": $("#page1").width() + 6
+				})
+			});
 
 		});
 	
@@ -158,18 +193,26 @@
 
 							</div>
 						</div>
-						<div style="width:33%; float:left; box-sizing:border-box; padding: 0 6px;">
-							<div style="height:240px; background-color:#f1f1f1; border:solid 1px #eee;">
-								<div style="background-color:#5677fc; padding:50px 12px 6px; color:#fff;">
-									Page title
+						<div id="slide" style="width:33%; float:left; box-sizing:border-box; padding: 0 6px; ">
+							<div id="page-wrapper" style="height:240px; background-color:#f1f1f1; overflow:hidden; position:relative">
+								<div id="page1">
+									<div class="title">Page title</div>
+									<ul class="example">
+										<li>Item 1</li>
+										<li>Item 2</li>
+										<li>Item 3</li>
+										<li>Item 4</li>
+									</ul>
 								</div>
-								<ul class="example">
-									<li>Item 1</li>
-									<li>Item 2</li>
-									<li>Item 3</li>
-									<li>Item 4</li>
-								</ul>
+								<div id="page2" class="shadowLeft" style="height:240px; background-color:#f1f1f1; position:absolute; top:0;">
+									<div class="title">Page title</div>
+								</div>
+								
 							</div>
+
+							
+
+
 						</div>
 						<div style="width:33%; float:left; box-sizing:border-box; padding-left: 12px;">
 							<div style="height:240px; background-color:#f1f1f1; border:solid 1px #eee;">
