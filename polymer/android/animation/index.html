@@ -23,9 +23,13 @@
 
 		ul.example {padding:0; margin:0; list-style-type: none;}
 		ul.example li {padding:10px 12px; border-bottom:solid 1px #ddd;}
+		ul.example li:hover {cursor:pointer; background-color:#ddd;}
 		ul.example li:last-child {border:0;}
 
 		#hero .item {background-color:#5677fc; padding-top:0;  margin:6px 6px 0;  height:40px;}
+		#hero .item:hover {cursor:pointer; -webkit-box-shadow: 1px 1px 1px 0px rgba(99, 96, 99, 0.75);
+-moz-box-shadow:    1px 1px 1px 0px rgba(99, 96, 99, 0.75);
+box-shadow:         1px 1px 1px 0px rgba(99, 96, 99, 0.75);}
 		#hero .item span, #hero #page span {display:block; padding-top:12px; color:#fff; text-align:center;}
 		#hero #page {background-color:#5677fc; position:absolute;}
 
@@ -34,6 +38,8 @@
 		.shadowLeft {-webkit-box-shadow: -4px 0px 5px 0px rgba(99, 99, 99, 0.75);
 -moz-box-shadow:    -4px 0px 5px 0px rgba(99, 99, 99, 0.75);
 box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
+
+		#fade #page1:hover, #page2:hover, #hero #page {cursor: pointer;}
 	</style>
 
 	<script src="jquery.js"></script>
