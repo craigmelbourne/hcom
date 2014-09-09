@@ -104,6 +104,9 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
  		#top-rating {display:block;}
  		#start {overflow:hidden; height:360px;}
 
+
+ 		#all-reviews-modal #all-reviews {width:852px; margin:0 auto 30px;}
+
 }
 
 
@@ -261,6 +264,13 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				$("#all-reviews-modal").hide();
 				$("#all-reviews #themes").hide();
 				$("#all-reviews .reviews").hide();
+				$("#all-reviews-modal").css({
+					"width":900
+				});
+
+				$("#all-reviews").css({
+					"marginTop":33
+				})
 			})
 
 
@@ -301,24 +311,27 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 		function launchReviews() {
 			var p = $("#reviews").offset();
 			var h = $("#reviews").height();
-			//var w = $("#reviews").width();
+			var w = $("#reviews").width();
 			var t = $('#reviews').position().top - $(window).scrollTop();
-			//console.log(t + " " + p.left + " " + h + " " + w);
+			
+			console.log($("#all-reviews-modal").width());
 
 			$("#all-reviews-modal").css({
       			"height": h + 24,
       			//"width": w + 24,
       			"top": t + 20 + "px",
       			"left": p.left + "px"
-    		}).show();
+    		});
 
-    		//$("#all-reviews-modal").show().animate({left: 0, width: "100%", top: 0, height: "100%"}, 400);
+    		$("#all-reviews-modal").show().animate({left: 0, width: "100%", top: 0, height: "100%"}, 400);
 
-    		//$("#all-reviews").animate({marginTop: 48}, 400, function(){
-    			//$("#all-reviews #themes").fadeIn(function(){
-    				//$("#all-reviews .reviews").fadeIn();
-    			//})
-    		//});
+    		
+
+    		$("#all-reviews").animate({marginTop: 48}, 400, function(){
+    			$("#all-reviews #themes").fadeIn(function(){
+    				$("#all-reviews .reviews").fadeIn();
+    			})
+    		});
 
 
 		}
@@ -487,24 +500,24 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			
 				<div style="font-size:24px; margin-bottom:12px;">4.5 / 5  Excellent</div>
 
-				
+				<div style="margin-bottom:6px;">Score breakdown</div>
 			
 			<div style="overflow:hidden;">
 				<div style="">
-					<ul style="font-size:12px; margin:0; padding:0; list-style-type:none;">
+					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
 						<li>
-							<div style="background-color:#eee; width:82%; border-bottom:solid 2px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
 							</div>
 						</li>
 						<li>
-							<div style="background-color:#eee; width:63%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
 							</div>
 						</li>
-						<li><div style="background-color:#eee; width:42%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
 							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
 							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
 							</div></li>
 						
 					</ul>
@@ -514,7 +527,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 			
 		</div>
-		<div class="review" style="font-size:13px; line-height:18px; float:left; width:50%; box-sizing:border-box;">
+		<div class="review" style="font-size:16px; line-height:18px; float:left; width:50%; box-sizing:border-box;">
 			<p style="margin-top:0;">"Beautiful but small rooms. Decorated to very high standard. Great shower! Loved the pantry at the end of the corridor!"</p>
 			<p>"Even though the room was small, it was so well designed that it didn't really matter."" </p>
 		</div>
@@ -856,43 +869,80 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			<h2 style="font-size:24px; margin-bottom:12px; padding:0; left">4.5 / 5 Excellent</h2>
 
 			<div style="float:left; width:50%">
-				
-					<ul style="font-size:12px; margin:0; padding:0; list-style-type:none;">
+					<div style="margin-bottom:6px;">Score breakdown</div>
+					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
 						<li>
-							<div style="background-color:#eee; width:82%; border-bottom:solid 2px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
 							</div>
 						</li>
 						<li>
-							<div style="background-color:#eee; width:63%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
 							</div>
 						</li>
-						<li><div style="background-color:#eee; width:42%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
 							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
 							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
 							</div></li>
 						
 					</ul>
 			</div>
 
+		<style type="text/css">
+			#all-reviews .reviews {margin-top:24px;}
+			#all-reviews .review {padding:18px 0; border-bottom:solid 1px #eee; overflow:hidden;}
+			#all-reviews .review h3 {font-size:24px; margin:0 0 6px 0; padding:0; font-weight:normal;}
+			#all-reviews .review .body {font-size:16px; line-height: 20px;}
+			#all-reviews .review .user {font-size:14px; margin-top:12px;}
+			#themes ul {margin:0; padding:0; list-style-type: none; margin-top:6px;}
+			#themes ul li {font-size:14px; padding-bottom:5px; width:170px}
+		</style>
+
 			<div id="themes" style="float:left; width:50%; display:none;">
-				Show themes
+				Average rating for:
+				<ul>
+					<li><span style="float:right;">4.8</span> Cleanliness</li>
+					<li><span style="float:right;">4.5</span> Service</li>
+					<li><span style="float:right;">4.3</span> Comfort</li>
+					<li><span style="float:right;">4.7</span> Condition</li>
+					<li><span style="float:right;">4.2</span> Neighbourhood</li>
+				</ul>
 			</div>
 
 		</div>
 
-		<style type="text/css">
-			#all-reviews .reviews {margin-top:24px;}
-			#all-reviews .review {padding:12px 0; border-bottom:solid 1px #eee;}
-			#all-reviews .review h3 {font-size:18px; margin:0 0 6px 0; padding:0;}
-			#all-reviews .review .body {font-size:16px; line-height: 20px;}
-		</style>
+		
 
 		<div class="reviews" style="display:none;">
 			<div class="review">
-				<h3>Great hotel</h3>
-				<div class="body">I thoroughly enjoyed my stay. We were upgraded to a better room. The pantry was nice and had loads of design magazines. The service was wonderful. I'd recommend this hotel to anyone who wants to treat himself.</div>
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Really very good</h3>
+					<div class="body">This hotel has a really good feel about it. Airy calm corridors, simple but comfy furnishings and a really nice finish. After being so disappointed with the St Pancras Renaissance across the road which is all fur coat but no substance I went for the GNH and was pretty chuffed that I did. I was extremely happy with the hotel and my stay. The Reception could be bigger and friendlier but that was the only minor mark against a very good stay. Recommend highly.</div>
+					<div class="user">Murk, GB - 1 night business trip in Sep 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Great hotel</h3>
+					<div class="body">I thoroughly enjoyed my stay. We were upgraded to a better room. The pantry was nice and had loads of design magazines. The service was wonderful. I'd recommend this hotel to anyone who wants to treat himself.</div>
+					<div class="user">Ian, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Excellent location, very quiet and confortable</h3>
+					<div class="body">Very homely and comfortable. I loved the pantry facilities although we needed lessons to work the coffee machine. We gave up eventually and just used the kettle. Bed really comfy and it was very quiet. Location unbeatable, we walked everywhere. Quite expensive and therefore would suggest only use for a stay in London as hotel itself has a lot to offer. Would book something less expensive if just passing through.</div>
+					<div class="user">jennywalls1, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
 			</div>
 		</div>
 
