@@ -56,6 +56,11 @@ div.book {display:inline-block; vertical-align:top; margin-left:12px;}
 button.book {border:0; background-color: #5677fc; color:#fff; width:100px; padding:6px 0; text-align:center; font-size:16px;}
 .urgency {width:100px; background-color:#fff9c4; padding:6px 0; text-align:center; font-size:14px;}
 
+.modal-close {border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;}
+
+.review h3 {font-size:18px; margin:0 0 12px 0;}
+.review .body {font-size:16px; line-height: 20px;}
+
 
 @media only screen and (min-width:600px) {
  		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
@@ -107,6 +112,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
  	.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}
  	.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
+ 	#all-reviews-modal #all-reviews {width:852px; margin:0 auto 30px;}
 
 }
 
@@ -144,6 +150,11 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 			$("#allrooms").on("click", function(e){
 				e.preventDefault();
 				launchRooms();
+			});
+
+			$("#open-reviews").on("click", function(e){
+				e.preventDefault();
+				launchReviews();
 			});
 
 			$(".close").on("click", function(e){
@@ -244,6 +255,12 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 					});
 				});
 
+			}); 
+
+			$("#all-reviews-modal .close").on("click", function(){
+				$("#all-reviews-modal").hide();
+				$("#all-reviews #themes").hide();
+				$("#all-reviews .reviews").hide();
 			})
 
 
@@ -278,6 +295,31 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
     				$(".more-rooms").slideDown();
     			});
     		});
+
+		}
+
+		function launchReviews() {
+			var p = $("#reviews").offset();
+			var h = $("#reviews").height();
+			//var w = $("#reviews").width();
+			var t = $('#reviews').position().top - $(window).scrollTop();
+			//console.log(t + " " + p.left + " " + h + " " + w);
+
+			$("#all-reviews-modal").css({
+      			"height": h + 24,
+      			//"width": w + 24,
+      			"top": t + 20 + "px",
+      			"left": p.left + "px"
+    		}).show();
+
+    		//$("#all-reviews-modal").show().animate({left: 0, width: "100%", top: 0, height: "100%"}, 400);
+
+    		//$("#all-reviews").animate({marginTop: 48}, 400, function(){
+    			//$("#all-reviews #themes").fadeIn(function(){
+    				//$("#all-reviews .reviews").fadeIn();
+    			//})
+    		//});
+
 
 		}
 
@@ -437,10 +479,10 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 		</div>
 	</div>
 
-	<div class="norm" style="margin:20px auto 0;">
+	<div id="reviews" class="norm" style="margin:20px auto 0;">
 		<h2>Guest reviews (200)</h2>
 		<div style="overflow:hidden;">
-		<div class="score" style="float:left; width:50%; box-sizing:border-box; padding-right:24px;">
+		<div class="score" style="float:left; width:50%; box-sizing:border-box;">
 
 			
 				<div style="font-size:24px; margin-bottom:12px;">4.5 / 5  Excellent</div>
@@ -478,7 +520,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 		</div>
 		</div>
 		<div class="all">
-			<a href="#" rel="modal">All guest reviews (200)</a>
+			<a href="#" id="open-reviews" rel="modal">All guest reviews (200)</a>
 		</div>
 	</div>
 
@@ -586,7 +628,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 
 <div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
-	<div style="border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;">
+	<div class="modal-close">
 		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
 	</div>
 
@@ -800,70 +842,62 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 </div>
 
-		<!--<h2>Our lowest price room</h2>
-		<div class="room-details">
-			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;"></div>
-			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
-				<span class="room-name" style="font-size:14px;">Standard Room, 1 Double Bed (Couchette)</span><br />
-				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
-				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
-				<a href="#" style="font-size:12px">More information</a>
-			</div>
-		</div>
-		<div class="rate-details">
-			<div class="details-wrapper">
-				<span class="details cancellation">Non-refundable</span><br />
-				<span class="details extra">Free Wi-Fi</span><br />
-				<span class="details wr">Welcome rewards</span>
-			</div>
-			<div class="price-wrapper">
-				<div class="book"><button class="book">BOOK</button></div>
-				<div class="price">
-					<span class="highprice">&pound179</span> 
-					<span class="total deal">&pound152</span><br />
-					<span class="rule">price for 1 night including taxes and fees</span>
-				</div>
-			</div>
-		</div>
-		<div class="rate-details" style="display:none;">
-			<div class="details-wrapper">
-				<span class="details cancellation-free">FREE Cancellation</span> <span class="hint" style="font-size:12px">Until Aug 23 2014</span><br />
-				<span class="details extra">Free Wi-fi</span><br />
-				<span class="details wr">Welcome rewards</span>
-			</div>
-			<div class="price-wrapper">
-				<div class="book">
-					<button class="book">BOOK</button>
-					<div style="text-align:left;background-color:#090; color:#fff; font-size:12px; width:80px; padding:6px; box-sizing:border-box; margin-top:6px;">
-						Pay now or at hotel
-					</div>
-				</div>
-				<div class="price">
-					<span class="total">&pound179</span><br />
-					<span class="rule">price for 1 night including taxes and fees</span>
-				</div>
-			</div>
-		</div>
-		<div class="rate-details" style="display:none;">
-			<div class="details-wrapper">
-				<span class="details cancellation">Non-refundable</span><br />
-				<span class="details extra">Free Wi-fi</span><br />
-				<span class="details extra">Breakfast included</span><br />
-				<span class="details wr">Welcome rewards</span>
-			</div>
-			<div class="price-wrapper">
-				<div class="book"><button class="book">BOOK</button></div>
-				<div class="price">
-					<span class="highprice">&pound218</span> 
-					<span class="total deal">&pound185</span><br />
-					<span class="rule">price for 1 night including taxes and fees</span>
-				</div>
-			</div>
-		</div>
-		<div class="all">
-			<a href="#" id="allrooms">All rooms (16)</a>
-		</div>-->
 	</div>
+
+
+<div id="all-reviews-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
+	<div class="modal-close">
+		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
+	</div>
+
+	<div id="all-reviews" style="padding:24px; margin-top:33px;">
+
+		<div id-"breakdown" style="overflow:hidden">
+			<h2 style="font-size:24px; margin-bottom:12px; padding:0; left">4.5 / 5 Excellent</h2>
+
+			<div style="float:left; width:50%">
+				
+					<ul style="font-size:12px; margin:0; padding:0; list-style-type:none;">
+						<li>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 2px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							</div>
+						</li>
+						<li>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							</div>
+						</li>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 2px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							</div></li>
+						
+					</ul>
+			</div>
+
+			<div id="themes" style="float:left; width:50%; display:none;">
+				Show themes
+			</div>
+
+		</div>
+
+		<style type="text/css">
+			#all-reviews .reviews {margin-top:24px;}
+			#all-reviews .review {padding:12px 0; border-bottom:solid 1px #eee;}
+			#all-reviews .review h3 {font-size:18px; margin:0 0 6px 0; padding:0;}
+			#all-reviews .review .body {font-size:16px; line-height: 20px;}
+		</style>
+
+		<div class="reviews" style="display:none;">
+			<div class="review">
+				<h3>Great hotel</h3>
+				<div class="body">I thoroughly enjoyed my stay. We were upgraded to a better room. The pantry was nice and had loads of design magazines. The service was wonderful. I'd recommend this hotel to anyone who wants to treat himself.</div>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 
 </body>
