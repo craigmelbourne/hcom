@@ -133,6 +133,18 @@ box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
 				})
 			});
 
+			// cross fade
+
+			$("#fade #page1").on("click", function(){
+				$(this).fadeOut();
+				$("#fade #page2").fadeIn();
+			});
+
+			$("#fade #page2").on("click", function(){
+				$(this).fadeOut();
+				$("#fade #page1").fadeIn();
+			});
+
 		});
 	
 	</script>
@@ -177,7 +189,7 @@ box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
 
 					<div id="hero" style="margin-top:12px; overflow:hidden;">
 						<div style="width:33%; float:left; box-sizing:border-box; padding-right:12px;">
-
+							<div>Hero</div>
 							<div style="height:240px; background-color:#f1f1f1; border:solid 1px #eee; box-sizing:border-box; overflow-y:scroll; position:relative;">
 								<div style="height:35px; background-color:#ddd;"></div>
 								
@@ -194,6 +206,7 @@ box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
 							</div>
 						</div>
 						<div id="slide" style="width:33%; float:left; box-sizing:border-box; padding: 0 6px; ">
+							<div>Slide</div>
 							<div id="page-wrapper" style="height:240px; background-color:#f1f1f1; overflow:hidden; position:relative">
 								<div id="page1">
 									<div class="title">Page title</div>
@@ -214,9 +227,15 @@ box-shadow:         -4px 0px 5px 0px rgba(99, 99, 99, 0.75);}
 
 
 						</div>
-						<div style="width:33%; float:left; box-sizing:border-box; padding-left: 12px;">
-							<div style="height:240px; background-color:#f1f1f1; border:solid 1px #eee;">
-								<div style="height:100%; background-color: #5677fc"></div>
+						<div id="fade" style="width:33%; float:left; box-sizing:border-box; padding-left: 12px;">
+							<div>Cross fade</div>
+							<div style="height:240px; background-color:#f1f1f1; border:solid 1px #eee; position:relative">
+								<div id="page1" style="height:100%; background-color: #5677fc; position:absolute; top:0; left:0; width:100%;">
+									<div style="text-align:center; margin-top:80px;color:#fff; font-size:48px;">1</div>
+								</div>
+								<div id="page2" style="height:100%; background-color: #259b24; display:none; position:absolute; top:0; left:0; width:100%;">
+									<div style="text-align:center; margin-top:80px; color:#fff; font-size:48px;">2</div>
+								</div>
 							</div>
 						</div>
 					</div>
