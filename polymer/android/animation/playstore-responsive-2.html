@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<style type="text/css">
 
-		body{background-color: #f1f1f1; font-family:arial; color:#777;}
+		body{background-color: #E5DFCF; font-family:arial; color:#777;}
 		a {text-decoration:none;}
 		h2 {margin:0 0 12px 0; padding:0; font-size:18px; font-weight:normal;}
 		.all {text-align:right; border-top:solid 1px #eee; margin-top:24px; clear:both;}
@@ -32,9 +32,8 @@ a {color:#3b50ce;}
 .rate-details {border-top:solid 1px #eee; padding:12px 0; overflow:hidden;}
 .rate-details:last-child{padding-bottom:0;}
 
-ul.amenities {overflow:hidden; margin:0; padding:0; list-style-type: none;}
-ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px; font-size:13px;}
-ul.amenities li.highlight {background-color:#eee;}
+ul.amenities {overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('i/tick.png');}
+ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px 3px; font-size:14px;}
 ul.landmarks {overflow:hidden; margin:0; padding:0; list-style-type: none; margin-top:3px;}
 ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
 ul.landmarks li.highlight {background-color:#eee;}
@@ -61,6 +60,10 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 .review h3 {font-size:18px; margin:0 0 12px 0;}
 .review .body {font-size:16px; line-height: 20px;}
 
+.norm, .content-block {border-radius:2px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);
+-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);
+box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
+
 
 @media only screen and (min-width:600px) {
  		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
@@ -69,7 +72,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
  		#trip-rating {display:inline-block; vertical-align:top; margin-left:-4px;}
  		.review-score {font-size:18px}
  		.review-count {font-size:13px}
- 		.content-block {width:550px; margin:100px auto 0; height:300px; background-color:#fff;}
+ 		.content-block {width:60px; margin:100px auto 0; height:300px; background-color:#fff;}
  		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
  		#lower-rating {display:none;}
  		#slideshow {position:absolute; top:300px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
@@ -81,7 +84,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 @media only screen and (min-width:800px) {
  		#page-wrapper {position:absolute; top:0; width:720px; left:50%; margin-left:-360px; padding-bottom:20px;}
- 		.content-block {width:720px; margin:100px auto 0; height:300px; background-color:#fff;}	
+ 		.content-block {width:720px; margin:60px auto 0; height:300px; background-color:#fff;}	
  		.norm {width:720px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
  		
@@ -94,7 +97,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 @media only screen and (min-width:960px) {
  		#page-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
- 		.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}	
+ 		.content-block {width:900px; margin:60px auto 0; height:300px; background-color:#fff;}	
  		.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
 
@@ -112,7 +115,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 @media only screen and (min-width:1000px) {
  	#page-wrapper {position:absolute; top:0; width:1000px; left:50%; margin-left:-500px; padding-bottom:20px;}		
- 	.content-block {width:900px; margin:100px auto 0; height:300px; background-color:#fff;}
+ 	.content-block {width:900px; margin:60px auto 0; height:300px; background-color:#fff;}
  	.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
  	#all-reviews-modal #all-reviews {width:852px; margin:0 auto 30px;}
@@ -220,7 +223,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				var t = $("#map-placeholder").position().top - $(window).scrollTop();
 				$("#map-wrapper").css({
 					position: "fixed",
-					height: 150,
+					height: 250,
 					width: $("#map-placeholder").width(),
 					left: $("#map-placeholder").offset().left,
 					top: t,
@@ -248,7 +251,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 				$("#map-wrapper").animate({
 					top:t,
 					left: $("#map-placeholder").offset().left,
-					height: 150,
+					height: 250,
 					width:$("#map-placeholder").width()
 				}, function(){	
 
@@ -368,11 +371,14 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 </head>
 
-<body style="background-color:#f1f1f1;">
+<body>
 
-<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:300px; background-color:#e51c23"></div>
-<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:64px; background-color:#e51c23; z-index:5000; overflow:hidden;">
-	<div class="app-title" style="display:none; margin-left:64px; margin-top:12px; float:left;">
+<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:212px; background-color:#E84C3D"></div>
+<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:64px; background-color:#E84C3D; z-index:5000; overflow:hidden;">
+	<div style="float:left; margin:12px;">
+		<img src="i/back.png" />
+	</div>
+	<div class="app-title" style="display:none; margin-left:12px; margin-top:12px; float:left;">
 		<div class="hotel-name" style="color:#fff; font-size:18px;">Great Northern Hotel</div>
 		<div class="dates-people" style="color:#fff; font-size:13px;">Wed 3 Sep - Thur 4 Sep</div>
 	</div>
@@ -385,8 +391,8 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 	<div class="content-block" id="start" style="">
 		<div style="width:60%; float:left; box-sizing:border-box;">
-			<h1 style="font-size:24px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
-			<div style="color:#e51c23; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
+			<h1 style="font-size:28px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
+			<div style="color:#E84C3D; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
 			<div id="top-rating" style="clear:both; padding:18px 24px;">
 			<div id="guest-rating">
 				<span class="review-score" >4.4 / 5 Excellent</span> <br />
@@ -401,7 +407,7 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 		<div style="width:40%; float:left; box-sizing:border-box; text-align:right; padding:24px ">
 			<div>
 				<span style="font-size:16px; text-decoration:line-through">&pound;229</span> 
-				<span style="color:#e51c23; font-size:28px;">&pound;195</span>
+				<span style="color:#E84C3D; font-size:28px;">&pound;195</span>
 			</div>
 			<span style="font-size:13px; display:inline-block; margin:12px 0;">price for 1 night including taxes and fees</span><br />
 			<!--<button style="background-color:#eee; color:#555; border:0; font-size:16px; padding:6px 12px;">SHORTLIST</button>-->
@@ -539,21 +545,27 @@ button.book {border:0; background-color: #5677fc; color:#fff; width:100px; paddi
 
 	<div id="map" class="norm" style="margin:20px auto 0;">
 		<h2>Location</h2>
-		<p style="font-size:13px;">King's Cross St Pancras Station, Pancras Road, London, England, N1C 4TB, United Kingdom, 0203 027 9779</p>
+		
 		<div style="overflow:hidden; margin-top:12px;">
-			<div id="map-placeholder" style="width:60%; float:left; box-sizing:border-box; height:150px; background-color:#eee; position:relative;">
+			<div id="map-placeholder" style="width:50%; float:left; box-sizing:border-box; height:250px; background-color:#eee; position:relative;">
 				<div id="map-wrapper">
   					<div id="map_canvas" style="width:100%; height:100%;"></div>
   					<div id="map-close" style="position:absolute; top:24px; left:24px; padding:12px; display:none; background-color:#fff;">X | Close map</div>
 				</div>
 			</div>
-			<div style="width:40%; float:left; box-sizing:border-box; padding-left:24px;">
-				<span style="font-size:14px;">Nearby attractions</span>	
-				<ul class="landmarks">
-        			<li>0.1km King Cross Station</li>
-        			<li>0.3km British Library</li>
-        			<li>0.6km Euston Station</li>
-        			<li>0.9km Cartwright Gardens</li>
+			<div style="width:50%; float:left; box-sizing:border-box; padding-left:24px;">
+				<p style="font-size:13px; margin-top:0">King's Cross St Pancras Station, Pancras Road, London, England, N1C 4TB, United Kingdom</p>
+				<div style="margin:6px 0 18px;font-size:13px;">0203 027 9779</div>
+				<span style="font-size:14px; font-weight:bold;">What's around</span>	
+				
+				<style type="text/css">
+					ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc;}
+				</style>
+				<ul class="landmarks" style=";">
+        			<li>King Cross Station (0.1km)</li>
+        			<li>British Library (0.3km)</li>
+        			<li>Euston Station (0.6km)</li>
+        			<li>Cartwright Gardens (0.9km) </li>
         			
       </ul>
 			</div>
