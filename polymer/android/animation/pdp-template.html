@@ -1,0 +1,960 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<style type="text/css">
+
+		body{background-color: #E5DFCF; font-family:arial; color:#777;}
+		a {text-decoration:none; color:#3598DB;}
+		h2 {margin:0 0 12px 0; padding:0; font-size:20px; font-weight:bold;}
+		.all {text-align:right; border-top:solid 1px #eee; margin:24px -24px 0; padding-right: 24px; clear:both;}
+		.all a {display:inline-block; font-size:13px; padding:24px 0; text-transform: uppercase;}
+
+		.wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch;}
+
+.internal {
+	display: inline-block; height:auto; background-color:#ddd; margin-right:12px; width:auto;
+}
+
+.internal img {height:200px; max-width:100%;}
+
+
+.blue-bg {background-color: #3f51b5; color:#fff;}
+.book {font-size:16px;}
+a {color:#3b50ce;}
+
+#map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
+
+.room-details{ min-height:80px; overflow:hidden; padding-bottom:12px;}
+.room-details h3 {padding:0; margin:0 0 12px 0; font-weight:normal;}
+.room-details .image {float:left; height:80px; width:15%; background-color:#eee; overflow:hidden;}
+.rate-details {border-top:solid 1px #eee; padding:12px 0; overflow:hidden;}
+.rate-details:last-child{padding-bottom:0;}
+
+ul.amenities {overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('i/tick.png');}
+ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px 3px; font-size:14px;}
+ul.landmarks {overflow:hidden; margin:0; padding:0; list-style-type: none; margin-top:3px;}
+ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
+ul.landmarks li.highlight {background-color:#eee;}
+
+.details-wrapper {float:left; width:40%; box-sizing: border-box;}
+.details {font-size:14px; line-height:24px;}
+.cancellation-free {color:#090;}
+.pay-later {color:#090; font-size:14px;}
+.wr {color:purple;}
+.hint {color:#999;}
+
+.price-wrapper {float:right:60%; box-sizing: border-box; text-align:right;}
+.price {display:inline-block; padding:5px; vertical-align:top;}
+.highprice {font-size:14px; text-decoration:line-through}
+.total {font-size:24px;}
+.deal {color:#d41200;}
+.rule {font-size:12px;}
+div.book {display:inline-block; vertical-align:top; margin-left:12px;}
+button.book {border:0; background-color: #3598DB; color:#fff; padding:10px 0; text-align:center; font-size:14px; width:120px;}
+.urgency {width:120px; background-color:#FFD541; padding:6px 0; text-align:center; font-size:14px;}
+
+.modal-close {border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;}
+
+.review h3 {font-size:18px; margin:0 0 12px 0;}
+.review .body {font-size:16px; line-height: 20px;}
+
+.norm, .content-block, button {border-radius:2px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);
+-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);
+box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
+
+
+@media only screen and (min-width:600px) {
+ 		#page-wrapper {position:absolute; top:0; width:550px; left:50%; margin-left:-275px; padding-bottom:20px;}	
+
+ 		#guest-rating {display:inline-block; margin-right:36px; vertical-align:top; margin-bottom:6px;}
+ 		#trip-rating {display:inline-block; vertical-align:top; margin-left:-4px;}
+ 		.review-score {font-size:18px}
+ 		.review-count {font-size:13px}
+ 		.content-block {width:60px; margin:100px auto 0; height:300px; background-color:#fff;}
+ 		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
+ 		#slideshow {position:absolute; top:300px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
+ 		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 0; box-sizing:border-box;}
+ 		#start {overflow:hidden; height:400px;}
+
+}
+
+
+@media only screen and (min-width:800px) {
+ 		#page-wrapper {position:absolute; top:0; width:720px; left:50%; margin-left:-360px; padding-bottom:20px;}
+ 		.content-block {width:720px; margin:60px auto 0; height:300px; background-color:#fff;}	
+ 		.norm {width:720px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
+ 		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
+ 		
+ 		#slideshow {position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
+ 		#start {overflow:hidden; height:360px;}
+
+}
+
+
+@media only screen and (min-width:960px) {
+ 		#page-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
+ 		.content-block {width:900px; margin:60px auto 0; height:300px; background-color:#fff;}	
+ 		.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
+ 		#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
+
+
+ 		#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
+ 		
+
+ 		#start {overflow:hidden; height:360px;}
+
+
+ 		#all-reviews-modal #all-reviews {width:852px; margin:0 auto 30px;}
+
+}
+
+
+@media only screen and (min-width:1000px) {
+ 	#page-wrapper {position:absolute; top:0; width:1000px; left:50%; margin-left:-500px; padding-bottom:20px;}		
+ 	.content-block {width:900px; margin:60px auto 0; height:300px; background-color:#fff;}
+ 	.norm {width:900px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
+ 	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
+ 	#all-reviews-modal #all-reviews {width:852px; margin:0 auto 30px;}
+
+}
+
+
+	</style>
+
+	<script src="../../jquery.js"></script>
+	<script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+      </script>
+
+	<script type="text/javascript">
+
+		var geocoder = new google.maps.Geocoder();
+		$(function(){
+
+			var pos = $("#start").offset();
+			initializeMap();
+
+			$(".internal:first-child").css("margin-left", pos.left - 12+"px");
+
+			$(window).scroll(function() {
+
+				//$("#scroll").text($(window).scrollTop());
+    			if ($(window).scrollTop() > 120) {
+        			$(".app-title").fadeIn();
+        			$(".edit-search").fadeIn();
+    			}
+    			else {
+        			$(".app-title").fadeOut();
+        			$(".edit-search").fadeOut();
+    			}
+			});
+
+			$("#allrooms").on("click", function(e){
+				e.preventDefault();
+				launchRooms();
+			});
+
+			$("#open-reviews").on("click", function(e){
+				e.preventDefault();
+				launchReviews();
+			});
+
+			$(".close").on("click", function(e){
+				e.preventDefault();
+				$("#all-rooms-modal").hide();
+				$("#price-guarantee").hide();
+				$(".more-rates").hide();
+				$(".more-rooms").hide();
+			}); 
+
+			$("#slideshow img").on("click", function(){
+				$("#overlay").show();
+				//console.log($(window).height());
+				console.log($("#slideshow").offset().top - $(window).scrollTop());
+				$("#slideshow").css({
+					zIndex:5002,
+					position:"fixed",
+					top: $(this).offset().top - $(window).scrollTop()
+				})
+
+				$("#slideshow").animate({
+					top: ($(window).height() - 400) / 2, 
+					height: 400
+				}, 200)
+
+
+				$(".internal img").animate({ 
+					height: 400,
+					width: $(this).width * 2
+				}, 200)
+
+
+			}); 
+
+			$("#overlay").on("click", function(){
+
+				$(this).fadeOut();
+
+				$("#slideshow").css({
+					zIndex:"auto",
+					position:"absolute"
+				})
+
+				$("#slideshow").animate({
+					top: 220, 
+					height: 200
+				}, 200, function(){
+					
+				})
+
+				$(".internal img").animate({ 
+					height: 200,
+					width: $(this).width / 2
+				}, 200)
+			});
+
+			$("#open-map").on("click", function(e){
+				e.preventDefault();
+				var center = map.getCenter()
+				var t = $("#map-placeholder").position().top - $(window).scrollTop();
+				$("#map-wrapper").css({
+					position: "fixed",
+					height: 250,
+					width: $("#map-placeholder").width(),
+					left: $("#map-placeholder").offset().left,
+					top: t,
+					zIndex: 10001
+				});
+
+				$("#map-wrapper").animate({
+					top:0,
+					left: 0,
+					height: "100%",
+					width:"100%"
+				}, function(){
+					google.maps.event.trigger(map, 'resize');
+					//map.setCenter(center);
+
+					$("#map-close").slideDown();
+				})
+
+			});
+
+			$("#map-close").on("click", function(){
+				var t = $("#map-placeholder").position().top - $(window).scrollTop();
+				$("#map-close").hide();
+
+				$("#map-wrapper").animate({
+					top:t,
+					left: $("#map-placeholder").offset().left,
+					height: 250,
+					width:$("#map-placeholder").width()
+				}, function(){	
+
+					$("#map-wrapper").css({
+						position: "static",
+						zIndex: "auto"
+					});
+				});
+
+			}); 
+
+			$("#all-reviews-modal .close").on("click", function(){
+				$("#all-reviews-modal").hide();
+				$("#all-reviews #themes").hide();
+				$("#all-reviews .reviews").hide();
+				$("#all-reviews-modal").css({
+					"width":900
+				});
+
+				$("#all-reviews").css({
+					"marginTop":33
+				})
+			})
+
+
+		});
+
+
+		function launchRooms(){
+			var p = $("#rooms-module").offset();
+			var h = $("#rooms-module").height();
+			var w = $("#rooms-module").width();
+			var t = $('#rooms-module').position().top - $(window).scrollTop();
+
+			console.log(t + " " + p.left + " " + h + " " + w);
+			$("#all-rooms-modal").css({
+      			"height": h + 24 + "px",
+      			"width": w + 24 + "px",
+      			"top": t + 20 + "px",
+      			"left": p.left + "px"
+    		});
+
+    		$("#all-rooms-modal").show().animate({
+
+    			left: 0,
+    			width: "100%",
+    			top: 0,
+    			height: "100%"
+
+    		}, 400);
+
+    		$("#price-guarantee").slideDown(400, function(){
+    			$(".more-rates").slideDown(function(){
+    				$(".more-rooms").slideDown();
+    			});
+    		});
+
+		}
+
+		function launchReviews() {
+			var p = $("#reviews").offset();
+			var h = $("#reviews").height();
+			var w = $("#reviews").width();
+			var t = $('#reviews').position().top - $(window).scrollTop();
+			
+			console.log($("#all-reviews-modal").width());
+
+			$("#all-reviews-modal").css({
+      			"height": h + 24,
+      			//"width": w + 24,
+      			"top": t + 20 + "px",
+      			"left": p.left + "px"
+    		});
+
+    		$("#all-reviews-modal").show().animate({left: 0, width: "100%", top: 0, height: "100%"}, 400);
+
+    		
+
+    		$("#all-reviews").animate({marginTop: 48}, 400, function(){
+    			$("#all-reviews #themes").fadeIn(function(){
+    				$("#all-reviews .reviews").fadeIn();
+    			})
+    		});
+
+
+		}
+
+
+		function initializeMap() {
+      
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        //center: loc,
+        zoom: 14,
+        mapTypeId: 'roadmap',
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        panControl: false,
+        mapTypeControl: false,
+        streetViewControl:false,
+        zoomControl: false,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
+        }
+    });
+
+
+    geocoder.geocode( { 'address': 'London, UK'}, function(pos, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            //console.log (pos[0].geometry.location.k + " " + pos[0].geometry.location.B)
+            map.setCenter(pos[0].geometry.location);
+            map.panBy(0, 200);
+
+        } 
+    });
+}
+	</script>
+
+</head>
+
+<body>
+
+<div id="big-header" style="position:absolute; top:0; left:0; right:0; height:212px; background-color:#E84C3D"></div>
+<div id="fixed-header" style="position:fixed; top:0; left:0; right:0; height:64px; background-color:#E84C3D; z-index:5000; overflow:hidden;">
+	<div style="float:left; margin:12px;">
+		<img src="i/back.png" />
+	</div>
+	<div class="app-title" style="display:none; margin-left:12px; margin-top:12px; float:left;">
+		<div class="hotel-name" style="color:#fff; font-size:18px;">Great Northern Hotel</div>
+		<div class="dates-people" style="color:#fff; font-size:13px;">Wed 3 Sep - Thur 4 Sep</div>
+	</div>
+	<div class="edit-search" style="float:right; color:#fff; padding:18px 24px; display:none;">
+		EDIT
+	</div>
+</div>
+
+<div id="page-wrapper" style="">
+
+	<div class="content-block" id="start" style="">
+		<div style="width:60%; float:left; box-sizing:border-box;">
+			<h1 style="font-size:32px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">Great Northern Hotel</h1>
+			<div style="color:#E84C3D; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
+			<div id="top-rating" style="clear:both; padding:18px 24px;">
+			
+			</div>
+		</div>
+		<div style="width:40%; float:left; box-sizing:border-box; text-align:right; padding:24px ">
+			<div>
+				<span style="font-size:16px; text-decoration:line-through">&pound;229</span> 
+				<span style="color:#E84C3D; font-size:32px;">&pound;195</span>
+			</div>
+			<span style="font-size:13px; display:inline-block; margin:12px 0;">price for 1 night including taxes and fees</span><br />
+			<!--<button style="background-color:#eee; color:#555; border:0; font-size:16px; padding:6px 12px;">SHORTLIST</button>-->
+			<button style="background-color:#3598DB; color:#fff; border:0; font-size:14px; width:200px; padding:10px 12px;">BOOK NOW</button>
+		</div>
+
+		<!--<div style="border-top:solid 1px #eee; border-bottom:solid 1px #eee; clear:both; padding:18px 24px; overflow:hidden;">
+			<div style="float:left;">Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
+			<div style="float:right; color:#136eb8;">EDIT</div>
+		</div>-->
+		
+
+	</div>
+
+
+
+	<div class="norm" >
+		<div style="border-bottom:solid 1px #eee; border-top:solid 1px #eee; padding:12px 24px; margin:0 -24px 24px;">
+			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
+				<span style="font-size:16px; line-height:24px; font-weight:bold;">Excellent 4.4 / 5 </span> <br />
+				<span style="font-size:13px;">230 Hotels.com reviews</span>
+			</div>
+			<div style="display:inline-block; vertical-align:top;">
+				<img src="i/trip45.png" /> <br />
+				<span style="font-size:13px;">230 Trip Advisor reviews</span>
+			</div>
+		</div>
+
+
+		<h2>About this hotel</h2>
+		<div class="description" style="font-size:14px; line-height:20px; float:left; width:50%; box-sizing:border-box; padding-right:24px;">The hotel offers 3 restaurants along with a bar/lounge. Complimentary wireless Internet access is available in public areas. There is a business center on site. Additional amenities include tour/ticket assistance, a snack bar/deli, and room service (during limited hours).</div>
+
+		<div style="float:left:50%;box-sizing:border-box">
+			<ul class="amenities">
+        <li class="highlight">Air conditioned</li>
+        <li class="highlight">Airport shuttle</li>
+        <li>Concierge</li>
+        <li>English Speaking</li>
+        <li class="highlight">Fitness Center</li>
+        <li class="highlight">Swimming pool</li>
+      </ul>
+		</div>
+
+		<div class="all">
+			<a href="#">All amenities</a>
+		</div>
+	</div>
+
+	<!--<div class="norm" style="padding:18px 24px; overflow:hidden; background-color:#d0d9ff; margin-top:20px; color:#555; border-bottom:solid 1px #eee;" >
+			<div style="float:left;">Availability for: Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
+			<div style="float:right; color:#136eb8;">EDIT</div>
+		</div>-->
+
+	<div id="rooms-module" class="norm" style="margin:12px auto 0;">
+		<h2 style="margin:0; padding:0 0 24px 0;">Our lowest price room</h2>
+		<div class="room-details">
+			<h3>Standard Room, 1 Double Bed (Couchette)</h3>
+			<div class="image">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_e.jpg" style="heigth:80px;"/>
+			</div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+		<div class="rate-details">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-Fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				
+				<div class="price">
+					<span class="highprice">&pound229</span> 
+					<span class="total deal">&pound195</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div class="urgency">1 room left</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="all">
+			<a href="#" id="allrooms">All rooms (16)</a>
+		</div>
+	</div>
+
+	<div id="reviews" class="norm" style="margin:12px auto 0;">
+		<h2>Guest reviews (200)</h2>
+		<div style="overflow:hidden;">
+		<div class="score" style="float:left; width:50%; box-sizing:border-box;">
+
+			
+				<div style="font-size:24px; margin-bottom:12px;">4.5 / 5  Excellent</div>
+
+				<div style="margin-bottom:6px;">Score breakdown</div>
+			
+			<div style="overflow:hidden;">
+				<div style="">
+					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
+						<li>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							</div>
+						</li>
+						<li>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							</div>
+						</li>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							</div></li>
+						
+					</ul>
+				</div>
+
+			</div>
+
+			
+		</div>
+		<div class="review" style="font-size:16px; line-height:18px; float:left; width:50%; box-sizing:border-box;">
+			<p style="margin-top:0; font-style:italic">"Beautiful but small rooms. Decorated to very high standard. Great shower! Loved the pantry at the end of the corridor!"</p>
+			<p style="font-style:italic">"Even though the room was small, it was so well designed that it didn't really matter."" </p>
+		</div>
+		</div>
+		<div class="all">
+			<a href="#" id="open-reviews" rel="modal">All guest reviews (200)</a>
+		</div>
+	</div>
+
+	<div id="map" class="norm" style="margin:12px auto 0;">
+		<h2>Location</h2>
+		
+		<div style="overflow:hidden; margin-top:12px;">
+			<div id="map-placeholder" style="width:50%; float:left; box-sizing:border-box; height:250px; background-color:#eee; position:relative;">
+				<div id="map-wrapper">
+  					<div id="map_canvas" style="width:100%; height:100%;"></div>
+  					<div id="map-close" style="position:absolute; top:24px; left:24px; padding:12px; display:none; background-color:#fff;">X | Close map</div>
+				</div>
+			</div>
+			<div style="width:50%; float:left; box-sizing:border-box; padding-left:24px;">
+				<p style="font-size:13px; margin-top:0">King's Cross St Pancras Station, Pancras Road, London, England, N1C 4TB, United Kingdom</p>
+				<div style="margin:6px 0 18px;font-size:13px;">0203 027 9779</div>
+				<span style="font-size:14px; font-weight:bold;">What's around</span>	
+				
+				<style type="text/css">
+					ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc;}
+				</style>
+				<ul class="landmarks" style=";">
+        			<li>King Cross Station (0.1km)</li>
+        			<li>British Library (0.3km)</li>
+        			<li>Euston Station (0.6km)</li>
+        			<li>Cartwright Gardens (0.9km) </li>
+        			
+      </ul>
+			</div>
+		</div>
+		<div class="all">
+			<a href="#" id="open-map" class="modal" rel="Show map in here">Full screen map</a>
+		</div>
+	</div>
+
+</div>
+
+<div id="overlay" style="position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.8; z-index:5001; display:none;"></div>
+
+<div id="slideshow">
+
+	<div class="wrapper">
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg" />
+			</div>
+			
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_11_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_14_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_28_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_27_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_10_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_22_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_23_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_25_z.jpg" />
+			</div>
+
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_13_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_24_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_30_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_26_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_19_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_32_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_20_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_18_z.jpg" />
+			</div>
+			<div class="internal">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_17_z.jpg" />
+			</div>
+
+	</div>
+
+</div>
+
+
+<div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
+	<div class="modal-close">
+		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
+	</div>
+
+	<div style="position:absolute; top:48px; left:0; right:0; bottom:0; overflow-y:scroll;">
+
+
+	<div id="rooms" style="">
+		<div id="price-guarantee" style="display:none; overflow:hidden;">
+			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Welcome rewards message</div>
+			<div style="width:50%; float:left; box-sizing:border-box; padding:36px 0">Price match guarantee</div>
+		</div>
+		<div class="room-details">
+			<h3>Standard Room, 1 Double Bed (Couchette)</h3>
+			<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+				<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_e.jpg" style="heigth:80px;"/>
+			</div>
+			<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+				<span class="bed-choices" style="font-size:12px;">1 Double bed</span><br />
+				<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+				<a href="#" style="font-size:12px">More information</a>
+			</div>
+		</div>
+		<div class="rate-details">
+			<div class="details-wrapper">
+				<span class="details cancellation">Non-refundable</span><br />
+				<span class="details extra">Free Wi-Fi</span><br />
+				<span class="details wr">Welcome rewards</span>
+			</div>
+			<div class="price-wrapper">
+				
+				<div class="price">
+					<span class="highprice">&pound229</span> 
+					<span class="total deal">&pound195</span><br />
+					<span class="rule">price for 1 night including taxes and fees</span>
+				</div>
+				<div class="book">
+					<button class="book">BOOK</button>
+					<div class="urgency">1 room left</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="more-rates" style="display:none;">
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound268</span> 
+						<span class="total deal">&pound228</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation-free">Free Cancellation</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="total">&pound229</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">Pay now or at hotel</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="more-rooms" style="display:none; ">
+			<div class="room-details" style="margin-top:40px;">
+				<h3>Superior Room, 1 King Bed (Wainscot)</h3>
+				<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+					<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_16_e.jpg" style="heigth:80px;"/>
+				</div>
+				<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+					<span class="bed-choices" style="font-size:12px;">King Bed</span><br />
+					<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+					<a href="#" style="font-size:12px">More information</a>
+				</div>
+			</div>
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound259</span> 
+						<span class="total deal">&pound220</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound298</span> 
+						<span class="total deal">&pound253</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation-free">Free Cancellation</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="total">&pound259</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">pay now or at the hotel</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="room-details" style="margin-top:40px;">
+				<h3>Deluxe Room, 1 King Bed (Cubitt)</h3>
+				<div class="image" style="float:left; height:80px; width:15%; background-color:#eee;">
+					<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_14_e.jpg" style="heigth:80px;"/>
+				</div>
+				<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+					<span class="bed-choices" style="font-size:12px;">King Bed</span><br />
+					<span style="font-size:12px;">Complimentary wireless Internet access keeps you connected, and the 40-inch...</span><br />
+					<a href="#" style="font-size:12px">More information</a>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound279</span> 
+						<span class="total deal">&pound237</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation">Non-refundable</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details extra">Breakfast included</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="highprice">&pound318</span> 
+						<span class="total deal">&pound270</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+
+			<div class="rate-details">
+				<div class="details-wrapper">
+					<span class="details cancellation-free">Free Cancellation</span><br />
+					<span class="details extra">Free Wi-Fi</span><br />
+					<span class="details wr">Welcome rewards</span>
+				</div>
+				<div class="price-wrapper">
+					
+					<div class="price">
+						<span class="total">&pound279</span><br />
+						<span class="rule">price for 1 night including taxes and fees</span><br />
+						<span class="pay-later">pay now or at the hotel</span>
+					</div>
+					<div class="book"><button class="book">BOOK</button></div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+	</div>
+
+
+<div id="all-reviews-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
+	<div class="modal-close">
+		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
+	</div>
+
+	<div id="all-reviews" style="padding:24px; margin-top:33px;">
+
+		<div id-"breakdown" style="overflow:hidden">
+			<h2 style="font-size:24px; margin-bottom:12px; padding:0; left">4.5 / 5 Excellent</h2>
+
+			<div style="float:left; width:50%">
+					<div style="margin-bottom:6px;">Score breakdown</div>
+					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
+						<li>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							</div>
+						</li>
+						<li>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							</div>
+						</li>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							</div></li>
+						
+					</ul>
+			</div>
+
+		<style type="text/css">
+			#all-reviews .reviews {margin-top:24px;}
+			#all-reviews .review {padding:18px 0; border-bottom:solid 1px #eee; overflow:hidden;}
+			#all-reviews .review h3 {font-size:24px; margin:0 0 6px 0; padding:0; font-weight:normal;}
+			#all-reviews .review .body {font-size:16px; line-height: 20px;}
+			#all-reviews .review .user {font-size:14px; margin-top:12px;}
+			#themes ul {margin:0; padding:0; list-style-type: none; margin-top:6px;}
+			#themes ul li {font-size:14px; padding-bottom:5px; width:170px}
+		</style>
+
+			<div id="themes" style="float:left; width:50%; display:none;">
+				Average rating for:
+				<ul>
+					<li><span style="float:right;">4.8</span> Cleanliness</li>
+					<li><span style="float:right;">4.5</span> Service</li>
+					<li><span style="float:right;">4.3</span> Comfort</li>
+					<li><span style="float:right;">4.7</span> Condition</li>
+					<li><span style="float:right;">4.2</span> Neighbourhood</li>
+				</ul>
+			</div>
+
+		</div>
+
+		
+
+		<div class="reviews" style="display:none;">
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Really very good</h3>
+					<div class="body">This hotel has a really good feel about it. Airy calm corridors, simple but comfy furnishings and a really nice finish. After being so disappointed with the St Pancras Renaissance across the road which is all fur coat but no substance I went for the GNH and was pretty chuffed that I did. I was extremely happy with the hotel and my stay. The Reception could be bigger and friendlier but that was the only minor mark against a very good stay. Recommend highly.</div>
+					<div class="user">Murk, GB - 1 night business trip in Sep 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Great hotel</h3>
+					<div class="body">I thoroughly enjoyed my stay. We were upgraded to a better room. The pantry was nice and had loads of design magazines. The service was wonderful. I'd recommend this hotel to anyone who wants to treat himself.</div>
+					<div class="user">Ian, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Excellent location, very quiet and confortable</h3>
+					<div class="body">Very homely and comfortable. I loved the pantry facilities although we needed lessons to work the coffee machine. We gave up eventually and just used the kettle. Bed really comfy and it was very quiet. Location unbeatable, we walked everywhere. Quite expensive and therefore would suggest only use for a stay in London as hotel itself has a lot to offer. Would book something less expensive if just passing through.</div>
+					<div class="user">jennywalls1, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+</body>
+
+</html>
