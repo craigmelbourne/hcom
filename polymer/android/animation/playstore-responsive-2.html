@@ -5,9 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<style type="text/css">
 
-		body{background-color: #E5DFCF; font-family:arial; color:#777;}
+		body{background-color: #E5DFCF; font-family:arial; color:#555;}
 		a {text-decoration:none;}
-		h2 {margin:0 0 12px 0; padding:0; font-size:18px; font-weight:normal;}
+		h2 {margin:0 0 12px 0; padding:0; font-size:20px; font-weight:bold;}
 		.all {text-align:right; border-top:solid 1px #eee; margin-top:24px; clear:both;}
 		.all a {display:inline-block; font-size:13px; padding:24px 0;}
 
@@ -52,8 +52,8 @@ ul.landmarks li.highlight {background-color:#eee;}
 .deal {color:#d41200;}
 .rule {font-size:12px;}
 div.book {display:inline-block; vertical-align:top; margin-left:12px;}
-button.book {border:0; background-color: #3598DB; color:#fff; width:100px; padding:6px 0; text-align:center; font-size:16px;}
-.urgency {width:100px; background-color:#fff9c4; padding:6px 0; text-align:center; font-size:14px;}
+button.book {border:0; background-color: #3598DB; color:#fff; padding:10px 0; text-align:center; font-size:14px; width:120px;}
+.urgency {width:120px; background-color:#FFD541; padding:6px 0; text-align:center; font-size:14px;}
 
 .modal-close {border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;}
 
@@ -74,7 +74,6 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
  		.review-count {font-size:13px}
  		.content-block {width:60px; margin:100px auto 0; height:300px; background-color:#fff;}
  		#all-rooms-modal #rooms {width:502px; margin:0 auto 30px;}	
- 		#lower-rating {display:none;}
  		#slideshow {position:absolute; top:300px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
  		.norm {width:550px; margin:0 auto 0; background-color:#fff; padding:24px 24px 0; box-sizing:border-box;}
  		#start {overflow:hidden; height:400px;}
@@ -88,7 +87,6 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
  		.norm {width:720px; margin:0 auto 0; background-color:#fff; box-sizing:border-box;}	
  		#all-rooms-modal #rooms {width:678px; margin:0 auto 30px;}
  		
- 		#top-rating {display:block;}
  		#slideshow {position:absolute; top:260px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
  		#start {overflow:hidden; height:360px;}
 
@@ -103,8 +101,8 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 
 
  		#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}
- 		#lower-rating {display:none;}
- 		#top-rating {display:block;}
+ 		
+
  		#start {overflow:hidden; height:360px;}
 
 
@@ -391,23 +389,16 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 
 	<div class="content-block" id="start" style="">
 		<div style="width:60%; float:left; box-sizing:border-box;">
-			<h1 style="font-size:28px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">The Great Northern hotel</h1>
+			<h1 style="font-size:32px; font-weight:normal; color:#555; margin:0; padding:24px 24px 0;">Great Northern Hotel</h1>
 			<div style="color:#E84C3D; padding:0 24px;">&#9733;&#9733;&#9733;&#9733;</div>
 			<div id="top-rating" style="clear:both; padding:18px 24px;">
-			<div id="guest-rating">
-				<span class="review-score" >4.4 / 5 Excellent</span> <br />
-				<span class="review-count" >230 Hotels.com reviews</span>
+			
 			</div>
-			<div id="trip-rating">
-				<img src="i/trip45.png" /> <br />
-				<span class="review-count">230 Trip Advisor reviews</span>
-			</div>
-		</div>
 		</div>
 		<div style="width:40%; float:left; box-sizing:border-box; text-align:right; padding:24px ">
 			<div>
 				<span style="font-size:16px; text-decoration:line-through">&pound;229</span> 
-				<span style="color:#E84C3D; font-size:28px;">&pound;195</span>
+				<span style="color:#E84C3D; font-size:32px;">&pound;195</span>
 			</div>
 			<span style="font-size:13px; display:inline-block; margin:12px 0;">price for 1 night including taxes and fees</span><br />
 			<!--<button style="background-color:#eee; color:#555; border:0; font-size:16px; padding:6px 12px;">SHORTLIST</button>-->
@@ -418,9 +409,16 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 			<div style="float:left;">Tue 2 Sep - Wed 3 Sep &nbsp;&nbsp;&nbsp;&nbsp; 1 adult</div>
 			<div style="float:right; color:#136eb8;">EDIT</div>
 		</div>-->
-		<div id="lower-rating" style="border-top:solid 1px #eee; clear:both; padding:18px 24px;">
+		
+
+	</div>
+
+
+
+	<div class="norm" >
+		<div style="border-bottom:solid 1px #eee; border-top:solid 1px #eee; padding:12px 0; margin-bottom:18px; ">
 			<div style="display:inline-block; margin-right:36px; vertical-align:top;">
-				<span style="font-size:20px;">4.4 / 5 Excellent</span> <br />
+				<span style="font-size:16px; line-height:24px;">Excellent 4.4 / 5 </span> <br />
 				<span style="font-size:13px;">230 Hotels.com reviews</span>
 			</div>
 			<div style="display:inline-block; vertical-align:top;">
@@ -428,13 +426,8 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 				<span style="font-size:13px;">230 Trip Advisor reviews</span>
 			</div>
 		</div>
-		
-
-	</div>
 
 
-
-	<div class="norm" style="">
 		<h2>About this hotel</h2>
 		<div class="description" style="font-size:13px; line-height:18px; float:left; width:50%; box-sizing:border-box; padding-right:24px;">The hotel offers 3 restaurants along with a bar/lounge. Complimentary wireless Internet access is available in public areas.</div>
 
@@ -459,7 +452,7 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 			<div style="float:right; color:#136eb8;">EDIT</div>
 		</div>-->
 
-	<div id="rooms-module" class="norm" style="margin:20px auto 0;">
+	<div id="rooms-module" class="norm" style="margin:12px auto 0;">
 		<h2 style="margin:0; padding:0 0 24px 0;">Our lowest price room</h2>
 		<div class="room-details">
 			<h3>Standard Room, 1 Double Bed (Couchette)</h3>
@@ -498,7 +491,7 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 		</div>
 	</div>
 
-	<div id="reviews" class="norm" style="margin:20px auto 0;">
+	<div id="reviews" class="norm" style="margin:12px auto 0;">
 		<h2>Guest reviews (200)</h2>
 		<div style="overflow:hidden;">
 		<div class="score" style="float:left; width:50%; box-sizing:border-box;">
@@ -543,7 +536,7 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 		</div>
 	</div>
 
-	<div id="map" class="norm" style="margin:20px auto 0;">
+	<div id="map" class="norm" style="margin:12px auto 0;">
 		<h2>Location</h2>
 		
 		<div style="overflow:hidden; margin-top:12px;">
