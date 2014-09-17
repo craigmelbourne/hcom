@@ -7,15 +7,34 @@
 		<style type="text/css">
 
 			body {font-family:arial; margin:0; padding:0; background-color: #E5DFCF;}
+			ul {padding:0; margin:0; list-style-type: none;}
+			ul.tabs {overflow:hidden;}
+			ul.tabs li {float:left; margin-right:12px;}
 
 			#header {height:60px; background-color:#E84C3D; position:fixed; top:0; left:0; right:0;}
 
-			#content {position:fixed; top:60px; left:0; right:0; bottom:0;}
-			#wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; height:100%; box-sizing:border-box; padding:12px;}
+			#content {position:fixed; top:60px; left:0; right:0; bottom:12px;}
+			#wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; height:100%; box-sizing:border-box; padding:0 0 12px 12px;}
 
-			.internal {display: inline-block; height:auto; background-color:#fff; margin-right:12px; width:auto; width:200px; height:100%;}
+			.internal {display:inline-block;  height:100%; vertical-align:top;}
 
-			.internal > div.content {height:200px;}
+			.internal div.content {background-color:#fff; border-radius:4px; width:200px; margin:12px 12px 12px 0; box-sizing: border-box; padding:24px 24px 0;}
+			#summary, #about, #reviews, #rooms {height:100%;}
+			#summary {width:350px; white-space: normal; position:relative;}
+			#photos {height:60%; width:600px; position:relative; padding:0;}
+			#location {height:40%; width:600px; position:relative; white-space: normal;}
+			#about {width:400px;}
+			#reviews {width:400px;}
+			#rooms {width:300px;}
+
+			div.content h1 {padding:0; margin:0 0 4px 0; font-size: 24px; }
+			div.content h2 {padding:0; margin:0 0 12px 0; font-size: 18px; }
+			div.content h3 {adding:0; margin:0 0 12px 0; font-size: 16px; }
+			.stars {color:#E84C3D;}
+			ul.amenities {overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('../i/tick.png');}
+ul.amenities li {float:left; width:50%; box-sizing: border-box; padding:6px 3px; font-size:14px;}
+ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc; font-size:14px; }
+ul.landmarks li {padding-bottom: 4px;}
 		</style>
 
 
@@ -25,14 +44,84 @@
 		<div id="header"></div>
 		<div id="content">
 			<div id="wrapper">
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
-				<div class="internal"></div>
+				<div class="internal">
+					<div id="summary" class="content">
+						<h1>Great Northern Hotel</h1>
+						<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+						<div style="background-color:#F2EAF3; margin:12px -24px 0; color:#990066; padding:12px 24px; font-size:13px;">Book this hotel and collect nights after your stay</div>
+						<div style="border-bottom:solid 1px #eee; border-top:solid 1px #eee; padding:12px 24px; margin:0 -24px 0;">
+							<div style="display:inline-block; margin-right:12px; vertical-align:top;">
+								<span style="font-size:16px; line-height:24px; font-weight:bold;">Excellent 4.4 / 5 </span> <br />
+								<span style="font-size:13px;">230 Hotels.com reviews</span>
+							</div>
+							<div style="display:inline-block; vertical-align:top;">
+								<img src="../i/trip45.png" /> <br />
+								<span style="font-size:13px;">230 Trip Advisor reviews</span>
+							</div>
+						</div>
+						
+						<p style="font-size:18px; line-height:24px;">Luxurious hotel close to Kings Cross and St Pancras</p>
+						<h3>Main amenities</h3>
+						<ul class="amenities">
+        					<li>Air conditioned</li>
+        					<li>Airport shuttle</li>
+        					<li>Concierge</li>
+        					<li>English Speaking</li>
+        					<li>Fitness Center</li>
+        					<li>Swimming pool</li>
+      					</ul>
+
+
+						
+      					<div style="position:absolute; bottom:0; left:0; right:0; height:120px; background-color:#3f51b5; border-bottom-left-radius:4px; border-bottom-right-radius:4px; color:#fff; padding:24px; box-sizing:border-box;">
+      						<div style="font-size:40px">Book</div>
+      						<div style="font-size:25px">&pound;152</div>
+      					</div>
+
+					</div>
+				</div>
+				<div class="internal">
+					<div class="content" id="photos" style="background:url('http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_21_z.jpg') no-repeat; background-size:cover; background-position:bottom center">
+
+						<div style="position:absolute; top:0; right:0; bottom:0; width:200px; background-color:#000; opacity:0.7; border-top-right-radius:4px; border-bottom-right-radius:4px;"></div>
+					</div>
+					<div class="content" id="location">
+						<h2>Location</h2>
+						<p style="font-size:13px; margin-top:0; margin-right:220px">King's Cross St Pancras Station, Pancras Road, London, England, N1C 4TB, United Kingdom</p>
+						<ul class="landmarks" style="">
+        					<li>King Cross Station (0.1km)</li>
+        					<li>British Library (0.3km)</li>
+        					<li>Euston Station (0.6km)</li>
+        					<li>Cartwright Gardens (0.9km) </li>
+        				</ul>
+
+						<div style="position:absolute; top:0; right:0; bottom:0; width:200px; background-color:#eee; border-top-right-radius:4px; border-bottom-right-radius:4px;"></div>
+					</div>
+				</div>
+				<div class="internal">
+					<div class="content" id="about">
+						<h2>About this hotel</h2>
+						<ul class="tabs">
+							<li>Description</li>
+							<li>Facilities</li>
+							<li>Small Print</li>
+						</ul>
+					</div>
+				</div>
+				<div class="internal">
+					<div class="content" id="reviews">
+						<h2>Reviews</h2>
+						<ul class="tabs">
+							<li>HCOM Reviews</li>
+							<li>Trip reviews</li>
+						</ul>
+					</div>
+				</div>
+				<div class="internal">
+					<div class="content" id="rooms">
+						<h2>Rooms</h2>
+					</div>
+				</div>
 			</div>
 			
 		</div>
