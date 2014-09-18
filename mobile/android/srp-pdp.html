@@ -2,17 +2,18 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Cors test</title>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<title>Android: SRP - PDP</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<script src="../hcom-services.js"></script>
 
 		<style type="text/css">
-			body {font-family: arial; background-color:#eee; margin:0; padding:0;}
+			body {font-family: arial; background-color:#E5DFCF; margin:0; padding:0; }
 			h1 {padding:0; margin:0;}
 			ul {list-style-type: none; margin:0; padding:0;}
 
 			#list-wrapper {position:absolute; top:0; left:0; width:200px; z-index:1;}
-			#details-wrapper {position:relative; display:none; z-index:2;}
+			#details-wrapper {position:relative; display:none; z-index:2; min-height:1000px; background-color:#E5DFCF;}
 
 			ul#hotelList li{padding:6px;}
 			ul#hotelList li:hover {cursor:pointer;}
@@ -28,7 +29,7 @@
 
 			<div id="details-wrapper">
 				<div id="details">
-					<div style="height:300px; background-color:#ddd;">
+					<div style="height:300px; background-color:#E84C3D;">
 						<div id="close-pdp" style="padding:12px;">X</div>
 						<h1></h1>
 					</div>
@@ -46,7 +47,10 @@
 
 			$(function(){
 				
-				fetchSearchResults("London");
+
+				fetchHotelList('London', callback);
+				//var hotels = fetchSearchResults("London");
+				//console.log(hotels);
 
 				$("#hotelList").on("click", "li", function(){
 					fetchHotelDetails($(this).attr("id"));
@@ -59,22 +63,15 @@
 
 			});
 
-			function fetchSearchResults(destination) {
+			var callback = function(data, textStatus, xhr)
+			{
+				var hotels = data.result.hotels;
+				$.each( hotels, function( i, hotel ) {
+  					console.log( i + ": " + hotel.hotelName );
 
-				var url = buildSearchUrl(destination);
-				var hotels = '';
-
-				$.getJSON(url).done(function(json){
-					hotels = json.result.hotels;
-					console.log (json.result.hotels[0])
-					$.each( hotels, function( i, hotel ) {
-  						//console.log( i + ": " + hotel.hotelName );
-
-  						$("#hotelList").append("<li id=" + hotel.hotelId + ">" + hotel.hotelName + "</li>")
-					});
+					$("#hotelList").append("<li id=" + hotel.hotelId + ">" + hotel.hotelName + "</li>")
 				});
-
-			};
+			}
 
 			function fetchHotelDetails(hotelId) {
 
