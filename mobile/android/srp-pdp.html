@@ -7,33 +7,127 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 		<script src="../hcom-services.js"></script>
 
+		<link rel="stylesheet" type="text/css" href="srp-pdp.css">
+
 		<style type="text/css">
-			body {font-family: arial; background-color:#E5DFCF; margin:0; padding:0; }
-			h1 {padding:0; margin:0;}
-			ul {list-style-type: none; margin:0; padding:0;}
 
-			#list-wrapper {position:absolute; top:0; left:0; width:200px; z-index:1;}
-			#details-wrapper {position:relative; display:none; z-index:2; min-height:1000px; background-color:#E5DFCF;}
-
-			ul#hotelList li{padding:6px;}
-			ul#hotelList li:hover {cursor:pointer;}
+		
 		</style>
 
 	</head>
 	<body>
 
+		<div id="header" class="shadow-bottom"></div>
+
 		<div style="overflow:hidden;">
 			<div id="list-wrapper" style="">
-				<ul id="hotelList"></ul>
+				<div id="hotel-list"></div>
 			</div>
 
 			<div id="details-wrapper">
 				<div id="details">
-					<div style="height:300px; background-color:#E84C3D;">
-						<div id="close-pdp" style="padding:12px;">X</div>
-						<h1></h1>
+					<div style="height:212px; background-color:#E84C3D;">
+						<div id="close-pdp" style="padding:12px;">
+							<img src="../i/back.png" />
+						</div>
+						<div id="hotel-wrapper">
+							
+							<div class="content-head">
+								<div style="width:60%; float:left; box-sizing:border-box;">
+									<h1></h1>
+									<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+								</div>
+								<div id="price">
+									<div >
+										<span class="strike-through"></span> 
+										<span class="total"></span>
+									</div>
+									<span class="fees">price for 1 night including taxes and fees</span><br />
+									<button class="book-large">BOOK NOW</button>
+								</div>
+								<div style="height:400px"></div>
+								<div class="review-summary">
+									<div class="score">
+										<span class="hcom-score" style="font-size:16px; line-height:24px; font-weight:bold;"></span> <br />
+										<span class="hcom-num-reviews" style="font-size:13px;">230 Hotels.com reviews</span>
+									</div>
+									<div class="score">
+										<img src="../i/trip45.png" /> <br />
+										<span style="font-size:13px;">230 Trip Advisor reviews</span>
+									</div>
+								</div>
+								<div id="about" style="padding:0 24px;">
+									<h2>About this hotel</h2>
+									<div class="description"></div>
+
+									<div style="">
+										<ul class="amenities">
+        									<li>Air conditioned</li>
+        									<li>Airport shuttle</li>
+        									<li>Concierge</li>
+        									<li>English Speaking</li>
+        									<li>Fitness Center</li>
+        									<li>Swimming pool</li>
+     									 </ul>
+									</div>
+									<div class="all">
+										<a href="#" id="about">All amenities</a>
+									</div>
+								</div>
+							</div>
+
+							
+
+							<div id="room" class="content-block" >
+								<h2>Lowest price room</h2>
+								<div class="all">
+									<a href="#" id="about">All rooms</a>
+								</div>
+							</div>
+							<div id="reviews" class="content-block" >
+								<h2>Guest reviews</h2>
+								<div class="all">
+									<a href="#" id="about">All reviews</a>
+								</div>
+							</div>
+
+							<div id="location" class="content-block" >
+								<h2>Location</h2>
+
+								<div style="overflow:hidden; margin-top:12px;">
+			<div id="map-placeholder" style="width:50%; float:left; box-sizing:border-box; height:250px; background-color:#eee; position:relative;">
+				<div id="map-wrapper">
+  					<div id="map_canvas" style="width:100%; height:100%;"></div>
+  					<div id="map-close" style="position:absolute; top:24px; left:24px; padding:12px; display:none; background-color:#fff;">X | Close map</div>
+				</div>
+			</div>
+			<div style="width:50%; float:left; box-sizing:border-box; padding-left:24px;">
+				<p class="address"></p>
+				<div style="margin:6px 0 18px;font-size:13px;">0203 027 9779</div>
+				<span style="font-size:14px; font-weight:bold;">What's around</span>	
+				
+				<style type="text/css">
+					ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc;}
+				</style>
+				<ul class="landmarks" style="">
+        		</ul>
+			</div>
+		</div>
+
+								<div class="all">
+									<a href="#" id="about">Open map full screen</a>
+								</div>
+							</div>
+						</div>
+
+						
+						
 					</div>
 					
+					<div id="slideshow">
+						<div class="wrapper">
+						</div>
+					</div>
 
 				</div>
 			</div>
@@ -48,60 +142,86 @@
 			$(function(){
 				
 
-				fetchHotelList('London', callback);
+				fetchHotelList('London', displayHotelList);
 				//var hotels = fetchSearchResults("London");
 				//console.log(hotels);
 
-				$("#hotelList").on("click", "li", function(){
-					fetchHotelDetails($(this).attr("id"));
+				$("#hotel-list").on("click", "div.hotel", function(){
+					fetchHotelDetails($(this).attr("id"), displayHotelDetails);
+					$("#details h1").text($(this).find(".name").text());
+					$("#price .total").text($(this).find(".total").text());
+					$(".hcom-score").text($(this).find(".qual").text());
+					$(".hcom-num-reviews").text($(this).find(".num-reviews").text() + " Hotels.com reviews");
 					$("#details-wrapper").show("slide", { direction: "right" }, 500);
 				});
 
 				$("#close-pdp").on("click", function(){
-					$("#details-wrapper").hide("slide", { direction: "right" }, 500);
+					$("#details-wrapper").hide("slide", { direction: "right" }, 500, function(){
+						$("#slideshow .wrapper").empty();
+						$("ul.landmarks").empty();
+					});
 				})
 
 			});
 
-			var callback = function(data, textStatus, xhr)
+			var displayHotelList = function(data, textStatus, xhr)
 			{
 				var hotels = data.result.hotels;
+				console.log(hotels);
 				$.each( hotels, function( i, hotel ) {
-  					console.log( i + ": " + hotel.hotelName );
+  					//console.log( i + ": " + hotel.hotelName );
 
-					$("#hotelList").append("<li id=" + hotel.hotelId + ">" + hotel.hotelName + "</li>")
+					$("#hotel-list").append(
+						'<div class="hotel" id="'+ hotel.hotelId + '">' 
+						+ '<h2 class="name">' + hotel.hotelName + '</h2>'
+						+ '<div class="total">' + hotel.promoPrice + '</div>'
+						+ '<div class="qual">' + hotel.qualitativeBadgeText + " " + hotel.guestReviewRating.toFixed(1) + '/5 </div>'
+						+ '<span class="num-reviews" style="visibility:hidden;">' + hotel.numberOfGuestReviews + '</span>'
+						+ '</div>'
+					)
 				});
 			}
 
-			function fetchHotelDetails(hotelId) {
+			var displayHotelDetails = function(data, textStatus, xhr){
+				console.log(data.result);
 
-				var url = "http://localhost:8899/device/hotelDetails.html?hotelId=" + hotelId + "&na=os%3DFacebook%7Ccv%3D1171%7Csv%3D2%7Cid%3DCFUUID9BC82AC4A123485586F5F6AFEF2084E0"
+				var photos = data.result.photos
+				var summary = data.result.roomRates.hotelSummary
+				var landmarks = data.result.map.shortDistanceGroup.groupDestinations;
+				//console.log(landmarks)
 
-				$.getJSON(url).done(function(json){
-					console.log(json.result);
+				var d = data.result.description.overview
+				var s = d.indexOf("<p>") + 3;
+				var e = d.indexOf("</p>");
+				//console.log (s + " " + e);
 
-					$("#details h1").text(json.result.roomRates.hotelSummary.hotelName);
+				var des = d.substring(s, e);
+				//console.log(des)
 
+				//summary.reviewsTotalCount
+
+				// slide show
+				$.each( photos, function( i, photo ) {
+					$("#slideshow .wrapper").append(
+						'<div class="internal"><img src="' + photo.url  + '" /></div>'
+					);
 				});
 
+				for (i = 0; i < 5; i++) { 
+    				$("ul.landmarks").append('<li>' + landmarks[i] + '</li>');
+    				console.log(landmarks[i])
+				}
+
+				$("#about .description").html(des);
+				$("#location .address").text(summary.address1 + ", " + summary.locality + ", " + summary.countryName + ", " + summary.postalCode);
+
+
 			}
 
-
-			function buildSearchUrl(destination) {
-  				var url = '', 
-      			//search_destination = (destination) ? destination : SearchForm.destination,
-      			hostname = window.location.hostname;
+			
 
 
-  				if (hostname == 'localhost') {    
-    				url = 'http://localhost:8899/device/search.html?destination='+destination+'&cur=GBP&monthCheckIn=8&dayInMonthCheckIn=31&monthCheckOut=9&dayInMonthCheckOut=1&r=1&na=os%3DFacebook%7Ccv%3D1171%7Csv%3D2%7Cid%3DCFUUID9BC82AC4A123485586F5F6AFEF2084E0';
-
-    				//console.log(url);
-  				} else {
-    				url = '/api/search.html?destination='+destination+'&cur=GBP&monthCheckIn=8&dayInMonthCheckIn=31&monthCheckOut=9&dayInMonthCheckOut=1&r=1&na=os%3DFacebook%7Ccv%3D1171%7Csv%3D2%7Cid%3DCFUUID9BC82AC4A123485586F5F6AFEF2084E0';
-  				}
-  				return url;
-			}
+			
 
 
 		</script>
