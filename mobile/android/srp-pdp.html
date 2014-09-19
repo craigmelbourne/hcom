@@ -84,46 +84,46 @@
 									<a href="#" id="about">All rooms</a>
 								</div>
 							</div>
+
 							<div id="reviews" class="content-block" >
 								<h2>Guest reviews</h2>
 								<div style="overflow:hidden;">
-		<div class="score" style="float:left; width:50%; box-sizing:border-box;">
+									<div class="score" style="float:left; width:50%; box-sizing:border-box;">
+										<div class="review-score" style="font-size:16px; margin:12px 0;"></div>
+										<div style="margin-bottom:6px;">Score breakdown</div>
+										<div style="overflow:hidden;">
+											<div>
+												<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
+													<li>
+														<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+														</div>
+													</li>
+													<li>
+														<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+														</div>
+													</li>
+													<li>
+														<div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+														</div>
+													</li>
+													<li>
+														<div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+														</div>
+													</li>
+													<li>
+														<div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+														</div>
+													</li>
+												</ul>
+											</div>
 
+										</div>
+									</div>
+									<div class="review-example">
+										
 			
-				<div style="font-size:18px; margin-bottom:12px;">4.5 / 5  Excellent (193 reviews)</div>
-
-				<div style="margin-bottom:6px;">Score breakdown</div>
-			
-			<div style="overflow:hidden;">
-				<div style="">
-					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
-						<li>
-							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
-							</div>
-						</li>
-						<li>
-							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
-							</div>
-						</li>
-						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
-							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
-							</div></li>
-							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
-							</div></li>
-						
-					</ul>
-				</div>
-
-			</div>
-
-			
-		</div>
-		<div class="review" style="font-size:16px; line-height:18px; float:left; width:50%; box-sizing:border-box;">
-			<p style="margin-top:0; font-style:italic">"Beautiful but small rooms. Decorated to very high standard. Great shower! Loved the pantry at the end of the corridor!"</p>
-			<p style="font-style:italic">"Even though the room was small, it was so well designed that it didn't really matter."" </p>
-		</div>
-		</div>
+									</div>
+								</div>
 								<div class="all">
 									<a href="#" id="about">All reviews</a>
 								</div>
@@ -185,6 +185,8 @@
 					$("#price .total").text($(this).find(".total").text());
 					$(".hcom-score").text($(this).find(".qual").text());
 					$(".hcom-num-reviews").text($(this).find(".num-reviews").text() + " Hotels.com reviews");
+
+					$(".review-score").text($(this).find(".qual").text() + " (" + $(this).find(".num-reviews").text() + " reviews)")
 					$("#details-wrapper").show("slide", { direction: "right" }, 500);
 				});
 
@@ -218,36 +220,38 @@
 			var displayHotelDetails = function(data, textStatus, xhr){
 				console.log(data.result);
 
-				var photos = data.result.photos
+				
 				var summary = data.result.roomRates.hotelSummary
-				var landmarks = data.result.map.shortDistanceGroup.groupDestinations;
-				//console.log(landmarks)
+				
+				console.log(data.result.featuredReview.summary)
 
-				var d = data.result.description.overview
-				var s = d.indexOf("<p>") + 3;
-				var e = d.indexOf("</p>");
-				//console.log (s + " " + e);
-
-				var des = d.substring(s, e);
-				//console.log(des)
-
-				//summary.reviewsTotalCount
-
+				
 				// slide show
+				var photos = data.result.photos
 				$.each( photos, function( i, photo ) {
 					$("#slideshow .wrapper").append(
 						'<div class="internal"><img src="' + photo.url  + '" /></div>'
 					);
 				});
 
+				//landmarks
+				var landmarks = data.result.map.shortDistanceGroup.groupDestinations;
 				for (i = 0; i < 5; i++) { 
     				$("ul.landmarks").append('<li>' + landmarks[i] + '</li>');
-    				console.log(landmarks[i])
 				}
 
+				// description
+				var d = data.result.description.overview
+				var s = d.indexOf("<p>") + 3;
+				var e = d.indexOf("</p>");
+				var des = d.substring(s, e);
 				$("#about .description").html(des);
+				
+				//location 
 				$("#location .address").text(summary.address1 + ", " + summary.locality + ", " + summary.countryName + ", " + summary.postalCode);
 
+				// reviews
+				$("#reviews .review-example").html('<p>"' + data.result.featuredReview.summary + '"</p><span>' + data.result.featuredReview.reviewedBy + "</span>")
 
 			}
 
