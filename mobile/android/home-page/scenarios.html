@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- style sheets -->
+		<link rel="stylesheet" type="text/css" href="reset.css">
+		<link rel="stylesheet" type="text/css" href="base.css">
+
+		<!-- Roboto font -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+		<!-- Scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				$('#display-options input[name="notification-bar"]').change(function() {
+    				console.log(this.name+' '+this.value+' '+this.checked);
+    				if(this.checked){
+    					$("#notification-bar").show();
+    					$("#header").css("height", "80px");
+    					$("#main-body").css("margin-top", "80px");
+    				} else {
+    					$("#notification-bar").hide();
+    					$("#header").css("height", "50px");
+    					$("#main-body").css("margin-top", "50px");
+    				}
+				});
+
+				$('#display-options input[name="interuption"]').change(function() { 
+					console.log(this.name+' '+this.value+' '+this.checked);
+
+					if (this.value == "tonight") {
+						$("#notification-wrapper").show();
+						$("#booking-detail").show();
+						$("#midnight-booking").hide();
+
+
+					} else if (this.value == "midnight") {
+						$("#notification-wrapper").show();
+						$("#booking-detail").hide();
+						$("#midnight-booking").show();
+					} else {
+						$("#notification-wrapper").hide();
+						$("#booking-detail").hide();
+						$("#midnight-booking").hide();
+					}
+				});
+
+				$('#display-options input[name="upcoming"]').change(function() { 
+					console.log(this.name+' '+this.value+' '+this.checked);
+
+					if(this.checked){ 
+						$("#upcoming-booking").show();
+					} else {
+						$("#upcoming-booking").hide();
+					}
+				});
+
+				$( "#states-button" ).click(function() {
+  					$("#states-wrapper").toggle();
+  					$("#overlay").toggle();
+				});
+
+			});
+		</script>
+
+		<title>Android / Home Page / Grid</title>
+	</head>
+	<body id="scenarios-inline">
+		
+
+		<div id="header">
+			
+			<div id="logo">Hotels.com</div>
+			<div id="notification-bar" style="padding:0 24px 24px; display:none;">&raquo; 2 Welcome Rewards points have been added to your account</div>
+			
+
+
+		</div>
+		<div id="overlay" style="position:fixed; top:0; left:0; right:0; bottom:0; background-color:#000; opacity:0.7; z-index:100000; display:none;"></div>
+		<div id="states" style="position:fixed; top:12px; right:12px; z-index:100001;">
+				<div id="states-button" style="background-color:#fff; padding:6px; float:right;">
+					Alternate states
+				</div>
+				<div id="states-wrapper" style=" background-color:#fff; padding:12px; clear:both; display:none;">
+					<ul id="display-options" >
+						<li style="padding: 12px 0; border-bottom:solid 1px #000;">
+							<input type="checkbox" name="notification-bar" id="notificationbar" /> 
+							<label for="notificationbar">Notification bar</label>
+						</li>
+						<li style="padding: 12px 0 12px">
+							<input type="radio" name="interuption" id="tonight" value="tonight" /> <label for="tonight">Tonights booking</label>
+						</li>
+						<li style="padding: 0 0 12px;">
+							<input type="radio" name="interuption" id="midnight" value="midnight" /> 
+							<label for="midnight">Booking after midnight</label>
+						</li>
+						<li style="padding: 0 0 12px; border-bottom:solid 1px #000;">
+							<input type="radio" name="interuption" id="neither" value="neither" /> 
+							<label for="neither">Hide Both</a
+						label>
+						</li>
+						<li style="padding:12px 0 0">
+							<input type="checkbox" name="upcoming" id="upcoming" /> 
+							<label for="upcoming">Upcoming booking</label>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+
+		
+
+		<div id="main-body">
+			<div id="notification-wrapper" style="display:none;">
+				<div class="notification" id="booking-detail" style="display:none;">
+					<div>
+					Tonight's booking
+					<h2>The Great Northern Hotel</h2>
+					<p>King's Cross St Pancras Station, Pancras Road, London, N1C 4TB, United Kingdom</p>
+					<p>0203 564 5996</p>
+					<!--<div style="border-top:1px solid #fff; margin-top:12px">
+						<ul>
+							<li>View booking details</li>
+							<li>View hotel on a map</li>
+						</ul>
+					</div>-->
+					</div>
+				</div>
+
+				<div class="notification" id="midnight-booking" style="display:none;">
+					<div style="float:right; font-size:48px;">&#10095;</div>
+					<h2>Need a hotel right now?</h2>
+					<p>Check in available until 5am</p>
+					<!--<p>Find hotels near me</p>-->
+				</div>
+				
+			</div>
+			<div id="sqm-wrapper">
+				<div id="sqm">
+					<h1>Where are you going?</h1>
+					<div id="recent-searches">
+						<h2>Recent searches</h2>
+						<ul>
+							<li>Paris, France: 15 Oct - 17 Oct</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="block" id="upcoming-booking" style="display:none;">
+				
+				<div>
+					<h2 style="margin-bottom:24px;">Upcoming booking</h2>
+					<div style="width:240px; float:left; ">
+						<div style="display:inline-block; vertical-align:top; text-align:center; margin-right:12px;">
+
+							<span style="font-size:38px">17th</span><br />
+							<span>November</span>
+						</div>
+						<div style="display:inline-block; padding:6px 20px 0 12px; font-size:32px;">&#10095;</div>
+						<div style="display:inline-block; vertical-align:top; text-align:center">
+
+							<span style="font-size:38px">19th</span><br />
+							November
+						</div>
+					</div>
+					<div style="margin-left:260px">
+						<h2 style="font-size:20px; margin-bottom:6px;">The Great Northern Hotel</h2>
+						<p style="padding:6px 0; line-height:20px;">King's Cross St Pancras Station, Pancras Road, London, N1C 4TB, United Kingdom</p>
+						<p>0203 564 5996</p>
+					</div>
+
+					<div style="border-top:solid 1px #eee; margin: 18px -24px 0; text-align:right;">
+						<a href="#" style="display:inline-block; padding:18px 24px 0; text-decoration:none;">View booking details</a>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="block">
+				<h2>Popular destinations</h2>
+				<ul id="popular-destinations">
+					<li>
+						<div></div>
+					</li>
+					<li>
+						<div></div>
+					</li>
+					<li>
+						<div></div>
+					</li>
+					<li>
+						<div></div>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		<div id="promo-wrapper">
+			<div class="promo">
+				<div></div>
+			</div>
+			<div class="promo">
+				<div></div>
+			</div>
+			<div class="promo">
+				<div></div>
+			</div>
+
+		</div>
+	</body>
+</html>

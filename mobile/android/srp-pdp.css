@@ -5,28 +5,34 @@ a {text-decoration:none; color:#3598DB;}
 
 .shadow {-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 
-.shadow-bottom {-webkit-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);}
+.shadow-bottom {-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 
 #header {position:fixed; top:0; left:0; right:0; height:50px; background-color:#E84C3D; z-index:2;}
-#list-wrapper {position:fixed; top:50px; left:0; right:0; bottom:0; z-index:1; padding:0 20px; overflow-y:scroll;}
-#details-wrapper {position:relative; display:none; z-index:3; height:2000px; background-color:#E5DFCF;}
+#header #location {color:#fff; margin-left:24px; font-size:18px; margin-top:6px;	}
+#header #date {color:#fff; margin-left:24px; font-size:14px;}
+#list-wrapper {position:fixed; top:50px; left:0; right:0; bottom:0; z-index:1; overflow-y:scroll;}
+#details-wrapper {position:relative; display:none; z-index:3; height:2500px; background-color:#E5DFCF;}
 
 .hotel:hover {cursor:pointer;}
-.hotel {margin-bottom:20px; width:300px; background-color:#fff; padding:12px;}
-.hotel .name {font-size:18px; margin:0; padding:0;}
+.hotel {margin-bottom:20px; background-color:#fff; height:300px; float:left; overflow:hidden; border-radius: 4px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
+.hotel .details {padding:12px 12px 0; height:100px;}
+.hotel .name {font-size:18px; margin:0 12px 0 0; padding:0 12px 0 0; white-space: nowrap;}
+.hotel .price .total {color:#E84C3D; font-size: 24px; margin:0;}
+.hotel .price .strikethrough { font-size: 14px; text-decoration: line-through; margin:0;}
+.hotel .img {background-size: cover; height:200px; }
+.hotel .img div {background-color:#000; opacity:0.7; color:#fff; padding:12px 20px;}
 
 #details-wrapper {}
 
 #hotel-wrapper h1 {font-size:32px; font-weight:normal; margin:0; padding:24px 24px 0;}
 #hotel-wrapper .stars {color:#E84C3D; padding:0 24px;}
 
-#price {width:40%; float:left; box-sizing:border-box; text-align:right; padding:24px }
-#price .strike-through {font-size:16px; text-decoration:line-through}
-#price .total {color:#E84C3D; font-size:32px;}
-#price .fees {font-size:13px; display:inline-block; margin:12px 0;}
-#price .book-large {background-color:#3598DB; color:#fff; border:0; font-size:14px; width:200px; padding:10px 12px;}
+#hotel-wrapper #price {width:40%; float:left; box-sizing:border-box; text-align:right; padding:24px }
+#hotel-wrapper #price .strikethrough {font-size:16px; text-decoration:line-through}
+#hotel-wrapper #price .total {color:#E84C3D; font-size:32px;}
+#hotel-wrapper #price .fees {font-size:13px; display:inline-block; margin:12px 0;}
+#hotel-wrapper #price .book-large {background-color:#3598DB; color:#fff; border:0; font-size:14px;  padding:10px 24px; border-radius:4px;}
+#hotel-wrapper #price .save-large {background-color:#f1f1f1; color:#555; border:0; font-size:14px;  padding:10px 24px; text-transform: uppercase; border-radius:4px;}
 
 .content-head {box-sizing:border-box; border-radius:4px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
 .content-block {padding:24px 24px 0; box-sizing:border-box; border-radius:4px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
@@ -37,6 +43,7 @@ box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);}
 
 .wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch;}
 .internal {display: inline-block; height:auto; background-color:#ddd; margin-right:12px; width:auto; height:200px;}
+.internal:first-child{}
 .internal img {height:200px;}
 
 .review-summary {border-bottom:solid 1px #eee; border-top:solid 1px #eee; padding:12px 24px; margin:0 0 24px;}
@@ -47,20 +54,95 @@ box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);}
 #about ul.amenities {overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('../i/tick.png');}
 #about ul.amenities li {float:left; width:33%; box-sizing: border-box; padding:3px 3px; font-size:14px;}
 
-#location .address {font-size:13px; margin-top:0}
-#location ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc;}
-#location ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
+ul.room-amenities {overflow:hidden; margin:0; padding-left:0; list-style-type: none;}
+ul.room-amenities li {float:left; width:auto; box-sizing: border-box; padding:9px 18px 6px 18px; font-size:14px; background: url('../i/tick.png') no-repeat left center;}
+ul.room-amenities li:last-child {}
+
 
 #reviews .review-example {font-size:16px; line-height:18px; float:left; width:50%; box-sizing:border-box;}
 #reviews .review-example p {font-style:italic; font-size:14px; line-height:20px; padding-right:12px;}
 #reviews .review-example span {text-align:right; display:block; font-size:14px;}
 
-@media only screen and (min-width:1000px) {
+.room-details{ min-height:80px; overflow:hidden; padding-bottom:12px;}
+.room-details h3 {padding:0; margin:0 0 12px 0; font-weight:normal;}
+.room-details .image {float:left; height:80px; width:15%; background-color:#eee; overflow:hidden;}
+.rate-details {border-top:solid 1px #eee; padding:12px 0; overflow:hidden;}
+.rate-details:last-child{padding-bottom:0;}
+.details-wrapper {float:left; width:40%; box-sizing: border-box;}
+.details {font-size:14px; line-height:24px;}
+.cancellation-free {color:#090;}
+.pay-later {color:#090; font-size:14px;}
+.wr {color:purple;}
+.hint {color:#999;}
+.price-wrapper {float:right:60%; box-sizing: border-box; text-align:right;}
+.price {display:inline-block; padding:5px; vertical-align:top;}
+.highprice {font-size:14px; text-decoration:line-through}
+.total, .rate-details .lowest-room-total {font-size:24px;}
+.rate-details .lowest-room-strikethrough {text-decoration: line-through;}
+.deal {color:#d41200;}
+.rule {font-size:12px;}
+div.book {display:inline-block; vertical-align:top; margin-left:12px;}
+button.book {border:0; background-color: #3598DB; color:#fff; padding:10px 0; text-align:center; font-size:14px; width:120px;-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); border-radius:4px;}
+.urgency {width:120px; background-color:#FFD541; padding:6px 0; text-align:center; font-size:14px;}
+
+/* location section */
+#location .address {font-size:13px; margin-top:0}
+#location ul.landmarks {margin-left:0px; padding-left:20px; list-style-type: disc;}
+#location ul.landmarks li {box-sizing: border-box; padding:6px 0; font-size:13px;}
+#map-wrapper {position:absolute; top:0px; right:0; left:0; bottom:0; background-color:#f1f1f1;}
+
+/* modal */
+.modal-close {border-bottom:solid 1px #eee; position:absolute; top:0; left:0; right:0; height:48px;}
+
+#in-the-room ul, #in-the-hotel ul {overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('../i/tick.png');}
+#in-the-room ul li, #in-the-hotel ul li {float:left; width:33%; box-sizing: border-box; padding:3px 3px; font-size:14px;}
+#in-the-hotel ul {border-bottom:solid 1px #eee; padding:20px 24px;}
+
+
+/* media queries */
+
+@media only screen and (max-width:639px) {
+	#list-wrapper {padding:4% 0 0 4%;}
+	.hotel {width:44%; margin-right:4%;}
+	#hotel-wrapper {position:absolute; top:0; width:500px; left:50%; margin-left:-250px; padding-bottom:20px;}	
+ 	.content-head {width:500px; margin:60px auto 20px; background-color:#fff;}
+ 	.content-block {width:500px; margin:0 auto 20px; background-color:#fff; box-sizing:border-box;}	
+ 	#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}	
+ 	#all-rooms-modal #rooms {width:552px; margin:0 auto 30px;}
+ 	.modal {position:fixed; left:40px; top:40px; bottom:40px; right:40px; background-color:#fff;border-radius:4px; z-index:5001;}
+}
+
+@media only screen and (min-width:640px) and (max-width:800px) {
+	#list-wrapper {padding:3% 0 0 3%;}
+	.hotel {width:29.3333%; margin-right:3%;}
+	#hotel-wrapper {position:absolute; top:0; width:700px; left:50%; margin-left:-350px; padding-bottom:20px;}	
+ 	.content-head {width:700px; margin:60px auto 20px; background-color:#fff;}
+ 	.content-block {width:700px; margin:0 auto 20px; background-color:#fff; box-sizing:border-box;}	
+ 	#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}	
+ 	#all-rooms-modal #rooms {width:652px; margin:0 auto 30px;}
+ 	.modal {position:fixed; left:40px; top:40px; bottom:40px; right:40px; background-color:#fff;border-radius:4px; z-index:5001;}
+}
+
+@media only screen and (min-width:801px) and (max-width:960px) {
+	#list-wrapper {padding:2.5% 0 0 2.5%;}
+	.hotel {width:30%; margin-right:2.5%;}
+	#hotel-wrapper {position:absolute; top:0; width:800px; left:50%; margin-left:-400px; padding-bottom:20px;}	
+ 	.content-head {width:800px; margin:60px auto 20px; background-color:#fff;}
+ 	.content-block {width:800px; margin:0 auto 20px; background-color:#fff; box-sizing:border-box;}	
+ 	#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}	
+ 	#all-rooms-modal #rooms {width:752px; margin:0 auto 30px;}
+ 	.modal {position:fixed; left:40px; top:40px; bottom:40px; right:40px; background-color:#fff;border-radius:4px; z-index:5001;}
+}
+
+@media only screen and (min-width:961px) {
+	#list-wrapper {padding:1.875% 0 0 1.875%;}
+	.hotel {width:22.65625%; margin-right:1.875%;}
  	#hotel-wrapper {position:absolute; top:0; width:900px; left:50%; margin-left:-450px; padding-bottom:20px;}	
  	.content-head {width:900px; margin:60px auto 20px; background-color:#fff;}
  	.content-block {width:900px; margin:0 auto 20px; background-color:#fff; box-sizing:border-box;}	
  	#slideshow {position:absolute; top:220px; height:200px; background-color:transparent; left:0; right:0; overflow:hidden;}	
-
+ 	#all-rooms-modal #rooms {width:852px; margin:0 auto 30px;}
+ 	.modal {position:fixed; width:800px; left:50%; margin-left:-400px; top:40px; bottom:40px; background-color:#fff;border-radius:4px; z-index:5001;}
 
 }
 

@@ -2,9 +2,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="mobile-web-app-capable" content="yes">
 		<title>Android: SRP - PDP</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+		<script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDGbEUwknHTaKmEpjwM-fRfJt7zbCZZtCI&sensor=false">
+      	</script>
 		<script src="../hcom-services.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="srp-pdp.css">
@@ -17,33 +22,65 @@
 	</head>
 	<body>
 
-		<div id="header" class="shadow-bottom"></div>
+		<div id="header" class="shadow-bottom">
+			<div id="location"></div>
+			<div id="date"></div>
+		</div>
 
-		<div style="overflow:hidden;">
-			<div id="list-wrapper" style="">
+			
+
+		<style type="text/css">
+			#select-destination {width:560px; margin:20px auto;}
+			#dest-list {margin-top:30px;}
+			#dest-list li {float:left; width:260px; margin:0 10px; background-color:#fff; padding:12px 0; margin-bottom:12px; border-radius:4px; -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33); box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.33);}
+
+		</style>
+			<div id="list-wrapper">
+				<div id="select-destination" style="text-align:center;">
+				<h1>Select a destination</h1>
+					
+				<ul id="dest-list">
+					<li>London, United Kingdom</li>
+					<li>New York, USA</li>
+					<li>Paris, France</li>
+					<li>Barcelona, Spain</li>
+					<li>Rome, Italy</li>
+					<li>Amsterdam, Netherlands</li>
+					<li>Munich, Germany</li>
+					<li>Lisbon, Portugal</li>
+				</ul>
+			</div>
 				<div id="hotel-list"></div>
 			</div>
 
+			
+
 			<div id="details-wrapper">
-				<div id="details">
-					<div style="height:212px; background-color:#E84C3D;">
-						<div id="close-pdp" style="padding:12px;">
+				<div id="pdp-header" style="position:absolute; top:0; left:0; right:0; height:60px; background-color:#E84C3D;">
+					<div id="close-pdp" style="padding:12px;">
 							<img src="../i/back.png" />
-						</div>
+					</div>
+				</div>
+
+				<div>
+
+				<div id="details" style="">
+					<div style="height:212px; background-color:#E84C3D;">
+						
 						<div id="hotel-wrapper">
 							
 							<div class="content-head">
 								<div style="width:60%; float:left; box-sizing:border-box;">
 									<h1></h1>
-									<div class="stars">&#9733;&#9733;&#9733;&#9733;</div>
+									<div class="stars"></div>
 								</div>
 								<div id="price">
 									<div >
-										<span class="strike-through"></span> 
+										<span class="strikethrough"></span> 
 										<span class="total"></span>
 									</div>
 									<span class="fees">price for 1 night including taxes and fees</span><br />
-									<button class="book-large">BOOK NOW</button>
+									<button class="save-large shadow">Save</button> <button class="book-large shadow">BOOK NOW</button>
 								</div>
 								<div style="height:400px"></div>
 								<div class="review-summary">
@@ -71,7 +108,7 @@
      									 </ul>
 									</div>
 									<div class="all">
-										<a href="#" id="about">All amenities</a>
+										<a href="#" id="open-about">All amenities</a>
 									</div>
 								</div>
 							</div>
@@ -80,8 +117,46 @@
 
 							<div id="room" class="content-block" >
 								<h2>Lowest price room</h2>
+								<div class="room-details">
+									<h3>Standard room</h3>
+									<div class="image">
+										<img src="http://exp.cdn-hotels.com/hotels/6000000/5930000/5921200/5921175/5921175_15_e.jpg" style="heigth:80px;"/>
+									</div>
+									<div class="info" style="float:left; width:85%; box-sizing:border-box; padding:3px 12px 0;">
+										
+										<ul class="bed-choices">
+        									<li>1 Double bed</li>
+     									 </ul>
+										<ul class="room-amenities">
+        									<li>Air conditioned</li>
+        									<li>Free Wi-Fi</li>
+        									<li>Flat-panel TV</li>
+        									<li>Complimentary bottled water</li>
+        									<li>Phone</li>
+     									 </ul>
+										<a href="#" style="font-size:14px; display:inline-block; padding:6px 0">See full description</a>
+									</div>
+								</div>
+								<div class="rate-details">
+									<div class="details-wrapper">
+										<span class="details cancellation">Non-refundable</span><br />
+										<span class="details extra">Free Wi-Fi</span><br />
+										<span class="details wr">Welcome rewards</span>
+									</div>
+									<div class="price-wrapper">
+										<div class="price">
+											<span class="lowest-room-strikethrough"></span> 
+											<span class="lowest-room-total deal"></span><br />
+											<span class="rule">price for 1 night including taxes and fees</span>
+										</div>
+										<div class="book">
+											<button class="book">BOOK</button>
+											<div class="urgency">1 room left</div>
+										</div>
+									</div>
+								</div>
 								<div class="all">
-									<a href="#" id="about">All rooms</a>
+									<a href="#rooms" id="open-rooms">All rooms</a>
 								</div>
 							</div>
 
@@ -125,7 +200,7 @@
 									</div>
 								</div>
 								<div class="all">
-									<a href="#" id="about">All reviews</a>
+									<a href="#" id="open-reviews">All reviews</a>
 								</div>
 							</div>
 
@@ -136,7 +211,7 @@
 									<div id="map-placeholder" style="width:50%; float:left; box-sizing:border-box; height:250px; background-color:#eee; position:relative;">
 										<div id="map-wrapper">
   											<div id="map_canvas" style="width:100%; height:100%;"></div>
-  											<div id="map-close" style="position:absolute; top:24px; left:24px; padding:12px; display:none; background-color:#fff;">X | Close map</div>
+  											<div id="map-close" style="position:absolute; top:0px; left:0px; right:0; padding:12px; display:none; background-color:#E84C3D; color:#fff;">X | Close map</div>
 										</div>
 									</div>
 									<div style="width:50%; float:left; box-sizing:border-box; padding-left:24px;">
@@ -148,7 +223,7 @@
 								</div>
 
 								<div class="all">
-									<a href="#" id="about">Open map full screen</a>
+									<a href="#" id="open-map">Open map full screen</a>
 								</div>
 							</div>
 						</div>
@@ -157,61 +232,484 @@
 						
 					</div>
 					
+
+					<div id="overlay-slideshow" class="overlay">
+						<div style="color:#fff; position:absolute; top:0; right:0; padding:24px;">X</div>
+					</div>
+
 					<div id="slideshow">
 						<div class="wrapper">
 						</div>
 					</div>
 
 				</div>
+
+				</div>
 			</div>
 			
+
+<style type="text/css">
+	#modal-overlay, .overlay {position:fixed; top:0; bottom:0; left:0; right:0; background-color:#000; opacity:0.8; z-index:5001; display:none;}
+	
+	.modal .title {position:absolute; top:0; left:0; right:0; height:100px; background-color:#f1f1f1; border-top-left-radius: 4px; border-top-right-radius: 4px;}
+	
+	#modal-about-hotel, #modal-reviews {display:none;}
+
+	.modal .title h1 {margin:24px 24px 12px; padding:0; font-size:20px; }
+	.modal .title ul.tabs {overflow: hidden; padding:0; margin:0 0 0 24px; list-style-type: none; position: absolute; bottom:0;}
+	.modal .title ul.tabs li {float:left; margin-right:24px; padding:10px 0; border-bottom:solid 2px #eee;}
+	.modal .title ul.tabs li.selected {border-bottom:solid 2px #E84C3D;}
+	.modal .title ul.tabs li:hover {cursor: pointer;}
+	.modal .content {position:absolute; top:100px; left:0; right:0; bottom:0; overflow-y:scroll; -webkit-overflow-scrolling: touch; padding:0 24px; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;}
+
+	.modal .content h2 {font-size:20px; margin:20px 0;}
+
+	.modal .content p {font-size:16px; line-height: 24px;}
+	.modal #description {}
+	.modal #in-the-hotel {display:none;}
+	.modal #in-the-room {display:none;}
+	.modal #small-print {display:none;}
+	.modal #hcom-review {}
+	.modal #trip-reviews {display:none;}
+</style>
+		
+<div id="modal-overlay" style=""></div>
+
+<div id="modal-about-hotel" class="modal">
+	<div class="title">
+		<h1>About this hotel</h1>
+		<ul class="tabs" rel="modal-about-hotel">
+			<li rel="description" class="selected">Description</li>
+			<!--<li rel="key-facts">Key facts</li>-->
+			<li rel="in-the-hotel">In the hotel</li>
+			<li rel="in-the-room">In the room</li>
+			<li rel="small-print">Small print</li>
+		</ul>
+		<a href="#" class="close-modal" style="position:absolute; top:0; right:0; padding:24px;">X</a>
+	</div>
+	<div class="content">
+		<div id="description"></div>
+		<div id="in-the-hotel">
+			<h2>In the hotel</h2>
+			<div id="general">
+				<ul></ul>
+			</div>
+			<div id="services">
+				<ul></ul>
+			</div>
+			<div id="business">
+				<ul></ul>
+			</div>
 		</div>
+		<div id="in-the-room">
+			<h2>In the room</h2>
+			<ul style="overflow:hidden; margin:0; padding-left:28px; list-style-type: none; list-style-image: url('../i/tick.png');"></ul>
+		</div>
+		<div id="small-print">
+			<h2>Small print</h2>
+		</div>
+	</div>
+</div>
+
+<div id="modal-reviews" class="modal">
+	<div class="title">
+		<h1>Guest reviews</h1>
+		<ul class="tabs" rel="modal-reviews">
+			<li rel="hcom-review" class="selected">Hotels.com guest reviews</li>
+			<li rel="trip-reviews">Trip Advisor reviews</li>
+		</ul>
+		<a href="#" class="close-modal" style="position:absolute; top:0; right:0; padding:24px">X</a>
+	</div>
+	<div class="content">
+		<div id="hcom-review">
+			<div id="breakdown" style="overflow:hidden">
+			<h2 style="font-size:24px; margin-bottom:12px; padding:0; left"></h2>
+
+			<div style="float:left; width:50%">
+					<div style="margin-bottom:6px;">Score breakdown</div>
+					<ul style="font-size:14px; margin:0; padding:0; list-style-type:none;">
+						<li>
+							<div style="background-color:#eee; width:82%; border-bottom:solid 5px #fff;"><span style="background-color:#fff;">5.0 &nbsp;</span>
+							</div>
+						</li>
+						<li>
+							<div style="background-color:#eee; width:63%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">4.0 &nbsp;</span>
+							</div>
+						</li>
+						<li><div style="background-color:#eee; width:42%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">3.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">2.0 &nbsp;</span>
+							</div></li>
+							<li><div style="background-color:#eee; width:22%; border-bottom:solid 5px #fff;"><span style="background-color:#fff; border-bottom:solid 2px #fff;">1.0 &nbsp;</span>
+							</div></li>
+						
+					</ul>
+			</div>
+
+		<style type="text/css">
+			#modal-reviews .reviews {margin-top:24px;}
+			#modal-reviews .review {padding:24px 0; border-bottom:solid 1px #eee; overflow:hidden;}
+			#modal-reviews .review h3 {font-size:24px; margin:0 0 6px 0; padding:0; font-weight:normal;}
+			#modal-reviews .review .body {font-size:16px; line-height: 20px;}
+			#modal-reviews .review .user {font-size:14px; margin-top:12px;}
+			#themes ul {margin:0; padding:0; list-style-type: none; margin-top:6px;}
+			#themes ul li {font-size:14px; padding-bottom:5px; width:170px}
+		</style>
+
+			<div id="themes" style="float:left; width:50%;">
+				Average rating for:
+				<ul>
+					<li><span style="float:right;">4.8</span> Cleanliness</li>
+					<li><span style="float:right;">4.5</span> Service</li>
+					<li><span style="float:right;">4.3</span> Comfort</li>
+					<li><span style="float:right;">4.7</span> Condition</li>
+					<li><span style="float:right;">4.2</span> Neighbourhood</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="reviews">
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Really very good</h3>
+					<div class="body">This hotel has a really good feel about it. Airy calm corridors, simple but comfy furnishings and a really nice finish. After being so disappointed with the St Pancras Renaissance across the road which is all fur coat but no substance I went for the GNH and was pretty chuffed that I did. I was extremely happy with the hotel and my stay. The Reception could be bigger and friendlier but that was the only minor mark against a very good stay. Recommend highly.</div>
+					<div class="user">Murk, GB - 1 night business trip in Sep 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Great hotel</h3>
+					<div class="body">I thoroughly enjoyed my stay. We were upgraded to a better room. The pantry was nice and had loads of design magazines. The service was wonderful. I'd recommend this hotel to anyone who wants to treat himself.</div>
+					<div class="user">Ian, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
+			</div>
+
+			<div class="review">
+				<div class="score" style=" float:left; width:100px; font-size:24px;">5.0 / 5 <br /><span style="font-size:18px">Excellent</span></div>
+				<div class="words" style="margin-left:100px;">
+					<h3>Excellent location, very quiet and confortable</h3>
+					<div class="body">Very homely and comfortable. I loved the pantry facilities although we needed lessons to work the coffee machine. We gave up eventually and just used the kettle. Bed really comfy and it was very quiet. Location unbeatable, we walked everywhere. Quite expensive and therefore would suggest only use for a stay in London as hotel itself has a lot to offer. Would book something less expensive if just passing through.</div>
+					<div class="user">jennywalls1, GB - 1 night trip in Aug 2014</div>
+				</div>
+				
+			</div>
+		</div>
+
+		</div>
+		<div id="trip-reviews">
+			<h2>Trip reviews</h2>
+			<p>Not available in this prototype</p>
+		</div>
+		
+	</div>
+</div>
+
+<div id="all-rooms-modal" style="position:fixed; display:none; background-color:#fff; top:20px; left:20px; z-index:10000; overflow:scroll">
+	<div class="modal-close">
+		<a href="#" class="close" style="padding:18px 24px; display:inline-block;">X</a>
+	</div>
+
+	<div id="rooms-wrapper" style="position:absolute; top:48px; left:0; right:0; bottom:0; overflow-y:scroll;">
+
+	</div>
+</div>
 
 		
 
 		
 		<script>
 
+			function addRoomRates(basePrice, strikethrough){
+
+
+				var el = $("#all-rooms-modal #rooms-wrapper").find("#rooms");
+				if (strikethrough != 0){
+					s = strikethrough;
+				} else {
+					s = basePrice * 3.25;
+				}
+				console.log(s);
+				$(el).find("#rm1rt1 .total").text("£" + basePrice);
+				$(el).find("#rm1rt1 .highprice").text("£" + s);
+				$(el).find("#rm1rt2 .total").text("£" + (parseInt(basePrice) + 20));
+				$(el).find("#rm1rt2 .highprice").text("£" + (parseInt(s) + 20));
+				$(el).find("#rm1rt3 .total").text("£" + (parseInt(basePrice) + 40));
+				$(el).find("#rm1rt3 .highprice").text("£" + (parseInt(s) + 20));
+
+				$(el).find("#rm2rt1 .total").text("£" + Math.round(parseInt(basePrice) * 1.25));
+				$(el).find("#rm2rt1 .highprice").text("£" + parseInt(s));
+				$(el).find("#rm2rt2 .total").text("£" + Math.round(parseInt(basePrice) * 1.25 + 20));
+				$(el).find("#rm2rt2 .highprice").text("£" + (parseInt(s) + 30));
+				$(el).find("#rm2rt3 .total").text("£" + Math.round(parseInt(basePrice) * 1.25 + 40));
+				$(el).find("#rm2rt3 .highprice").text("£" + (parseInt(s) + 60));
+
+				$(el).find("#rm3rt1 .total").text("£" + Math.round(parseInt(basePrice) * 1.50));
+				$(el).find("#rm3rt1 .highprice").text("£" + parseInt(s));
+				$(el).find("#rm3rt2 .total").text("£" + Math.round(parseInt(basePrice) * 1.50 + 20));
+				$(el).find("#rm3rt2 .highprice").text("£" + (parseInt(s) + 30));
+				$(el).find("#rm3rt3 .total").text("£" + Math.round(parseInt(basePrice) * 1.50 + 40));
+				$(el).find("#rm3rt3 .highprice").text("£" + (parseInt(s) + 60));
+
+			}
+
 			$(function(){
+
+				$("#select-destination ul li").on("click", function(){
+					var city = $(this).text();
+					$("#select-destination").fadeOut();
+					$("#header #location").text(city);
+					$("#header #date").text("30 Sep 2014 - 1 Oct 2014");
+					fetchHotelList(city, displayHotelList);
+				})
+				
+				//var city = "London"
+				
 				
 
-				fetchHotelList('London', displayHotelList);
-				//var hotels = fetchSearchResults("London");
-				//console.log(hotels);
+				
+				// load external content
+				$("#all-rooms-modal #rooms-wrapper").load("pdp-rooms.html");
+
 
 				$("#hotel-list").on("click", "div.hotel", function(){
 					fetchHotelDetails($(this).attr("id"), displayHotelDetails);
 					$("#details h1").text($(this).find(".name").text());
-					$("#price .total").text($(this).find(".total").text());
+					$("#price .total").text($(this).find(".price .total").text());
+					$(".lowest-room-total").text($(this).find(".price .total").text());
+					$("#price .strikethrough").text($(this).find(".price .strikethrough").text());
+					$(".lowest-room-strikethrough").text($(this).find(".price .strikethrough").text());
 					$(".hcom-score").text($(this).find(".qual").text());
+					$("#breakdown h2").text($(this).find(".qual").text());
 					$(".hcom-num-reviews").text($(this).find(".num-reviews").text() + " Hotels.com reviews");
+					$("#details .stars").html($(this).find(".stars").html());
 
 					$(".review-score").text($(this).find(".qual").text() + " (" + $(this).find(".num-reviews").text() + " reviews)")
-					$("#details-wrapper").show("slide", { direction: "right" }, 500);
+					$("#details-wrapper").show("slide", { direction: "right" }, 500, function(){
+						$("#pdp-header").css({
+							"position":"fixed",
+							"zIndex": 5003
+						});
+					});
+
+					addRoomRates($(this).find(".base-price").text(), $(this).find(".base-strikethrough").text());
 				});
 
 				$("#close-pdp").on("click", function(){
+					$("#pdp-header").css({
+							"position":"absolute"
+						});
 					$("#details-wrapper").hide("slide", { direction: "right" }, 500, function(){
 						$("#slideshow .wrapper").empty();
 						$("ul.landmarks").empty();
+						$("#about .description").empty();
+						$("#reviews .review-example").empty();
+						$("#in-the-room ul").empty();
+						$("#in-the-hotel #general ul").empty();
+						$("#in-the-hotel #services ul").empty();
+						$("#in-the-hotel #business ul").empty();
 					});
+				});
+
+
+				// Open modal windows
+
+				$("#open-rooms").on("click", function(e){
+					e.preventDefault();
+					launchRooms();
+				});
+
+				$(".close").on("click", function(e){
+					e.preventDefault();
+					$("#all-rooms-modal").hide();
+					$("#price-guarantee").hide();
+					$(".more-rates").hide();
+					$(".more-rooms").hide();
+				});
+
+				$("#slideshow").on("click", "img", function(){
+					$("#overlay-slideshow").show().css("z-index", "10001");
+					//console.log($(window).height());
+					console.log($("#slideshow").offset().top - $(window).scrollTop());
+					$("#slideshow").css({
+						zIndex:10002,
+						position:"fixed",
+						top: $(this).offset().top - $(window).scrollTop()
+					})
+
+					$("#slideshow").animate({
+						top: ($(window).height() - 400) / 2, 
+						height: 400
+					}, 200);
+
+
+					$(".internal img").animate({ 
+						height: 400,
+						width: $(this).width * 2
+					}, 200);
+
+				});
+
+				$("#overlay-slideshow").on("click", function(){
+
+					$(this).fadeOut();
+
+					$("#slideshow").css({
+						zIndex:"auto",
+						position:"absolute"
+					})
+
+					$("#slideshow").animate({
+						top: 220, 
+						height: 200
+					}, 200, function(){
+					
+					})
+
+					$(".internal img").animate({ 
+						height: 200,
+						width: $(this).width / 2
+					}, 200)
+				});
+
+				$("#open-about").on("click", function(e){
+					e.preventDefault();
+					$("#modal-overlay").fadeIn();
+					$("#modal-about-hotel").fadeIn()
+				});
+
+				$("#open-reviews").on("click", function(e){
+					e.preventDefault();
+					$("#modal-overlay").fadeIn();
+					$("#modal-reviews").fadeIn();
+				});
+
+				$(".close-modal").on("click", function(e){
+					e.preventDefault();
+					$("#modal-overlay").fadeOut();
+					$("#modal-about-hotel").fadeOut();
+					$("#modal-reviews").fadeOut();
 				})
 
+				$("#modal-overlay").on("click", function(e){
+					$("#modal-overlay").fadeOut();
+					$("#modal-about-hotel").fadeOut();
+					$("#modal-reviews").fadeOut();
+				});
+
+				$(".tabs li").on("click", function(){
+					var el = $(this).attr("rel");
+					var modalId = $(this).parent("ul").attr("rel");
+
+					$( ".modal .content > div:visible").fadeOut(function(){
+						$("#"+el).fadeIn();
+					});
+
+					$("#" + modalId + " .tabs li").removeClass("selected");
+					$(this).addClass("selected");
+				});
+
+				$("#open-map").on("click", function(e){
+					e.preventDefault();
+					var center = map.getCenter()
+					var t = $("#map-placeholder").position().top - $(window).scrollTop();
+					$("#map-wrapper").css({
+						position: "fixed",
+						height: 250,
+						width: $("#map-placeholder").width(),
+						left: $("#map-placeholder").offset().left,
+						top: t,
+						zIndex: 10001
+					});
+
+					$("#map-wrapper").animate({
+						top:0,
+						left: 0,
+						height: "100%",
+						width:"100%"
+					}, function(){
+						google.maps.event.trigger(map, 'resize');
+						map.panTo(center);
+
+						$("#map-close").slideDown();
+					});
+				});
+
+				$("#map-close").on("click", function(){
+					var center = map.getCenter()
+				var t = $("#map-placeholder").position().top - $(window).scrollTop();
+				$("#map-close").hide();
+
+				$("#map-wrapper").animate({
+					top:t,
+					left: $("#map-placeholder").offset().left,
+					height: 250,
+					width:$("#map-placeholder").width()
+				}, function(){	
+
+					$("#map-wrapper").css({
+						position: "static",
+						zIndex: "auto"
+					});
+					map.setCenter(center);
+				});
+
+			}); 
+
+			// end page load
 			});
 
 			var displayHotelList = function(data, textStatus, xhr)
 			{
 				var hotels = data.result.hotels;
+				var total;
+				var basePrice;
+				var strikethrough;
+				//var stars = "";
 				console.log(hotels);
+
 				$.each( hotels, function( i, hotel ) {
   					//console.log( i + ": " + hotel.hotelName );
+  					
+  					// price
+  					if (typeof(hotel.promoPrice) != 'undefined') {
+  						total = "<span class='total'>" + hotel.promoPrice + "</span> <span class='strikethrough'>" + hotel.avgPrice + "</span>";
+  						basePrice = hotel.promoPriceDetails.value;
+  						strikethrough = hotel.avgPriceDetails.value;
+  					} else {
+  						total = "<span class='total'>" + hotel.avgPrice + "</span>";
+  						basePrice = hotel.avgPriceDetails.value;
+  						strikethrough = 0;
+  					}
 
+  					//console.log("base price " + basePrice);	
+
+  					var stars = ""
+  					for (i = 0; i < Math.floor(hotel.starRating); i++) {
+  						stars += "&#9733;";
+  					} 
+
+
+  					//stars = Math.floor(hotel.starRating);
 					$("#hotel-list").append(
-						'<div class="hotel" id="'+ hotel.hotelId + '">' 
+						'<div class="hotel" id="'+ hotel.hotelId + '">'
+						+ '<div class="details">'
 						+ '<h2 class="name">' + hotel.hotelName + '</h2>'
-						+ '<div class="total">' + hotel.promoPrice + '</div>'
-						+ '<div class="qual">' + hotel.qualitativeBadgeText + " " + hotel.guestReviewRating.toFixed(1) + '/5 </div>'
-						+ '<span class="num-reviews" style="visibility:hidden;">' + hotel.numberOfGuestReviews + '</span>'
+						+ '<div class="stars">' + stars + '</div>'
+						+ '<div class="price">' + total + '</div>'
+						
+						+ '<div class="num-reviews" style="display:none;">' + hotel.numberOfGuestReviews + '</div>'
+						+ '<div class="base-price" style="display:none;">' + basePrice + '</div>'
+						+ '<div class="base-strikethrough" style="display:none;">' + strikethrough + '</div>'
+						+ '</div>'
+						+ '<div class="img" style="background-image:url(' + hotel.imageUrl + ')">'
+						+ '<div class="qual">' + hotel.guestReviewRating.toFixed(1) + "/5  " + hotel.qualitativeBadgeText + '</div>'
+						+ '</div>'
 						+ '</div>'
 					)
 				});
@@ -220,8 +718,9 @@
 			var displayHotelDetails = function(data, textStatus, xhr){
 				console.log(data.result);
 
-				
+
 				var summary = data.result.roomRates.hotelSummary
+				var amenities = data.result.amenities;
 				
 				console.log(data.result.featuredReview.summary)
 
@@ -233,6 +732,11 @@
 						'<div class="internal"><img src="' + photo.url  + '" /></div>'
 					);
 				});
+
+				var pos = $(".content-head").offset();
+				console.log(pos.left)
+				//$(".internal:first-child").css("margin-left", pos.left - 12+"px");
+				$(".wrapper").find(".internal:first").css("margin-left", pos.left - 12);
 
 				//landmarks
 				var landmarks = data.result.map.shortDistanceGroup.groupDestinations;
@@ -246,14 +750,77 @@
 				var e = d.indexOf("</p>");
 				var des = d.substring(s, e);
 				$("#about .description").html(des);
+
+				$("#modal-about-hotel #description").html(d);
 				
 				//location 
 				$("#location .address").text(summary.address1 + ", " + summary.locality + ", " + summary.countryName + ", " + summary.postalCode);
+				var geoloc = new google.maps.LatLng(data.result.map.geoloc.lat, data.result.map.geoloc.lng)
+				initializeMap("London, Uk");
+				map.setCenter(geoloc);
+				var marker = new google.maps.Marker({
+      				position: geoloc,
+      				map: map,
+      				title: 'Hello World!'
+  				});
 
 				// reviews
 				$("#reviews .review-example").html('<p>"' + data.result.featuredReview.summary + '"</p><span>' + data.result.featuredReview.reviewedBy + "</span>")
 
+				// amenities
+				// rooms
+				$.each( amenities.roomAmenities.values, function( i, roomAmenity ) {
+					$("#in-the-room ul").append("<li>" + roomAmenity + "</li>");
+				});
+
+				// general
+				$.each( amenities.general.values, function( i, generalAmenity ) {
+					$("#in-the-hotel #general ul").append("<li>" + generalAmenity + "</li>");
+				});
+
+				// services
+				$.each( amenities.amenityServices.values, function( i, serviceAmenity ) {
+					$("#in-the-hotel #services ul").append("<li>" + serviceAmenity + "</li>");
+				});
+
+				// business
+				$.each( amenities.amenityBusiness.values, function( i, businessAmenity ) {
+					$("#in-the-hotel #business ul").append("<li>" + businessAmenity + "</li>");
+				});
+
+
 			}
+
+			function launchRooms(){
+			var p = $("#room").offset();
+			var h = $("#room").height();
+			var w = $("#room").width();
+			var t = $('#room').position().top - $(window).scrollTop();
+
+			console.log(t + " " + p.left + " " + h + " " + w);
+			$("#all-rooms-modal").css({
+      			"height": h + 24 + "px",
+      			"width": w + 24 + "px",
+      			"top": t + 20 + "px",
+      			"left": p.left + "px"
+    		});
+
+    		$("#all-rooms-modal").show().animate({
+
+    			left: 0,
+    			width: "100%",
+    			top: 0,
+    			height: "100%"
+
+    		}, 400);
+
+    		$("#price-guarantee").slideDown(400, function(){
+    			$(".more-rates").slideDown(function(){
+    				$(".more-rooms").slideDown();
+    			});
+    		});
+
+		}
 
 			
 

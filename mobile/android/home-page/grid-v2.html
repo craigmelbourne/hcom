@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<!-- style sheets -->
+		<link rel="stylesheet" type="text/css" href="reset.css">
+		<link rel="stylesheet" type="text/css" href="base.css">
+
+		<!-- Roboto font -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+		<!-- Scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				$("#tools li a").on("click", function(){
+					var el = $(this).attr("rel");
+					$("#" + el).slideDown();
+				});
+
+				$(".notification").on("click", function(){
+					$(this).slideUp();
+				})
+
+
+
+			});
+		</script>
+
+		<title>Android / Home Page / Grid</title>
+	</head>
+	<body id="current">
+		<div id="header">
+			
+			<div id="logo">Hotels.com</div>
+			
+		</div>
+		<div id="main-body">
+			
+			<div></div>
+			<div id="sqm">
+				<h1>Where are you going</h1>
+				<div id="recent-searches">
+						<h2>Recent searches</h2>
+						<ul>
+							<li>Paris, France: 15 Oct - 17 Oct</li>
+						</ul>
+					</div>
+			</div>
+
+			<div id="notification-wrapper">
+				<div>
+					Tonights booking
+					<h2>The Great Northern Hotel</h2>
+					<p>King's Cross St Pancras Station, Pancras Road, London, N1C 4TB, United Kingdom</p>
+					<p>0203 564 5996</p>
+					<div style="border-top:1px solid #fff; margin-top:12px">
+						<ul>
+							<li>View booking details</li>
+							<li>View hotel on a map</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="promo-wrapper">
+			<div class="promo">
+				<div>
+					Hotels near me
+				</div>
+			</div>
+			<div class="promo">
+				<div>New York</div>
+			</div>
+			<div class="promo">
+				<div>Paris</div>
+			</div>
+			<div class="promo">
+				<div>Rome</div>
+			</div>
+			<div class="promo">
+				<div>Barcelona</div>
+			</div>
+
+		</div>
+	</body>
+</html>

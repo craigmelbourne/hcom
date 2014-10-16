@@ -1,0 +1,186 @@
+
+body {background-color:#f1f1f1; font-family: arial; font-family: 'Roboto', sans-serif;}
+
+#header {position:fixed; top:0px; left:0; right:0; height:50px; background-color:#d41200; color:#fff; z-index:1000; }
+#header #logo {padding:12px 24px; font-size:24px;}
+#header ul {float:right; margin:6px;}
+#header ul li {float:left; margin-right:12px;}
+#header ul li a {color:#fff; text-decoration: none; font-size:14px;}
+
+
+
+.notification .close {float:right;}
+.notification .close:hover {cursor: pointer;}
+
+/* Grid layout css*/ 
+#grid {margin: 50px 0 0 0;}
+#grid #main-body {}
+
+
+#grid #promo-wrapper {position:fixed; bottom:0; left:0; right:0; padding:24px 0; white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; }
+#grid .promo {display:inline-block;}
+#grid .promo:last-child {margin-right:24px;}
+#grid .promo > div {margin-left:24px; background-color:#fff; border-radius:4px; height:140px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+
+
+@media only screen and (min-width:0) {
+	#grid #main-body h1 {font-size:36px; border-bottom:solid 1px #000; width:auto; padding-bottom:24px;}
+	#grid #main-body #sqm {padding:48px 24px }
+	#grid #inline-small {padding:12px 24px; display:none; background-color:#000; color:#fff; position:relative;}
+	#grid #inline-large {padding:12px 24px; display:none; background-color:#000; color:#fff; height:100px; position:relative;}
+	#grid .promo {width:400px;}
+}
+
+@media only screen and (min-width:768px) {
+	#grid #main-body h1 {font-size:36px; border-bottom:solid 1px #000; width:70%; padding-bottom:24px;}
+	#grid #main-body #sqm {padding:48px 80px; }
+	#wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; height:100%; box-sizing:border-box; padding:0 0 12px 12px;}
+}
+
+/* Current design adapted */
+#current {margin: 50px 0 0 0;}
+#current #promo-wrapper {position:fixed; bottom:0; left:0; right:0; padding:24px 0; white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; }
+#current .promo {display:inline-block;}
+#current .promo:last-child {margin-right:24px;}
+#current .promo > div {margin-left:24px; background-color:#fff; border-radius:4px; height:140px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); padding:24px; box-sizing:border-box;}
+
+
+@media only screen and (min-width:0) {
+	#current .promo {width:400px;}
+	#current #main-body #sqm {padding: 48px 24px; box-sizing:border-box;}
+	#current #main-body h1 {font-size:36px; border-bottom:solid 1px #000; width:auto; padding-bottom:24px;}
+	#current #main-body #notification-wrapper {box-sizing:border-box;}
+	#current #main-body #notification-wrapper > div {background-color:#000; color:#fff; padding:24px 24px 12px; }
+	#current #main-body #notification-wrapper > div h2 {font-size:20px; margin-top:12px;}
+	#current #main-body #notification-wrapper > div p {margin:6px 0; line-height:20px;}
+	#current #main-body #notification-wrapper > div ul {overflow:hidden;}
+	#current #main-body #notification-wrapper > div ul li {float:left; padding:12px 0 6px; width:50%; text-align: center;}
+}
+
+@media only screen and (min-width:850px) {
+	#current #main-body #sqm {width:50%; padding:48px; float:left; box-sizing:border-box;}
+	
+
+	#current #main-body #notification-wrapper {width:50%; padding:48px; float:left; box-sizing:border-box;}
+	
+
+	#wrapper {white-space: nowrap; overflow-y: hidden; overflow-x: scroll; -webkit-overflow-scrolling: touch; height:100%; box-sizing:border-box; padding:0 0 12px 12px;}
+
+}
+
+
+/* Scroll layout css */
+
+body#scroll {} 
+#scroll #header {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#scroll #main-body {margin-top:50px; min-height:1000px;}
+#scroll #main-body #sqm-wrapper {background-color:#fff; position:relative;}
+#scroll #main-body #sqm-wrapper #sqm {max-width:900px; margin:0 auto 0; padding:120px 24px 24px;box-sizing:border-box;}
+#scroll #main-body .block {max-width:900px; margin: 36px auto 0; position:relative; padding:0 0 0 24px; box-sizing:border-box;}
+#scroll #main-body #sqm-wrapper #sqm h1 {font-size:36px; border-bottom: solid 1px #000; padding:24px 0;}
+
+#scroll #inline-small {z-index:1000; padding:12px 24px; display:none; background-color:#000; color:#fff; position:fixed; top:50px; left:0; right:0;}
+#scroll #inline-large {z-index:1000; padding:12px 24px; display:none; background-color:#000; color:#fff; height:100px; position:fixed; top:50px; left:0; right:0;}
+
+
+/* Scroll strip layout css */
+
+body#scroll-strip {} 
+#scroll-strip #header {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#scroll-strip #main-body {margin-top:50px; min-height:1000px;}
+#scroll-strip #main-body #sqm-wrapper {background-color:#fff; }
+#scroll-strip #main-body #sqm-wrapper #sqm { max-width:900px; margin:0 auto 0; padding:24px 24px 120px; box-sizing:border-box; }
+
+#scroll-strip #main-body #sqm-wrapper #sqm h1 {font-size:36px; border-bottom: solid 1px #000; padding:24px 0;}
+#scroll-strip #main-body #notification-wrapper {background-color:#000; padding:12px 0; color:#fff;}
+#scroll-strip #main-body #notification-wrapper #notification {max-width:900px; margin:0 auto; position:relative; padding:0 24px; box-sizing:border-box;}
+
+#scroll-strip #main-body #notification-wrapper #notification .close {float:right;}
+#scroll-strip #main-body #notification-wrapper #notification .close:hover {cursor: pointer;}
+#scroll-strip #main-body #notification-wrapper > div {background-color:#000; color:#fff; padding:24px 24px 12px; }
+	#scroll-strip #main-body #notification-wrapper > div h2 {font-size:20px; margin-top:12px;}
+	#scroll-strip #main-body #notification-wrapper > div p {margin:6px 0; line-height:20px;}
+	#scroll-strip #main-body #notification-wrapper > div ul {overflow:hidden;}
+	#scroll-strip #main-body #notification-wrapper > div ul li {float:left; padding:12px 0 6px; width:50%; text-align: center;}
+
+
+#scroll-strip #main-body .block {max-width:900px; margin:0 auto; position:relative; margin-top:36px; padding:0 0 0 24px; box-sizing:border-box;}
+#recent-searches {margin-top:24px;}
+#recent-searches ul {overflow:hidden;}
+#recent-searches ul li {float:left; margin-top:12px; background-color:#555; color:#fff; padding:6px; border-radius:4px;}
+
+ul#popular-destinations {overflow:hidden; margin-top:24px;}
+ul#popular-destinations li {box-sizing:border-box; width:50%; float:left; margin-bottom:24px;}
+ul#popular-destinations li > div {background-color:#fff; height:100px; margin-right:24px; border-radius:4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+
+
+
+/* Scenarios inline css */
+
+body#scenarios-inline {} 
+#scenarios-inline #header {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#scenarios-inline #main-body {margin-top:50px; min-height:1000px;}
+#scenarios-inline #main-body #sqm-wrapper {background-color:#fff; }
+#scenarios-inline #main-body #sqm-wrapper #sqm { max-width:900px; margin:0 auto 0; padding:100px 24px 36px; box-sizing:border-box; }
+
+#scenarios-inline #main-body #sqm-wrapper #sqm h1 {font-size:36px; border-bottom: solid 1px #000; padding:24px 0;}
+#scenarios-inline #main-body #notification-wrapper {background-color:#000; padding:12px 0; color:#fff;}
+#scenarios-inline #main-body #notification-wrapper #notification {max-width:900px; margin:0 auto; position:relative; padding:0 24px; box-sizing:border-box;}
+
+#scenarios-inline #main-body #notification-wrapper .notification .close {float:right;}
+#scenarios-inline #main-body #notification-wrapper .notification .close:hover {cursor: pointer;}
+#scenarios-inline #main-body #notification-wrapper > div {background-color:#000; color:#fff; padding:24px 24px 12px; }
+#scenarios-inline #main-body #notification-wrapper > div h2 {font-size:20px; margin-top:12px;}
+#scenarios-inline #main-body #notification-wrapper > div p {margin:6px 0; line-height:20px;}
+#scenarios-inline #main-body #notification-wrapper > div ul {overflow:hidden;}
+#scenarios-inline #main-body #notification-wrapper > div ul li {float:left; padding:12px 0 6px; width:50%; text-align: center;}
+
+
+#scenarios-inline #main-body .block {max-width:900px; margin:0 auto; position:relative; margin-top:36px; padding:0 0 0 24px; box-sizing:border-box;}
+#recent-searches {margin-top:24px;}
+#recent-searches ul {overflow:hidden;}
+#recent-searches ul li {float:left; margin-top:12px; background-color:#555; color:#fff; padding:6px; border-radius:4px;}
+
+ul#popular-destinations {overflow:hidden; margin-top:24px;}
+ul#popular-destinations li {box-sizing:border-box; width:50%; float:left; margin-bottom:24px;}
+ul#popular-destinations li > div {background-color:#fff; height:100px; margin-right:24px; border-radius:4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+
+#scenarios-inline #main-body #notification-wrapper #midnight-booking h2 {font-size:24px; margin:0;}
+#scenarios-inline #main-body .block > div {background-color:#fff; min-height:100px; margin-right:24px; border-radius:4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); padding:24px;}
+@media only screen and (min-width:850px) {
+	#scenarios-inline #main-body #notification-wrapper #midnight-booking {max-width:900px; margin:auto; padding:0 24px; box-sizing:border-box; padding:24px 24px 12px;}
+
+}
+
+#upcoming-booking h2 {font-size:20px; margin-bottom:6px;}
+
+
+
+/* Split view */
+
+body#split-view {}
+
+@media only screen and (min-width:500px) { 
+	#split-view #sqm-wrapper {margin-top:50px; background-color:#fff;}
+	#split-view #sqm-wrapper #sqm {max-width:900px; margin:0 auto 0; padding:24px 24px 120px; box-sizing:border-box; }
+	#split-view #sqm-wrapper #sqm h1 {font-size:28px; padding:24px 0; border-bottom:solid 1px #000;}
+	#split-view #body-wrapper .notification {min-height:100px; background-color:#000; color:#fff; padding:24px;}
+
+	#split-view #body-wrapper .block h2 {font-size:24px; padding:24px;}
+	#split-view #body-wrapper .block > div {background-color:#fff; height:100px; margin: 0 24px 24px; border-radius:4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+}
+
+@media only screen and (min-width:900px) { 
+	#split-view #sqm-wrapper {position:fixed; left:0; top:50px; bottom:0; width:40%; background-color:#fff; box-sizing:border-box; padding:24px; margin-top:0;} 
+	#split-view #sqm-wrapper #sqm {padding:0 0 0 0; }
+	
+	#split-view #body-wrapper {position:absolute; right:0; top:50px; bottom:0; width:60%; padding:24px; box-sizing:border-box;}
+	#split-view #body-wrapper .block h2 {font-size:24px; padding:24px 0;}
+	#split-view #body-wrapper .block > div {margin: 0 0px 24px; }
+	
+	
+}
+
+
+
+
